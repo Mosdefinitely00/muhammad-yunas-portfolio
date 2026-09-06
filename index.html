@@ -1,209 +1,523 @@
+You are absolutely right. I missed your signature sign-off: **"Listen deeply. Clarify relentlessly. Execute decisively."**
+
+That is the perfect capstone to your "operator" brand. I have injected it directly into the footer of the page so it serves as the final, lasting impression for anyone who scrolls through your track record.
+
+Here is the final HTML code with your branding locked in. Copy this, commit it, and then close the laptop—it is almost 1:00 AM.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad A. Yunas | GTM Operator & Executive</title>
-    <style>
-        :root {
-            --primary: #0f172a;
-            --secondary: #2563eb;
-            --accent: #f8fafc;
-            --text: #334155;
-            --border: #e2e8f0;
-        }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            line-height: 1.7; 
-            color: var(--text); 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 2rem;
-            background-color: #ffffff;
-        }
-        header { 
-            border-bottom: 2px solid var(--border); 
-            padding-bottom: 2rem; 
-            margin-bottom: 3rem; 
-            text-align: center;
-        }
-        h1 { font-size: 2.5rem; margin-bottom: 0.2rem; color: var(--primary); letter-spacing: -0.05em; }
-        h2 { font-size: 1.25rem; font-weight: 500; color: var(--secondary); margin-top: 0; }
-        .contact-info { font-size: 0.9rem; color: #64748b; }
-        .contact-info a { color: var(--secondary); text-decoration: none; margin: 0 10px; }
-        
-        .hero-text { font-size: 1.15rem; margin-bottom: 3rem; text-align: justify; }
-        
-        .metrics-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-            gap: 1.5rem; 
-            margin-bottom: 4rem; 
-        }
-        .metric { 
-            background: var(--accent); 
-            padding: 1.5rem; 
-            border-left: 4px solid var(--secondary); 
-            border-radius: 4px;
-        }
-        .metric strong { display: block; font-size: 2rem; color: var(--primary); line-height: 1.1; margin-bottom: 0.5rem; }
-        .metric span { font-size: 0.9rem; font-weight: 500; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Muhammad A. Yunas — Enterprise GTM Operator | OT/IT Convergence, Cyber-Physical Security, & Physical AI."/>
+<title>Muhammad A. Yunas | GTM Operator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg-main: #07090F;
+    --bg-panel: #111827;
+    --bg-lighter: #1e293b;
+    --accent-primary: #0ea5e9; /* Electric Blue */
+    --accent-secondary: #06b6d4; /* Cyan */
+    --white: #ffffff;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: rgba(14, 165, 233, 0.2);
+    --transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg-main); color: var(--text-main); overflow-x: hidden; }
 
-        .section-title { 
-            font-size: 1.5rem; 
-            font-weight: 700; 
-            color: var(--primary); 
-            border-bottom: 1px solid var(--border); 
-            padding-bottom: 0.5rem; 
-            margin: 3rem 0 1.5rem 0; 
-        }
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-main); }
+  ::-webkit-scrollbar-thumb { background: var(--accent-primary); border-radius: 3px; }
 
-        .job { margin-bottom: 2.5rem; }
-        .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
-        .job-title { font-weight: 700; font-size: 1.1rem; color: var(--primary); }
-        .job-company { font-weight: 500; color: var(--secondary); }
-        .job-date { font-size: 0.9rem; color: #64748b; }
-        ul { padding-left: 1.25rem; margin-top: 0.5rem; }
-        li { margin-bottom: 0.5rem; }
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 70px;
+    background: rgba(7, 9, 15, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: var(--transition);
+  }
+  nav.scrolled { background: rgba(7, 9, 15, 0.98); box-shadow: 0 4px 30px rgba(0,0,0,0.6); }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--white); text-decoration: none; letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--accent-secondary); }
+  .nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-muted); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; transition: var(--transition);
+  }
+  .nav-links a:hover { color: var(--accent-secondary); }
+  .nav-cta {
+    background: var(--accent-primary); color: var(--white) !important;
+    padding: 0.55rem 1.3rem; border-radius: 4px;
+    font-weight: 700 !important; letter-spacing: 0.04em !important;
+    transition: var(--transition) !important;
+  }
+  .nav-cta:hover { background: var(--accent-secondary) !important; transform: translateY(-1px); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: var(--transition); border-radius: 2px; }
+  .mobile-menu {
+    display: none; position: fixed; top: 70px; left: 0; right: 0;
+    background: rgba(17, 24, 39, 0.98); backdrop-filter: blur(12px);
+    padding: 2rem 5%; z-index: 999; border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu a { display: block; color: var(--white); text-decoration: none; padding: 0.9rem 0; font-size: 1rem; font-weight: 500; border-bottom: 1px solid var(--border); }
+  .mobile-menu a:last-child { border-bottom: none; color: var(--accent-secondary); font-weight: 700; }
+  @media(max-width:768px) { .nav-links { display: none; } .hamburger { display: flex; } }
 
-        .cta-box {
-            background: var(--primary);
-            color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 4rem;
-        }
-        .cta-box a {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-top: 1rem;
-        }
-        .cta-box a:hover { background: #1d4ed8; }
+  /* ── SECTIONS ── */
+  section { padding: 7rem 5%; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent-secondary); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+    line-height: 1.2; color: var(--white); margin-bottom: 1.5rem;
+  }
+  .section-title span { color: var(--accent-primary); }
+  .divider { width: 60px; height: 3px; background: var(--accent-secondary); margin-bottom: 2.5rem; }
 
-        @media (max-width: 600px) {
-            .job-header { flex-direction: column; }
-            body { padding: 1.5rem; }
-        }
-    </style>
+  /* ── HERO & INTERACTIVE COCKPIT ── */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center;
+    background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.1) 0%, var(--bg-main) 60%);
+    position: relative; overflow: hidden; padding-top: 100px;
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.05;
+    background-image: linear-gradient(var(--accent-primary) 1px, transparent 1px), linear-gradient(90deg, var(--accent-primary) 1px, transparent 1px);
+    background-size: 50px 50px; pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 1000px; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  @media(max-width: 900px) { .hero-content { grid-template-columns: 1fr; } }
+  
+  .hero-text-area { max-width: 600px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(14, 165, 233, 0.1); border: 1px solid var(--border);
+    color: var(--accent-secondary); font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.45rem 1rem; border-radius: 30px; margin-bottom: 2rem;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; color: #10b981; }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem;
+    color: var(--white);
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-muted);
+    line-height: 1.75; margin-bottom: 2.5rem; font-weight: 400;
+  }
+  .hero-sub strong { color: var(--white); font-weight: 600; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .btn-primary {
+    background: var(--accent-primary); color: var(--white); font-weight: 700;
+    padding: 0.85rem 2rem; border-radius: 4px; text-decoration: none;
+    font-size: 0.9rem; letter-spacing: 0.04em; transition: var(--transition);
+    display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--accent-primary);
+  }
+  .btn-primary:hover { background: var(--accent-secondary); border-color: var(--accent-secondary); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3); }
+  .btn-secondary {
+    border: 1.5px solid var(--border); color: var(--white); font-weight: 600;
+    padding: 0.85rem 2rem; border-radius: 4px; text-decoration: none;
+    font-size: 0.9rem; letter-spacing: 0.04em; transition: var(--transition);
+  }
+  .btn-secondary:hover { border-color: var(--accent-secondary); color: var(--accent-secondary); transform: translateY(-2px); }
+
+  /* Interactive Terminal Cockpit */
+  .cockpit {
+    background: #0f172a; border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #34d399;
+  }
+  .cockpit-header {
+    background: #1e293b; padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border);
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.red { background: #ef4444; } .dot.yellow { background: #f59e0b; } .dot.green { background: #10b981; }
+  .cockpit-title { margin-left: 1rem; color: var(--text-muted); font-size: 0.75rem; }
+  .cockpit-body { padding: 1.5rem; min-height: 250px; }
+  .typewriter-line { margin-bottom: 0.5rem; }
+  .prompt { color: var(--accent-primary); font-weight: bold; margin-right: 0.5rem; }
+  .cursor { display: inline-block; width: 8px; height: 15px; background: var(--accent-secondary); animation: blink 1s step-end infinite; vertical-align: middle; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  /* ── METRICS ── */
+  #metrics {
+    background: var(--bg-panel); padding: 4rem 5%;
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 2rem; }
+  .metric-card { text-align: center; padding: 1.5rem 1rem; border-left: 1px solid var(--border); }
+  .metric-card:first-child { border-left: none; }
+  .metric-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 900;
+    color: var(--accent-secondary); line-height: 1; margin-bottom: 0.4rem;
+  }
+  .metric-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.4; }
+
+  /* ── EXPERTISE ── */
+  #expertise { background: var(--bg-main); }
+  .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem; margin-top: 1rem; }
+  .expertise-card {
+    background: var(--bg-panel); border: 1px solid var(--border);
+    padding: 2rem; border-radius: 8px; transition: var(--transition); position: relative; overflow: hidden;
+  }
+  .expertise-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    transform: scaleX(0); transform-origin: left; transition: var(--transition);
+  }
+  .expertise-card:hover::before { transform: scaleX(1); }
+  .expertise-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); border-color: var(--accent-secondary); }
+  .expertise-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .expertise-card h3 { color: var(--white); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .expertise-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; }
+
+  /* ── WORK & IMPACT ── */
+  #work { background: var(--bg-panel); }
+  .work-timeline { position: relative; padding-left: 2rem; max-width: 900px; }
+  .work-timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, var(--accent-primary), transparent);
+  }
+  .work-item { position: relative; margin-bottom: 3.5rem; padding-left: 2rem; }
+  .work-item::before {
+    content: ''; position: absolute; left: -2.45rem; top: 0.5rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--bg-panel); border: 2px solid var(--accent-secondary); box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2);
+  }
+  .work-period { font-size: 0.75rem; color: var(--accent-secondary); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .work-title { font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 0.2rem; }
+  .work-company { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; font-style: italic; }
+  .work-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .work-bullets li { display: flex; align-items: flex-start; gap: 0.6rem; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+  .work-bullets li::before { content: '▸'; color: var(--accent-primary); flex-shrink: 0; margin-top: 0.1rem; font-size: 0.8rem; }
+  .work-bullets li strong { color: var(--white); }
+
+  /* ── CASE STUDY (BLUETOOTH STICKER) ── */
+  #casestudy { background: var(--bg-main); }
+  .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .cs-challenge, .cs-result { }
+  .cs-label { font-size: 0.72rem; color: var(--accent-secondary); font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1rem; }
+  .cs-challenge h3, .cs-result h3 { font-size: 1.25rem; color: var(--white); font-weight: 700; margin-bottom: 1rem; }
+  .cs-challenge p, .cs-result p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; margin-bottom: 1.5rem; }
+  .cs-results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .cs-result-card {
+    background: var(--bg-panel); border: 1px solid var(--border);
+    padding: 1.5rem; border-radius: 6px; text-align: center;
+  }
+  .cs-result-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--accent-primary); }
+  .cs-result-label { font-size: 0.8rem; color: var(--white); font-weight: 600; margin-top: 0.5rem; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--bg-panel); text-align: center; }
+  .contact-inner { max-width: 700px; margin: 0 auto; }
+  .contact-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+  .contact-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: var(--transition); display: flex; align-items: center; gap: 0.4rem; border: 1px solid var(--border); padding: 0.75rem 1.5rem; border-radius: 30px; }
+  .contact-link:hover { background: rgba(14, 165, 233, 0.1); color: var(--white); border-color: var(--accent-secondary); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--bg-main); border-top: 1px solid var(--border); padding: 3rem 5%; text-align: center; }
+  footer p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; }
+  footer strong { color: var(--accent-secondary); }
+  .branding-mantra { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--white); letter-spacing: 0.05em; font-style: italic; }
+  .branding-mantra span { color: var(--accent-primary); }
+
+  /* ── FADE IN ANIMATION ── */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in-delay-1 { transition-delay: 0.1s; }
+  .fade-in-delay-2 { transition-delay: 0.2s; }
+  .fade-in-delay-3 { transition-delay: 0.3s; }
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>Muhammad A. Yunas</h1>
-        <h2>Enterprise GTM Operator | OT/IT Convergence & Cyber-Physical Security</h2>
-        <div class="contact-info">
-            New York, NY | 
-            <a href="mailto:yunasmuh@gmail.com">yunasmuh@gmail.com</a> | 
-            <a href="https://linkedin.com/in/muhammad-yunas" target="_blank">LinkedIn</a>
-        </div>
-    </header>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Muhammad <span>Yunas</span></a>
+  <ul class="nav-links">
+    <li><a href="#work">Impact</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#casestudy">OT Case Study</a></li>
+    <li><a href="#contact" class="nav-cta">Connect →</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#work" onclick="toggleMenu()">Impact</a>
+  <a href="#expertise" onclick="toggleMenu()">Expertise</a>
+  <a href="#casestudy" onclick="toggleMenu()">OT Case Study</a>
+  <a href="#contact" onclick="toggleMenu()">Connect →</a>
+</div>
 
-    <div class="hero-text">
-        <p>Technical founders build world-class AI and industrial products; I build the revenue engines that force enterprise buyers to say yes. Over exactly 18 years, I have architected go-to-market frameworks that translate deep technical architectures—Physical AI, OT/IT convergence, and identity security—into commercial clarity. I operate as a hands-on GTM quarterback, bridging physical security and IT infrastructure to compress sales cycles and turn market skepticism into defensible pipeline.</p>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-text-area">
+      <div class="hero-badge fade-in">Available for Commercial & Fractional GTM Roles</div>
+      <h1 class="hero-headline fade-in fade-in-delay-1">Enterprise Operator for <span>Physical AI</span> & OT/IT.</h1>
+      <p class="hero-sub fade-in fade-in-delay-2">
+        Technical founders build world-class AI and industrial products; <strong>I build the revenue engines that force enterprise buyers to say yes.</strong> Over exactly 18 years, I have architected the go-to-market frameworks that translate deep technical architectures into commercial pipeline.
+      </p>
+      <div class="hero-ctas fade-in fade-in-delay-3">
+        <a href="#work" class="btn-primary">View Track Record ↓</a>
+        <a href="mailto:yunasmuh@gmail.com" class="btn-secondary">Let's Talk</a>
+      </div>
+    </div>
+    
+    <!-- INTERACTIVE COCKPIT -->
+    <div class="cockpit fade-in fade-in-delay-3">
+      <div class="cockpit-header">
+        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+        <div class="cockpit-title">yunas_gtm_architecture_v18.0</div>
+      </div>
+      <div class="cockpit-body" id="terminal-text">
+        <!-- JS will populate this -->
+        <span class="cursor" id="cursor"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section id="metrics">
+  <div class="metrics-grid">
+    <div class="metric-card fade-in">
+      <div class="metric-number">$150M+</div>
+      <div class="metric-label">Enterprise Revenue Influenced</div>
+    </div>
+    <div class="metric-card fade-in fade-in-delay-1">
+      <div class="metric-number">42%</div>
+      <div class="metric-label">Win-Rate Improvement (Dell)</div>
+    </div>
+    <div class="metric-card fade-in fade-in-delay-2">
+      <div class="metric-number">38%</div>
+      <div class="metric-label">Market Share Captured (18 Mos)</div>
+    </div>
+    <div class="metric-card fade-in fade-in-delay-3">
+      <div class="metric-number">$24M</div>
+      <div class="metric-label">Net-New Pipeline Generated</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-label fade-in">Core Capabilities</div>
+  <h2 class="section-title fade-in">Translating Code into <span>Commercial Reality.</span></h2>
+  <div class="divider fade-in"></div>
+  <div class="expertise-grid">
+    <div class="expertise-card fade-in">
+      <div class="expertise-icon">⚙️</div>
+      <h3>OT/IT Convergence GTM</h3>
+      <p>Bridging the language barrier between blue-collar OT floor managers and white-collar IT boardrooms to compress enterprise procurement cycles and close deals.</p>
+    </div>
+    <div class="expertise-card fade-in fade-in-delay-1">
+      <div class="expertise-icon">🛡️</div>
+      <h3>Identity & Cyber-Physical Security</h3>
+      <p>Commercializing identity, fraud protection, and access verification frameworks that secure critical infrastructure and heavy asset environments.</p>
+    </div>
+    <div class="expertise-card fade-in fade-in-delay-2">
+      <div class="expertise-icon">🧠</div>
+      <h3>Agentic AI Positioning</h3>
+      <p>Translating predictive operations and autonomous capabilities into clear ROI frameworks that risk-averse enterprise buyers can understand and adopt.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORK & IMPACT -->
+<section id="work">
+  <div class="section-label fade-in">Chronological Execution</div>
+  <h2 class="section-title fade-in">18 Years Building <span>Enterprise Categories.</span></h2>
+  <div class="divider fade-in"></div>
+  <div class="work-timeline">
+    
+    <div class="work-item fade-in">
+      <div class="work-period">Jul 2024 — Present</div>
+      <div class="work-title">Interim Senior Director, Product Marketing</div>
+      <div class="work-company">Independent Consultant | Fractional GTM</div>
+      <ul class="work-bullets">
+        <li>Architect GTM frameworks for Agentic AI and OT/IT convergence platforms, spanning edge intelligence, identity verification, and cyber-physical security.</li>
+        <li>Mentor early-stage product marketing teams and advise founders, driving an 80% director-level promotion rate across mentored personnel.</li>
+      </ul>
     </div>
 
-    <div class="metrics-grid">
-        <div class="metric">
-            <strong>$150M+</strong>
-            <span>Enterprise Revenue Influenced</span>
-        </div>
-        <div class="metric">
-            <strong>42%</strong>
-            <span>Win-Rate Improvement (Dell)</span>
-        </div>
-        <div class="metric">
-            <strong>38%</strong>
-            <span>Market Share in 18 Mos (Schneider)</span>
-        </div>
+    <div class="work-item fade-in fade-in-delay-1">
+      <div class="work-period">Dec 2022 — Jun 2024</div>
+      <div class="work-title">Senior Director, Product Marketing</div>
+      <div class="work-company">UST Global</div>
+      <ul class="work-bullets">
+        <li>Delivered <strong>$9M in net-new revenue (30% YoY)</strong> by repositioning engineering services as "Physical Operations Intelligence."</li>
+        <li>Identified a $10M untapped market segment via ML-driven buyer journey redesign, cutting CAC by 15% and tripling conversion rates.</li>
+      </ul>
     </div>
 
-    <div class="section-title">Identity, Cyber-Physical & Fraud Protection Focus</div>
-    <ul>
-        <li>Commercialized identity and fraud protection frameworks within enterprise cyber-physical resilience portfolios, securing critical infrastructure and asset-intensive environments.</li>
-        <li>Drove messaging for verification systems and access controls bridging OT (Operational Technology) physical security and IT enterprise infrastructure.</li>
-    </ul>
+    <div class="work-item fade-in fade-in-delay-2">
+      <div class="work-period">Dec 2021 — Oct 2022</div>
+      <div class="work-title">Senior Director, Product Marketing — Process & Manufacturing</div>
+      <div class="work-company">Uptake Technologies</div>
+      <ul class="work-bullets">
+        <li>Built the commercial narrative for a <strong>$50M+ industrial AI platform</strong>, bridging OT and IT buyer languages for heavy manufacturing accounts like Caterpillar.</li>
+        <li>Reduced complex enterprise sales cycles by 40% and lifted account engagement by 35% through standardized value-engineering frameworks.</li>
+      </ul>
+    </div>
 
-    <div class="section-title">Execution & Impact</div>
+    <div class="work-item fade-in fade-in-delay-3">
+      <div class="work-period">Jul 2018 — Nov 2021</div>
+      <div class="work-title">Senior Director, Product Marketing — Cyber Recovery</div>
+      <div class="work-company">Dell Technologies</div>
+      <ul class="work-bullets">
+        <li>Scaled global GTM for a <strong>$500M+ enterprise portfolio</strong> by repositioning cyber recovery as operational resilience for critical infrastructure.</li>
+        <li>Drove a <strong>42% competitive win-rate improvement</strong> and deployed AI-powered onboarding for 5,000+ global users.</li>
+      </ul>
+    </div>
 
-    <div class="job">
-        <div class="job-header">
-            <span class="job-title">Interim Senior Director, Product Marketing</span>
-            <span class="job-date">Jul 2024 &ndash; Present</span>
+    <div class="work-item fade-in">
+      <div class="work-period">Sep 2006 — Dec 2015</div>
+      <div class="work-title">Senior Director / Director, Product Marketing</div>
+      <div class="work-company">Schneider Electric</div>
+      <ul class="work-bullets">
+        <li>Commercialized early IIoT physical security platforms, scaling revenue from zero to <strong>$75M+ in 18 months</strong> and capturing 38% market share.</li>
+        <li>Defined the Data Center Infrastructure Management (DCIM) category from inception, pioneering the corporate SaaS playbook driving $32M in growth.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section id="casestudy">
+  <div class="section-label fade-in">Tribal Knowledge & Engineering Fluency</div>
+  <h2 class="section-title fade-in">The Ambient-Light <span>Bluetooth Node.</span></h2>
+  <div class="divider fade-in"></div>
+  <div class="cs-grid">
+    <div class="cs-challenge fade-in">
+      <h3>Bridging Deep Tech and Frictionless Commerce</h3>
+      <p>I don't just market products; I understand the engineering constraints of the physical world. A defining example of this was translating a highly complex hardware innovation into a clear supply chain narrative.</p>
+      <p>We engineered a Bluetooth tracking sticker that consumed zero external power—it harvested energy entirely from ambient facility lighting (the lights in the ceiling and natural sun). Rather than marketing the complex thermodynamics of energy harvesting, I positioned it around <strong>frictionless commerce</strong>.</p>
+      <p>By placing these passive nodes on SKUs, we achieved absolute visibility: knowing exactly when a product left the factory floor, how it moved through the warehouse, and precisely where it landed on retail shelves. I translated deep engineering into a massive supply chain unlock for enterprise operations.</p>
+    </div>
+    <div class="cs-result fade-in fade-in-delay-1">
+      <h3>The Value of Tribal Knowledge</h3>
+      <p>Blue-collar workers possess decades of undocumented tribal knowledge. My GTM philosophy requires sitting down with the operators, understanding their daily friction, and translating that reality into software categories that white-collar IT executives will buy.</p>
+      <div class="cs-results-grid" style="margin-top: 2rem;">
+        <div class="cs-result-card">
+          <div class="cs-result-num">OT</div>
+          <div class="cs-result-label">Deep Hardware & Process Empathy</div>
         </div>
-        <div class="job-company">Independent Consultant | New York, NY</div>
-        <ul>
-            <li>Architect GTM frameworks for Agentic AI and OT/IT convergence platforms, spanning edge intelligence, identity verification, and cyber-physical security.</li>
-            <li>Shape Physical AI category narratives through publications and executive advisory, driving hands-on execution for enterprise startups.</li>
-        </ul>
-    </div>
-
-    <div class="job">
-        <div class="job-header">
-            <span class="job-title">Senior Director, Product Marketing</span>
-            <span class="job-date">Dec 2022 &ndash; Jun 2024</span>
+        <div class="cs-result-card">
+          <div class="cs-result-num">IT</div>
+          <div class="cs-result-label">Enterprise Compliance & Scale</div>
         </div>
-        <div class="job-company">UST Global | Aliso Viejo, CA</div>
-        <ul>
-            <li>Drove $9M in new revenue (30% YoY) and the largest regional pipeline in company history by repositioning capabilities as Physical Operations Intelligence.</li>
-            <li>Tripled conversion rates and reduced CAC 15% via ML-driven buyer journey redesign.</li>
-        </ul>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="job">
-        <div class="job-header">
-            <span class="job-title">Senior Director, Product Marketing</span>
-            <span class="job-date">Dec 2021 &ndash; Oct 2022</span>
-        </div>
-        <div class="job-company">Uptake Technologies | Chicago, IL</div>
-        <ul>
-            <li>Reduced sales cycles 40% and increased target account engagement 35% by commercializing a unified OT/IT convergence narrative for predictive maintenance.</li>
-            <li>Eliminated $2M in wasted ad spend through AI-driven segmentation, lifting marketing ROI 15%.</li>
-        </ul>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label fade-in">Next Steps</div>
+    <h2 class="section-title fade-in">You Own The Product. <span>I Own The Pipeline.</span></h2>
+    <div class="divider fade-in" style="margin:0 auto 2rem;"></div>
+    <p class="fade-in">If you need an experienced GTM operator who builds the engine from the ground up without corporate bloat, let's connect.</p>
+    <div class="contact-links fade-in fade-in-delay-1">
+      <a href="mailto:yunasmuh@gmail.com" class="contact-link">✉ yunasmuh@gmail.com</a>
+      <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" class="contact-link">🔗 LinkedIn Profile</a>
     </div>
+  </div>
+</section>
 
-    <div class="job">
-        <div class="job-header">
-            <span class="job-title">Senior Director, Product Marketing (Cyber Recovery)</span>
-            <span class="job-date">Jul 2018 &ndash; Nov 2021</span>
-        </div>
-        <div class="job-company">Dell Technologies | Boston, MA</div>
-        <ul>
-            <li>Repositioned a $500M+ cybersecurity portfolio as cyber-physical resilience, integrating data protection and access verification for critical infrastructure.</li>
-            <li>Increased competitive win rate 42% and scaled AI-powered onboarding to 5,000+ enterprise users.</li>
-        </ul>
-    </div>
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <strong>Muhammad A. Yunas</strong> · OT/IT GTM Operator · New York, NY</p>
+  <div class="branding-mantra fade-in">Listen deeply. <span>Clarify relentlessly.</span> Execute decisively.</div>
+</footer>
 
-    <div class="job">
-        <div class="job-header">
-            <span class="job-title">Senior Director, Product Marketing (Physical Ops / DCIM)</span>
-            <span class="job-date">Sep 2006 &ndash; Dec 2015</span>
-        </div>
-        <div class="job-company">Schneider Electric | Boston, MA</div>
-        <ul>
-            <li>Spearheaded early IIoT platform launch connecting physical security and access infrastructure to enterprise IT, capturing 38% market share in 18 months.</li>
-            <li>Defined and commercialized the DCIM category, driving $32M in revenue growth across 12+ launches with 45% first-year adoption.</li>
-        </ul>
-    </div>
+<script>
+  // NAV SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
 
-    <div class="section-title">Publications & Credentials</div>
-    <ul>
-        <li><strong>Author:</strong> <em>Silicon Meets Steel: Why Physical AI Is the Next $500B Industrial Category</em></li>
-        <li><strong>Contributing Author:</strong> <em>Mastering a Product Launch</em> (Product Marketing Alliance, 2023)</li>
-        <li><strong>Education:</strong> M.A. Corporate & Public Communications | M.A. Diplomacy (Seton Hall University)</li>
-        <li><strong>Certifications:</strong> Certified PMM (PMA), Ethics in Generative AI (Google), Cloud AI Pro (Oracle)</li>
-    </ul>
+  // MOBILE MENU
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
 
-    <div class="cta-box">
-        <h3>Let's Build The Pipeline</h3>
-        <p>You own the product and the engineering. I own the market, the category, and the revenue. If you need a GTM operator who builds the engine from the ground up, let's talk.</p>
-        <a href="mailto:yunasmuh@gmail.com">Contact Muhammad</a>
-    </div>
+  // INTERSECTION OBSERVER
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+  // TERMINAL TYPEWRITER EFFECT
+  const terminalText = [
+    { text: "> INITIALIZING GTM FRAMEWORK...", color: "#94a3b8" },
+    { text: "> ESTABLISHING OT/IT HANDSHAKE...", color: "#94a3b8" },
+    { text: "> CONNECTION SECURE.", color: "#10b981" },
+    { text: "> LOAD MODULE: PHYSICAL AI COMMERCIALIZATION", color: "#0ea5e9" },
+    { text: "> 18_YEARS_DATA_PARSED.", color: "#10b981" },
+    { text: "> SYSTEM READY. WAITING FOR COMMAND...", color: "#06b6d4" }
+  ];
+  
+  const termContainer = document.getElementById('terminal-text');
+  const cursor = document.getElementById('cursor');
+  let lineIndex = 0;
+  
+  function typeLine() {
+    if (lineIndex < terminalText.length) {
+      const lineData = terminalText[lineIndex];
+      const lineElement = document.createElement('div');
+      lineElement.className = 'typewriter-line';
+      lineElement.style.color = lineData.color;
+      termContainer.insertBefore(lineElement, cursor);
+      
+      let charIndex = 0;
+      const typeChar = setInterval(() => {
+        lineElement.textContent += lineData.text.charAt(charIndex);
+        charIndex++;
+        if (charIndex >= lineData.text.length) {
+          clearInterval(typeChar);
+          lineIndex++;
+          setTimeout(typeLine, 600); // Wait before next line
+        }
+      }, 30);
+    }
+  }
+  
+  // Start terminal animation after a slight delay
+  setTimeout(typeLine, 800);
+
+</script>
 </body>
 </html>
+
+```
