@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Muhammad A. Yunas — Enterprise GTM Operator | OT/IT Convergence, Cyber-Physical Security, & Physical AI."/>
+<meta name="description" content="Muhammad A. Yunas — Enterprise GTM Operator | OT/IT Convergence,2 Cyber-Physical Security, & Physical AI."/>
 <title>Muhammad A. Yunas | GTM Operator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -52,7 +52,7 @@
   .nav-links a {
     color: var(--text-muted); text-decoration: none;
     font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em;
-    text-transform: uppercase; transition: var(--transition);
+    text-transform: uppercase; transition: var(--transition); cursor: pointer;
   }
   .nav-links a:hover { color: var(--gold); }
   .nav-cta {
@@ -91,7 +91,7 @@
   /* ── HERO ── */
   #hero {
     min-height: 100vh; display: flex; align-items: center;
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, #0a1f3d 100%);
+    background: linear-gradient(135deg, rgba(10,22,40,0.88) 0%, rgba(15,32,64,0.95) 100%), url('assets/hero-bg.jpg') center/cover no-repeat;
     position: relative; overflow: hidden; padding-top: 100px;
   }
   .hero-grid {
@@ -104,7 +104,7 @@
     background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
     top: -100px; right: -100px; pointer-events: none;
   }
-  .hero-content { position: relative; z-index: 2; max-width: 1000px; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .hero-content { position: relative; z-index: 2; max-width: 1100px; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
   @media(max-width: 900px) { .hero-content { grid-template-columns: 1fr; gap: 2.5rem; } }
   
   .hero-badge {
@@ -135,34 +135,57 @@
     background: var(--gold); color: var(--navy); font-weight: 700;
     padding: 0.85rem 2rem; border-radius: 4px; text-decoration: none;
     font-size: 0.9rem; letter-spacing: 0.04em; transition: var(--transition);
-    display: inline-flex; align-items: center; gap: 0.5rem;
+    display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;
   }
   .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.3); }
   .btn-secondary {
     border: 1.5px solid var(--border); color: var(--white); font-weight: 600;
     padding: 0.85rem 2rem; border-radius: 4px; text-decoration: none;
     font-size: 0.9rem; letter-spacing: 0.04em; transition: var(--transition);
-    display: inline-flex; align-items: center; gap: 0.5rem;
+    display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;
   }
   .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
 
-  /* Interactive Terminal Cockpit (Navy Theme) */
-  .cockpit {
-    background: rgba(10, 22, 40, 0.8); border: 1px solid var(--border);
-    border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--gold-light);
-    backdrop-filter: blur(10px);
+  /* ── INTERACTIVE COCKPIT MAP ── */
+  .hero-cockpit {
+    position: relative; height: 380px; width: 100%;
+    background: linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 36px 36px; border: 1px solid var(--border); border-radius: 14px;
+    background-color: rgba(10,22,40,0.6); box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px); overflow: hidden;
   }
-  .cockpit-header {
-    background: var(--navy-mid); padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border);
+  .cp-node {
+    position: absolute; width: 150px; padding: 12px; text-align: center;
+    border: 1px solid rgba(138, 153, 176, 0.3); border-radius: 10px; background: rgba(15,32,64,0.9);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.25); transition: var(--transition); cursor: crosshair; z-index: 2;
   }
-  .dot { width: 10px; height: 10px; border-radius: 50%; }
-  .dot.red { background: #ef4444; } .dot.yellow { background: #f59e0b; } .dot.green { background: #10b981; }
-  .cockpit-title { margin-left: 1rem; color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.05em; }
-  .cockpit-body { padding: 1.5rem; min-height: 250px; }
-  .typewriter-line { margin-bottom: 0.5rem; line-height: 1.5; }
-  .cursor { display: inline-block; width: 8px; height: 15px; background: var(--gold); animation: blink 1s step-end infinite; vertical-align: middle; }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  .cp-node:hover {
+    border-color: var(--gold); transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(201,168,76,0.25);
+  }
+  .cp-node strong { display: block; color: var(--white); font-size: 0.9rem; margin-bottom: 4px; }
+  .cp-node small { color: var(--text-muted); font-size: 0.75rem; line-height: 1.2; display: block; }
+  
+  .cp-n1 { left: 8%; top: 35%; }
+  .cp-n2 { left: 40%; top: 12%; }
+  .cp-n3 { left: 40%; top: 60%; }
+  .cp-n4 { right: 8%; top: 35%; border-color: rgba(16, 185, 129, 0.4); }
+  .cp-n4:hover { border-color: #10b981; box-shadow: 0 12px 28px rgba(16, 185, 129, 0.2); }
+
+  .cp-line {
+    position: absolute; height: 2px; background: linear-gradient(90deg, rgba(138, 153, 176, 0.4), var(--gold));
+    transform-origin: left center; z-index: 1; transition: var(--transition);
+  }
+  .cp-l1 { left: 26%; top: 46%; width: 17%; transform: rotate(-32deg); }
+  .cp-l2 { left: 26%; top: 50%; width: 17%; transform: rotate(32deg); }
+  .cp-l3 { left: 63%; top: 46%; width: 23%; transform: rotate(32deg); background: linear-gradient(90deg, var(--gold), #10b981); }
+  .cp-l4 { left: 63%; top: 50%; width: 23%; transform: rotate(-32deg); background: linear-gradient(90deg, var(--gold), #10b981); }
+
+  .cp-badge {
+    position: absolute; bottom: 15px; left: 15px; font-family: 'Fira Code', monospace;
+    font-size: 0.7rem; color: #10b981; background: rgba(16, 185, 129, 0.1);
+    padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.2);
+  }
 
   /* ── METRICS ── */
   #metrics {
@@ -183,7 +206,7 @@
   .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem; margin-top: 1rem; }
   .expertise-card {
     background: var(--navy-mid); border: 1px solid var(--border);
-    padding: 2rem; border-radius: 8px; transition: var(--transition); position: relative; overflow: hidden;
+    padding: 2rem; border-radius: 8px; transition: var(--transition); position: relative; overflow: hidden; cursor: default;
   }
   .expertise-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0;
@@ -203,7 +226,8 @@
     content: ''; position: absolute; left: 0; top: 0; bottom: 0;
     width: 2px; background: linear-gradient(to bottom, var(--gold), transparent);
   }
-  .work-item { position: relative; margin-bottom: 3.5rem; padding-left: 1.5rem; }
+  .work-item { position: relative; margin-bottom: 3.5rem; padding-left: 1.5rem; transition: var(--transition); }
+  .work-item:hover { transform: translateX(5px); }
   .work-item::before {
     content: ''; position: absolute; left: -1.95rem; top: 0.5rem;
     width: 12px; height: 12px; border-radius: 50%;
@@ -217,19 +241,18 @@
   .work-bullets li::before { content: '▸'; color: var(--gold); flex-shrink: 0; margin-top: 0.1rem; font-size: 0.8rem; }
   .work-bullets li strong { color: var(--white); }
 
-  /* ── CASE STUDY (BLUETOOTH STICKER) ── */
+  /* ── OT/IT CONVERGENCE (CASE STUDY REPLACEMENT) ── */
   #casestudy { background: var(--navy); }
-  .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .cs-label { font-size: 0.72rem; color: var(--gold); font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1rem; }
-  .cs-challenge h3, .cs-result h3 { font-size: 1.25rem; color: var(--white); font-weight: 700; margin-bottom: 1rem; }
-  .cs-challenge p, .cs-result p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; margin-bottom: 1.5rem; }
-  .cs-results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .cs-result-card {
-    background: var(--navy-mid); border: 1px solid var(--border);
-    padding: 1.5rem; border-radius: 6px; text-align: center;
-  }
-  .cs-result-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--gold); }
-  .cs-result-label { font-size: 0.8rem; color: var(--white); font-weight: 600; margin-top: 0.5rem; line-height: 1.4; }
+  .domain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+  .domain-card { background: var(--navy-mid); padding: 2.5rem; border-left: 4px solid var(--slate); border-radius: 0 8px 8px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: var(--transition); }
+  .domain-card:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+  .domain-card.ot-card { border-left-color: var(--gold); }
+  .domain-card.it-card { border-left-color: #62b0ff; }
+  .domain-card h3 { font-size: 1.25rem; color: var(--white); margin-bottom: 1rem; font-weight: 700; }
+  .domain-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+  .convergence-impact { background: linear-gradient(135deg, var(--navy-mid) 0%, rgba(201,168,76,0.1) 100%); padding: 3rem; border-radius: 8px; border: 1px solid var(--border); text-align: center; }
+  .convergence-impact h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 1rem; }
+  .convergence-impact p { color: var(--white); font-size: 1.05rem; line-height: 1.7; max-width: 800px; margin: 0 auto; }
 
   /* ── CONTACT ── */
   #contact { background: var(--navy-mid); text-align: center; }
@@ -239,12 +262,14 @@
   .contact-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: var(--transition); display: flex; align-items: center; gap: 0.4rem; border: 1px solid var(--border); padding: 0.75rem 1.5rem; border-radius: 30px; }
   .contact-link:hover { background: rgba(201,168,76,0.1); color: var(--white); border-color: var(--gold); }
 
-  /* ── FOOTER ── */
+  /* ── EXECUTIVE SIGNOFF & FOOTER ── */
+  .executive-signoff { background-color: var(--white); padding: 5rem 5%; text-align: center; }
+  .executive-signoff h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--navy); font-weight: 900; letter-spacing: -0.02em; margin: 0; }
+  .executive-signoff span { color: var(--gold); }
+  
   footer { background: var(--navy); border-top: 1px solid var(--border); padding: 3rem 5%; text-align: center; }
-  footer p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
+  footer p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0; }
   footer strong { color: var(--gold); }
-  .branding-mantra { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--white); letter-spacing: 0.05em; font-style: italic; }
-  .branding-mantra span { color: var(--gold); }
 
   /* ── FADE IN ANIMATION ── */
   .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
@@ -255,20 +280,26 @@
   
   /* ── RESPONSIVE FIXES ── */
   @media(max-width:900px) {
-    .cs-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .domain-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .hero-cockpit { height: 300px; }
   }
   @media(max-width:600px) {
     section { padding: 5rem 6%; }
     .hero-ctas { flex-direction: column; }
     .hero-ctas a { text-align: center; justify-content: center; }
-    .cs-results-grid { grid-template-columns: 1fr; }
     .work-timeline { padding-left: 1rem; }
     .work-item { padding-left: 1.5rem; }
     .work-item::before { left: -1.95rem; }
+    .hero-cockpit { display: none; /* Hide complex map on small screens to maintain UX */ }
   }
 </style>
 </head>
 <body>
+
+<!-- AUDIO ASSETS -->
+<audio id="sfx-hover" src="assets/hover.mp3" preload="auto"></audio>
+<audio id="sfx-click" src="assets/click.mp3" preload="auto"></audio>
+<audio id="sfx-data" src="assets/data.mp3" preload="auto"></audio>
 
 <!-- NAV -->
 <nav id="navbar">
@@ -276,7 +307,7 @@
   <ul class="nav-links">
     <li><a href="#work">Impact</a></li>
     <li><a href="#expertise">Expertise</a></li>
-    <li><a href="#casestudy">OT Case Study</a></li>
+    <li><a href="#casestudy">Convergence GTM</a></li>
     <li><a href="#contact" class="nav-cta">Connect →</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -286,7 +317,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#work" onclick="toggleMenu()">Impact</a>
   <a href="#expertise" onclick="toggleMenu()">Expertise</a>
-  <a href="#casestudy" onclick="toggleMenu()">OT Case Study</a>
+  <a href="#casestudy" onclick="toggleMenu()">Convergence GTM</a>
   <a href="#contact" onclick="toggleMenu()">Connect →</a>
 </div>
 
@@ -307,16 +338,14 @@
       </div>
     </div>
     
-    <!-- INTERACTIVE COCKPIT (Navy Theme) -->
-    <div class="cockpit fade-in fade-in-delay-3">
-      <div class="cockpit-header">
-        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-        <div class="cockpit-title">yunas_gtm_architecture_v18.0</div>
-      </div>
-      <div class="cockpit-body" id="terminal-text">
-        <!-- JS will populate this -->
-        <span class="cursor" id="cursor"></span>
-      </div>
+    <!-- INTERACTIVE CSS COCKPIT MAP -->
+    <div class="hero-cockpit fade-in fade-in-delay-3">
+      <div class="cp-node cp-n1"><strong>Physical Layer</strong><small>Sensors · PLC · SCADA</small></div>
+      <div class="cp-node cp-n2"><strong>Edge Intelligence</strong><small>Inference · Digital Twin</small></div>
+      <div class="cp-node cp-n3"><strong>Agent Layer</strong><small>Reason · Plan · Act</small></div>
+      <div class="cp-node cp-n4"><strong>Business Layer</strong><small>ROI · Risk · Revenue</small></div>
+      <i class="cp-line cp-l1"></i><i class="cp-line cp-l2"></i><i class="cp-line cp-l3"></i><i class="cp-line cp-l4"></i>
+      <div class="cp-badge">SYSTEM.NOMINAL // AUTONOMOUS_MODE</div>
     </div>
   </div>
 </section>
@@ -427,32 +456,26 @@
   </div>
 </section>
 
-<!-- CASE STUDY -->
+<!-- OT/IT CONVERGENCE REPLACEMENT -->
 <section id="casestudy">
-  <div class="section-label fade-in">Tribal Knowledge & Engineering Fluency</div>
-  <h2 class="section-title fade-in">The Ambient-Light <span>Bluetooth Node.</span></h2>
+  <div class="section-label fade-in">Strategic Perimeter</div>
+  <h2 class="section-title fade-in">The Reality of <span>Convergence.</span></h2>
   <div class="divider fade-in"></div>
-  <div class="cs-grid">
-    <div class="cs-challenge fade-in">
-      <h3>Bridging Deep Tech and Frictionless Commerce</h3>
-      <p>I don't just market products; I understand the engineering constraints of the physical world. A defining example of this was translating a highly complex hardware innovation into a clear supply chain narrative.</p>
-      <p>We engineered a Bluetooth tracking sticker that consumed zero external power—it harvested energy entirely from ambient facility lighting (the lights in the ceiling and natural sun). Rather than marketing the complex thermodynamics of energy harvesting, I positioned it around <strong>frictionless commerce</strong>.</p>
-      <p>By placing these passive nodes on SKUs, we achieved absolute visibility: knowing exactly when a product left the factory floor, how it moved through the warehouse, and precisely where it landed on retail shelves. I translated deep engineering into a massive supply chain unlock for enterprise operations.</p>
+  
+  <div class="domain-grid">
+    <div class="domain-card ot-card fade-in">
+      <h3>Operational Technology (OT)</h3>
+      <p>The Physical Perimeter: Heavy machinery, SCADA systems, industrial controllers, and edge sensors. Historically isolated, built for uptime, safety, and physical output.</p>
     </div>
-    <div class="cs-result fade-in fade-in-delay-1">
-      <h3>The Value of Tribal Knowledge</h3>
-      <p>Blue-collar workers possess decades of undocumented tribal knowledge. My GTM philosophy requires sitting down with the operators, understanding their daily friction, and translating that reality into software categories that white-collar IT executives will buy.</p>
-      <div class="cs-results-grid" style="margin-top: 2rem;">
-        <div class="cs-result-card">
-          <div class="cs-result-num">OT</div>
-          <div class="cs-result-label">Deep Hardware & Process Empathy</div>
-        </div>
-        <div class="cs-result-card">
-          <div class="cs-result-num">IT</div>
-          <div class="cs-result-label">Enterprise Compliance & Scale</div>
-        </div>
-      </div>
+    <div class="domain-card it-card fade-in fade-in-delay-1">
+      <h3>Information Technology (IT)</h3>
+      <p>The Digital Perimeter: Cloud architecture, enterprise data lakes, machine learning pipelines, and corporate security. Built for scale, data processing, and enterprise applications.</p>
     </div>
+  </div>
+  
+  <div class="convergence-impact fade-in fade-in-delay-2">
+    <h3>The Convergence GTM</h3>
+    <p>Translating physical telemetry into digital intelligence. Bridging the language gap between plant managers and CIOs to unlock net-new enterprise value and predictive resilience.</p>
   </div>
 </section>
 
@@ -470,10 +493,14 @@
   </div>
 </section>
 
+<!-- EXECUTIVE SIGNOFF -->
+<div class="executive-signoff">
+  <h2 class="fade-in">Think Clearly. <span>Listen Decisively.</span> Act Decisively.</h2>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <p>© 2026 <strong>Muhammad A. Yunas</strong> · OT/IT GTM Operator · New York, NY</p>
-  <div class="branding-mantra fade-in">Listen deeply. <span>Clarify relentlessly.</span> Execute decisively.</div>
 </footer>
 
 <script>
@@ -494,44 +521,33 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // TERMINAL TYPEWRITER EFFECT
-  const terminalText = [
-    { text: "> INITIALIZING GTM FRAMEWORK...", color: "#8a99b0" },
-    { text: "> ESTABLISHING OT/IT HANDSHAKE...", color: "#8a99b0" },
-    { text: "> CONNECTION SECURE.", color: "#10b981" },
-    { text: "> LOAD MODULE: PHYSICAL AI COMMERCIALIZATION", color: "#e8c97a" },
-    { text: "> 18_YEARS_DATA_PARSED.", color: "#10b981" },
-    { text: "> SYSTEM READY. WAITING FOR COMMAND...", color: "#c9a84c" }
-  ];
-  
-  const termContainer = document.getElementById('terminal-text');
-  const cursor = document.getElementById('cursor');
-  let lineIndex = 0;
-  
-  function typeLine() {
-    if (lineIndex < terminalText.length) {
-      const lineData = terminalText[lineIndex];
-      const lineElement = document.createElement('div');
-      lineElement.className = 'typewriter-line';
-      lineElement.style.color = lineData.color;
-      termContainer.insertBefore(lineElement, cursor);
-      
-      let charIndex = 0;
-      const typeChar = setInterval(() => {
-        lineElement.textContent += lineData.text.charAt(charIndex);
-        charIndex++;
-        if (charIndex >= lineData.text.length) {
-          clearInterval(typeChar);
-          lineIndex++;
-          setTimeout(typeLine, 600); // Wait before next line
-        }
-      }, 30);
-    }
-  }
-  
-  // Start terminal animation after a slight delay
-  setTimeout(typeLine, 800);
+  // SFX ENGINE INTEGRATION
+  const sfxHover = document.getElementById('sfx-hover');
+  const sfxClick = document.getElementById('sfx-click');
+  const sfxData = document.getElementById('sfx-data');
 
+  // Volume calibration
+  if(sfxHover) sfxHover.volume = 0.2;
+  if(sfxClick) sfxClick.volume = 0.4;
+  if(sfxData) sfxData.volume = 0.15;
+
+  // Bind SFX to UI Elements
+  document.querySelectorAll('a, .btn-primary, .btn-secondary, .cp-node, .expertise-card, .work-item').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      if(sfxHover) { sfxHover.currentTime = 0; sfxHover.play().catch(()=>{}); }
+    });
+    el.addEventListener('click', () => {
+      if(sfxClick) { sfxClick.currentTime = 0; sfxClick.play().catch(()=>{}); }
+    });
+  });
+
+  // Data pulse on interactive cockpit hover
+  const cockpit = document.querySelector('.hero-cockpit');
+  if(cockpit) {
+    cockpit.addEventListener('mouseenter', () => {
+      if(sfxData) { sfxData.currentTime = 0; sfxData.play().catch(()=>{}); }
+    });
+  }
 </script>
 </body>
 </html>
