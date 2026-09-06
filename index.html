@@ -3,63 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad A. Yunas | GTM Executive</title>
+    <title>Muhammad A. Yunas | GTM Operator & Executive</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 2rem; }
-        header { border-bottom: 2px solid #eaeaea; padding-bottom: 2rem; margin-bottom: 2rem; }
-        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #111; }
-        h2 { font-size: 1.5rem; font-weight: normal; color: #555; margin-top: 0; }
-        .hero-text { font-size: 1.2rem; color: #444; margin-bottom: 2rem; }
-        .metrics-grid { display: flex; gap: 2rem; margin: 2rem 0; flex-wrap: wrap; }
-        .metric { background: #f8f9fa; padding: 1.5rem; border-left: 4px solid #0056b3; flex: 1; min-width: 200px; }
-        .metric strong { display: block; font-size: 1.8rem; color: #0056b3; }
-        .section-title { font-size: 1.5rem; font-weight: bold; border-bottom: 1px solid #eaeaea; padding-bottom: 0.5rem; margin-top: 3rem; }
-        ul { padding-left: 1.5rem; }
-        li { margin-bottom: 1rem; }
-        a { color: #0056b3; text-decoration: none; font-weight: bold; }
-        a:hover { text-decoration: underline; }
+        :root {
+            --primary: #0f172a;
+            --secondary: #2563eb;
+            --accent: #f8fafc;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.7; 
+            color: var(--text); 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 2rem;
+            background-color: #ffffff;
+        }
+        header { 
+            border-bottom: 2px solid var(--border); 
+            padding-bottom: 2rem; 
+            margin-bottom: 3rem; 
+            text-align: center;
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 0.2rem; color: var(--primary); letter-spacing: -0.05em; }
+        h2 { font-size: 1.25rem; font-weight: 500; color: var(--secondary); margin-top: 0; }
+        .contact-info { font-size: 0.9rem; color: #64748b; }
+        .contact-info a { color: var(--secondary); text-decoration: none; margin: 0 10px; }
+        
+        .hero-text { font-size: 1.15rem; margin-bottom: 3rem; text-align: justify; }
+        
+        .metrics-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 1.5rem; 
+            margin-bottom: 4rem; 
+        }
+        .metric { 
+            background: var(--accent); 
+            padding: 1.5rem; 
+            border-left: 4px solid var(--secondary); 
+            border-radius: 4px;
+        }
+        .metric strong { display: block; font-size: 2rem; color: var(--primary); line-height: 1.1; margin-bottom: 0.5rem; }
+        .metric span { font-size: 0.9rem; font-weight: 500; }
+
+        .section-title { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--primary); 
+            border-bottom: 1px solid var(--border); 
+            padding-bottom: 0.5rem; 
+            margin: 3rem 0 1.5rem 0; 
+        }
+
+        .job { margin-bottom: 2.5rem; }
+        .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
+        .job-title { font-weight: 700; font-size: 1.1rem; color: var(--primary); }
+        .job-company { font-weight: 500; color: var(--secondary); }
+        .job-date { font-size: 0.9rem; color: #64748b; }
+        ul { padding-left: 1.25rem; margin-top: 0.5rem; }
+        li { margin-bottom: 0.5rem; }
+
+        .cta-box {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        .cta-box a {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        .cta-box a:hover { background: #1d4ed8; }
+
+        @media (max-width: 600px) {
+            .job-header { flex-direction: column; }
+            body { padding: 1.5rem; }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Muhammad A. Yunas</h1>
-        <h2>Senior Director, Product Marketing | OT/IT Convergence & Security</h2>
-        <p>New York, NY | yunasmuh@gmail.com | linkedin.com/in/muhammad-yunas</p>
+        <h2>Enterprise GTM Operator | OT/IT Convergence & Cyber-Physical Security</h2>
+        <div class="contact-info">
+            New York, NY | 
+            <a href="mailto:yunasmuh@gmail.com">yunasmuh@gmail.com</a> | 
+            <a href="https://linkedin.com/in/muhammad-yunas" target="_blank">LinkedIn</a>
+        </div>
     </header>
 
     <div class="hero-text">
-        <p><strong>Scaling complex B2B technologies into enterprise revenue engines.</strong> For 18 years, I have architected go-to-market strategies that translate deep technical architectures—Physical AI, Identity Security, and Industrial IoT—into commercial clarity. I bridge operational technology (OT) and enterprise IT, accelerating multi-quarter sales cycles and turning market skepticism into defensible revenue.</p>
+        <p>Technical founders build world-class AI and industrial products; I build the revenue engines that force enterprise buyers to say yes. Over exactly 18 years, I have architected go-to-market frameworks that translate deep technical architectures—Physical AI, OT/IT convergence, and identity security—into commercial clarity. I operate as a hands-on GTM quarterback, bridging physical security and IT infrastructure to compress sales cycles and turn market skepticism into defensible pipeline.</p>
     </div>
 
     <div class="metrics-grid">
         <div class="metric">
             <strong>$150M+</strong>
-            Documented Enterprise Revenue Influence
+            <span>Enterprise Revenue Influenced</span>
         </div>
         <div class="metric">
             <strong>42%</strong>
-            Win-Rate Improvement at Dell Technologies
+            <span>Win-Rate Improvement (Dell)</span>
         </div>
         <div class="metric">
             <strong>38%</strong>
-            Market Share Captured in 18 Months (Schneider)
+            <span>Market Share in 18 Mos (Schneider)</span>
         </div>
     </div>
 
-    <div class="expertise">
-        <div class="section-title">Core Competencies</div>
+    <div class="section-title">Identity, Cyber-Physical & Fraud Protection Focus</div>
+    <ul>
+        <li>Commercialized identity and fraud protection frameworks within enterprise cyber-physical resilience portfolios, securing critical infrastructure and asset-intensive environments.</li>
+        <li>Drove messaging for verification systems and access controls bridging OT (Operational Technology) physical security and IT enterprise infrastructure.</li>
+    </ul>
+
+    <div class="section-title">Execution & Impact</div>
+
+    <div class="job">
+        <div class="job-header">
+            <span class="job-title">Interim Senior Director, Product Marketing</span>
+            <span class="job-date">Jul 2024 &ndash; Present</span>
+        </div>
+        <div class="job-company">Independent Consultant | New York, NY</div>
         <ul>
-            <li><strong>Category Creation & Narrative:</strong> Commercializing Agentic AI, digital twins, and industrial intelligence platforms before the market category is fully established.</li>
-            <li><strong>Cyber-Physical & Identity Security:</strong> Building messaging for identity, fraud protection, and access frameworks that secure asset-intensive environments.</li>
-            <li><strong>Revenue Architecture:</strong> Generating $24M in net-new pipeline through targeted ABM, sales alignment, and SaaS economics.</li>
+            <li>Architect GTM frameworks for Agentic AI and OT/IT convergence platforms, spanning edge intelligence, identity verification, and cyber-physical security.</li>
+            <li>Shape Physical AI category narratives through publications and executive advisory, driving hands-on execution for enterprise startups.</li>
         </ul>
     </div>
 
-    <div class="contact">
-        <div class="section-title">Let's Build</div>
-        <p>I partner with technical founders and enterprise leaders who own the codebase and engineering, while I own the market, pipeline, and category creation. Open to full-time executive roles and strategic fractional GTM advisory.</p>
-        <p><a href="mailto:yunasmuh@gmail.com">Contact me directly</a> to discuss your pipeline targets.</p>
+    <div class="job">
+        <div class="job-header">
+            <span class="job-title">Senior Director, Product Marketing</span>
+            <span class="job-date">Dec 2022 &ndash; Jun 2024</span>
+        </div>
+        <div class="job-company">UST Global | Aliso Viejo, CA</div>
+        <ul>
+            <li>Drove $9M in new revenue (30% YoY) and the largest regional pipeline in company history by repositioning capabilities as Physical Operations Intelligence.</li>
+            <li>Tripled conversion rates and reduced CAC 15% via ML-driven buyer journey redesign.</li>
+        </ul>
+    </div>
+
+    <div class="job">
+        <div class="job-header">
+            <span class="job-title">Senior Director, Product Marketing</span>
+            <span class="job-date">Dec 2021 &ndash; Oct 2022</span>
+        </div>
+        <div class="job-company">Uptake Technologies | Chicago, IL</div>
+        <ul>
+            <li>Reduced sales cycles 40% and increased target account engagement 35% by commercializing a unified OT/IT convergence narrative for predictive maintenance.</li>
+            <li>Eliminated $2M in wasted ad spend through AI-driven segmentation, lifting marketing ROI 15%.</li>
+        </ul>
+    </div>
+
+    <div class="job">
+        <div class="job-header">
+            <span class="job-title">Senior Director, Product Marketing (Cyber Recovery)</span>
+            <span class="job-date">Jul 2018 &ndash; Nov 2021</span>
+        </div>
+        <div class="job-company">Dell Technologies | Boston, MA</div>
+        <ul>
+            <li>Repositioned a $500M+ cybersecurity portfolio as cyber-physical resilience, integrating data protection and access verification for critical infrastructure.</li>
+            <li>Increased competitive win rate 42% and scaled AI-powered onboarding to 5,000+ enterprise users.</li>
+        </ul>
+    </div>
+
+    <div class="job">
+        <div class="job-header">
+            <span class="job-title">Senior Director, Product Marketing (Physical Ops / DCIM)</span>
+            <span class="job-date">Sep 2006 &ndash; Dec 2015</span>
+        </div>
+        <div class="job-company">Schneider Electric | Boston, MA</div>
+        <ul>
+            <li>Spearheaded early IIoT platform launch connecting physical security and access infrastructure to enterprise IT, capturing 38% market share in 18 months.</li>
+            <li>Defined and commercialized the DCIM category, driving $32M in revenue growth across 12+ launches with 45% first-year adoption.</li>
+        </ul>
+    </div>
+
+    <div class="section-title">Publications & Credentials</div>
+    <ul>
+        <li><strong>Author:</strong> <em>Silicon Meets Steel: Why Physical AI Is the Next $500B Industrial Category</em></li>
+        <li><strong>Contributing Author:</strong> <em>Mastering a Product Launch</em> (Product Marketing Alliance, 2023)</li>
+        <li><strong>Education:</strong> M.A. Corporate & Public Communications | M.A. Diplomacy (Seton Hall University)</li>
+        <li><strong>Certifications:</strong> Certified PMM (PMA), Ethics in Generative AI (Google), Cloud AI Pro (Oracle)</li>
+    </ul>
+
+    <div class="cta-box">
+        <h3>Let's Build The Pipeline</h3>
+        <p>You own the product and the engineering. I own the market, the category, and the revenue. If you need a GTM operator who builds the engine from the ground up, let's talk.</p>
+        <a href="mailto:yunasmuh@gmail.com">Contact Muhammad</a>
     </div>
 
 </body>
