@@ -3,11 +3,22 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Muhammad A. Yunas — Enterprise GTM Operator | OT/IT Convergence,2 Cyber-Physical Security, & Physical AI."/>
+<meta name="description" content="Muhammad A. Yunas — Enterprise GTM Operator | OT/IT Convergence, Cyber-Physical Security, & Physical AI."/>
 <title>Muhammad A. Yunas | GTM Operator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+
+<!-- GOOGLE ANALYTICS 4 ENGINE -->
+<!-- Replace 'G-XXXXXXXXXX' with your actual Measurement ID once generated -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
 <style>
   :root {
     --navy: #0a1628;
@@ -241,7 +252,7 @@
   .work-bullets li::before { content: '▸'; color: var(--gold); flex-shrink: 0; margin-top: 0.1rem; font-size: 0.8rem; }
   .work-bullets li strong { color: var(--white); }
 
-  /* ── OT/IT CONVERGENCE (CASE STUDY REPLACEMENT) ── */
+  /* ── OT/IT CONVERGENCE ── */
   #casestudy { background: var(--navy); }
   .domain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
   .domain-card { background: var(--navy-mid); padding: 2.5rem; border-left: 4px solid var(--slate); border-radius: 0 8px 8px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: var(--transition); }
@@ -254,13 +265,23 @@
   .convergence-impact h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 1rem; }
   .convergence-impact p { color: var(--white); font-size: 1.05rem; line-height: 1.7; max-width: 800px; margin: 0 auto; }
 
-  /* ── CONTACT ── */
-  #contact { background: var(--navy-mid); text-align: center; }
-  .contact-inner { max-width: 700px; margin: 0 auto; }
-  .contact-inner > p { color: var(--text-muted); font-size: 1rem; line-height: 1.8; margin-bottom: 2.5rem; }
-  .contact-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
-  .contact-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: var(--transition); display: flex; align-items: center; gap: 0.4rem; border: 1px solid var(--border); padding: 0.75rem 1.5rem; border-radius: 30px; }
-  .contact-link:hover { background: rgba(201,168,76,0.1); color: var(--white); border-color: var(--gold); }
+  /* ── CONTACT CARD (WITH HEADSHOT) ── */
+  #contact { background: var(--navy-mid); }
+  .contact-card {
+    max-width: 950px; margin: 0 auto; display: flex; gap: 4rem; align-items: center;
+    background: var(--navy); padding: 4rem; border-radius: 12px;
+    border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+  .contact-photo { flex-shrink: 0; }
+  .contact-photo img {
+    width: 220px; height: 220px; object-fit: cover;
+    border-radius: 16px; border: 2px solid rgba(201,168,76,0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+  }
+  .contact-details { text-align: left; }
+  .contact-details .section-title { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 1rem; line-height: 1.2; }
+  .contact-details p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2.5rem; }
+  .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; }
 
   /* ── EXECUTIVE SIGNOFF & FOOTER ── */
   .executive-signoff { background-color: var(--white); padding: 5rem 5%; text-align: center; }
@@ -283,6 +304,12 @@
     .domain-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     .hero-cockpit { height: 300px; }
   }
+  @media(max-width:800px) {
+    .contact-card { flex-direction: column; text-align: center; gap: 2rem; padding: 3rem 1.5rem; }
+    .contact-details { text-align: center; }
+    .contact-links { justify-content: center; }
+    .contact-photo img { width: 180px; height: 180px; }
+  }
   @media(max-width:600px) {
     section { padding: 5rem 6%; }
     .hero-ctas { flex-direction: column; }
@@ -290,7 +317,7 @@
     .work-timeline { padding-left: 1rem; }
     .work-item { padding-left: 1.5rem; }
     .work-item::before { left: -1.95rem; }
-    .hero-cockpit { display: none; /* Hide complex map on small screens to maintain UX */ }
+    .hero-cockpit { display: none; }
   }
 </style>
 </head>
@@ -332,9 +359,12 @@
       <p class="hero-sub fade-in fade-in-delay-2">
         Technical founders build world-class AI and industrial products; <strong>I build the revenue engines that force enterprise buyers to say yes.</strong> Over exactly 18 years, I have architected the go-to-market frameworks that translate deep technical architectures into commercial pipeline.
       </p>
+      
+      <!-- HERO TRIFECTA BUTTONS (TRACKED) -->
       <div class="hero-ctas fade-in fade-in-delay-3">
-        <a href="#work" class="btn-primary">View Track Record ↓</a>
-        <a href="#contact" class="btn-secondary">Contact Info</a>
+        <a href="Muhammad_Yunas_Resume_Executive.pdf" target="_blank" class="btn-primary" onclick="gtag('event', 'download', {'event_category': 'Resume', 'event_label': 'Hero_Section'});">📄 Download Resume</a>
+        <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" class="btn-secondary">🔗 LinkedIn</a>
+        <a href="mailto:yunasmuh@gmail.com" class="btn-secondary">✉ Email</a>
       </div>
     </div>
     
@@ -456,7 +486,7 @@
   </div>
 </section>
 
-<!-- OT/IT CONVERGENCE REPLACEMENT -->
+<!-- OT/IT CONVERGENCE -->
 <section id="casestudy">
   <div class="section-label fade-in">Strategic Perimeter</div>
   <h2 class="section-title fade-in">The Reality of <span>Convergence.</span></h2>
@@ -479,16 +509,24 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT CARD WITH HEADSHOT -->
 <section id="contact">
-  <div class="contact-inner">
-    <div class="section-label fade-in">Next Steps</div>
-    <h2 class="section-title fade-in">You Own The Product. <span>I Own The Pipeline.</span></h2>
-    <div class="divider fade-in" style="margin:0 auto 2rem;"></div>
-    <p class="fade-in">If you need an experienced GTM operator who builds the engine from the ground up without corporate bloat, let's connect.</p>
-    <div class="contact-links fade-in fade-in-delay-1">
-      <a href="mailto:yunasmuh@gmail.com" class="contact-link">✉ yunasmuh@gmail.com</a>
-      <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" class="contact-link">🔗 LinkedIn Profile</a>
+  <div class="contact-card fade-in">
+    <div class="contact-photo">
+      <!-- Referencing headshot.png from your assets folder -->
+      <img src="assets/headshot.png" alt="Muhammad A. Yunas">
+    </div>
+    <div class="contact-details">
+      <div class="section-label">Next Steps</div>
+      <h2 class="section-title">You Own The Product.<br><span>I Own The Pipeline.</span></h2>
+      <p>If you need an experienced GTM operator who builds the engine from the ground up without corporate bloat, let's connect.</p>
+      
+      <!-- CONTACT TRIFECTA BUTTONS (TRACKED) -->
+      <div class="contact-links">
+        <a href="Muhammad_Yunas_Resume_Executive.pdf" target="_blank" class="btn-primary" onclick="gtag('event', 'download', {'event_category': 'Resume', 'event_label': 'Contact_Section'});">📄 Download Resume</a>
+        <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" class="btn-secondary">🔗 LinkedIn</a>
+        <a href="mailto:yunasmuh@gmail.com" class="btn-secondary">✉ Email</a>
+      </div>
     </div>
   </div>
 </section>
