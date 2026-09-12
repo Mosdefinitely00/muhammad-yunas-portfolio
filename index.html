@@ -2,147 +2,474 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Physical AI Cockpit — Industrial Intelligence Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad A. Yunas | Physical AI & Industrial Intelligence Executive</title>
+  <meta name="description" content="Senior Director Product Marketing & GTM Leader operating at the intersection of Physical AI, OT/IT convergence, industrial IoT, and enterprise infrastructure.">
 
-  <!-- Core Styles -->
-  <link rel="stylesheet" href="css/cockpit.css">
-  <link rel="stylesheet" href="css/layout.css">
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Muhammad A. Yunas | Physical AI Cockpit">
+  <meta property="og:description" content="Industrial intelligence, OT/IT convergence, and supervisory AI across complex physical systems.">
+  <meta property="og:image" content="assets/og-preview.png">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts & Core Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <style>
+    :root {
+      --bg-base: #06090e;
+      --bg-surface: #0d121d;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(0, 229, 255, 0.3);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #00e5ff;
+      --accent-glow: rgba(0, 229, 255, 0.15);
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Executive Navigation */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 72px;
+      background: rgba(6, 9, 14, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 100;
+    }
+    .header .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .header .logo { height: 36px; width: auto; }
+    .header .brand-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+    .header .nav { display: flex; gap: 1.5rem; align-items: center; }
+    .header .nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .header .nav a:hover { color: var(--accent); }
+    .btn-resume {
+      background: var(--accent-glow);
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem !important;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 2rem 4rem;
+      background: radial-gradient(circle at 80% 20%, rgba(0, 229, 255, 0.08) 0%, transparent 50%);
+    }
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: 3.25rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 580px;
+    }
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .metric-val {
+      font-family: var(--font-mono);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .metric-lbl {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .hero-portrait-frame {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-surface);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+    .hero-portrait-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: grayscale(15%) contrast(105%);
+    }
+
+    /* Section Foundations */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Flagship Architectural Narrative */
+    .flagship-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .flagship-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+    .flagship-col h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    .flagship-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .flagship-col ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .flagship-col ul li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* Case Studies Grid */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+    .case-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .case-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-focus);
+    }
+    .case-thumb-wrap {
+      height: 200px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .case-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .case-card:hover .case-thumb-wrap img { transform: scale(1.03); }
+    .case-body {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .case-company {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .case-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+    .case-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    @media (max-width: 900px) {
+      .hero-container, .flagship-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero h1 { font-size: 2.25rem; }
+      .header { padding: 0 1rem; }
+      .header .nav { display: none; }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Header / Navigation -->
+  <!-- Navigation -->
   <header class="header">
-    <img src="assets/images/logo.png" class="logo" alt="Physical AI Cockpit Logo">
+    <a href="#" class="brand">
+      <img src="assets/logo.png" class="logo" alt="Physical AI Cockpit Logo">
+      <span class="brand-title">MUHAMMAD A. YUNAS</span>
+    </a>
 
     <nav class="nav">
-      <a href="#hero">Cockpit</a>
-      <a href="#flagship">Flagship Story</a>
+      <a href="#cockpit">Cockpit</a>
+      <a href="#flagship">Flagship Architecture</a>
       <a href="#cases">Case Studies</a>
       <a href="#about">About</a>
+      <a href="Muhammad_Yunas_Resume_Executive.pdf" target="_blank" class="btn-resume">Executive CV</a>
     </nav>
   </header>
 
   <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <img src="assets/images/hero-bg.jpg" class="hero-bg" alt="Physical AI Cockpit Hero Background">
-    <div class="hero-overlay">
-      <h1>Physical AI Cockpit</h1>
-      <p>Industrial intelligence, OT/IT convergence, and executive‑grade control across complex physical systems.</p>
+  <section id="cockpit" class="hero">
+    <div class="hero-container">
+      <div>
+        <div class="hero-badge">
+          <span>●</span> OT/IT Convergence & Physical AI GTM
+        </div>
+        <h1>Physical AI Cockpit</h1>
+        <p>
+          Senior product marketing executive architecting category-defining GTM engines across industrial intelligence, 
+          connected asset operations, and cyber-physical security.
+        </p>
+        <div class="hero-metrics">
+          <div>
+            <div class="metric-val">$150M+</div>
+            <div class="metric-lbl">Revenue Influenced</div>
+          </div>
+          <div>
+            <div class="metric-val">40%</div>
+            <div class="metric-lbl">Cycle Acceleration</div>
+          </div>
+          <div>
+            <div class="metric-val">38%</div>
+            <div class="metric-lbl">Category Market Share</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-portrait-frame">
+        <img src="assets/portrait.png" alt="Muhammad A. Yunas">
+      </div>
     </div>
   </section>
 
-  <!-- Flagship Case Study -->
-  <section id="flagship" class="case-details">
-    <h2>How I Built a Physical AI System That Turned Industrial Chaos Into Predictable Intelligence</h2>
+  <!-- Flagship Narrative -->
+  <section id="flagship" class="section">
+    <div class="section-tag">Flagship Case Strategy</div>
+    <h2 class="section-title">Turning Industrial Telemetry into Supervisory Intelligence</h2>
 
-    <p>
-      Over a decade, I architected and deployed Physical AI systems across Schneider Electric, Dell Technologies,
-      Uptake, UST, and independent consulting engagements. Each environment faced the same core challenge:
-      fragmented telemetry, unpredictable operations, and a lack of unified intelligence.
-    </p>
+    <div class="flagship-panel">
+      <p style="font-size: 1.15rem; color: var(--text-main); margin-bottom: 1.5rem;">
+        Operating across complex physical operations—from data centers and power infrastructure to heavy asset fleets—traditional 
+        monitoring tools generate massive data silos without unified operational insight.
+      </p>
+      <p style="color: var(--text-muted);">
+        The <strong>Physical AI Cockpit</strong> establishes a supervisory intelligence layer that bridges operational technology (OT) 
+        and enterprise IT systems, enabling predictive maintenance, closed-loop automation, and board-level risk transparency.
+      </p>
 
-    <p>
-      The Physical AI Cockpit emerged as the solution — a supervisory intelligence layer that integrates sensors,
-      data streams, machine learning, and autonomous agents into a single operational command system.
-    </p>
-
-    <h3>The Problem</h3>
-    <p>
-      Industrial environments generate massive amounts of data — but almost none of it is unified. Systems operate
-      independently, creating blind spots, downtime, and unpredictable failures. Leaders cannot see what is happening
-      across the full physical stack, and teams cannot act before problems escalate.
-    </p>
-
-    <h3>The Solution: The Physical AI Cockpit</h3>
-    <p>
-      I designed a multi‑layer architecture that connects OT systems, IT systems, sensor networks, and ML models into
-      a single supervisory intelligence. The Cockpit provides:
-    </p>
-
-    <ul>
-      <li>Unified telemetry across all physical systems</li>
-      <li>Predictive maintenance powered by ML models</li>
-      <li>Autonomous agents that act before failures occur</li>
-      <li>Real‑time operational visibility for executives</li>
-      <li>Safety envelopes that prevent catastrophic drift</li>
-    </ul>
-
-    <h3>Impact</h3>
-    <p>
-      The Physical AI Cockpit delivered measurable outcomes across multiple industries:
-    </p>
-
-    <ul>
-      <li>Reduced downtime by up to 40%</li>
-      <li>Unified multi‑vendor systems into a single control layer</li>
-      <li>Enabled predictive operations instead of reactive firefighting</li>
-      <li>Created a scalable architecture now aligned with NVIDIA’s Physical AI category</li>
-      <li>Established a repeatable framework for enterprise‑grade industrial intelligence</li>
-    </ul>
+      <div class="flagship-grid">
+        <div class="flagship-col">
+          <h4>The Operational Void</h4>
+          <ul>
+            <li>Fragmented sensor telemetry isolated in multi-vendor silos</li>
+            <li>Reactive operational responses driving catastrophic downtime</li>
+            <li>Lack of translation between edge events and CFO-level balance sheet impact</li>
+            <li>Unsecured OT/IT boundary layers vulnerable to operational compromise</li>
+          </ul>
+        </div>
+        <div class="flagship-col">
+          <h4>The Cockpit Architecture</h4>
+          <ul>
+            <li>Deterministic edge-to-cloud mapping for mission-critical physical assets</li>
+            <li>Predictive maintenance engines powered by industrial machine learning</li>
+            <li>Autonomous reasoning frameworks with rigorous human-in-the-loop controls</li>
+            <li>Closed-loop feedback loops linking asset uptime directly to enterprise value</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Case Study Grid -->
-  <section id="cases" class="case-studies">
-
-    <h2>Selected Case Studies</h2>
+  <!-- Case Studies Grid -->
+  <section id="cases" class="section">
+    <div class="section-tag">Enterprise Portfolio</div>
+    <h2 class="section-title">Selected Leadership Engagements</h2>
 
     <div class="case-grid">
 
-      <div class="case">
-        <img src="assets/images/case-schneider-thumb.jpg" class="case-thumb" alt="Schneider Electric Case Study">
-        <h3>Schneider Electric — DCIM / Data Center Control</h3>
-        <p>Designed control‑layer intelligence for data center infrastructure, turning fragmented telemetry into unified operational insight.</p>
+      <!-- Schneider Electric -->
+      <div class="case-card">
+        <div class="case-thumb-wrap">
+          <img src="assets/case-schneider-thumb.jpg" alt="Schneider Electric DCIM">
+        </div>
+        <div class="case-body">
+          <div class="case-company">SCHNEIDER ELECTRIC · DCIM</div>
+          <h3 class="case-title">Data Center Control & Physical Infrastructure</h3>
+          <p class="case-desc">Commercialized intelligent control-layer software, turning fragmented physical power and cooling telemetry into an enterprise category commanding 38% market share.</p>
+        </div>
       </div>
 
-      <div class="case">
-        <img src="assets/images/case-dell-thumb.jpg" class="case-thumb" alt="Dell Technologies Case Study">
-        <h3>Dell Technologies — HPC / Predictive Data Protection</h3>
-        <p>Aligned high‑performance compute and predictive data protection with Physical AI principles for resilient operations.</p>
+      <!-- Dell Technologies -->
+      <div class="case-card">
+        <div class="case-thumb-wrap">
+          <img src="assets/case-dell-thumb.jpg" alt="Dell Technologies Cyber Recovery">
+        </div>
+        <div class="case-body">
+          <div class="case-company">DELL TECHNOLOGIES · CYBER RECOVERY</div>
+          <h3 class="case-title">Predictive Cyber-Physical Resilience</h3>
+          <p class="case-desc">Repositioned a $500M+ data protection portfolio into mission-critical cyber-physical recovery, establishing a 42% win-rate improvement across Fortune 500 accounts.</p>
+        </div>
       </div>
 
-      <div class="case">
-        <img src="assets/images/case-uptake-thumb.jpg" class="case-thumb" alt="Uptake Case Study">
-        <h3>Uptake — Heavy Industry Sensor Intelligence</h3>
-        <p>Turned raw sensor data from heavy equipment into actionable intelligence for maintenance and safety.</p>
+      <!-- Uptake Technologies -->
+      <div class="case-card">
+        <div class="case-thumb-wrap">
+          <img src="assets/case-uptake-thumb.jpg" alt="Uptake Heavy Industry Sensor Intelligence">
+        </div>
+        <div class="case-body">
+          <div class="case-company">UPTAKE TECHNOLOGIES · ASSET PERFORMANCE</div>
+          <h3 class="case-title">Heavy Equipment Sensor Intelligence</h3>
+          <p class="case-desc">Unified predictive maintenance narratives across energy, mining, and rail sectors, converting complex high-frequency sensor streams into actionable downtime reduction.</p>
+        </div>
       </div>
 
-      <div class="case">
-        <img src="assets/images/case-ust-thumb.jpg" class="case-thumb" alt="UST Retail AI Case Study">
-        <h3>UST — Retail AI / Inventory Intelligence</h3>
-        <p>Applied Physical AI thinking to retail environments, stabilizing inventory and operational flows.</p>
-      </div>
-
-      <div class="case">
-        <img src="assets/images/case-consulting-thumb.jpg" class="case-thumb" alt="Consulting Case Study">
-        <h3>Independent Consulting — Physical AI Thought Leadership</h3>
-        <p>Advised enterprises on how to adopt Physical AI architectures and build their own supervisory intelligence layers.</p>
+      <!-- Independent Executive Advisory -->
+      <div class="case-card">
+        <div class="case-thumb-wrap">
+          <img src="assets/case-consulting-thumb.jpg" alt="Executive Advisory & Physical AI">
+        </div>
+        <div class="case-body">
+          <div class="case-company">EXECUTIVE ADVISORY · PHYSICAL AI</div>
+          <h3 class="case-title">Autonomous Industrial GTM Engines</h3>
+          <p class="case-desc">Advising enterprise leadership on commercializing agentic workflows, Sim2Real digital twins, and sensor-driven automation across asset-intensive industrial environments.</p>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="case-details">
-    <h2>About This Portfolio</h2>
-    <p>
-      This Physical AI Cockpit portfolio is designed as an executive‑grade view into how industrial intelligence,
-      OT/IT convergence, and supervisory AI systems can be architected and deployed across complex environments.
-    </p>
-    <p>
-      It represents a unified narrative across multiple roles and industries, anchored in a single category:
-      <strong>Physical AI</strong>.
-    </p>
+  <!-- About / Identity -->
+  <section id="about" class="section">
+    <div class="section-tag">Executive Summary</div>
+    <h2 class="section-title">Leadership Positioning</h2>
+    <div class="flagship-panel">
+      <p style="color: var(--text-main); font-size: 1.1rem; margin-bottom: 1.25rem;">
+        With 18+ years operating at the convergence of software and physical systems, I specialize in entering technical, 
+        long-cycle enterprise markets before standardized category language exists.
+      </p>
+      <p style="color: var(--text-muted); line-height: 1.7;">
+        By bridging complex engineering architectures with boardroom business cases, I build scalable product marketing 
+        and go-to-market systems that establish market leadership, accelerate enterprise pipeline velocity, and turn technical 
+        differentiation into sustainable revenue.
+      </p>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>Physical AI Cockpit — Executive Portfolio</p>
+    <p>© 2026 Muhammad A. Yunas · Physical AI Cockpit · Hosted via GitHub Pages</p>
   </footer>
 
-  <!-- Core Scripts -->
-  <script src="core/theme.js"></script>
-  <script src="core/sound.js"></script>
-
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
