@@ -1,277 +1,168 @@
-`html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Muhammad Yunas – Physical AI & Product Marketing</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Basic typography & padding system -->
-  <style>
-    :root {
-      --page-max-width: 1200px;
-      --content-max-width: 720px;
-      --section-padding-y: 96px;
-      --section-padding-x: 10vw;
-      --bg-light: #f7f7f9;
-      --bg-white: #ffffff;
-      --text-main: #111111;
-      --text-muted: #555555;
-      --accent: #c9a34a; / subtle gold /
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text-main);
-      background: var(--bg-white);
-      line-height: 1.5;
-    }
-
-    .page {
-      max-width: var(--page-max-width);
-      margin: 0 auto;
-    }
-
-    section {
-      padding: var(--section-padding-y) var(--section-padding-x);
-    }
-
-    .section-inner {
-      max-width: var(--content-max-width);
-      margin: 0 auto;
-    }
-
-    h1, h2, h3 {
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      margin-bottom: 1.5rem;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1.25rem;
-    }
-
-    p {
-      margin-bottom: 1rem;
-      color: var(--text-muted);
-    }
-
-    .hero {
-      background: var(--bg-light);
-      padding-top: 140px;
-      padding-bottom: 120px;
-    }
-
-    .hero-title {
-      font-size: 2.6rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-synopsis {
-      margin-bottom: 2rem;
-    }
-
-    .cta-primary {
-      display: inline-block;
-      padding: 0.85rem 1.6rem;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.95rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .value-blocks {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 32px;
-    }
-
-    .value-block {
-      padding: 32px;
-      border-radius: 16px;
-      background: var(--bg-light);
-    }
-
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-    }
-
-    .case-card {
-      padding: 32px;
-      border-radius: 16px;
-      border: 1px solid #e2e2e6;
-      background: #fff;
-    }
-
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #eee;
-      padding: 12px var(--section-padding-x);
-      z-index: 10;
-    }
-
-    .nav-inner {
-      max-width: var(--page-max-width);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-brand {
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
-
-    .nav-links a {
-      margin-left: 24px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .footer {
-      border-top: 1px solid #eee;
-      font-size: 0.85rem;
-      color: #777;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ahmad Yunas | Executive Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            color: #0f172a; 
+        }
+        .hero-bg { 
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
+        }
+    </style>
 </head>
-<body>
-  <header class="nav">
-    <div class="nav-inner">
-      <div class="nav-brand">MUHAMMAD YUNAS</div>
-      <nav class="nav-links">
-        <a href="#hero">Home</a>
-        <a href="#value">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+<body class="antialiased">
 
-  <main class="page">
-    <!-- HERO SECTION -->
-    <section id="hero" class="hero">
-      <div class="section-inner">
-        <h1 class="hero-title">
-          Physical AI & Product Marketing for Real‑World Systems
-        </h1>
-
-        <p class="hero-synopsis">
-          Senior Director of Product Marketing specializing in Physical AI — the fusion of sensors, data, and real‑world action.
-          I build systems that sense, analyze, and act across data centers, industrial operations, and retail environments.
-          My career spans Schneider Electric, Dell Technologies, Uptake, and UST, forming a unified arc around predictive,
-          sensor‑driven intelligence. I help companies turn physical operations into intelligent, automated ecosystems.
-        </p>
-
-        <a href="#contact" class="cta-primary">Explore my work</a>
-      </div>
-    </section>
-
-    <!-- VALUE PROPOSITION BLOCKS -->
-    <section id="value">
-      <div class="section-inner">
-        <h2>What I Focus On</h2>
-        <div class="value-blocks">
-          <div class="value-block">
-            <h3>Physical AI</h3>
-            <p>
-              Connecting sensors, data, and decisioning to create systems that continuously sense, interpret, and act in the physical world.
-            </p>
-          </div>
-          <div class="value-block">
-            <h3>Product Marketing</h3>
-            <p>
-              Positioning complex technology with clear narratives, GTM strategy, and messaging that translates capability into business impact.
-            </p>
-          </div>
-          <div class="value-block">
-            <h3>Industry Impact</h3>
-            <p>
-              Work across data centers, industrial operations, and retail environments to build predictive, resilient, and automated ecosystems.
-            </p>
-          </div>
+    <nav class="w-full bg-white shadow-sm fixed top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 font-bold text-xl tracking-tight text-slate-800">
+                    Muhammad Ahmad Yunas
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="text-slate-600 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Executive Summary</a>
+                        <a href="#strategy" class="text-slate-600 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Strategic Focus</a>
+                        <a href="#experience" class="text-slate-600 hover:text-slate-900 px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                        <a href="#contact" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
+    </nav>
 
-    <!-- CASE STUDIES / WORK SAMPLES -->
-    <section id="work">
-      <div class="section-inner">
-        <h2>Selected Work</h2>
-        <div class="case-grid">
-          <article class="case-card">
-            <h3>Data Center Resilience</h3>
-            <p>
-              High‑level summary of a case study. This card links to a deeper page or PDF with metrics, narrative, and outcomes.
+    <header class="hero-bg text-white pt-32 pb-20 px-4 sm:px-6 lg:px-8 mt-16">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
+                Bridging the OT/IT Divide with Industrial Autonomy
+            </h1>
+            <p class="text-xl sm:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto font-light">
+                Senior Product Marketing Executive & GTM Strategy Consultant with 18 years of experience building scalable ecosystems in Physical AI, Agentic AI, and Enterprise B2B SaaS.
             </p>
-            <!-- Link placeholder -->
-          </article>
-          <article class="case-card">
-            <h3>Industrial Automation</h3>
-            <p>
-              High‑level summary of a case study focused on sensor‑driven operations and predictive maintenance.
-            </p>
-          </article>
-          <article class="case-card">
-            <h3>Retail Intelligence</h3>
-            <p>
-              High‑level summary of a case study on in‑store sensing, analytics, and real‑time decisioning.
-            </p>
-          </article>
+            <div class="inline-block bg-white/10 border border-white/20 rounded-full px-6 py-3 backdrop-blur-sm">
+                <p class="text-lg font-medium text-blue-200 uppercase tracking-widest">
+                    Listen deeply. Clarify relentlessly. Execute decisively.
+                </p>
+            </div>
         </div>
-      </div>
+    </header>
+
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">The Co-Evolution Ecosystem</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="prose prose-lg text-slate-600 mx-auto max-w-3xl text-center">
+                <p class="mb-6">
+                    The era of selling disjointed, hype-driven AI point solutions is over. Enterprise success requires a fundamental shift toward the ecosystem play. For 18 years, I have architected GTM engines that embed complex technologies directly into the operational DNA of massive organizations.
+                </p>
+                <p class="font-semibold text-slate-800 text-xl">
+                    We scale with you, we deliver immediate OT/IT alignment, and we take your organization to the next step.
+                </p>
+                <p class="mt-6">
+                    I focus on building repeatable customer ecosystems. We land, we customize to learn, we lock in lifetime loyalty, and we grow the account naturally. My objective is to execute seamlessly, stabilize operations, and engineer predictable revenue engines without disrupting the line.
+                </p>
+            </div>
+        </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about">
-      <div class="section-inner">
-        <h2>About</h2>
-        <p>
-          I work at the intersection of product marketing, AI, and physical systems. My focus is on making advanced,
-          sensor‑driven platforms understandable, adoptable, and commercially successful. I blend narrative, customer insight,
-          and technical fluency to help organizations move from static operations to intelligent, responsive environments.
-        </p>
-      </div>
+    <section id="strategy" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Physical & Agentic AI</h3>
+                    <p class="text-slate-600">
+                        Translating IT compute power into physical OT execution. Embedding autonomous decision-making engines capable of executing complex, multi-step workflows without human intervention.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">OT/IT Convergence</h3>
+                    <p class="text-slate-600">
+                        Bridging the fatal market gap. Serving as the strategic anchor that translates factory floor realities (yield, safety, uptime) directly to corporate board objectives (risk mitigation, EBITDA).
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Cyber-Physical Resilience</h3>
+                    <p class="text-slate-600">
+                        Elevating the conversation from point-solution cost savings to enterprise survival. Protecting critical infrastructure against supply chain shocks and labor deficits via localized intelligence.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- CONTACT / CTA FOOTER -->
-    <section id="contact" class="footer">
-      <div class="section-inner">
-        <h2>Contact</h2>
-        <p>
-          Explore my work and portfolio at <strong>muhammad-yunas.com</strong> or connect with me on LinkedIn.
-        </p>
-        <p>
-          Single primary CTA lives here (email, LinkedIn, or calendar link) to keep interaction depth within 3–4 clicks.
-        </p>
-      </div>
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/3">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">Credentials</h2>
+                    <div class="w-20 h-1 bg-blue-600 mb-8"></div>
+                    <ul class="space-y-4 text-slate-600">
+                        <li class="flex items-start">
+                            <span class="font-semibold text-slate-900 block mb-1">Education</span>
+                        </li>
+                        <li>MA, Corporate & Public Communications<br><span class="text-sm">Seton Hall University</span></li>
+                        <li>MA, Diplomacy & International Relations<br><span class="text-sm">Seton Hall University</span></li>
+                        <li>BA, International Business & Political Science<br><span class="text-sm">University of Rhode Island</span></li>
+                        <li class="pt-4 flex items-start">
+                            <span class="font-semibold text-slate-900 block mb-1">Languages</span>
+                        </li>
+                        <li>English, Punjabi, Urdu, Hindi</li>
+                    </ul>
+                </div>
+                <div class="md:w-2/3">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">Professional Execution</h2>
+                    <div class="w-20 h-1 bg-blue-600 mb-8"></div>
+                    <div class="prose prose-lg text-slate-600">
+                        <p>
+                            I operate as an execution heavy-lifter. With 18 years of experience, I am deployed to scale existing vision, stabilize operations, and take the heavy lifting off the executive plate so leadership can focus on broader corporate strategy.
+                        </p>
+                        <p>
+                            My GTM approach fundamentally rejects the standard SaaS playbook, adapting directly for industrial reality. I specialize in an <strong>OT-first entry motion</strong>—selling the physical reality first, and back-ending into the IT infrastructure. This methodology consistently compresses deal cycles and establishes unwavering trust with both shop-floor operators and boardroom executives.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
+
+    <footer id="contact" class="bg-slate-900 text-slate-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-2">Muhammad Ahmad Yunas</h2>
+                    <p class="text-slate-400">Senior Product Marketing Executive & GTM Strategy Consultant</p>
+                </div>
+                <div class="md:text-right">
+                    <p class="mb-2 text-slate-400">West Islip, Long Island, NY 11795</p>
+                    <a href="https://linkedin.com/in/YOUR_LINKEDIN_URL" class="inline-block border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-6 py-2 rounded-md transition-colors mt-4">
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 mt-8 pt-8 text-sm text-center text-slate-500">
+                &copy; 2026 Muhammad Ahmad Yunas. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
-`
