@@ -11,7 +11,7 @@
   <meta property="og:description" content="Physical AI & Industrial IoT GTM Leader | 18 Years at the OT/IT Convergence Frontier | $150M+ Revenue Influence">
   <meta property="og:url" content="https://muhammad-yunas.com">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://muhammad-yunas.com/assets/og-preview.png">
+  <meta property="og:image" content="https://muhammad-yunas.com/portrait.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Muhammad Yunas | Physical AI & Industrial IoT GTM Leader">
   <meta name="twitter:description" content="18 Years at the OT/IT Convergence Frontier | $150M+ Revenue Influence">
@@ -51,7 +51,7 @@
       position: relative;
     }
 
-    /* Ambient Interactive Particle Canvas */
+    /* Ambient Dynamic Particle Canvas */
     #telemetry-canvas {
       position: fixed;
       top: 0;
@@ -66,7 +66,7 @@
     h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
     .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
 
-    /* Sticky Navigation */
+    /* Navigation Bar */
     nav {
       background: rgba(6, 18, 36, 0.94);
       backdrop-filter: blur(18px);
@@ -181,7 +181,7 @@
       box-shadow: 0 4px 16px rgba(226, 182, 89, 0.45);
     }
 
-    /* Live Telemetry Marquee Banner */
+    /* Live Telemetry Ticker Strip */
     .telemetry-ticker {
       background: rgba(10, 22, 44, 0.95);
       border-bottom: 1px solid var(--card-border);
@@ -235,7 +235,7 @@
       position: relative;
     }
 
-    /* Centered Avatar with Orbiting Telemetry Rings */
+    /* Centered Headshot with Dual Orbiting Rings */
     .avatar-wrapper {
       position: relative;
       width: 190px;
@@ -774,7 +774,7 @@
       color: var(--gold);
     }
 
-    /* Contact Form & Input */
+    /* Contact Form */
     .form-group { margin-bottom: 1.25rem; }
     .form-group label {
       display: block;
@@ -923,7 +923,7 @@
 </head>
 <body>
 
-  <!-- Background Moving Telemetry Grid & Particles (Canvas Graphic) -->
+  <!-- Dynamic Telemetry Particle Mesh (Canvas Graphic) -->
   <canvas id="telemetry-canvas"></canvas>
 
   <!-- Sticky Navigation Bar -->
@@ -960,7 +960,7 @@
     <a href="#contact" class="nav-btn">LET'S TALK →</a>
   </nav>
 
-  <!-- Moving Telemetry Status Ticker Strip -->
+  <!-- Live Telemetry Status Ticker Strip -->
   <div class="telemetry-ticker">
     <div class="ticker-track">
       <div class="ticker-item"><span class="dot"></span> <strong>OT/IT CONVERGENCE:</strong> COMMERCIAL ARCHITECTURE DEPLOYED</div>
@@ -969,7 +969,7 @@
       <div class="ticker-item"><span class="dot-gold"></span> <strong>SALES VELOCITY:</strong> 40% CYCLE REDUCTION</div>
       <div class="ticker-item"><span class="dot"></span> <strong>SYSTEMS FLUENCY:</strong> SCADA · DCS · PLC · CLOUD AI · IIOT</div>
       <div class="ticker-item"><span class="dot-gold"></span> <strong>LEADERSHIP:</strong> VP GTM · SVP REVENUE · CRO SEATS</div>
-      <!-- Duplicate for infinite seamless scroll -->
+      <!-- Loop duplicate for smooth infinite scroll -->
       <div class="ticker-item"><span class="dot"></span> <strong>OT/IT CONVERGENCE:</strong> COMMERCIAL ARCHITECTURE DEPLOYED</div>
       <div class="ticker-item"><span class="dot-gold"></span> <strong>REVENUE INFLUENCE:</strong> $150M+ DOCUMENTED</div>
       <div class="ticker-item"><span class="dot"></span> <strong>PHYSICAL AI CATEGORY:</strong> AGENTIC INDUSTRIAL OPERATIONS</div>
@@ -998,10 +998,10 @@
         </div>
         <div class="avatar-glow"></div>
         <img 
-          src="assets/portrait.png" 
+          src="portrait.png" 
           alt="Muhammad A. Yunas - Physical AI & Industrial IoT GTM Leader" 
           class="hero-headshot" 
-          onerror="this.src='portrait.png'; this.onerror=null;"
+          onerror="this.src='assets/portrait.png'; this.onerror=null;"
         >
       </div>
 
@@ -1512,7 +1512,7 @@
 
   <!-- Interactive Moving Graphics Canvas & Utilities Script -->
   <script>
-    // 1. Safe Mailto Form Handler with URI encoding
+    // 1. Safe Mailto Form Handler
     function handleContactSubmit(event) {
       event.preventDefault();
       const name = encodeURIComponent(document.getElementById('name').value.trim());
@@ -1522,7 +1522,7 @@
       window.location.href = `mailto:yunasmuh@gmail.com?subject=${subject}&body=${body}`;
     }
 
-    // 2. Back to Top Button Visibility
+    // 2. Back to Top Button
     const backToTopBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 400) {
@@ -1535,7 +1535,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // 3. Dynamic Moving Graphics: Interactive Telemetry & Constellation Background Canvas
+    // 3. Ambient Telemetry & Constellation Background Canvas
     (function initTelemetryCanvas() {
       const canvas = document.getElementById('telemetry-canvas');
       if (!canvas) return;
@@ -1557,7 +1557,6 @@
           this.y = Math.random() * height;
           this.vx = (Math.random() - 0.5) * 0.55;
           this.vy = (Math.random() - 0.5) * 0.55;
-          this.radius = Math.random() * 2 + 1; * 0.55;
           this.radius = Math.random() * 2 + 1;
           this.isGold = Math.random() > 0.4;
         }
