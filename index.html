@@ -53,10 +53,16 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 1.1rem 2rem;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
     }
     .nav-brand {
       font-size: 1.2rem;
@@ -64,11 +70,40 @@
       color: var(--text-white);
       text-decoration: none;
       letter-spacing: -0.02em;
+      white-space: nowrap;
     }
     .nav-brand span { color: var(--gold); }
+    .nav-quick-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+    .quick-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(226, 182, 89, 0.08);
+      border: 1px solid rgba(226, 182, 89, 0.35);
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 0.32rem 0.75rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .quick-btn:hover {
+      background: var(--gold);
+      color: #061224;
+      border-color: var(--gold);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(226, 182, 89, 0.3);
+    }
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.75rem;
       list-style: none;
       align-items: center;
     }
@@ -91,6 +126,7 @@
       text-decoration: none;
       font-size: 0.85rem;
       transition: all 0.2s ease;
+      white-space: nowrap;
     }
     .nav-btn:hover { background: var(--gold-hover); transform: translateY(-1px); }
 
@@ -324,6 +360,11 @@
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
     }
+    .grid-5 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+    }
 
     .card {
       background: var(--card-bg);
@@ -346,6 +387,49 @@
       color: var(--text-muted);
       font-size: 0.95rem;
       line-height: 1.65;
+    }
+
+    /* Customer Journey Telemetry Cards */
+    .journey-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.6rem;
+      padding: 1.5rem;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .journey-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .journey-step-num {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .journey-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-white);
+      margin-bottom: 0.5rem;
+    }
+    .journey-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .journey-metric {
+      background: rgba(226, 182, 89, 0.08);
+      border-left: 3px solid var(--gold);
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-silver);
     }
 
     .timeline-item {
@@ -477,13 +561,35 @@
       .about-grid, .grid-2 { grid-template-columns: 1fr; }
       h1.hero-title { font-size: 2.3rem; }
       .nav-links { display: none; }
+      .nav-left { gap: 0.6rem; }
+      .quick-btn { font-size: 0.7rem; padding: 0.25rem 0.55rem; }
+    }
+    @media (max-width: 650px) {
+      nav { padding: 0.75rem 1rem; }
+      .nav-btn { display: none; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="https://muhammad-yunas.com" class="nav-brand">Muhammad <span>Yunas</span></a>
+    <div class="nav-left">
+      <a href="https://muhammad-yunas.com" class="nav-brand">Muhammad <span>Yunas</span></a>
+      <div class="nav-quick-actions">
+        <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank" class="quick-btn" title="LinkedIn Profile">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.66 1.66 0 0 0-1.66 1.66c0 .92.74 1.66 1.66 1.66.92 0 1.66-.74 1.66-1.66 0-.92-.74-1.66-1.66-1.66Z"/></svg>
+          LinkedIn
+        </a>
+        <a href="Muhammad_Yunas_Resume_Executive.pdf" target="_blank" class="quick-btn" title="Download Executive Resume">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          Download Resume
+        </a>
+        <a href="mailto:yunasmuh@gmail.com" class="quick-btn" title="Email Muhammad Yunas">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
+        </a>
+      </div>
+    </div>
     <ul class="nav-links">
       <li><a href="#about">ABOUT</a></li>
       <li><a href="#expertise">EXPERTISE</a></li>
@@ -624,6 +730,49 @@
         <div class="card" style="padding: 1.25rem;">🚗 Automotive Tier 1</div>
         <div class="card" style="padding: 1.25rem;">🏗️ Smart Factory Automation</div>
         <div class="card" style="padding: 1.25rem;">📦 Logistics & Supply Chain</div>
+      </div>
+    </section>
+
+    <section id="customer-journey">
+      <span class="section-tag">COMMERCIAL TELEMETRY</span>
+      <h2 class="section-title">The Enterprise Customer Journey: From Skepticism to Scale.</h2>
+      <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2.5rem; max-width: 900px;">Selling complex industrial technologies requires engineered progression. Here is how narrative architecture and commercial discipline de-risk buying decisions across every stage of the customer lifecycle:</p>
+
+      <div class="grid-5">
+        <div class="journey-card">
+          <div class="journey-step-num">Stage 01 • Awareness</div>
+          <div class="journey-title">Category Creation</div>
+          <div class="journey-desc">Establish market language before competitors commoditize it. Reframe technical complexity into strategic business survival.</div>
+          <div class="journey-metric">Impact: $120M TAM Expansion | +75% Target Engagement</div>
+        </div>
+
+        <div class="journey-card">
+          <div class="journey-step-num">Stage 02 • Evaluation</div>
+          <div class="journey-title">OT/IT Alignment</div>
+          <div class="journey-desc">Triangulate OT plant sponsors with enterprise IT champions and CFO economics to eliminate internal buying friction.</div>
+          <div class="journey-metric">Impact: 3x Conversion Lift | -15% Lower Acquisition Cost</div>
+        </div>
+
+        <div class="journey-card">
+          <div class="journey-step-num">Stage 03 • Validation</div>
+          <div class="journey-title">60-Day POC Velocity</div>
+          <div class="journey-desc">Deploy bounded Digital Twin pilots with clear downtime and energy ROI criteria, preventing pilots from stalling indefinitely.</div>
+          <div class="journey-metric">Impact: 14 → 6 Mo Sales Cycle (40% Velocity Compression)</div>
+        </div>
+
+        <div class="journey-card">
+          <div class="journey-step-num">Stage 04 • Conversion</div>
+          <div class="journey-title">Board-Level Close</div>
+          <div class="journey-desc">Elevate operational uptime into cyber-physical resilience, unlocking executive sign-off and commanding premium enterprise pricing.</div>
+          <div class="journey-metric">Impact: 42% Win Rate Lift | 137% Quota Peak</div>
+        </div>
+
+        <div class="journey-card">
+          <div class="journey-step-num">Stage 05 • Expansion</div>
+          <div class="journey-title">Fleet-Wide Rollout</div>
+          <div class="journey-desc">Scale across multi-plant environments and channel partner ecosystems (SIs/OEMs) to secure long-term recurring contract expansion.</div>
+          <div class="journey-metric">Impact: $500K → $1.2M Wallet Share | +25 NPS Record</div>
+        </div>
       </div>
     </section>
 
@@ -891,8 +1040,6 @@
           <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem;">Whether you are preparing for a major market launch, repositioning an industrial technology platform, or building a scalable sales engine from zero to scale, let's schedule an introductory strategy conversation.</p>
           
           <div class="highlight-card">
-            <h4>DIRECT CHANNELS</h4>
-            <p style="margin-bottom: 0.5rem;">
             <h4>DIRECT CHANNELS</h4>
             <p style="margin-bottom: 0.5rem;"><strong>Email:</strong> <a href="mailto:yunasmuh@gmail.com" style="color: var(--gold); text-decoration: underline;">yunasmuh@gmail.com</a></p>
             <p style="margin-bottom: 0.5rem;"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank" style="color: var(--gold); text-decoration: underline;">linkedin.com/in/muhammad-yunas</a></p>
