@@ -11,10 +11,14 @@
   <meta property="og:description" content="Physical AI & Industrial IoT GTM Leader | 18 Years at the OT/IT Convergence Frontier | $150M+ Revenue Influence">
   <meta property="og:url" content="https://muhammad-yunas.com">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://muhammad-yunas.com/assets/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Muhammad Yunas | Physical AI & Industrial IoT GTM Leader">
+  <meta name="twitter:description" content="18 Years at the OT/IT Convergence Frontier | $150M+ Revenue Influence">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -23,7 +27,8 @@
       --card-border: #1E2D4A;
       --gold: #E2B659;
       --gold-hover: #D4AF37;
-      --gold-glow: rgba(226, 182, 89, 0.15);
+      --gold-glow: rgba(226, 182, 89, 0.18);
+      --cyan-telemetry: #38BDF8;
       --text-white: #FFFFFF;
       --text-silver: #E6F1FF;
       --text-muted: #94A3B8;
@@ -34,29 +39,46 @@
     html { scroll-behavior: smooth; }
     body {
       background-color: var(--bg-dark);
-      background-image: radial-gradient(rgba(30, 45, 74, 0.4) 1px, transparent 0);
-      background-size: 32px 32px;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(226, 182, 89, 0.08) 0%, transparent 60%),
+        radial-gradient(rgba(30, 45, 74, 0.45) 1px, transparent 0);
+      background-size: 100% 100%, 32px 32px;
       color: var(--text-silver);
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       line-height: 1.65;
       font-size: 16px;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Interactive Particle Canvas */
+    #telemetry-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.65;
     }
 
     h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
-    .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
 
+    /* Sticky Navigation */
     nav {
-      background: rgba(6, 18, 36, 0.92);
-      backdrop-filter: blur(16px);
+      background: rgba(6, 18, 36, 0.94);
+      backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--card-border);
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 1rem 2rem;
+      padding: 0.85rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: all 0.3s ease;
     }
     .nav-left {
       display: flex;
@@ -65,18 +87,29 @@
       flex-wrap: wrap;
     }
     .nav-brand {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 800;
       color: var(--text-white);
       text-decoration: none;
       letter-spacing: -0.02em;
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     .nav-brand span { color: var(--gold); }
+    .nav-brand-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--gold);
+      animation: pulse 2s infinite ease-in-out;
+    }
     .nav-quick-actions {
       display: flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.5rem;
       flex-wrap: wrap;
     }
     .quick-btn {
@@ -86,12 +119,12 @@
       background: rgba(226, 182, 89, 0.08);
       border: 1px solid rgba(226, 182, 89, 0.35);
       color: var(--gold);
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      padding: 0.32rem 0.75rem;
+      padding: 0.32rem 0.8rem;
       border-radius: 9999px;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
       white-space: nowrap;
     }
     .quick-btn:hover {
@@ -99,51 +132,205 @@
       color: #061224;
       border-color: var(--gold);
       transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(226, 182, 89, 0.3);
+      box-shadow: 0 3px 12px rgba(226, 182, 89, 0.35);
     }
     .nav-links {
       display: flex;
-      gap: 1.75rem;
+      gap: 1.5rem;
       list-style: none;
       align-items: center;
     }
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       transition: color 0.2s ease;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.25s ease;
     }
     .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
     .nav-btn {
-      background: var(--gold);
+      background: linear-gradient(135deg, var(--gold) 0%, #C99A3C 100%);
       color: #000000;
       font-weight: 700;
       padding: 0.5rem 1.25rem;
-      border-radius: 0.35rem;
+      border-radius: 0.4rem;
       text-decoration: none;
       font-size: 0.85rem;
-      transition: all 0.2s ease;
+      letter-spacing: 0.02em;
+      transition: all 0.25s ease;
       white-space: nowrap;
+      box-shadow: 0 2px 10px rgba(226, 182, 89, 0.25);
     }
-    .nav-btn:hover { background: var(--gold-hover); transform: translateY(-1px); }
+    .nav-btn:hover { 
+      background: var(--gold-hover); 
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(226, 182, 89, 0.45);
+    }
 
+    /* Live Telemetry Marquee Banner */
+    .telemetry-ticker {
+      background: rgba(10, 22, 44, 0.95);
+      border-bottom: 1px solid var(--card-border);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 0.45rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 999;
+    }
+    .ticker-track {
+      display: inline-flex;
+      gap: 2.5rem;
+      animation: ticker-slide 32s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--text-muted);
+    }
+    .ticker-item strong { color: var(--gold); }
+    .ticker-item .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 6px #10B981;
+    }
+    .ticker-item .dot-gold {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 6px var(--gold);
+    }
+    @keyframes ticker-slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Hero Section */
     .hero {
-      padding: 5rem 0 3.5rem;
+      padding: 4.5rem 0 3.5rem;
       text-align: center;
+      position: relative;
+    }
+
+    /* Centered Avatar with Orbiting Telemetry Rings */
+    .avatar-wrapper {
+      position: relative;
+      width: 190px;
+      height: 190px;
+      margin: 0 auto 1.75rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .avatar-orbit-outer {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 1px dashed rgba(226, 182, 89, 0.4);
+      border-radius: 50%;
+      animation: spin-clockwise 24s linear infinite;
+      pointer-events: none;
+    }
+    .avatar-orbit-node {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--gold);
+      transform: translateX(-50%);
+    }
+    .avatar-orbit-inner {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 50%;
+      animation: spin-counter 18s linear infinite;
+      pointer-events: none;
+    }
+    .avatar-orbit-inner-node {
+      position: absolute;
+      bottom: 4px;
+      right: 25%;
+      width: 6px;
+      height: 6px;
+      background: var(--cyan-telemetry);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--cyan-telemetry);
+    }
+    .avatar-glow {
+      position: absolute;
+      width: 175px;
+      height: 175px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(226, 182, 89, 0.28) 0%, transparent 70%);
+      filter: blur(12px);
+      z-index: 1;
+      animation: glow-pulse 3s infinite alternate;
     }
     .hero-headshot {
-      width: 165px;
-      height: 165px;
+      width: 168px;
+      height: 168px;
       border-radius: 50%;
       border: 3px solid var(--gold);
       object-fit: cover;
-      box-shadow: 0 0 25px rgba(226, 182, 89, 0.3);
-      margin: 0 auto 1.5rem auto;
+      object-position: center 15%;
+      box-shadow: 0 0 28px rgba(226, 182, 89, 0.35);
       display: block;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      background-color: var(--card-bg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    .hero-headshot:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 38px rgba(226, 182, 89, 0.55);
+    }
+
+    @keyframes spin-clockwise {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spin-counter {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    @keyframes glow-pulse {
+      0% { opacity: 0.5; transform: scale(0.96); }
+      100% { opacity: 1; transform: scale(1.08); }
+    }
+
     .status-pill {
       display: inline-flex;
       align-items: center;
@@ -158,6 +345,7 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 1.5rem;
+      box-shadow: 0 0 16px rgba(226, 182, 89, 0.15);
     }
     .status-dot {
       width: 7px;
@@ -176,14 +364,14 @@
       font-weight: 800;
       line-height: 1.15;
       color: var(--text-white);
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto 1.25rem;
       letter-spacing: -0.02em;
     }
     .hero-subtitle {
       font-size: 1.2rem;
       color: var(--text-muted);
-      max-width: 880px;
+      max-width: 890px;
       margin: 0 auto 1.5rem;
       line-height: 1.7;
     }
@@ -210,23 +398,24 @@
       font-weight: 700;
       font-size: 0.95rem;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
       cursor: pointer;
     }
     .btn-gold {
-      background: var(--gold);
+      background: linear-gradient(135deg, var(--gold) 0%, #C99A3C 100%);
       color: #000000;
-      box-shadow: 0 4px 14px rgba(226, 182, 89, 0.3);
+      box-shadow: 0 4px 16px rgba(226, 182, 89, 0.35);
     }
     .btn-gold:hover {
       background: var(--gold-hover);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(226, 182, 89, 0.4);
+      box-shadow: 0 6px 24px rgba(226, 182, 89, 0.5);
     }
     .btn-outline {
       background: transparent;
       color: var(--text-white);
       border: 1px solid var(--card-border);
+      backdrop-filter: blur(8px);
     }
     .btn-outline:hover {
       border-color: var(--gold);
@@ -251,8 +440,15 @@
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.05em;
+      transition: all 0.2s ease;
+    }
+    .cloud-pill:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-1px);
     }
 
+    /* Metrics Grid */
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -266,9 +462,26 @@
       padding: 1.5rem 1rem;
       text-align: center;
       border-top: 3px solid var(--gold);
-      transition: transform 0.2s ease;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
     }
-    .metric-card:hover { transform: translateY(-3px); }
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(226, 182, 89, 0.08), transparent);
+      transition: 0.5s;
+    }
+    .metric-card:hover::before { left: 100%; }
+    .metric-card:hover { 
+      transform: translateY(-4px); 
+      border-color: var(--gold);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
     .metric-num {
       font-size: 2.2rem;
       font-weight: 800;
@@ -286,14 +499,15 @@
     }
 
     section {
-      padding: 4.5rem 0;
+      padding: 4.75rem 0;
       border-bottom: 1px solid var(--card-border);
+      position: relative;
     }
     .section-tag {
       font-size: 0.85rem;
       font-weight: 800;
       color: var(--gold);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-bottom: 0.5rem;
       display: inline-block;
@@ -308,6 +522,7 @@
       letter-spacing: -0.01em;
     }
 
+    /* About Grid */
     .about-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -316,7 +531,7 @@
     .about-text p {
       color: var(--text-silver);
       font-size: 1.05rem;
-      line-height: 1.8;
+      line-height: 1.85;
       margin-bottom: 1.5rem;
     }
     .about-text strong {
@@ -330,6 +545,11 @@
       border-radius: 0.5rem;
       padding: 1.5rem;
       margin-bottom: 1.25rem;
+      transition: all 0.25s ease;
+    }
+    .highlight-card:hover {
+      border-color: rgba(226, 182, 89, 0.4);
+      transform: translateX(3px);
     }
     .highlight-card h4 {
       font-size: 0.8rem;
@@ -371,11 +591,13 @@
       border: 1px solid var(--card-border);
       border-radius: 0.6rem;
       padding: 2rem;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
+      position: relative;
     }
     .card:hover {
-      border-color: rgba(226, 182, 89, 0.4);
-      transform: translateY(-2px);
+      border-color: rgba(226, 182, 89, 0.45);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
     }
     .card h3 {
       font-size: 1.25rem;
@@ -396,11 +618,15 @@
       border-radius: 0.6rem;
       padding: 1.5rem;
       position: relative;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .journey-card:hover {
       border-color: var(--gold);
-      transform: translateY(-3px);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(226, 182, 89, 0.15);
     }
     .journey-step-num {
       font-size: 0.75rem;
@@ -409,6 +635,17 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .journey-step-pulse {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 6px var(--gold);
     }
     .journey-title {
       font-size: 1.05rem;
@@ -430,8 +667,10 @@
       font-size: 0.82rem;
       font-weight: 700;
       color: var(--text-silver);
+      font-family: 'JetBrains Mono', monospace;
     }
 
+    /* Timeline Section */
     .timeline-item {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -439,6 +678,11 @@
       padding: 2rem;
       margin-bottom: 1.5rem;
       position: relative;
+      transition: all 0.25s ease;
+    }
+    .timeline-item:hover {
+      border-color: rgba(226, 182, 89, 0.35);
+      transform: translateX(4px);
     }
     .timeline-header {
       display: flex;
@@ -486,6 +730,10 @@
       margin-bottom: 1.5rem;
       border-left: 2px solid var(--card-border);
       padding-left: 1.25rem;
+      transition: border-color 0.2s ease;
+    }
+    .case-step:hover {
+      border-left-color: var(--gold);
     }
     .case-step h4 {
       font-size: 0.95rem;
@@ -516,7 +764,9 @@
       margin-bottom: 0.6rem;
       padding-left: 0.85rem;
       position: relative;
+      transition: color 0.2s ease;
     }
+    .skills-list li:hover { color: var(--gold); }
     .skills-list li::before {
       content: '•';
       position: absolute;
@@ -524,6 +774,7 @@
       color: var(--gold);
     }
 
+    /* Contact Form & Input */
     .form-group { margin-bottom: 1.25rem; }
     .form-group label {
       display: block;
@@ -544,22 +795,121 @@
       font-size: 0.95rem;
       font-family: inherit;
       outline: none;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
-    .form-control:focus { border-color: var(--gold); }
+    .form-control:focus { 
+      border-color: var(--gold); 
+      box-shadow: 0 0 10px rgba(226, 182, 89, 0.2);
+    }
     textarea.form-control { resize: vertical; min-height: 120px; }
+
+    /* EXECUTIVE CREDO BANNER (Placed directly before Footer) */
+    .credo-section {
+      padding: 5rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--card-border);
+      background: radial-gradient(circle at 50% 50%, rgba(226, 182, 89, 0.07) 0%, transparent 75%);
+    }
+    .credo-box {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.75rem 2rem;
+      background: linear-gradient(180deg, rgba(15, 30, 54, 0.85) 0%, rgba(6, 18, 36, 0.95) 100%);
+      border: 1px solid var(--gold);
+      border-radius: 0.8rem;
+      position: relative;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(226, 182, 89, 0.05);
+    }
+    .credo-tagline {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .credo-tagline::before, .credo-tagline::after {
+      content: '';
+      width: 25px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .credo-quote-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.15rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--text-white);
+      line-height: 1.35;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+    .credo-quote-text span {
+      color: var(--gold);
+    }
+    .credo-subtext {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .credo-author {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Back to Top Floating Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .back-to-top:hover {
+      background: var(--gold);
+      color: #061224;
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
 
     footer {
       padding: 3.5rem 0;
       text-align: center;
       color: var(--text-slate);
       font-size: 0.88rem;
-      border-top: 1px solid var(--card-border);
     }
 
     @media (max-width: 900px) {
       .about-grid, .grid-2 { grid-template-columns: 1fr; }
       h1.hero-title { font-size: 2.3rem; }
+      .credo-quote-text { font-size: 1.65rem; }
       .nav-links { display: none; }
       .nav-left { gap: 0.6rem; }
       .quick-btn { font-size: 0.7rem; padding: 0.25rem 0.55rem; }
@@ -567,14 +917,22 @@
     @media (max-width: 650px) {
       nav { padding: 0.75rem 1rem; }
       .nav-btn { display: none; }
+      .telemetry-ticker { font-size: 0.7rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Background Moving Telemetry Grid & Particles (Canvas Graphic) -->
+  <canvas id="telemetry-canvas"></canvas>
+
+  <!-- Sticky Navigation Bar -->
   <nav>
     <div class="nav-left">
-      <a href="https://muhammad-yunas.com" class="nav-brand">Muhammad <span>Yunas</span></a>
+      <a href="https://muhammad-yunas.com" class="nav-brand">
+        <div class="nav-brand-dot"></div>
+        Muhammad <span>Yunas</span>
+      </a>
       <div class="nav-quick-actions">
         <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank" class="quick-btn" title="LinkedIn Profile">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.66 1.66 0 0 0-1.66 1.66c0 .92.74 1.66 1.66 1.66.92 0 1.66-.74 1.66-1.66 0-.92-.74-1.66-1.66-1.66Z"/></svg>
@@ -593,6 +951,7 @@
     <ul class="nav-links">
       <li><a href="#about">ABOUT</a></li>
       <li><a href="#expertise">EXPERTISE</a></li>
+      <li><a href="#customer-journey">TELEMETRY</a></li>
       <li><a href="#work">WORK</a></li>
       <li><a href="#case-study">CASE STUDY</a></li>
       <li><a href="#thinking">THINKING</a></li>
@@ -601,15 +960,50 @@
     <a href="#contact" class="nav-btn">LET'S TALK →</a>
   </nav>
 
+  <!-- Moving Telemetry Status Ticker Strip -->
+  <div class="telemetry-ticker">
+    <div class="ticker-track">
+      <div class="ticker-item"><span class="dot"></span> <strong>OT/IT CONVERGENCE:</strong> COMMERCIAL ARCHITECTURE DEPLOYED</div>
+      <div class="ticker-item"><span class="dot-gold"></span> <strong>REVENUE INFLUENCE:</strong> $150M+ DOCUMENTED</div>
+      <div class="ticker-item"><span class="dot"></span> <strong>PHYSICAL AI CATEGORY:</strong> AGENTIC INDUSTRIAL OPERATIONS</div>
+      <div class="ticker-item"><span class="dot-gold"></span> <strong>SALES VELOCITY:</strong> 40% CYCLE REDUCTION</div>
+      <div class="ticker-item"><span class="dot"></span> <strong>SYSTEMS FLUENCY:</strong> SCADA · DCS · PLC · CLOUD AI · IIOT</div>
+      <div class="ticker-item"><span class="dot-gold"></span> <strong>LEADERSHIP:</strong> VP GTM · SVP REVENUE · CRO SEATS</div>
+      <!-- Duplicate for infinite seamless scroll -->
+      <div class="ticker-item"><span class="dot"></span> <strong>OT/IT CONVERGENCE:</strong> COMMERCIAL ARCHITECTURE DEPLOYED</div>
+      <div class="ticker-item"><span class="dot-gold"></span> <strong>REVENUE INFLUENCE:</strong> $150M+ DOCUMENTED</div>
+      <div class="ticker-item"><span class="dot"></span> <strong>PHYSICAL AI CATEGORY:</strong> AGENTIC INDUSTRIAL OPERATIONS</div>
+      <div class="ticker-item"><span class="dot-gold"></span> <strong>SALES VELOCITY:</strong> 40% CYCLE REDUCTION</div>
+      <div class="ticker-item"><span class="dot"></span> <strong>SYSTEMS FLUENCY:</strong> SCADA · DCS · PLC · CLOUD AI · IIOT</div>
+      <div class="ticker-item"><span class="dot-gold"></span> <strong>LEADERSHIP:</strong> VP GTM · SVP REVENUE · CRO SEATS</div>
+    </div>
+  </div>
+
   <div class="container">
 
+    <!-- Hero Section -->
     <header class="hero">
       <div class="status-pill">
         <div class="status-dot"></div>
         AVAILABLE FOR EXECUTIVE GTM LEADERSHIP
       </div>
       
-      <img src="assets/portrait.png" alt="Muhammad A. Yunas" class="hero-headshot" onerror="this.src='portrait.png'; this.onerror=null;">
+      <!-- Perfectly Centered Headshot with Dual Orbiting Telemetry Rings -->
+      <div class="avatar-wrapper">
+        <div class="avatar-orbit-outer">
+          <div class="avatar-orbit-node"></div>
+        </div>
+        <div class="avatar-orbit-inner">
+          <div class="avatar-orbit-inner-node"></div>
+        </div>
+        <div class="avatar-glow"></div>
+        <img 
+          src="assets/portrait.png" 
+          alt="Muhammad A. Yunas - Physical AI & Industrial IoT GTM Leader" 
+          class="hero-headshot" 
+          onerror="this.src='portrait.png'; this.onerror=null;"
+        >
+      </div>
 
       <h1 class="hero-title">The Executive Who Builds Go-to-Market for the Physical World.</h1>
       <p class="hero-subtitle">Physical AI & Industrial IoT GTM Leader with 18 years commercializing complex B2B technologies across industrial AI, IIoT, cybersecurity, and enterprise software — from the factory floor to the boardroom.</p>
@@ -634,6 +1028,7 @@
       </div>
     </header>
 
+    <!-- Metrics Grid -->
     <div class="metrics-grid">
       <div class="metric-card">
         <div class="metric-num">18 Yrs</div>
@@ -661,6 +1056,7 @@
       </div>
     </div>
 
+    <!-- Section 1: About -->
     <section id="about">
       <span class="section-tag">WHO I AM</span>
       <h2 class="section-title">A Career Built at the Intersection of Steel and Silicon.</h2>
@@ -684,13 +1080,14 @@
             <p>• Seton Hall University: M.A., Diplomacy & Int. Relations; M.A., Corporate Communications<br>• Univ. of Rhode Island: B.A., Int. Business & Political Science<br>• Certified PMM (PMA) · Cloud AI Pro (Oracle) · Ethics in GenAI (Google)</p>
           </div>
           <div class="highlight-card">
-            <h4>CONNECT</h4>
+            <h4>CONNECT DIRECTLY</h4>
             <p>New York, NY · yunasmuh@gmail.com · (401) 248-3664 · <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank" style="color: var(--gold); text-decoration: underline;">linkedin.com/in/muhammad-yunas</a></p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Section 2: Expertise -->
     <section id="expertise">
       <span class="section-tag">CORE EXPERTISE</span>
       <h2 class="section-title">Six Pillars of Industrial GTM Leadership.</h2>
@@ -733,6 +1130,7 @@
       </div>
     </section>
 
+    <!-- Section 3: Commercial Telemetry Customer Journey -->
     <section id="customer-journey">
       <span class="section-tag">COMMERCIAL TELEMETRY</span>
       <h2 class="section-title">The Enterprise Customer Journey: From Skepticism to Scale.</h2>
@@ -740,42 +1138,53 @@
 
       <div class="grid-5">
         <div class="journey-card">
-          <div class="journey-step-num">Stage 01 • Awareness</div>
-          <div class="journey-title">Category Creation</div>
-          <div class="journey-desc">Establish market language before competitors commoditize it. Reframe technical complexity into strategic business survival.</div>
+          <div>
+            <div class="journey-step-num"><span class="journey-step-pulse"></span> Stage 01 • Awareness</div>
+            <div class="journey-title">Category Creation</div>
+            <div class="journey-desc">Establish market language before competitors commoditize it. Reframe technical complexity into strategic business survival.</div>
+          </div>
           <div class="journey-metric">Impact: $120M TAM Expansion | +75% Target Engagement</div>
         </div>
 
         <div class="journey-card">
-          <div class="journey-step-num">Stage 02 • Evaluation</div>
-          <div class="journey-title">OT/IT Alignment</div>
-          <div class="journey-desc">Triangulate OT plant sponsors with enterprise IT champions and CFO economics to eliminate internal buying friction.</div>
+          <div>
+            <div class="journey-step-num"><span class="journey-step-pulse"></span> Stage 02 • Evaluation</div>
+            <div class="journey-title">OT/IT Alignment</div>
+            <div class="journey-desc">Triangulate OT plant sponsors with enterprise IT champions and CFO economics to eliminate internal buying friction.</div>
+          </div>
           <div class="journey-metric">Impact: 3x Conversion Lift | -15% Lower Acquisition Cost</div>
         </div>
 
         <div class="journey-card">
-          <div class="journey-step-num">Stage 03 • Validation</div>
-          <div class="journey-title">60-Day POC Velocity</div>
-          <div class="journey-desc">Deploy bounded Digital Twin pilots with clear downtime and energy ROI criteria, preventing pilots from stalling indefinitely.</div>
+          <div>
+            <div class="journey-step-num"><span class="journey-step-pulse"></span> Stage 03 • Validation</div>
+            <div class="journey-title">60-Day POC Velocity</div>
+            <div class="journey-desc">Deploy bounded Digital Twin pilots with clear downtime and energy ROI criteria, preventing pilots from stalling indefinitely.</div>
+          </div>
           <div class="journey-metric">Impact: 14 → 6 Mo Sales Cycle (40% Velocity Compression)</div>
         </div>
 
         <div class="journey-card">
-          <div class="journey-step-num">Stage 04 • Conversion</div>
-          <div class="journey-title">Board-Level Close</div>
-          <div class="journey-desc">Elevate operational uptime into cyber-physical resilience, unlocking executive sign-off and commanding premium enterprise pricing.</div>
+          <div>
+            <div class="journey-step-num"><span class="journey-step-pulse"></span> Stage 04 • Conversion</div>
+            <div class="journey-title">Board-Level Close</div>
+            <div class="journey-desc">Elevate operational uptime into cyber-physical resilience, unlocking executive sign-off and commanding premium enterprise pricing.</div>
+          </div>
           <div class="journey-metric">Impact: 42% Win Rate Lift | 137% Quota Peak</div>
         </div>
 
         <div class="journey-card">
-          <div class="journey-step-num">Stage 05 • Expansion</div>
-          <div class="journey-title">Fleet-Wide Rollout</div>
-          <div class="journey-desc">Scale across multi-plant environments and channel partner ecosystems (SIs/OEMs) to secure long-term recurring contract expansion.</div>
+          <div>
+            <div class="journey-step-num"><span class="journey-step-pulse"></span> Stage 05 • Expansion</div>
+            <div class="journey-title">Fleet-Wide Rollout</div>
+            <div class="journey-desc">Scale across multi-plant environments and channel partner ecosystems (SIs/OEMs) to secure long-term recurring contract expansion.</div>
+          </div>
           <div class="journey-metric">Impact: $500K → $1.2M Wallet Share | +25 NPS Record</div>
         </div>
       </div>
     </section>
 
+    <!-- Section 4: Work & Impact -->
     <section id="work">
       <span class="section-tag">WORK & IMPACT</span>
       <h2 class="section-title">Career Milestones & Leadership Experience.</h2>
@@ -803,7 +1212,7 @@
           <ul class="timeline-bullets">
             <li>Drove $9M in new revenue (30% YoY growth) and the largest regional marketing pipeline in company history by repositioning as Physical Operations Intelligence</li>
             <li>Expanded customer engagement 75% and secured executive sponsorship for $10M untapped market opportunity (34% incremental revenue)</li>
-            <li>Reduced CAC 15% and tripled conversion rates via redesigned buyer journeys across manufacturing and supply chain verticals</li>
+            <li>Reduced CAC 15% and tripled conversion rates via ML-driven buyer journey redesign across manufacturing and supply chain verticals</li>
           </ul>
         </div>
 
@@ -874,6 +1283,7 @@
       </div>
     </section>
 
+    <!-- Section 5: Case Study -->
     <section id="case-study">
       <span class="section-tag">GTM CASE STUDY</span>
       <h2 class="section-title">From $0 to $40M ARR: Winning the OT/IT Convergence Market.</h2>
@@ -936,6 +1346,7 @@
       </div>
     </section>
 
+    <!-- Section 6: Thought Leadership -->
     <section id="thinking">
       <span class="section-tag">THOUGHT LEADERSHIP</span>
       <h2 class="section-title">Ideas I'm Publishing & Defending.</h2>
@@ -971,6 +1382,7 @@
       </div>
     </section>
 
+    <!-- Section 7: Skills Taxonomy -->
     <section id="skills">
       <span class="section-tag">SKILLS TAXONOMY</span>
       <h2 class="section-title">Strategic Range. Not a Tag Cloud.</h2>
@@ -1030,6 +1442,7 @@
       </div>
     </section>
 
+    <!-- Section 8: Contact -->
     <section id="contact">
       <span class="section-tag">INITIATE CONTACT</span>
       <h2 class="section-title">Let's Discuss What You're Building.</h2>
@@ -1048,7 +1461,7 @@
           </div>
         </div>
 
-        <form style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 0.6rem; padding: 2rem;" onsubmit="event.preventDefault(); window.location.href='mailto:yunasmuh@gmail.com?subject=Inquiry from ' + document.getElementById('name').value + ' (' + document.getElementById('company').value + ')&body=' + encodeURIComponent(document.getElementById('message').value);">
+        <form style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 0.6rem; padding: 2rem;" onsubmit="handleContactSubmit(event)">
           <div class="form-group">
             <label for="name">Your Name</label>
             <input type="text" id="name" class="form-control" placeholder="Jane Doe" required>
@@ -1070,12 +1483,135 @@
       </div>
     </section>
 
+    <!-- Section 9: Executive Credo & Operating Philosophy (Directly before Footer) -->
+    <section class="credo-section">
+      <div class="credo-box">
+        <div class="credo-tagline">OPERATING PHILOSOPHY & LEADERSHIP CREDO</div>
+        <blockquote class="credo-quote-text">
+          “<span>Listen decisively</span>, clarify relentlessly, <span>execute decisively</span>.”
+        </blockquote>
+        <p class="credo-subtext">
+          Bridging the distance between boardroom strategy and plant-floor reality through radical clarity and relentless operational momentum.
+        </p>
+        <div class="credo-author">— Muhammad A. Yunas</div>
+      </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
       <p style="margin-bottom: 0.5rem; color: var(--text-muted);">© 2026 Muhammad A. Yunas · Physical AI & Industrial IoT GTM Leader · New York, NY</p>
       <p>Built for executive review. Every element engineered to reduce the cognitive load of a decision.</p>
     </footer>
 
   </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" title="Back to top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <!-- Interactive Moving Graphics Canvas & Utilities Script -->
+  <script>
+    // 1. Safe Mailto Form Handler with URI encoding
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const name = encodeURIComponent(document.getElementById('name').value.trim());
+      const company = encodeURIComponent(document.getElementById('company').value.trim());
+      const body = encodeURIComponent(document.getElementById('message').value.trim());
+      const subject = encodeURIComponent('Inquiry from ' + decodeURIComponent(name) + (company ? ' (' + decodeURIComponent(company) + ')' : ''));
+      window.location.href = `mailto:yunasmuh@gmail.com?subject=${subject}&body=${body}`;
+    }
+
+    // 2. Back to Top Button Visibility
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 3. Dynamic Moving Graphics: Interactive Telemetry & Constellation Background Canvas
+    (function initTelemetryCanvas() {
+      const canvas = document.getElementById('telemetry-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+      const particleCount = 45;
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.55;
+          this.vy = (Math.random() - 0.5) * 0.55;
+          this.radius = Math.random() * 2 + 1; * 0.55;
+          this.radius = Math.random() * 2 + 1;
+          this.isGold = Math.random() > 0.4;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = this.isGold ? 'rgba(226, 182, 89, 0.65)' : 'rgba(56, 189, 248, 0.45)';
+          ctx.shadowBlur = this.isGold ? 8 : 4;
+          ctx.shadowColor = this.isGold ? '#E2B659' : '#38BDF8';
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 140) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              const opacity = (1 - dist / 140) * 0.22;
+              ctx.strokeStyle = particles[i].isGold 
+                ? `rgba(226, 182, 89, ${opacity})` 
+                : `rgba(56, 189, 248, ${opacity})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+  </script>
 
 </body>
 </html>
