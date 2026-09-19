@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Resume | Muhammad A. Yunas</title>
+
+  <!-- Shared CSS (copied from index.html for now; later we extract into /assets/theme.css) -->
+  <style>
+    /* --- SHARED THEME VARIABLES --- */
+    :root {
+      --bg-dark: #061224;
+      --card-bg: #0F1E36;
+      --card-border: #1E2D4A;
+      --gold: #E2B659;
+      --gold-hover: #D4AF37;
+      --text-white: #FFFFFF;
+      --text-silver: #E6F1FF;
+      --text-muted: #94A3B8;
+      --text-slate: #64748B;
+    }
+    body[data-theme="light"] {
+      --bg-dark: #F3F4F6;
+      --card-bg: #FFFFFF;
+      --card-border: #D1D5DB;
+      --text-white: #111827;
+      --text-silver: #1F2937;
+      --text-muted: #6B7280;
+      --text-slate: #4B5563;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-silver);
+      font-family: 'Inter', sans-serif;
+      padding: 2rem;
+      line-height: 1.7;
+    }
+
+    .resume-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 0.75rem;
+      padding: 2.5rem;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--text-white);
+      margin-bottom: 0.75rem;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 2rem;
+    }
+
+    .section-tag {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .timeline-item {
+      margin-bottom: 1.5rem;
+    }
+    .timeline-item h3 {
+      color: var(--gold);
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+    .timeline-item p {
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    ul {
+      margin-left: 1rem;
+      color: var(--text-silver);
+    }
+    ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 0.4rem 0.8rem;
+      border-radius: 9999px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<button class="theme-toggle" id="themeToggle">Toggle Theme</button>
+
+<div class="resume-container">
+
+  <h1>Muhammad A. Yunas</h1>
+  <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+    Physical AI & Industrial IoT GTM Leader · New York, NY · yunasmuh@gmail.com · (401) 248‑3664  
+    <br>linkedin.com/in/muhammad-yunas
+  </p>
+
+  <!-- SUMMARY -->
+  <div class="section">
+    <span class="section-tag">EXECUTIVE SUMMARY</span>
+    <p>
+      Senior GTM and Product Marketing leader with 18 years commercializing complex industrial technologies across OT/IT convergence, Physical AI, IIoT, cybersecurity, and enterprise software. Proven record driving $150M+ revenue influence, scaling IIoT platforms, and building category-defining narratives for industrial autonomy and agentic AI.
+    </p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <span class="section-tag">EXPERIENCE</span>
+
+    <div class="timeline-item">
+      <h3>Senior Director, Product Marketing — UST (2022–2024)</h3>
+      <p>Professional Engineering Services · Aliso Viejo, CA</p>
+      <ul>
+        <li>Drove $9M new revenue (30% YoY)</li>
+        <li>Expanded customer engagement 75%</li>
+        <li>Reduced CAC 15% and tripled conversion rates</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <h3>VP, Product Marketing — Uptake Technologies (2021–2022)</h3>
+      <p>Industrial AI Platform · Chicago, IL</p>
+      <ul>
+        <li>Commercialized OT/IT convergence narrative</li>
+        <li>Reduced sales cycle 40%</li>
+        <li>Improved ROI 15% while eliminating $2M spend</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <h3>Senior Director, Product Marketing — Dell Technologies (2018–2021)</h3>
+      <p>Cyber Recovery & Data Protection · Boston, MA</p>
+      <ul>
+        <li>Owned GTM for $500M+ cybersecurity portfolio</li>
+        <li>Increased win rate 42%</li>
+        <li>Scaled AI onboarding to 5,000+ users annually</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <h3>Senior Director, Product Marketing — Schneider Electric (2012–2015)</h3>
+      <p>Connected Operations Platform · Boston, MA</p>
+      <ul>
+        <li>Scaled IIoT platform to $75M+ in 18 months</li>
+        <li>Expanded enterprise wallet share 140%</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <h3>Director, Product Marketing — Schneider Electric (2006–2011)</h3>
+      <p>DCIM Software Portfolio · Boston, MA</p>
+      <ul>
+        <li>Defined and commercialized the DCIM category</li>
+        <li>Drove $32M revenue across 12+ launches</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <span class="section-tag">EDUCATION</span>
+    <p>M.A., Diplomacy & International Relations — Seton Hall University</p>
+    <p>M.A., Corporate Communications — Seton Hall University</p>
+    <p>B.A., International Business & Political Science — University of Rhode Island</p>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section">
+    <span class="section-tag">CERTIFICATIONS</span>
+    <ul>
+      <li>Certified PMM (Product Marketing Alliance)</li>
+      <li>Cloud AI Professional (Oracle)</li>
+      <li>Ethics in GenAI (Google)</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', () => {
+    const body = document.body;
+    const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    body.setAttribute('data-theme', next);
+  });
+</script>
+
+</body>
+</html>
