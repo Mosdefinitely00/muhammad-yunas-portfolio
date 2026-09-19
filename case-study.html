@@ -4,177 +4,110 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Case Study | OT/IT Convergence GTM</title>
-
-  <style>
-    :root {
-      --bg-dark: #061224;
-      --card-bg: #0F1E36;
-      --card-border: #1E2D4A;
-      --gold: #E2B659;
-      --text-white: #FFFFFF;
-      --text-silver: #E6F1FF;
-      --text-muted: #94A3B8;
-    }
-    body[data-theme="light"] {
-      --bg-dark: #F3F4F6;
-      --card-bg: #FFFFFF;
-      --card-border: #D1D5DB;
-      --text-white: #111827;
-      --text-silver: #1F2937;
-      --text-muted: #6B7280;
-    }
-
-    body {
-      background: var(--bg-dark);
-      color: var(--text-silver);
-      font-family: 'Inter', sans-serif;
-      padding: 2rem;
-      line-height: 1.7;
-    }
-
-    .case-container {
-      max-width: 900px;
-      margin: 0 auto;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 0.75rem;
-      padding: 2.5rem;
-    }
-
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--text-white);
-      margin-bottom: 1rem;
-    }
-
-    .section {
-      margin-bottom: 2.5rem;
-    }
-
-    .section-tag {
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: var(--gold);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-    }
-
-    .step {
-      border-left: 3px solid var(--gold);
-      padding-left: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .step h3 {
-      color: var(--gold);
-      margin-bottom: 0.4rem;
-    }
-    .step p {
-      color: var(--text-muted);
-    }
-
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-    .metric {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 1rem;
-      border-radius: 0.5rem;
-      text-align: center;
-    }
-    .metric strong {
-      color: var(--gold);
-      font-size: 1.4rem;
-      display: block;
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 0.4rem 0.8rem;
-      border-radius: 9999px;
-      color: var(--text-muted);
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/theme.css">
 </head>
-
 <body>
 
-<button class="theme-toggle" id="themeToggle">Toggle Theme</button>
+<div id="loadingSpinner"></div>
+<div id="progressBar"></div>
 
-<div class="case-container">
+<nav class="sub-nav">
+  <a href="index.html">Home</a>
+  <a href="resume.html">Resume</a>
+  <a href="case-study.html" class="active">Case Study</a>
+  <a href="projects.html">Projects</a>
+  <a href="speaking.html">Speaking</a>
+  <a href="writing.html">Writing</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="case-container page-container">
 
   <h1>Case Study: OT/IT Convergence GTM</h1>
-  <p style="color: var(--text-muted); margin-bottom: 2rem;">
+  <p class="case-intro">
     How a broken GTM engine was rebuilt into a $40M ARR industrial AI business.
   </p>
 
-  <div class="section">
+  <section class="section">
     <span class="section-tag">THE CHALLENGE</span>
     <p>
-      The platform had strong engineering depth but zero commercial traction. ICP undefined, sales team lacked OT fluency, no category narrative, and partner ecosystem nonexistent. Quota attainment below 60%.
+      Strong engineering, zero commercial traction. ICP undefined, sales lacked OT fluency, no category narrative, no partner ecosystem,
+      quota attainment below 60%.
     </p>
-  </div>
+  </section>
 
-  <div class="section">
+  <section class="section">
     <span class="section-tag">THE GTM REBUILD</span>
 
-    <div class="step">
+    <div class="step tilt-card">
       <h3>01 — ICP Redefined</h3>
-      <p>Focused on discrete manufacturing and upstream energy. Identified OT Sponsor + IT Champion + Economic Buyer for every deal.</p>
+      <p>Focused on discrete manufacturing and upstream energy. Identified OT Sponsor + IT Champion + Economic Buyer.</p>
     </div>
 
-    <div class="step">
+    <div class="step tilt-card">
       <h3>02 — Category Narrative Built</h3>
-      <p>Reframed from “IIoT platform” to “Physical AI Operations.” Anchored messaging in operational autonomy and real-time decisioning.</p>
+      <p>Reframed from “IIoT platform” to “Physical AI Operations.” Anchored messaging in operational autonomy.</p>
     </div>
 
-    <div class="step">
+    <div class="step tilt-card">
       <h3>03 — Sales Motion Redesigned</h3>
-      <p>Three-stage motion: OT Discovery → Digital Twin POC → Full Deployment. POCs tied to downtime, throughput, or energy savings.</p>
+      <p>OT Discovery → Digital Twin POC → Full Deployment. POCs tied to downtime, throughput, or energy savings.</p>
     </div>
 
-    <div class="step">
+    <div class="step tilt-card">
       <h3>04 — Partner Ecosystem Constructed</h3>
-      <p>Prioritized SIs with OT DNA. Integrated with major PLC/SCADA vendors. Established AWS/Azure co-sell programs.</p>
+      <p>Prioritized SIs with OT DNA. Integrated with major PLC/SCADA vendors. Established AWS/Azure co-sell.</p>
     </div>
 
-    <div class="step">
+    <div class="step tilt-card">
       <h3>05 — Cyber-Physical Layer Added</h3>
       <p>Elevated OT security to board-level governance. Increased average deal size 40%.</p>
     </div>
-  </div>
+  </section>
 
-  <div class="section">
+  <section class="section">
     <span class="section-tag">THE RESULTS</span>
-
     <div class="metric-grid">
-      <div class="metric"><strong>$40M+</strong> ARR in 30 months</div>
-      <div class="metric"><strong>137%</strong> Peak quota attainment</div>
-      <div class="metric"><strong>14→6</strong> Month cycle reduction</div>
-      <div class="metric"><strong>35%</strong> Partner-sourced ARR</div>
+      <div class="metric tilt-card"><strong>$40M+</strong> ARR in 30 months</div>
+      <div class="metric tilt-card"><strong>137%</strong> Peak quota attainment</div>
+      <div class="metric tilt-card"><strong>14→6</strong> Month cycle reduction</div>
+      <div class="metric tilt-card"><strong>35%</strong> Partner-sourced ARR</div>
     </div>
-  </div>
+  </section>
 
 </div>
 
-<script>
-  const toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', () => {
-    const body = document.body;
-    const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    body.setAttribute('data-theme', next);
-  });
-</script>
+<div class="credo-tagline-global">
+  “Listen, clarify, execute.”
+</div>
 
+<footer class="global-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-dot"></div>
+      <span class="footer-name">Muhammad A. Yunas</span>
+      <span class="footer-title">Physical AI & Industrial IoT GTM Leader</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="resume.html">Resume</a>
+      <a href="case-study.html">Case Study</a>
+      <a href="projects.html">Projects</a>
+      <a href="speaking.html">Speaking</a>
+      <a href="writing.html">Writing</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-contact">
+      <p>Email: <a href="mailto:yunasmuh@gmail.com">yunasmuh@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank">linkedin.com/in/muhammad-yunas</a></p>
+      <p>New York, NY · Open to US/Global Travel</p>
+    </div>
+    <div class="footer-copy">
+      © 2026 · Built for Executive Review · Mission-Control Aesthetic
+    </div>
+  </div>
+</footer>
+
+<script src="assets/theme.js"></script>
 </body>
 </html>
