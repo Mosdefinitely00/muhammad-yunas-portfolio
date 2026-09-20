@@ -6,338 +6,403 @@
 <meta name="description" content="Muhammad A. Yunas — Physical AI & Agentic AI GTM Leader. Long Island, New York."/>
 <title>Muhammad A. Yunas | Executive GTM & Product Marketing Leadership</title>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NG2H7GWNJN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-NG2H7GWNJN');
-</script>
-
 <!-- Fonts & Icons -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Chart.js for Interactive Telemetry -->
+
+<!-- Chart.js for Interactive Telemetry Cockpit -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
   :root {
-    --bg-dark: #070D1D;
-    --bg-surface: #0f1c3f;
-    --navy-mid: #0a1628;
-    --yellow-primary: #E5C158;
-    --yellow-bright: #FAD02C;
-    --yellow-deep: #D4AF37;
-    --yellow-glow: rgba(229, 193, 88, 0.25);
-    --white: #ffffff;
+    --bg-base: #040914;
+    --bg-surface: #0a1329;
+    --bg-glass: rgba(10, 19, 41, 0.6);
+    --gold: #D4AF37;
+    --gold-bright: #FAD02C;
+    --gold-glow: rgba(212, 175, 55, 0.15);
+    --text-main: #F8FAFC;
     --text-muted: #94A3B8;
-    --border: rgba(229, 193, 88, 0.35);
-    --transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    --border: rgba(212, 175, 55, 0.2);
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; background: var(--bg-dark); color: var(--white); overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-
-  /* THE TOP EDGE - Solid Yellow Executive Border */
-  body::before {
-    content: ''; position: fixed; top: 0; left: 0; right: 0; height: 6px; z-index: 9999;
-    background: linear-gradient(90deg, var(--yellow-deep), var(--yellow-bright), var(--yellow-deep));
-    box-shadow: 0 2px 15px var(--yellow-glow);
+  body { 
+    font-family: 'Inter', sans-serif; 
+    background: var(--bg-base); 
+    color: var(--text-main); 
+    overflow-x: hidden; 
+    line-height: 1.7; 
+    -webkit-font-smoothing: antialiased;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.04), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.04), transparent 25%);
   }
 
   ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: var(--bg-dark); }
-  ::-webkit-scrollbar-thumb { background: var(--yellow-primary); border-radius: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg-base); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
 
-  /* TOP NAVIGATION & BRANDING */
+  /* ================ TOP-LEFT COMMAND NAV ================= */
   nav {
-    position: fixed; top: 6px; left: 0; right: 0; z-index: 1000;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 5%; height: 85px;
-    background: rgba(7, 13, 29, 0.95); backdrop-filter: blur(16px);
+    padding: 1rem 4%; 
+    background: var(--bg-glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border); transition: var(--transition);
   }
-  nav.scrolled { box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+  nav.scrolled { box-shadow: 0 10px 40px rgba(0,0,0,0.5); padding: 0.8rem 4%; }
   
-  .nav-left-cluster { display: flex; flex-direction: column; gap: 0.2rem; }
-  .nav-logo-name {
-    font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: 0.02em;
+  /* Required Top-Left Cluster */
+  .nav-brand-cluster {
+    display: flex; flex-direction: column; gap: 0.2rem;
+  }
+  .nav-name {
+    font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; 
+    color: var(--text-main); text-decoration: none; letter-spacing: 0.02em;
     display: flex; align-items: center; gap: 0.5rem;
   }
-  .nav-logo-name span { color: var(--yellow-primary); }
-  .nav-sub-links { display: flex; gap: 1.5rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-  .nav-sub-links a { color: var(--yellow-primary); text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.4rem; }
-  .nav-sub-links a:hover { color: var(--white); text-shadow: 0 0 10px var(--yellow-bright); }
-
-  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; transition: var(--transition); }
-  .nav-links a:hover { color: var(--yellow-primary); }
+  .nav-name span { color: var(--gold-bright); }
   
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-  .hamburger span { display: block; width: 24px; height: 2px; background: var(--yellow-primary); transition: var(--transition); border-radius: 2px; }
+  .nav-quick-links {
+    display: flex; gap: 1.2rem; font-family: 'JetBrains Mono', monospace; 
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .nav-quick-links a { 
+    color: var(--gold); text-decoration: none; transition: var(--transition); 
+    display: inline-flex; align-items: center; gap: 0.4rem; 
+  }
+  .nav-quick-links a:hover { color: var(--text-main); text-shadow: 0 0 8px var(--gold-bright); }
 
-  @media(max-width:960px) { .nav-links { display: none; } .hamburger { display: flex; } }
-
-  /* CORE LAYOUT */
-  section { padding: 7rem 5%; position: relative; }
-  .container { max-width: 1200px; margin: 0 auto; }
-  .section-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--yellow-primary); margin-bottom: 1rem; display: block; }
-  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.2; color: var(--white); margin-bottom: 1.5rem; }
-  .section-title span { color: var(--yellow-primary); }
-  .divider { width: 70px; height: 4px; background: var(--yellow-primary); margin-bottom: 2.5rem; }
+  .nav-menu { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+  .nav-menu a { 
+    color: var(--text-muted); text-decoration: none; font-size: 0.85rem; 
+    font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: var(--transition); 
+  }
+  .nav-menu a:hover { color: var(--gold-bright); }
   
-  /* HIGH-CONTRAST YELLOW BUTTONS */
+  /* ================= MODERN BUTTONS ================= */
   .btn-primary { 
-    background: linear-gradient(135deg, var(--yellow-bright), var(--yellow-deep)); color: #000; font-weight: 700; padding: 1rem 2.5rem; border-radius: 4px; text-decoration: none; font-size: 1rem; letter-spacing: 0.05em; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.6rem; border: none; cursor: pointer; box-shadow: 0 4px 25px var(--yellow-glow); text-transform: uppercase;
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold)); 
+    color: #000; font-weight: 800; padding: 1rem 2.5rem; border-radius: 4px; 
+    text-decoration: none; font-size: 0.95rem; letter-spacing: 0.05em; 
+    transition: var(--transition); display: inline-flex; align-items: center; gap: 0.6rem; 
+    border: none; cursor: pointer; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); text-transform: uppercase;
   }
-  .btn-primary:hover { background: var(--white); transform: translateY(-3px); box-shadow: 0 8px 35px rgba(250, 208, 44, 0.5); }
+  .btn-primary:hover { 
+    transform: translateY(-3px) scale(1.02); 
+    box-shadow: 0 10px 30px rgba(250, 208, 44, 0.6); 
+    background: var(--text-main); color: #000;
+  }
   
-  .btn-secondary { 
-    background: transparent; border: 2px solid var(--yellow-primary); color: var(--yellow-primary); font-weight: 700; padding: 0.95rem 2.4rem; border-radius: 4px; text-decoration: none; font-size: 1rem; letter-spacing: 0.05em; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.6rem; margin-left: 1rem; cursor: pointer; text-transform: uppercase;
+  .btn-outline { 
+    background: rgba(255, 255, 255, 0.02); border: 2px solid var(--gold); 
+    color: var(--gold-bright); font-weight: 700; padding: 0.95rem 2.4rem; 
+    border-radius: 4px; text-decoration: none; font-size: 0.95rem; letter-spacing: 0.05em; 
+    transition: var(--transition); display: inline-flex; align-items: center; gap: 0.6rem; 
+    cursor: pointer; backdrop-filter: blur(8px); text-transform: uppercase;
   }
-  .btn-secondary:hover { background: var(--yellow-glow); color: var(--white); border-color: var(--white); transform: translateY(-3px); }
+  .btn-outline:hover { 
+    border-color: var(--text-main); color: var(--text-main); 
+    transform: translateY(-3px); background: rgba(255, 255, 255, 0.1); 
+  }
 
-  /* HERO SECTION */
+  /* ================= HERO & ANIMATED GRID ================= */
+  section { padding: 8rem 5%; position: relative; }
+  
   #hero {
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    background: radial-gradient(circle at 50% 15%, var(--yellow-glow) 0%, transparent 60%), linear-gradient(135deg, var(--bg-dark) 0%, #040812 100%);
-    position: relative; overflow: hidden; padding-top: 140px; text-align: center;
+    position: relative; overflow: hidden; padding-top: 120px; text-align: center;
   }
   
-  .hero-wrapper { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; }
-  
-  /* PERFECTLY FITTED HEADSHOT */
-  .hero-visual { margin-bottom: 2rem; position: relative; }
-  .hero-portrait {
-    width: 220px; height: 220px; border-radius: 50%; 
-    object-fit: cover; object-position: center;
-    border: 4px solid var(--yellow-primary); 
-    box-shadow: 0 0 40px var(--yellow-glow); transition: var(--transition);
+  /* Cyber-Grid Animation */
+  .hero-grid {
+    position: absolute; inset: -50%; opacity: 0.15;
+    background-image: 
+      linear-gradient(var(--gold) 1px, transparent 1px), 
+      linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+    background-size: 60px 60px; 
+    transform: perspective(1000px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+    animation: gridMove 20s linear infinite; pointer-events: none;
+    mask-image: radial-gradient(circle at center, black 10%, transparent 60%);
+    -webkit-mask-image: radial-gradient(circle at center, black 10%, transparent 60%);
   }
-  .hero-portrait:hover { transform: scale(1.05); box-shadow: 0 0 60px rgba(250, 208, 44, 0.4); }
-
-  .status-pill { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(0,0,0,0.5); border: 1px solid var(--yellow-primary); color: var(--yellow-primary); padding: 0.6rem 1.5rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; backdrop-filter: blur(10px); }
-  .status-dot { width: 8px; height: 8px; background: var(--yellow-bright); border-radius: 50%; box-shadow: 0 0 12px var(--yellow-bright); animation: pulse 2s infinite; }
-  @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
-
-  .hero-headline { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5.5vw, 4.2rem); font-weight: 900; line-height: 1.1; margin-bottom: 1rem; color: var(--white); letter-spacing: -0.02em; }
+  @keyframes gridMove { 0% { transform: perspective(1000px) rotateX(60deg) translateY(0); } 100% { transform: perspective(1000px) rotateX(60deg) translateY(60px); } }
   
-  /* OPERATING PHILOSOPHY */
-  .hero-philosophy { font-size: 1.2rem; color: var(--yellow-primary); font-weight: 600; font-style: italic; margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+  .hero-content { position: relative; z-index: 2; max-width: 1000px; display: flex; flex-direction: column; align-items: center; }
   
-  .hero-sub { font-size: clamp(1.05rem, 2vw, 1.15rem); color: var(--text-muted); line-height: 1.8; margin-bottom: 2.5rem; max-width: 850px; }
-  .hero-sub strong { color: var(--white); font-weight: 600; }
+  .hero-headshot-wrapper { position: relative; margin-bottom: 2.5rem; }
+  .hero-headshot {
+    width: 200px; height: 200px; border-radius: 50%; object-fit: cover; object-position: center;
+    border: 3px solid var(--gold); position: relative; z-index: 2;
+    box-shadow: 0 0 40px var(--gold-glow); transition: var(--transition);
+  }
+  .hero-headshot:hover { transform: scale(1.05); border-color: var(--gold-bright); box-shadow: 0 0 60px rgba(250, 208, 44, 0.4); }
   
-  /* MASTER METRICS BAR (LOCKED) */
-  .metric-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; border-top: 2px solid var(--border); padding-top: 3rem; background: rgba(15, 28, 63, 0.5); border-radius: 12px; backdrop-filter: blur(12px); border: 1px solid var(--border); width: 100%; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-  .metric-item { text-align: center; padding: 0 1rem; border-right: 1px solid rgba(255,255,255,0.05); }
-  .metric-item:last-child { border-right: none; }
-  .metric-number { display: block; font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 3.5vw, 3rem); font-weight: 700; color: var(--yellow-bright); line-height: 1; margin-bottom: 0.8rem; text-shadow: 0 0 20px rgba(250, 208, 44, 0.2); }
-  .metric-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--white); font-weight: 600; line-height: 1.4; }
+  /* Orbiting Ring Animation around photo */
+  .orbit-ring {
+    position: absolute; top: -15px; left: -15px; right: -15px; bottom: -15px;
+    border-radius: 50%; border: 1px dashed var(--gold);
+    animation: spin 15s linear infinite; pointer-events: none; opacity: 0.5;
+  }
+  @keyframes spin { 100% { transform: rotate(360deg); } }
 
-  /* THE CORE LOOP FRAMEWORK */
-  #framework { background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .loop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
-  .loop-card { background: var(--bg-dark); border: 1px solid var(--border); padding: 3rem 2rem; border-radius: 8px; text-align: center; transition: var(--transition); position: relative; }
-  .loop-card:hover { border-color: var(--yellow-primary); transform: translateY(-10px); box-shadow: 0 15px 30px var(--yellow-glow); }
-  .loop-number { font-family: 'Playfair Display', serif; font-size: 4rem; color: rgba(229, 193, 88, 0.15); position: absolute; top: 10px; right: 20px; font-weight: 900; line-height: 1; }
-  .loop-title { font-size: 1.4rem; color: var(--yellow-primary); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em; position: relative; z-index: 2; }
-  .loop-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; position: relative; z-index: 2; }
+  .status-badge { 
+    display: inline-flex; align-items: center; gap: 0.6rem; 
+    background: var(--bg-glass); border: 1px solid var(--gold); color: var(--gold-bright); 
+    padding: 0.6rem 1.5rem; border-radius: 50px; font-family: 'JetBrains Mono', monospace; 
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; 
+  }
+  .pulse-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 12px #22c55e; animation: pulseData 2s infinite; }
+  @keyframes pulseData { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } 100% { opacity: 1; transform: scale(1); } }
 
-  /* CASE STUDY SECTION */
-  #casestudy { background: var(--bg-dark); }
-  .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-  .cs-box { background: rgba(15, 28, 63, 0.4); border: 1px solid var(--border); padding: 2.5rem; border-radius: 8px; }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.2rem; color: var(--text-main); }
+  .hero-subtitle { font-size: clamp(1.1rem, 2vw, 1.25rem); color: var(--text-muted); max-width: 800px; line-height: 1.8; margin-bottom: 2.5rem; }
+  .hero-subtitle strong { color: var(--gold-bright); font-weight: 600; }
+  
+  .cta-group { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;}
 
-  /* CAREER TIMELINE (VERIFIED TITLES) */
-  #experience { background: var(--bg-surface); border-top: 1px solid var(--border); }
-  .timeline-container { max-width: 950px; margin: 0 auto; }
-  .timeline-item { border-left: 3px solid var(--border); padding-left: 3rem; margin-bottom: 4.5rem; position: relative; transition: var(--transition); }
-  .timeline-item:hover { border-left-color: var(--yellow-primary); }
-  .timeline-item::before { content: ''; position: absolute; left: -11px; top: 0; width: 18px; height: 18px; background: var(--bg-dark); border: 4px solid var(--yellow-primary); border-radius: 50%; transition: var(--transition); }
-  .timeline-item:hover::before { background: var(--yellow-bright); box-shadow: 0 0 20px var(--yellow-bright); }
-  .timeline-date { color: var(--yellow-primary); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.5rem; display: block; text-transform: uppercase; }
-  .timeline-role { font-size: 1.6rem; color: var(--white); margin-bottom: 0.3rem; font-weight: 700; font-family: 'Playfair Display', serif; }
-  .timeline-company { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem; display: inline-block; }
-  .timeline-bullets { color: var(--text-muted); font-size: 1rem; margin-left: 1.2rem; line-height: 1.8; }
-  .timeline-bullets li { margin-bottom: 0.85rem; }
-  .timeline-bullets li strong { color: var(--white); font-weight: 600; }
+  /* ================= SECTION HEADERS ================= */
+  .section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+  .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.2; color: var(--text-main); margin-bottom: 1.5rem; }
+  .section-heading span { color: var(--gold); font-style: italic; }
+  .heading-divider { width: 80px; height: 4px; background: linear-gradient(90deg, var(--gold-bright), transparent); margin-bottom: 3rem; }
 
-  /* EDUCATION & CREDENTIALS */
-  .education-box { background: var(--bg-dark); border: 1px solid var(--border); padding: 3rem; border-radius: 8px; margin-top: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
-  .edu-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 1.5rem; }
-  .edu-list p { margin-bottom: 0.8rem; color: var(--text-muted); font-size: 1.05rem; }
-  .edu-list strong { color: var(--yellow-primary); }
+  /* ================= INTERACTIVE COCKPIT / TELEMETRY ================= */
+  #telemetry { background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .dashboard-container { max-width: 1200px; margin: 0 auto; }
+  
+  .metric-counters { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+  .counter-box { 
+    background: var(--bg-base); border: 1px solid var(--border); padding: 2.5rem 1.5rem; 
+    border-radius: 12px; text-align: center; position: relative; overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+  }
+  .counter-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--gold); opacity: 0.5; }
+  .counter-value { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: var(--gold-bright); line-height: 1; margin-bottom: 0.5rem; text-shadow: 0 0 20px rgba(250, 208, 44, 0.3); }
+  .counter-label { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
 
-  /* CONTACT SECTION */
-  #contact { background: linear-gradient(to bottom, var(--bg-surface), var(--bg-dark)); border-top: 1px solid var(--border); }
-  .contact-box { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); padding: 4rem 2rem; border-radius: 12px; backdrop-filter: blur(10px); text-align: center; }
-  .social-links { display: flex; justify-content: center; gap: 2rem; margin-top: 2.5rem; }
-  .social-links a { font-size: 2.5rem; color: var(--text-muted); transition: var(--transition); }
-  .social-links a:hover { color: var(--yellow-primary); transform: translateY(-5px); }
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .chart-card { 
+    background: var(--bg-glass); border: 1px solid rgba(255,255,255,0.05); 
+    border-radius: 16px; padding: 2rem; backdrop-filter: blur(12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+  .chart-card h3 { font-size: 1.2rem; color: var(--text-main); margin-bottom: 1.5rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+  .chart-card h3 i { color: var(--gold); }
+  .canvas-wrapper { position: relative; height: 300px; width: 100%; }
+
+  /* ================= CORE LOOP & GLASS CARDS ================= */
+  .glass-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+  
+  /* Vanilla JS Tilt Card */
+  .tilt-card {
+    background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 3rem 2rem; border-radius: 16px; position: relative; overflow: hidden;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    backdrop-filter: blur(10px);
+  }
+  .tilt-card:hover { border-color: var(--gold); z-index: 10; box-shadow: 0 20px 40px var(--gold-glow); }
+  
+  .loop-number { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--gold); font-weight: 700; margin-bottom: 1.5rem; display: inline-block; background: rgba(212,175,55,0.1); padding: 0.3rem 0.8rem; border-radius: 4px; }
+  .tilt-card h3 { font-size: 1.4rem; color: var(--text-main); margin-bottom: 1rem; font-weight: 700; }
+  .tilt-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+
+  /* ================= MANIFESTO ================= */
+  #manifesto { background: var(--bg-base); }
+  .manifesto-box {
+    background: linear-gradient(135deg, var(--bg-surface), #040812);
+    border: 1px solid var(--border); padding: 4rem; border-radius: 20px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  }
+  .quote-mark { font-family: 'Playfair Display', serif; font-size: 8rem; color: var(--gold); opacity: 0.15; line-height: 0; position: absolute; transform: translateY(40px); }
+  
+  /* ================= VERIFIED TIMELINE ================= */
+  .timeline { max-width: 900px; margin: 0 auto; }
+  .time-item { border-left: 2px solid var(--border); padding-left: 3rem; margin-bottom: 4rem; position: relative; transition: var(--transition); }
+  .time-item:hover { border-color: var(--gold); }
+  .time-item::before { 
+    content: ''; position: absolute; left: -9px; top: 0; width: 16px; height: 16px; 
+    background: var(--bg-base); border: 3px solid var(--gold); border-radius: 50%; transition: var(--transition); 
+  }
+  .time-item:hover::before { background: var(--gold-bright); box-shadow: 0 0 20px var(--gold-bright); }
+  .time-date { font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.8rem; display: block; }
+  .time-role { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--text-main); margin-bottom: 0.3rem; }
+  .time-company { font-size: 1.1rem; color: var(--text-muted); font-weight: 500; margin-bottom: 1.5rem; display: inline-block; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
+  .time-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .time-bullets li { position: relative; padding-left: 1.5rem; color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
+  .time-bullets li::before { content: '▹'; position: absolute; left: 0; color: var(--gold); font-size: 1.2rem; line-height: 1; }
+  .time-bullets li strong { color: var(--text-main); font-weight: 600; }
+
+  /* ================= CONTACT ================= */
+  #contact { background: linear-gradient(to bottom, var(--bg-surface), var(--bg-base)); text-align: center; }
+  .contact-box {
+    max-width: 800px; margin: 0 auto; background: var(--bg-glass); border: 1px solid var(--border);
+    padding: 5rem 3rem; border-radius: 20px; backdrop-filter: blur(15px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+  .social-cluster { display: flex; justify-content: center; gap: 2rem; margin: 3rem 0; }
+  .social-cluster a { font-size: 2.2rem; color: var(--text-muted); transition: var(--transition); }
+  .social-cluster a:hover { color: var(--gold-bright); transform: translateY(-5px) scale(1.1); }
 
   /* FOOTER */
-  footer { background: #040812; border-top: 1px solid var(--border); text-align: center; padding: 3rem; font-size: 0.95rem; color: var(--text-muted); }
-  footer span { color: var(--yellow-primary); font-weight: 700; }
+  footer { background: #02040a; border-top: 1px solid var(--border); padding: 3rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+  footer span { color: var(--gold); font-weight: 700; }
 
-  /* ANIMATIONS */
-  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
+  /* ================= ANIMATIONS ================= */
+  .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
   .reveal.active { opacity: 1; transform: translateY(0); }
 
-  /* RESPONSIVE DESIGN */
+  /* RESPONSIVE */
   @media (max-width: 960px) {
-    .metric-bar { grid-template-columns: repeat(2, 1fr); gap: 2rem; padding: 2rem 1rem; }
-    .metric-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.5rem; }
-    .metric-item:nth-child(3), .metric-item:nth-child(4) { border-bottom: none; padding-bottom: 0; }
-    .btn-secondary { margin-left: 0; margin-top: 1rem; display: block; width: 100%; text-align: center; }
-    .btn-primary { display: block; width: 100%; text-align: center; }
-    .education-box, .cs-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 540px) {
-    .metric-bar { grid-template-columns: 1fr; }
-    .metric-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.5rem; }
-    .metric-item:last-child { border-bottom: none; }
+    .nav-menu { display: none; }
+    .chart-grid, .manifesto-box { grid-template-columns: 1fr; }
+    .manifesto-box { padding: 2rem; gap: 2rem; text-align: center; }
+    .cta-group { flex-direction: column; }
+    .btn-primary, .btn-outline { justify-content: center; width: 100%; margin-left: 0; }
+    .time-item { padding-left: 2rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- TOP NAVIGATION & BRANDING -->
+<!-- TOP-LEFT COMMAND CENTER -->
 <nav id="navbar">
-    <div class="nav-left-cluster">
-        <a href="#hero" class="nav-logo-name">
+    <div class="nav-brand-cluster">
+        <a href="#hero" class="nav-name">
             Muhammad A. <span>Yunas</span>
         </a>
-        <div class="nav-sub-links">
+        <div class="nav-quick-links">
             <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            <a href="Muhammad_Yunas_Resume_2026.pdf" download><i class="fa-solid fa-file-pdf"></i> Resume PDF</a>
+            <a href="Muhammad_Yunas_Resume_2026.pdf" download><i class="fa-solid fa-file-pdf"></i> Resume .PDF</a>
         </div>
     </div>
-    <ul class="nav-links">
-        <li><a href="#framework">The Core Loop</a></li>
-        <li><a href="#casestudy">Case Study</a></li>
+    <ul class="nav-menu">
+        <li><a href="#telemetry">Cockpit</a></li>
+        <li><a href="#framework">Core Loop</a></li>
         <li><a href="#experience">Track Record</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Connect</a></li>
     </ul>
-    <div class="hamburger" id="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
-        <span></span><span></span><span></span>
-    </div>
 </nav>
 
 <!-- HERO SECTION -->
 <section id="hero">
-    <div class="hero-wrapper reveal">
+    <div class="hero-grid"></div>
+    <div class="hero-content reveal">
         
-        <div class="hero-visual">
-            <img src="assets/portrait.png" alt="Muhammad A. Yunas Executive Portrait" class="hero-portrait">
+        <div class="hero-headshot-wrapper">
+            <div class="orbit-ring"></div>
+            <img src="assets/portrait.png" alt="Muhammad A. Yunas Executive Portrait" class="hero-headshot">
         </div>
 
-        <div class="status-pill">
-            <span class="status-dot"></span>
-            Long Island, New York &nbsp;|&nbsp; Executive GTM Leadership
+        <div class="status-badge">
+            <span class="pulse-dot"></span>
+            Long Island, New York &nbsp;|&nbsp; Physical AI Executive
         </div>
         
-        <h1 class="hero-headline">Building the Commercial Layer of Physical AI</h1>
-        <div class="hero-philosophy">"Listen deeply. Clarify relentlessly. Execute decisively."</div>
+        <h1 class="hero-title">Building the Commercial Layer of Physical AI.</h1>
+        <p class="hero-subtitle">Bridging OT complexity and enterprise SaaS scale. <strong>18 years</strong> translating deep technical capability, edge intelligence, and the NVIDIA ecosystem into clear market narratives and repeatable revenue[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span).</p>
         
-        <p class="hero-sub">Bridging OT complexity and enterprise SaaS scale. <strong>18 years</strong> translating deep technical expertise into clear market narratives, repeatable GTM systems, and measurable commercial momentum across B2B SaaS, Physical AI, and Industrial IoT.</p>
+        <div class="cta-group">
+            <a href="mailto:yunasmuh@gmail.com" class="btn-primary"><i class="fa-solid fa-bolt"></i> Email Me Directly</a>
+            <a href="#telemetry" class="btn-outline"><i class="fa-solid fa-chart-pie"></i> View Interactive Telemetry</a>
+        </div>
+    </div>
+</section>
+
+<!-- INTERACTIVE TELEMETRY COCKPIT (CHART.JS) -->
+<section id="telemetry">
+    <div class="dashboard-container reveal">
+        <span class="section-eyebrow"><i class="fa-solid fa-satellite-dish"></i> Live Dashboard</span>
+        <h2 class="section-heading">Commercial <span>Telemetry.</span></h2>
+        <div class="heading-divider"></div>
         
-        <div style="margin-bottom: 1rem;">
-            <a href="mailto:yunasmuh@gmail.com" class="btn-primary">Connect with Me →</a>
-            <a href="Muhammad_Yunas_Resume_2026.pdf" download class="btn-secondary"><i class="fa-solid fa-download"></i> Download Resume</a>
+        <div class="metric-counters">
+            <div class="counter-box">
+                <div class="counter-value" data-target="150">$0M+</div>
+                <div class="counter-label">Documented Rev Influence</div>
+            </div>
+            <div class="counter-box">
+                <div class="counter-value" data-target="75">$0M+</div>
+                <div class="counter-label">IIoT Revenue Scaled</div>
+            </div>
+            <div class="counter-box">
+                <div class="counter-value" data-target="42">0%</div>
+                <div class="counter-label">Win-Rate Improvement</div>
+            </div>
+            <div class="counter-box">
+                <div class="counter-value" data-target="24">0+</div>
+                <div class="counter-label">Major Launches Executed</div>
+            </div>
         </div>
 
-        <!-- LOCKED MASTER METRICS -->
-        <div class="metric-bar">
-            <div class="metric-item">
-                <span class="metric-number">$150M+</span>
-                <span class="metric-label">Documented Revenue Influence</span>
+        <div class="chart-grid">
+            <div class="chart-card">
+                <h3><i class="fa-solid fa-gauge-high"></i> GTM Velocity Accelerators</h3>
+                <div class="canvas-wrapper">
+                    <canvas id="velocityChart"></canvas>
+                </div>
             </div>
-            <div class="metric-item">
-                <span class="metric-number">$75M+</span>
-                <span class="metric-label">Cumulative IIoT Revenue Scaled (18 Mos)</span>
-            </div>
-            <div class="metric-item">
-                <span class="metric-number">42%</span>
-                <span class="metric-label">Competitive Win-Rate Improvement</span>
-            </div>
-            <div class="metric-item">
-                <span class="metric-number">40%</span>
-                <span class="metric-label">Sales-Cycle Reduction</span>
+            <div class="chart-card">
+                <h3><i class="fa-solid fa-bullseye"></i> Market Dominance Multipliers</h3>
+                <div class="canvas-wrapper">
+                    <canvas id="dominanceChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- STRATEGIC PIVOT: THE CORE LOOP -->
+<!-- THE CORE LOOP / GLASS CARDS -->
 <section id="framework">
-    <div class="container reveal">
-        <span class="section-label">Operational Philosophy</span>
-        <h2 class="section-title">The Core Loop: <span>Sense → Reason → Act → Learn</span></h2>
-        <div class="divider"></div>
-        <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 800px;">I excel at the intersection of technical depth and commercial clarity, particularly in industries where physical AI, autonomy, and industrial operations intelligence are redefining how the physical world functions.</p>
+    <div class="dashboard-container reveal">
+        <span class="section-eyebrow"><i class="fa-solid fa-microchip"></i> Operating System</span>
+        <h2 class="section-heading">The Core Loop: <span>Sense → Reason → Act → Learn.</span></h2>
+        <div class="heading-divider"></div>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 800px; margin-bottom: 3rem;">I excel at the intersection of technical depth and commercial clarity, particularly in industries where physical AI, autonomy, and industrial operations intelligence are redefining how the world functions.</p>
         
-        <div class="loop-grid">
-            <div class="loop-card">
-                <div class="loop-number">01</div>
-                <h3 class="loop-title">Sense</h3>
-                <p class="loop-desc">Identify the operational signal that matters: downtime, yield loss, quality variance, energy use, risk, or security exposure.</p>
+        <div class="glass-grid">
+            <div class="tilt-card" data-tilt>
+                <div class="loop-number">01. SENSE</div>
+                <h3>Identify the Signal</h3>
+                <p>Pinpoint the operational signal that matters: downtime, yield loss, quality variance, energy use, risk, or security exposure.</p>
             </div>
-            <div class="loop-card">
-                <div class="loop-number">02</div>
-                <h3 class="loop-title">Reason</h3>
-                <p class="loop-desc">Turn data into context: diagnose the cause, quantify the impact, and prioritize the decision for CFO-level business outcomes.</p>
+            <div class="tilt-card" data-tilt>
+                <div class="loop-number">02. REASON</div>
+                <h3>Turn Data into Context</h3>
+                <p>Diagnose the cause, quantify the impact, and prioritize the decision for CFO-level business outcomes and enterprise scale.</p>
             </div>
-            <div class="loop-card">
-                <div class="loop-number">03</div>
-                <h3 class="loop-title">Act</h3>
-                <p class="loop-desc">Connect insight to a workflow: operator action, automated response, maintenance intervention, or executive escalation.</p>
+            <div class="tilt-card" data-tilt>
+                <div class="loop-number">03. ACT</div>
+                <h3>Connect Insight to Workflow</h3>
+                <p>Execute through operator action, automated response, maintenance intervention, or direct executive escalation.</p>
             </div>
-            <div class="loop-card">
-                <div class="loop-number">04</div>
-                <h3 class="loop-title">Learn</h3>
-                <p class="loop-desc">Measure outcomes, codify the playbook, and scale successful deployments across assets, plants, and partner channels.</p>
+            <div class="tilt-card" data-tilt>
+                <div class="loop-number">04. LEARN</div>
+                <h3>Codify & Scale</h3>
+                <p>Measure outcomes, write the playbook, and scale successful deployments across assets, plants, and partner channels.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- THE MISSING CASE STUDY SECTION -->
-<section id="casestudy">
-    <div class="container reveal">
-        <span class="section-label">GTM Playbook</span>
-        <h2 class="section-title">The GTM Transformation: <span>OT/IT Convergence.</span></h2>
-        <div class="divider"></div>
-        <div class="cs-grid">
-            <div class="cs-challenge">
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--white);">The Feature Trap & The OT/IT Divide.</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.05rem;">A recurring theme across industrial tech is brilliant technology trapped behind weak positioning. Products are sold on feature comparisons, sales cycles are agonizingly long, and OT buyers and IT buyers veto each other because the vendor fails to speak both languages. My playbook breaks this cycle.</p>
-                <div class="cs-box">
-                    <h4 style="color: var(--yellow-primary); margin-bottom: 1rem; font-size: 1.2rem;">Execution Strategy</h4>
-                    <ul style="color: var(--text-muted); margin-left: 1.2rem; line-height: 1.8;">
-                        <li style="margin-bottom: 0.5rem;"><strong>Listen Deeply:</strong> Narrowed the ICP to discrete manufacturing and upstream energy.</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Clarify Relentlessly:</strong> Translated complex capabilities into CFO-aligned business cases (e.g., operational resilience).</li>
-                        <li><strong>Execute Decisively:</strong> Shifted from subjective slide decks to structured, time-bound POCs with co-authored success metrics.</li>
-                    </ul>
-                </div>
+<!-- SILICON MEETS STEEL MANIFESTO -->
+<section id="manifesto">
+    <div class="dashboard-container reveal">
+        <div class="manifesto-box">
+            <div style="position: relative;">
+                <span class="quote-mark">“</span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--text-main); margin-bottom: 1.5rem; line-height: 1.2;">Silicon Meets Steel: The Industrial Imperative.</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">The generative AI hype cycle is maturing, but the true economic engine of the next decade lives at the edge. To generate real, sustainable revenue, AI must leave the browser tab and enter the physical world[span_7](start_span)[span_7](end_span).</p>
+                <div style="margin-top: 2rem; font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 0.9rem; font-weight: 700;">▸ FROM THE 2026 BOARD MEMO[span_8](start_span)[span_8](end_span)</div>
             </div>
-            <div class="cs-result">
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--white);">Measurable Commercial Velocity.</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.05rem;">When you align technical product design directly to the business outcomes buyers care about, the metrics compound. This playbook is how I have historically transformed go-to-market functions into primary revenue drivers.</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <div style="background: var(--bg-surface); border: 1px solid var(--border); padding: 1.5rem; text-align: center; border-radius: 8px;">
-                        <div style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--yellow-bright); font-weight: 700;">$75M+</div>
-                        <div style="font-size: 0.85rem; color: var(--white); font-weight: 600; text-transform: uppercase; margin-top: 0.5rem;">IIoT Revenue Scaled</div>
-                    </div>
-                    <div style="background: var(--bg-surface); border: 1px solid var(--border); padding: 1.5rem; text-align: center; border-radius: 8px;">
-                        <div style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--yellow-bright); font-weight: 700;">40%</div>
-                        <div style="font-size: 0.85rem; color: var(--white); font-weight: 600; text-transform: uppercase; margin-top: 0.5rem;">Sales-Cycle Reduction</div>
-                    </div>
-                </div>
+            <div>
+                <img src="assets/portrait.png" alt="Industrial AI" style="width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); filter: grayscale(50%) contrast(1.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
             </div>
         </div>
     </div>
@@ -345,109 +410,90 @@
 
 <!-- VERIFIED CAREER TIMELINE -->
 <section id="experience">
-    <div class="timeline-container reveal">
-        <span class="section-label">Track Record</span>
-        <h2 class="section-title">Verified Executive <span>Experience.</span></h2>
-        <div class="divider"></div>
+    <div class="timeline reveal">
+        <span class="section-eyebrow"><i class="fa-solid fa-clock-rotate-left"></i> Track Record</span>
+        <h2 class="section-heading">Verified Executive <span>Experience.</span></h2>
+        <div class="heading-divider"></div>
         
-        <div class="timeline">
-            
-            <div class="timeline-item">
-                <span class="timeline-date">July 2024 – Present</span>
-                <h3 class="timeline-role">Independent Consultant / Fractional GTM & Product Marketing Leader</h3>
-                <p class="timeline-company">Executive Advisory | New York, NY</p>
-                <ul class="timeline-bullets">
-                    <li>Retained as Physical AI and Industrial IoT GTM counsel for enterprise organizations.</li>
-                    <li>Transforming deep technical expertise into clear market narratives that resonate with buyers.</li>
-                    <li>Designing go-to-market systems that enhance pipeline velocity and drive enterprise adoption.</li>
-                </ul>
-            </div>
-
-            <div class="timeline-item">
-                <span class="timeline-date">Dec 2022 – June 2024</span>
-                <h3 class="timeline-role">Senior Director, Product Marketing | Industrial IoT GTM & Revenue Strategy</h3>
-                <p class="timeline-company">UST | Aliso Viejo, CA</p>
-                <ul class="timeline-bullets">
-                    <li>Drove <strong>$9M in new revenue</strong> and improved customer engagement by 75% through a Physical Operations Intelligence GTM repositioning.</li>
-                    <li>Aligned Product, Sales, and Executive teams around a cohesive, CFO-level revenue story.</li>
-                </ul>
-            </div>
-
-            <div class="timeline-item">
-                <span class="timeline-date">Dec 2021 – Oct 2022</span>
-                <h3 class="timeline-role">VP, Product Marketing</h3>
-                <p class="timeline-company">Uptake | Chicago, IL</p>
-                <ul class="timeline-bullets">
-                    <li>Built an OT/IT convergence narrative for predictive maintenance and asset performance management.</li>
-                    <li>Reduced sales cycles by <strong>40%</strong> and increased target-account engagement by 35%.</li>
-                </ul>
-            </div>
-
-            <div class="timeline-item">
-                <span class="timeline-date">July 2018 – Nov 2021</span>
-                <h3 class="timeline-role">Senior Director, PMM</h3>
-                <p class="timeline-company">Dell Technologies | Boston, MA</p>
-                <ul class="timeline-bullets">
-                    <li>Led GTM repositioning for a $500M+ cyber-recovery and data-protection portfolio.</li>
-                    <li>Improved competitive win rate by <strong>42%</strong> and connected data protection to operational uptime.</li>
-                </ul>
-            </div>
-
-            <div class="timeline-item">
-                <span class="timeline-date">Jan 2012 – Dec 2015</span>
-                <h3 class="timeline-role">Senior Director, PMM</h3>
-                <p class="timeline-company">Schneider Electric | Boston, MA</p>
-                <ul class="timeline-bullets">
-                    <li>Scaled an early IIoT platform to <strong>$75M+ in cumulative revenue</strong> within 18 months.</li>
-                    <li>Achieved 38% market share and increased average deal size by 35%.</li>
-                </ul>
-            </div>
+        <div class="time-item">
+            <span class="time-date">July 2024 – Present</span>
+            <h3 class="time-role">Independent Consultant / Fractional GTM & Product Marketing Leader</h3>
+            <span class="time-company">Executive Advisory | New York, NY</span>
+            <ul class="time-bullets">
+                <li>Retained as Physical AI and Industrial IoT GTM counsel for enterprise B2B organizations commercializing AI systems.</li>
+                <li>Architecting GTM frameworks for Agentic AI and OT/IT convergence platforms.</li>
+                <li>Shaping Physical AI category narratives through publications and executive advisory.</li>
+            </ul>
         </div>
 
-        <!-- EDUCATION SECTION (VERIFIED ONLY) -->
-        <div class="education-box">
-            <div>
-                <h4 class="edu-title">Education &amp; Verified Credentials</h4>
-                <p style="color: var(--text-muted); font-size: 1.05rem;">Formal academic background spanning international business, corporate communications, and political science.</p>
-            </div>
-            <div class="edu-list">
-                <p><strong>Seton Hall University:</strong> M.A., Diplomacy &amp; International Relations</p>
-                <p><strong>Seton Hall University:</strong> M.A., Corporate Communications</p>
-                <p><strong>University of Rhode Island:</strong> B.A., International Business &amp; Political Science</p>
-            </div>
+        <div class="time-item">
+            <span class="time-date">Dec 2022 – June 2024</span>
+            <h3 class="time-role">Senior Director, Product Marketing | Industrial IoT GTM</h3>
+            <span class="time-company">UST | Aliso Viejo, CA</span>
+            <ul class="time-bullets">
+                <li>Drove <strong>$9M in new revenue</strong> and improved customer engagement by 75% through a Physical Operations Intelligence GTM repositioning.</li>
+                <li>Aligned Product, Sales, and Executive teams around a cohesive, CFO-level revenue story.</li>
+            </ul>
+        </div>
+
+        <div class="time-item">
+            <span class="time-date">Dec 2021 – Oct 2022</span>
+            <h3 class="time-role">VP, Product Marketing</h3>
+            <span class="time-company">Uptake | Chicago, IL</span>
+            <ul class="time-bullets">
+                <li>Built an OT/IT convergence narrative for predictive maintenance and asset performance management.</li>
+                <li>Reduced sales cycles by <strong>40%</strong> and increased target-account engagement by 35%.</li>
+            </ul>
+        </div>
+
+        <div class="time-item">
+            <span class="time-date">July 2018 – Nov 2021</span>
+            <h3 class="time-role">Senior Director, PMM</h3>
+            <span class="time-company">Dell Technologies | Boston, MA</span>
+            <ul class="time-bullets">
+                <li>Led GTM repositioning for a $500M+ cyber-recovery and data-protection portfolio.</li>
+                <li>Improved competitive win rate by <strong>42%</strong> and connected data protection to operational uptime.</li>
+            </ul>
         </div>
     </div>
 </section>
 
 <!-- CONTACT SECTION -->
 <section id="contact">
-    <div class="container reveal">
-        <div class="contact-box">
-            <h2 class="section-title">Ready for a <span>Conversation?</span></h2>
-            <div class="divider" style="margin: 0 auto 2rem;"></div>
-            <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 700px; margin: 0 auto 2.5rem;">
-                I am actively seeking Vice President and Direct GTM leadership roles in Product Marketing, launch strategy, and commercial growth within Series A-C industrial AI and infrastructure companies.
-            </p>
-            
-            <a href="mailto:yunasmuh@gmail.com" class="btn-primary" style="font-size: 1.1rem; padding: 1.2rem 3rem;">Email Me Directly →</a>
-            
-            <div class="social-links">
-                <a href="mailto:yunasmuh@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="Muhammad_Yunas_Resume_2026.pdf" download aria-label="Download Resume"><i class="fa-solid fa-file-pdf"></i></a>
-            </div>
+    <div class="contact-box reveal">
+        <h2 class="section-heading" style="margin-bottom: 1rem;">Ready for a <span>Conversation?</span></h2>
+        <div class="heading-divider" style="margin: 0 auto 2rem;"></div>
+        <p style="color: var(--text-muted); font-size: 1.15rem; margin-bottom: 1rem;">
+            I am actively seeking Vice President and Direct GTM leadership roles within Series A-C industrial AI and infrastructure companies. Let's build the commercial layer.
+        </p>
+        <p style="font-family: 'JetBrains Mono', monospace; color: var(--gold-bright); font-size: 0.9rem; margin-bottom: 2rem;">📍 LONG ISLAND, NEW YORK (REMOTE / HYBRID / RELOCATABLE)[span_9](start_span)[span_9](end_span)</p>
+        
+        <div class="social-cluster">
+            <a href="mailto:yunasmuh@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="Muhammad_Yunas_Resume_2026.pdf" download aria-label="Download Resume"><i class="fa-solid fa-file-pdf"></i></a>
         </div>
+        
+        <a href="mailto:yunasmuh@gmail.com" class="btn-primary" style="font-size: 1.1rem; padding: 1.2rem 3.5rem;">
+            <i class="fa-solid fa-paper-plane"></i> Initiate Contact
+        </a>
     </div>
 </section>
 
 <footer>
-    <p>&copy; <span id="year">2026</span> <span>Muhammad A. Yunas</span>. All rights reserved. | Executive GTM &amp; Product Marketing</p>
+    <p>&copy; <span id="year">2026</span> <span>Muhammad A. Yunas</span>. All rights reserved. | Physical AI Executive Portfolio.</p>
 </footer>
 
 <script>
+    // 1. Dynamic Year Update
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Scroll reveal observer
+    // 2. Nav Scroll Effect
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // 3. Scroll Reveal Observer
     const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
     const revealOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -458,10 +504,100 @@
         });
     }, revealOptions);
     document.querySelectorAll('.reveal').forEach(el => revealOnScroll.observe(el));
-    
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+
+    // 4. Vanilla JS Tilt Effect for Glass Cards
+    const tiltCards = document.querySelectorAll('[data-tilt]');
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left; 
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -5;
+            const rotateY = ((x - centerX) / centerX) * 5;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        });
+    });
+
+    // 5. Animated Number Counters
+    const counters = document.querySelectorAll('.counter-value');
+    const animateCounters = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = +entry.target.getAttribute('data-target');
+                let count = 0;
+                const updateCount = () => {
+                    const inc = target / 50;
+                    if (count < target) {
+                        count += inc;
+                        entry.target.innerText = (entry.target.innerText.includes('$') ? '$' : '') + Math.ceil(count) + (entry.target.innerText.includes('M') ? 'M+' : (entry.target.innerText.includes('%') ? '%' : '+'));
+                        setTimeout(updateCount, 30);
+                    } else {
+                        entry.target.innerText = (entry.target.innerText.includes('$') ? '$' : '') + target + (entry.target.innerText.includes('M') ? 'M+' : (entry.target.innerText.includes('%') ? '%' : '+'));
+                    }
+                };
+                updateCount();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(counter => animateCounters.observe(counter));
+
+    // 6. Chart.js Telemetry Initialization
+    document.addEventListener("DOMContentLoaded", function() {
+        Chart.defaults.color = '#94A3B8';
+        Chart.defaults.font.family = "'JetBrains Mono', monospace";
+
+        // Velocity Chart (Bar)
+        const ctxVelocity = document.getElementById('velocityChart');
+        if(ctxVelocity) {
+            new Chart(ctxVelocity, {
+                type: 'bar',
+                data: {
+                    labels: ['Sales Cycle Reduction', 'YoY Revenue Growth', 'CAC Reduction'],
+                    datasets: [{
+                        label: 'Impact (%)',
+                        data: [40, 30, 15],
+                        backgroundColor: ['#D4AF37', '#FAD02C', '#F3E5AB'],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { color: 'rgba(212, 175, 55, 0.1)' }, max: 100 },
+                        y: { grid: { display: false } }
+                    },
+                    animation: { duration: 2000, easing: 'easeOutQuart' }
+                }
+            });
+        }
+
+        // Dominance Chart (Doughnut)
+        const ctxDominance = document.getElementById('dominanceChart');
+        if(ctxDominance) {
+            new Chart(ctxDominance, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Win-Rate Lift', 'Market Share (18 Mo)', 'Pipeline Growth'],
+                    datasets: [{
+                        data: [42, 38, 24],
+                        backgroundColor: ['rgba(250, 208, 44, 0.9)', 'rgba(212, 175, 55, 0.6)', 'rgba(212, 175, 55, 0.2)'],
+                        borderColor: '#0a1329', borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, cutout: '70%',
+                    plugins: { legend: { position: 'bottom', labels: { color: '#F8FAFC' } } },
+                    animation: { animateScale: true, animateRotate: true, duration: 2500 }
+                }
+            });
+        }
     });
 </script>
 </body>
