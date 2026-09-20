@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Muhammad Yunas | Expertise</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NG2H7GWNJN"></script>
+<script>
+  window.dataLayer = window.dataLayer || []; 
+  function gtag(){dataLayer.push(arguments);} 
+  gtag('js', new Date()); 
+  gtag('config', 'G-NG2H7GWNJN');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root { --navy: #0a1628; --navy-mid: #0f2040; --gold: #c9a84c; --gold-light: #e8c97a; --white: #ffffff; --text-muted: #8a99b0; --border: rgba(201,168,76,0.2); --transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--navy-mid); color: var(--white); overflow-x: hidden; padding-top: 70px; }
+  
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 70px; background: rgba(10,22,40,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: var(--transition); }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: var(--transition); }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 0.55rem 1.3rem; border-radius: 4px; font-weight: 700 !important; }
+  
+  section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 150px); }
+  .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; color: var(--white); margin-bottom: 1.5rem; }
+  .section-title span { color: var(--gold); }
+  .divider { width: 60px; height: 3px; background: var(--gold); margin-bottom: 2.5rem; }
+
+  /* CARDS */
+  .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.5rem; }
+  .expertise-card { background: var(--navy); border: 1px solid var(--border); padding: 2.5rem; border-radius: 8px; transition: var(--transition); position: relative; overflow: hidden; }
+  .expertise-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transform: scaleX(0); transform-origin: left; transition: var(--transition); }
+  .expertise-card:hover::before { transform: scaleX(1); }
+  .expertise-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); border-color: var(--gold); }
+  .expertise-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .expertise-card h3 { color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .expertise-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+
+  footer { background: var(--navy); border-top: 1px solid var(--border); padding: 2.5rem 5%; text-align: center; color: var(--text-muted); font-size: 0.82rem; }
+  .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Muhammad <span>Yunas</span></a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="expertise.html" style="color: var(--gold);">Expertise</a></li>
+    <li><a href="thinking.html">Thinking</a></li>
+    <li><a href="casestudy.html">OT Case Study</a></li>
+    <li><a href="contact.html" class="nav-cta">Let's Talk →</a></li>
+  </ul>
+</nav>
+
+<section id="expertise">
+  <div class="section-label fade-in">Core Expertise</div>
+  <h2 class="section-title fade-in">Six Capabilities That <span>Drive Category Leadership.</span></h2>
+  <div class="divider fade-in"></div>
+  <div class="expertise-grid">
+    <div class="expertise-card fade-in">
+      <div class="expertise-icon">⚙️</div>
+      <h3>Physical AI Category Creation</h3>
+      <p>Building end-to-end narratives for Physical AI platforms — moving beyond feature lists to establish CFO-aligned business cases that shorten sales cycles.</p>
+    </div>
+    <div class="expertise-card fade-in">
+      <div class="expertise-icon">🔗</div>
+      <h3>OT/IT Convergence Strategy</h3>
+      <p>Bridging the historic divide between Operational Technology and Information Technology — building messaging that resonates with plant floor OT buyers and IT decision-makers.</p>
+    </div>
+    <div class="expertise-card fade-in">
+      <div class="expertise-icon">👥</div>
+      <h3>Agile PMM Team Leadership</h3>
+      <p>Leading through influence, vision, and execution. I specialize in building and mentoring tight, high-performing 4-6 person product marketing teams.</p>
+    </div>
+    <div class="expertise-card fade-in">
+      <div class="expertise-icon">📈</div>
+      <h3>Revenue-Aligned Enablement</h3>
+      <p>Treating the sales force as the primary customer. Developing dynamic battle cards, value calculators, and objection-handling playbooks.</p>
+    </div>
+    <div class="expertise-card fade-in">
+      <div class="expertise-icon">🛡️</div>
+      <h3>Cyber-Physical Positioning</h3>
+      <p>Elevating OT security into board-level conversations — creating the "resilience" narrative that unlocks CISO access and differentiates from pure analytics vendors.</p>
+    </div>
+    <div class="expertise-card fade-in">
+      <div class="expertise-icon">🚀</div>
+      <h3>High-Velocity Product Launches</h3>
+      <p>Architecting and executing over 24 major product and category launches. Defining the ICP, building the foundational GTM motion, and cross-functional quarterbacking.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <strong>Muhammad A. Yunas</strong> · Head of Product Marketing & GTM Leader</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
