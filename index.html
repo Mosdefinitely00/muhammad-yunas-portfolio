@@ -6,15 +6,7 @@
 <meta name="description" content="Muhammad A. Yunas — Physical AI & Agentic AI GTM Leader. Long Island, New York."/>
 <title>Muhammad A. Yunas | Executive GTM & Product Marketing Leadership</title>
 
-<!-- Fonts & Icons -->
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Chart.js for Interactive Telemetry -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<!-- Google Analytics (G-NG2H7GWNJN) -->
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NG2H7GWNJN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -23,31 +15,32 @@
   gtag('config', 'G-NG2H7GWNJN');
 </script>
 
+<!-- Fonts & Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Chart.js for Interactive Telemetry -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style>
   :root {
     --bg-dark: #070D1D;
-    --bg-surface: #0E1A35;
-    --navy-mid: #0A1628;
+    --bg-surface: #0f1c3f;
+    --navy-mid: #0a1628;
     --gold: #D4AF37;
     --gold-light: #F3E5AB;
-    --gold-glow: rgba(212, 175, 55, 0.15);
+    --gold-pale: #F5E9C8;
+    --gold-glow: rgba(212, 175, 55, 0.25);
     --white: #ffffff;
     --text-muted: #94A3B8;
-    --border: rgba(212, 175, 55, 0.3);
-    --radius: 8px;
-    --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --border: rgba(212, 175, 55, 0.35);
+    --transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
   }
-
+  
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--white);
-    overflow-x: hidden;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+  body { font-family: 'Inter', sans-serif; background: var(--bg-dark); color: var(--white); overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
   /* Top Luminous Edge */
   body::before {
@@ -59,121 +52,120 @@
   ::-webkit-scrollbar-track { background: var(--bg-dark); }
   ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 
-  /* NAVIGATION & BRANDING */
+  /* TOP NAVIGATION & BRANDING */
   nav {
     position: fixed; top: 3px; left: 0; right: 0; z-index: 1000;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 5%; height: auto; min-height: 90px;
-    background: rgba(7, 13, 29, 0.94); backdrop-filter: blur(16px);
+    padding: 0 4%; height: 85px;
+    background: rgba(7, 13, 29, 0.92); backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border); transition: var(--transition);
   }
-  nav.scrolled { background: rgba(7, 13, 29, 0.99); box-shadow: 0 6px 30px rgba(0,0,0,0.6); }
-
-  .nav-left-cluster { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; padding: 1rem 0; }
+  nav.scrolled { background: rgba(7, 13, 29, 0.98); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+  
+  .nav-left-cluster { display: flex; flex-direction: column; gap: 0.2rem; }
   .nav-logo-name {
-    font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--white); text-decoration: none; letter-spacing: 0.02em;
-    line-height: 1.1; text-align: center;
+    font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 0.5rem;
   }
   .nav-logo-name span { color: var(--gold); }
+  .nav-sub-links { display: flex; gap: 1.2rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  .nav-sub-links a { color: var(--gold-light); text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.3rem; }
+  .nav-sub-links a:hover { color: var(--white); text-shadow: 0 0 10px var(--gold); }
 
-  .nav-sub-links { display: flex; gap: 1.2rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; justify-content: center; }
-  .nav-sub-links a { color: var(--text-muted); text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.35rem; }
-  .nav-sub-links a:hover { color: var(--gold); }
-
-  .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
   .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; transition: var(--transition); }
   .nav-links a:hover { color: var(--gold); }
-
+  
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
   .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: var(--transition); border-radius: 2px; }
 
-  .mobile-drawer {
-    display: none; position: fixed; top: 95px; left: 0; right: 0;
-    background: rgba(7, 13, 29, 0.98); backdrop-filter: blur(14px);
-    padding: 2rem 5%; z-index: 999; border-bottom: 1px solid var(--border);
-  }
-  .mobile-drawer.open { display: block; }
-  .mobile-drawer a { display: block; color: var(--white); text-decoration: none; padding: 0.9rem 0; font-size: 1rem; font-weight: 600; border-bottom: 1px solid var(--border); text-transform: uppercase; }
-  .mobile-drawer a:last-child { border-bottom: none; color: var(--gold); }
+  @media(max-width:960px) { .nav-links { display: none; } .hamburger { display: flex; } }
 
-  /* LAYOUT & TYPOGRAPHY SYSTEM */
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-  section { padding: 6rem 0; position: relative; }
-  
-  .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; display: block; }
+  /* CORE LAYOUT */
+  section { padding: 6rem 5%; position: relative; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
   .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.2; color: var(--white); margin-bottom: 1.5rem; }
   .section-title span { color: var(--gold); }
   .divider { width: 60px; height: 3px; background: var(--gold); margin-bottom: 2.5rem; }
-
-  /* BUTTON STYLES */
-  .btn-primary {
-    background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--bg-dark); font-weight: 700; padding: 0.9rem 2.2rem; border-radius: 6px; text-decoration: none; font-size: 0.95rem; letter-spacing: 0.04em; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; border: 1px solid var(--gold); cursor: pointer; box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+  
+  /* READABLE HIGH-CONTRAST GOLD BUTTONS */
+  .btn-primary { 
+    background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #070D1D; font-weight: 700; padding: 0.95rem 2.4rem; border-radius: 6px; text-decoration: none; font-size: 0.95rem; letter-spacing: 0.04em; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.6rem; border: 1px solid var(--gold); cursor: pointer; box-shadow: 0 4px 25px rgba(212, 175, 55, 0.3);
   }
-  .btn-primary:hover { background: var(--white); border-color: var(--white); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212, 175, 55, 0.45); }
-
-  .btn-secondary {
-    background: rgba(212, 175, 55, 0.08); border: 1.5px solid var(--border); color: var(--white); font-weight: 600; padding: 0.9rem 2.2rem; border-radius: 6px; text-decoration: none; font-size: 0.95rem; letter-spacing: 0.04em; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; cursor: pointer; backdrop-filter: blur(8px);
+  .btn-primary:hover { background: var(--white); transform: translateY(-2px); box-shadow: 0 8px 35px rgba(212, 175, 55, 0.5); }
+  
+  .btn-secondary { 
+    background: rgba(212, 175, 55, 0.08); border: 1.5px solid var(--border); color: var(--white); font-weight: 600; padding: 0.95rem 2.4rem; border-radius: 6px; text-decoration: none; font-size: 0.95rem; letter-spacing: 0.04em; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.6rem; margin-left: 1rem; cursor: pointer; backdrop-filter: blur(8px);
   }
   .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); background: var(--gold-glow); }
 
-  /* SECTION 1: HERO */
+  /* HERO SECTION (PROPER FLOW: PORTRAIT -> STATUS -> HEADLINE -> SUB -> BUTTONS -> METRICS) */
   #hero {
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     background: radial-gradient(circle at 50% 15%, rgba(212, 175, 55, 0.12) 0%, transparent 65%), linear-gradient(135deg, var(--bg-dark) 0%, #040812 100%);
-    position: relative; overflow: hidden; padding-top: 130px; text-align: center;
+    position: relative; overflow: hidden; padding-top: 120px; text-align: center;
   }
   .hero-grid-overlay {
-    position: absolute; inset: 0; opacity: 0.1;
+    position: absolute; inset: 0; opacity: 0.12;
     background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px);
     background-size: 50px 50px; pointer-events: none;
   }
+  
   .hero-wrapper { max-width: 1050px; margin: 0 auto; position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; }
+  
+  /* Portrait Frame */
+  .hero-visual { margin-bottom: 2rem; position: relative; }
+  .hero-portrait {
+    width: 220px; height: 220px; border-radius: 50%; object-fit: cover;
+    border: 3px solid var(--gold); box-shadow: 0 0 50px rgba(212, 175, 55, 0.35); transition: var(--transition);
+  }
+  .hero-portrait:hover { transform: scale(1.03); box-shadow: 0 0 70px rgba(212, 175, 55, 0.55); }
 
-  .status-pill { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--gold-glow); border: 1px solid var(--border); color: var(--gold); padding: 0.5rem 1.4rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.8rem; backdrop-filter: blur(10px); }
-  .status-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 10px var(--gold); animation: pulse 2s infinite; }
-  @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+  .status-pill { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--gold-glow); border: 1px solid var(--border); color: var(--gold); padding: 0.5rem 1.4rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2rem; backdrop-filter: blur(10px); }
+  .status-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 12px var(--gold); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
 
-  .hero-headline { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5.5vw, 4.4rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; color: var(--white); letter-spacing: -0.02em; }
-  .hero-sub { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text-muted); line-height: 1.8; margin-bottom: 2.5rem; max-width: 820px; }
+  .hero-headline { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5.5vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; color: var(--white); letter-spacing: -0.02em; }
+  .hero-sub { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text-muted); line-height: 1.8; margin-bottom: 2.5rem; max-width: 800px; }
   .hero-sub strong { color: var(--white); font-weight: 600; }
-
-  .metric-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; border-top: 1px solid var(--border); padding-top: 2.5rem; background: rgba(14, 26, 53, 0.45); border-radius: 16px; backdrop-filter: blur(12px); border: 1px solid var(--border); width: 100%; margin-top: 2rem; }
+  
+  .metric-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 5rem; border-top: 1px solid var(--border); padding-top: 2.5rem; background: rgba(15, 28, 63, 0.4); border-radius: 16px; backdrop-filter: blur(12px); border: 1px solid var(--border); width: 100%; }
   .metric-item { text-align: center; padding: 0 0.5rem; }
   .metric-number { display: block; font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
   .metric-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600; }
 
-  /* SECTION 2: STRATEGY (CQ / EQ / IQ) */
-  #strategy { background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .strategy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .strategy-text p { font-size: 1.125rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8; }
-  .cq-eq-iq-grid { display: grid; gap: 1.5rem; }
-  .triad-card { background: var(--bg-dark); border: 1px solid var(--border); padding: 1.8rem; border-radius: 8px; border-left: 4px solid var(--gold); transition: var(--transition); }
-  .triad-card:hover { transform: translateX(10px); background: var(--navy-mid); }
-  .triad-title { font-weight: 700; color: var(--white); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-  .triad-title span { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.2rem; }
-  .triad-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+  /* MANIFESTO / PHYSICAL AI HIGHLIGHT */
+  #manifesto { background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .manifesto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+  .manifesto-quote { background: var(--bg-dark); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+  .manifesto-quote::before { content: '“'; position: absolute; top: -20px; left: 20px; font-family: 'Playfair Display', serif; font-size: 6rem; color: var(--gold); opacity: 0.2; }
+  .manifesto-quote p { font-style: italic; color: var(--white); font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.5rem; }
+  .manifesto-author { color: var(--gold); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.05em; text-transform: uppercase; }
 
-  /* SECTION 3: PILLARS (3x3 Grid) */
+  /* PILLARS */
   #pillars { background: var(--bg-dark); }
-  .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-  .pillar-card { background: var(--bg-surface); border: 1px solid var(--border); padding: 2.5rem 2.2rem; border-radius: 12px; transition: var(--transition); position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; height: 100%; }
+  .pillars-container { max-width: 1200px; margin: 0 auto; }
+  .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.8rem; }
+  .pillar-card { background: var(--bg-surface); border: 1px solid var(--border); padding: 2.5rem 2.2rem; border-radius: 12px; transition: var(--transition); position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
   .pillar-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transform: scaleX(0); transform-origin: left; transition: var(--transition); }
   .pillar-card:hover::before { transform: scaleX(1); }
-  .pillar-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+  .pillar-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
   .pillar-icon { font-size: 2.2rem; color: var(--gold); margin-bottom: 1.5rem; }
-  .pillar-card h3 { font-size: 1.25rem; margin-bottom: 1rem; color: var(--white); font-weight: 700; }
-  .pillar-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; flex-grow: 1; }
+  .pillar-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--white); font-weight: 700; }
+  .pillar-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
 
-  /* SECTION 4: TELEMETRY LAB */
-  #telemetry { background: var(--bg-surface); border-top: 1px solid var(--border); }
+  /* TELEMETRY */
+  #telemetry { background: var(--bg-surface); }
+  .telemetry-container { max-width: 1200px; margin: 0 auto; }
   .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
   .chart-box { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
   .chart-title { font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 1.5rem; text-align: center; font-family: 'Playfair Display', serif; }
   .chart-wrapper { position: relative; height: 320px; width: 100%; }
 
-  /* SECTION 5: CAREER TIMELINE */
-  #experience { background: var(--bg-dark); border-top: 1px solid var(--border); }
-  .timeline-wrapper { max-width: 950px; margin: 0 auto; }
+  /* CAREER TIMELINE */
+  #experience { background: var(--bg-dark); }
+  .timeline-container { max-width: 950px; margin: 0 auto; }
   .timeline-item { border-left: 2px solid var(--border); padding-left: 2.8rem; margin-bottom: 4.5rem; position: relative; transition: var(--transition); }
   .timeline-item:hover { border-left-color: var(--gold); }
   .timeline-item::before { content: ''; position: absolute; left: -9px; top: 0; width: 16px; height: 16px; background: var(--bg-dark); border: 3px solid var(--gold); border-radius: 50%; transition: var(--transition); }
@@ -184,22 +176,15 @@
   .timeline-bullets { color: var(--text-muted); font-size: 0.98rem; margin-left: 1.2rem; line-height: 1.8; }
   .timeline-bullets li { margin-bottom: 0.85rem; list-style-type: disc; }
   .timeline-bullets li strong { color: var(--white); font-weight: 600; }
-  
-  .timeline-btn-container { text-align: center; margin-top: 4rem; width: 100%; display: flex; justify-content: center; }
 
-  /* SECTION 6: PUBLICATIONS */
-  #publications { background: var(--bg-surface); border-top: 1px solid var(--border); }
-  .pub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-  .pub-card { background: var(--bg-dark); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; transition: var(--transition); display: flex; flex-direction: column; text-decoration: none; }
-  .pub-card:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-  .pub-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1rem; font-weight: 700; display: block; }
-  .pub-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 1rem; color: var(--white); line-height: 1.4; }
-  .pub-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; flex-grow: 1; }
-  .pub-link { color: var(--gold); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
-  .pub-link:hover { color: var(--gold-light); }
+  /* RESUME CTA BANNER */
+  .resume-cta-banner { background: linear-gradient(135deg, var(--bg-surface), #040812); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; margin-top: 4rem; box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
+  .resume-cta-banner h4 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); margin-bottom: 0.3rem; }
+  .resume-cta-banner p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
 
-  /* SECTION 7: CONTACT */
+  /* CONTACT SECTION */
   #contact { background: linear-gradient(to bottom, var(--bg-surface), var(--bg-dark)); }
+  .contact-container { max-width: 1200px; margin: 0 auto; }
   .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
   .contact-info p { font-size: 1.15rem; margin-bottom: 2rem; color: var(--text-muted); line-height: 1.8; }
   .social-links { display: flex; gap: 1.5rem; margin-bottom: 2rem; }
@@ -210,48 +195,30 @@
   input, textarea { width: 100%; padding: 1rem 1.2rem; background: var(--bg-dark); border: 1px solid var(--border); color: var(--white); border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 1rem; transition: var(--transition); }
   input:focus, textarea:focus { outline: none; border-color: var(--gold); background: var(--bg-surface); }
   textarea { resize: vertical; min-height: 150px; }
-  .form-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
 
   /* FOOTER */
-  footer { background: var(--bg-dark); text-align: center; padding: 2rem 5% 4rem; }
-  .footer-quote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; color: var(--white); margin-bottom: 2rem; }
-  .footer-divider { width: 100%; height: 1px; background: var(--border); margin: 0 auto 2rem; max-width: 1200px; }
-  .footer-copy { color: var(--text-muted); font-size: 0.95rem; }
+  footer { background: var(--bg-dark); border-top: 1px solid var(--border); text-align: center; padding: 3rem; font-size: 0.9rem; color: var(--text-muted); }
+  footer span { color: var(--gold); font-weight: 600; }
 
   /* ANIMATIONS */
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
   .reveal.active { opacity: 1; transform: translateY(0); }
 
-  /* STRICT MOBILE RESPONSIVENESS AUDIT */
   @media (max-width: 960px) {
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-    .strategy-grid, .contact-wrapper, .chart-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .pillars-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-wrapper, .chart-grid, .manifesto-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .btn-secondary { margin-left: 0; margin-top: 1rem; display: block; width: 100%; text-align: center; }
+    .btn-primary { display: block; width: 100%; text-align: center; }
     .metric-bar { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; padding: 2rem 1rem; }
-    section { padding: 4.5rem 5%; }
-    
-    /* Timeline Mobile Fixes */
-    .timeline-item { padding-left: 1.8rem; margin-bottom: 3rem; }
-    .timeline-item::before { left: -9px; width: 14px; height: 14px; }
-    .timeline-role { font-size: 1.3rem; }
-    .timeline-bullets { margin-left: 0.5rem; }
-    .timeline-bullets li { font-size: 0.92rem; }
-    
-    /* Contact Form Buttons Mobile Fix */
-    .form-actions { flex-direction: column; }
-    .form-actions button, .form-actions a { width: 100%; display: flex; justify-content: center; margin-left: 0; }
+    .resume-cta-banner { flex-direction: column; text-align: center; }
   }
-  @media (max-width: 480px) {
+  @media (max-width: 540px) {
     .metric-bar { grid-template-columns: 1fr; }
-    .hero-headline { font-size: 2.2rem; }
-    .nav-logo-name { font-size: 1.4rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- TOP NAVIGATION & BRANDING CLUSTER -->
 <nav id="navbar">
     <div class="nav-left-cluster">
         <a href="#hero" class="nav-logo-name">
@@ -259,42 +226,42 @@
         </a>
         <div class="nav-sub-links">
             <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            <a href="mailto:yunasmuh@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
-            <a href="Muhammad_Yunas_Resume_2026.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Resume</a>
+            <a href="Muhammad_Yunas_Resume_2026.pdf" download><i class="fa-solid fa-file-pdf"></i> Download Resume</a>
         </div>
     </div>
     <ul class="nav-links">
-        <li><a href="#strategy">Strategy</a></li>
+        <li><a href="#manifesto">Physical AI</a></li>
         <li><a href="#pillars">Capabilities</a></li>
         <li><a href="#experience">Track Record</a></li>
         <li><a href="#telemetry">Telemetry</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <div class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
     </div>
 </nav>
 
-<div class="mobile-drawer" id="mobileDrawer">
-    <a href="#strategy" onclick="toggleMenu()">Strategy</a>
-    <a href="#pillars" onclick="toggleMenu()">Capabilities</a>
-    <a href="#experience" onclick="toggleMenu()">Track Record</a>
-    <a href="#telemetry" onclick="toggleMenu()">Telemetry</a>
-    <a href="#publications" onclick="toggleMenu()">Publications</a>
-    <a href="#contact" onclick="toggleMenu()">Contact</a>
-</div>
-
-<!-- HERO SECTION -->
+<!-- HERO SECTION (PROPER ORDER: PORTRAIT -> STATUS -> HEADLINE -> SUB -> BUTTONS -> METRICS) -->
 <section id="hero">
     <div class="hero-grid-overlay"></div>
-    <div class="container hero-wrapper reveal">
+    <div class="hero-wrapper reveal">
+        
+        <div class="hero-visual">
+            <img src="assets/portrait.png" alt="Muhammad A. Yunas Executive Portrait" class="hero-portrait">
+        </div>
+
         <div class="status-pill">
             <span class="status-dot"></span>
-            AVAILABLE FOR EXECUTIVE GTM LEADERSHIP
+            LONG ISLAND, NEW YORK &nbsp;|&nbsp; EXECUTIVE GTM LEADERSHIP
         </div>
         
         <h1 class="hero-headline">The Executive Who Builds Go-to-Market for the Physical AI Era</h1>
-        <p class="hero-sub">Bridging OT complexity and enterprise SaaS scale. <strong>18+ years</strong> translating deep technical innovation, edge intelligence, and NVIDIA-ecosystem architectures into market category leadership.</p>
+        <p class="hero-sub">Bridging OT complexity and enterprise SaaS scale. <strong>18+ years</strong> translating deep technical innovation, edge intelligence, and NVIDIA-ecosystem architectures into market category leadership.<br><br><em>"Listen deeply. Clarify relentlessly. Execute decisively."</em></p>
+        
+        <div style="margin-bottom: 2rem;">
+            <a href="#contact" class="btn-primary">Connect with Me →</a>
+            <a href="Muhammad_Yunas_Resume_2026.pdf" download class="btn-secondary"><i class="fa-solid fa-download"></i> Download Resume (.PDF)</a>
+        </div>
 
         <div class="metric-bar">
             <div class="metric-item">
@@ -317,55 +284,36 @@
     </div>
 </section>
 
-<!-- STRATEGY SECTION (EQ/CQ/IQ) -->
-<section id="strategy">
-    <div class="container strategy-grid reveal">
-        <div class="strategy-text">
-            <span class="section-label">Executive Blueprint</span>
-            <h2 class="section-title">Bridging the Gap Between <span>Steel and Silicon.</span></h2>
+<!-- PHYSICAL AI MANIFESTO SECTION -->
+<section id="manifesto">
+    <div class="manifesto-grid reveal">
+        <div>
+            <span class="section-label">Core Industry Perspective</span>
+            <h2 class="section-title">Silicon Meets Steel: <span>The Industrial Autonomy Imperative.</span></h2>
             <div class="divider"></div>
-            <p>Most SaaS marketers fail in industrial environments because they do not understand plant floors, edge computing, or industrial autonomy. I speak the language of the engineer and the language of the CFO.</p>
-            <p>With 18 years of experience, I am not here to build a bloated org chart. I am here to build your GTM engine from the ground up, translate your technical vision into market revenue, and get my hands dirty making it happen for Series B/C scale-ups and deep tech pioneers.</p>
+            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                The generative AI hype cycle is maturing, but the true economic engine of the next decade lives at the edge. To generate real, sustainable revenue, AI must leave the browser tab and enter the physical world.
+            </p>
+            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
+                Most tech startups fail in industrial markets because they sell features to buyers who buy uptime. I bridge the operational technology (OT) divide between plant floor reality and CFO-aligned enterprise value.
+            </p>
         </div>
-        <div class="cq-eq-iq-grid">
-            <div class="triad-card">
-                <div class="triad-title"><span>CQ</span> Cultural Intelligence</div>
-                <div class="triad-desc">Designing localized GTM architectures that adapt to regional regulations and buyer behaviors without losing global positioning.</div>
-            </div>
-            <div class="triad-card">
-                <div class="triad-title"><span>EQ</span> Emotional Intelligence</div>
-                <div class="triad-desc">Building cross-functional alignment across Product, Sales, and Success to compress enterprise sales cycles at scale.</div>
-            </div>
-            <div class="triad-card">
-                <div class="triad-title"><span>IQ</span> Analytical Rigor</div>
-                <div class="triad-desc">Moving past basic AI to utilize NLP and predictive modeling to parse market signals and optimize acquisition spend.</div>
+        <div>
+            <div class="manifesto-quote">
+                <p>
+                    "You cannot just drop an LLM into a heavy manufacturing plant and expect ROI. The physics of the real world demand high precision, zero latency, and absolute cyber-physical security."
+                </p>
+                <div class="manifesto-author">— From <em>Silicon Meets Steel</em> by Muhammad A. Yunas</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CONNECT / ABOUT MODULE -->
-<section id="about" style="background: var(--bg-dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-    <div class="container" style="text-align: center; max-width: 900px;">
-        <span class="section-label">Executive Profile</span>
-        <h2 class="section-title">Connect With <span>Me.</span></h2>
-        <div class="divider" style="margin: 0 auto 2.5rem;"></div>
-        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2.5rem;">
-            Exploring executive GTM leadership opportunities at Physical AI, industrial autonomy, and edge intelligence companies — Series A to C, with a focus on executing lean, high-velocity launches.
-        </p>
-        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-            <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank" class="btn-secondary" style="margin-left: 0; min-width: 200px;"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            <a href="mailto:yunasmuh@gmail.com" class="btn-secondary" style="margin-left: 0; min-width: 200px;"><i class="fa-solid fa-envelope"></i> Email</a>
-            <a href="Muhammad_Yunas_Resume_2026.pdf" target="_blank" class="btn-secondary" style="margin-left: 0; min-width: 200px;"><i class="fa-solid fa-file-pdf"></i> Download Resume</a>
-        </div>
-    </div>
-</section>
-
-<!-- CORE CAPABILITIES / PILLARS (3x3 Box Grid Layout) -->
+<!-- CORE CAPABILITIES / PILLARS -->
 <section id="pillars">
-    <div class="container reveal">
-        <span class="section-label">Core Capabilities</span>
-        <h2 class="section-title">Six Pillars of <span>Industrial GTM.</span></h2>
+    <div class="pillars-container reveal">
+        <span class="section-label">Strategic Range</span>
+        <h2 class="section-title">Six Pillars of <span>Industrial GTM Leadership.</span></h2>
         <div class="divider"></div>
         <div class="pillars-grid">
             <div class="pillar-card">
@@ -404,7 +352,7 @@
 
 <!-- COMMERCIAL TELEMETRY SECTION (CHART.JS) -->
 <section id="telemetry">
-    <div class="container reveal">
+    <div class="telemetry-container reveal">
         <span class="section-label">Performance Data</span>
         <h2 class="section-title">Commercial <span>Telemetry &amp; Impact.</span></h2>
         <div class="divider"></div>
@@ -429,63 +377,51 @@
 
 <!-- CAREER TIMELINE -->
 <section id="experience">
-    <div class="container reveal">
+    <div class="timeline-container reveal">
         <span class="section-label">Track Record</span>
         <h2 class="section-title">Career Milestones &amp; <span>Leadership Experience.</span></h2>
         <div class="divider"></div>
         
-        <div class="timeline-wrapper">
+        <div class="timeline">
             <div class="timeline-item">
-                <span class="timeline-date">Jul 2024 – Present</span>
-                <h3 class="timeline-role">Senior Director, Product Marketing</h3>
-                <p class="timeline-company">Interim & Fractional Counsel | Independent Executive Advisory | New York, NY</p>
+                <span class="timeline-date">July 2024 – Present</span>
+                <h3 class="timeline-role">Senior Director of Product Marketing – Interim &amp; Fractional</h3>
+                <p class="timeline-company">Independent Executive Advisory | New York, NY</p>
                 <ul class="timeline-bullets">
-                    <li>Architect GTM frameworks for Agentic AI and OT/IT convergence platforms—spanning edge intelligence, predictive operations, and cyber-physical security.</li>
-                    <li>Serve as strategic quarterback between product management and enterprise sales teams.</li>
-                    <li>Shape Physical AI category narratives through publications and executive advisory, driving an <strong>80% director-level promotion rate</strong> across mentored GTM professionals.</li>
+                    <li>Retained as Physical AI and Industrial IoT GTM counsel for enterprise B2B organizations commercializing AI systems that sense, operate in, and act on the physical world.</li>
+                    <li>Architecting GTM frameworks for AI platforms at the OT/IT convergence layer (edge intelligence, connected asset operations, cyber-physical security).</li>
+                    <li>Shaping Physical AI category narratives through publications (PMA), panels, and executive advisory across industrial IoT and smart grid sectors.</li>
                 </ul>
             </div>
 
             <div class="timeline-item">
-                <span class="timeline-date">Dec 2022 – Jun 2024</span>
-                <h3 class="timeline-role">Senior Director, Product Marketing</h3>
-                <p class="timeline-company">UST Global | Professional Engineering Services | Aliso Viejo, CA</p>
+                <span class="timeline-date">Dec 2022 – June 2024</span>
+                <h3 class="timeline-role">Senior Director of Product Marketing – UST</h3>
+                <p class="timeline-company">Professional Engineering Services | Aliso Viejo, CA</p>
                 <ul class="timeline-bullets">
-                    <li>Drove <strong>$9M in new revenue (30% YoY)</strong> and the largest regional pipeline in company history by repositioning capabilities as Physical Operations Intelligence.</li>
-                    <li>Expanded customer engagement 75% and reduced CAC 15% via ML-driven buyer journey redesign.</li>
-                    <li>Identified $10M untapped market opportunity delivering 34% incremental revenue.</li>
+                    <li>Drove <strong>$9M in new revenue (30% YoY growth)</strong> and the largest regional marketing pipeline in company history by repositioning as Physical Operations Intelligence.</li>
+                    <li>Expanded customer engagement 75% and secured executive sponsorship for $10M untapped market opportunity (34% incremental revenue).</li>
+                    <li>Reduced CAC 15% and tripled conversion rates via redesigned buyer journeys across manufacturing and supply chain verticals.</li>
                 </ul>
             </div>
 
             <div class="timeline-item">
                 <span class="timeline-date">Dec 2021 – Oct 2022</span>
-                <h3 class="timeline-role">VP, Product Marketing Process & Manufacturing</h3>
-                <p class="timeline-company">Uptake Technologies | Industrial AI Platform | Chicago, IL</p>
+                <h3 class="timeline-role">VP, Product Marketing (Process &amp; Manufacturing) – Uptake</h3>
+                <p class="timeline-company">Industrial AI Platform | Chicago, IL</p>
                 <ul class="timeline-bullets">
-                    <li>Commercialized OT/IT convergence narrative for predictive maintenance and asset performance management.</li>
-                    <li>Reduced sales cycles by <strong>40%</strong> and increased target account engagement by 35% by bridging OT and IT buyer languages.</li>
-                    <li>Eliminated $2M in annual wasted ad spend through AI-driven industrial segmentation.</li>
+                    <li>Commercialized OT/IT convergence narrative for predictive maintenance and asset performance management (APM) serving Caterpillar and BHE Renewables.</li>
+                    <li>Unifying messaging across Sales, CS, and Product — reducing sales cycle times 40% and increasing target account engagement 25%.</li>
                 </ul>
             </div>
 
             <div class="timeline-item">
-                <span class="timeline-date">Jul 2018 – Nov 2021</span>
-                <h3 class="timeline-role">Senior Director, PMM Cyber Recovery & Data Protection</h3>
+                <span class="timeline-date">July 2018 – Nov 2021</span>
+                <h3 class="timeline-role">Senior Director, PMM Cyber Recovery &amp; Data Protection</h3>
                 <p class="timeline-company">Dell Technologies | Boston, MA</p>
                 <ul class="timeline-bullets">
-                    <li>Repositioned $500M+ cybersecurity portfolio as cyber-physical resilience.</li>
-                    <li>Increased competitive win rate by <strong>42%</strong>, grew market share 37%, and elevated NPS +25 points.</li>
-                    <li>Used NLP-based social listening to identify market trends 3 months ahead of competitors.</li>
-                </ul>
-            </div>
-
-            <div class="timeline-item">
-                <span class="timeline-date">Jan 2016 – Jul 2018</span>
-                <h3 class="timeline-role">Senior Director, PMM Partner & Channel</h3>
-                <p class="timeline-company">Dell Technologies | Boston, MA</p>
-                <ul class="timeline-bullets">
-                    <li>Generated <strong>$24M in net-new pipeline</strong> and drove 45% YoY revenue growth.</li>
-                    <li>Reduced partner sales cycles 66% through standardized competitive playbooks.</li>
+                    <li>Repositioned $500M+ cybersecurity portfolio as cyber-physical resilience connecting data protection to operational uptime.</li>
+                    <li>Increased competitive win rate 42% and grew market share 37% across Fortune 500 and industrial accounts.</li>
                 </ul>
             </div>
 
@@ -494,100 +430,59 @@
                 <h3 class="timeline-role">Senior Director, PMM Intelligent Physical Operations</h3>
                 <p class="timeline-company">Schneider Electric | Boston, MA</p>
                 <ul class="timeline-bullets">
-                    <li>Spearheaded early IIoT platform launch, scaling to <strong>$75M+ cumulative revenue</strong> in 18 months with 38% market share.</li>
-                    <li>Grew average deal size 35% and enterprise wallet share from $500K to $1.2M per account.</li>
+                    <li>Spearheaded early IIoT platform launch scaling from launch to <strong>$75M+ cumulative revenue</strong> in 18 months with 38% market share.</li>
                 </ul>
-            </div>
-
-            <div class="timeline-item">
-                <span class="timeline-date">Sep 2006 – Dec 2011</span>
-                <h3 class="timeline-role">Director, PMM Data Center Infrastructure Management (DCIM)</h3>
-                <p class="timeline-company">Schneider Electric | Boston, MA</p>
-                <ul class="timeline-bullets">
-                    <li>Defined and commercialized the DCIM category from inception (Origin of Physical AI).</li>
-                    <li>Pioneered SaaS GTM playbook, driving <strong>$32M revenue growth</strong> across 12+ launches with 45% first-year adoption.</li>
-                </ul>
-            </div>
-            
-            <!-- Centered Download Button at Timeline End -->
-            <div class="timeline-btn-container">
-                <a href="Muhammad_Yunas_Resume_2026.pdf" target="_blank" class="btn-primary">
-                    <i class="fa-solid fa-download"></i> Download Resume (.PDF)
-                </a>
-            </div>
-            
-            <!-- Education -->
-            <div style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border);">
-                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--white); margin-bottom: 1.5rem;">Education & Credentials</h4>
-                <p style="color: var(--text-muted); margin-bottom: 0.8rem;"><strong>Seton Hall University:</strong> M.A., Diplomacy & International Relations | M.A., Corporate & Public Communications</p>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem;"><strong>University of Rhode Island:</strong> B.A., International Business & Political Science</p>
-                <p style="color: var(--gold); font-weight: 600; font-size: 0.95rem;">Certified PMM (PMA) &nbsp;|&nbsp; Ethics in Generative AI (Google) &nbsp;|&nbsp; Cloud AI Pro (Oracle) &nbsp;|&nbsp; Social Media Analytics (MIT)</p>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- PUBLICATIONS -->
-<section id="publications">
-    <div class="container reveal">
-        <span class="section-label">Thought Leadership</span>
-        <h2 class="section-title">Ideas I am <span>Defending.</span></h2>
-        <div class="divider"></div>
-        <div class="pub-grid">
-            <div class="pub-card">
-                <span class="pub-tag">Article</span>
-                <h3>Silicon Meets Steel: Why Physical AI is the Next $500B Category</h3>
-                <p>The convergence of edge inference, robotics, and real-time sensor intelligence is not another software wave. It is the first technology paradigm built for atoms, not bits.</p>
-                <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank" class="pub-link">View on LinkedIn <i class="fa-solid fa-arrow-right"></i></a>
+        <!-- RESUME DOWNLOAD BANNER -->
+        <div class="resume-cta-banner">
+            <div>
+                <h4>Access Complete Executive Credential Suite</h4>
+                <p>Download the official 2026 Resume and Candidate Onboarding Playbook.</p>
             </div>
-            <div class="pub-card">
-                <span class="pub-tag">Board Memo</span>
-                <h3>The Industrial Autonomy Imperative</h3>
-                <p>Written for executive audiences, framing industrial autonomy as a strategic non-negotiable. Covers the competitive cost of inaction and readiness frameworks for AI adoption.</p>
-                <a href="#contact" class="pub-link">Request Memo <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-            <div class="pub-card">
-                <span class="pub-tag">GTM Playbook</span>
-                <h3>Winning in OT/IT Convergence Markets</h3>
-                <p>A practitioner's guide to buyer persona mapping across the OT/IT divide, enterprise deal-structuring, and narrative frameworks that move industrial buyers to action.</p>
-                <a href="#contact" class="pub-link">Request Playbook <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+            <a href="Muhammad_Yunas_Resume_2026.pdf" download class="btn-primary" style="padding: 0.8rem 1.8rem; font-size: 0.9rem;">
+                <i class="fa-solid fa-file-pdf"></i> Download Official Resume (.PDF)
+            </a>
+        </div>
+        
+        <div class="mt-8 border-t border-border pt-8" style="margin-top: 3rem;">
+            <h4 class="text-white font-bold mb-3 font-['Playfair_Display'] text-xl">Education &amp; Credentials</h4>
+            <p class="text-text-muted mb-2" style="color: var(--text-muted);"><strong>Seton Hall University:</strong> M.A., Diplomacy &amp; Int. Relations; M.A., Corporate Communications</p>
+            <p class="text-text-muted mb-3" style="color: var(--text-muted);"><strong>University of Rhode Island:</strong> B.A., Int. Business &amp; Political Science</p>
+            <p style="color: var(--gold); font-size: 0.95rem; font-weight: 600;">Certified PMM (PMA) &nbsp;|&nbsp; Cloud AI Pro (Oracle) &nbsp;|&nbsp; Ethics in GenAI (Google)</p>
         </div>
     </div>
 </section>
 
 <!-- CONTACT SECTION -->
 <section id="contact">
-    <div class="container reveal">
+    <div class="contact-container reveal">
         <span class="section-label">Initiate Contact</span>
-        <h2 class="section-title">Let's <span>Talk.</span></h2>
+        <h2 class="section-title">Ready for a <span>Conversation?</span></h2>
         <div class="divider"></div>
         <div class="contact-wrapper">
             <div class="contact-info">
-                <p>I am actively seeking a VP / Head of Product Marketing or GTM equivalent mandate at a Physical AI or Industrial IoT company where the category still needs to be built—commercially, narratively, and operationally.</p>
-                <p>If you are building the systems that will run the physical world, let's talk strategy.</p>
-                <p style="color: var(--gold); font-weight: 600; font-size: 0.95rem; margin-top: 1rem;"><i class="fa-solid fa-location-dot"></i> Long Island, New York (Remote / Hybrid / Relocatable)</p>
+                <p>I'm available for Senior Director, VP GTM, SVP Revenue, and CRO conversations at high-growth Physical AI, industrial autonomy, and Industrial IoT companies. If you're building the industrial AI infrastructure of the next decade — I want to talk.</p>
+                <div class="social-links">
+                    <a href="mailto:yunasmuh@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="Muhammad_Yunas_Resume_2026.pdf" download aria-label="Download Resume"><i class="fa-solid fa-file-pdf"></i></a>
+                </div>
+                <p style="color: var(--gold); font-weight: 600; font-size: 0.95rem;"><i class="fa-solid fa-location-dot"></i> Long Island, New York (Remote / Hybrid / Relocatable)</p>
             </div>
             <form action="mailto:yunasmuh@gmail.com" method="POST" enctype="text/plain">
                 <input type="text" name="Name" placeholder="Executive Name" required>
                 <input type="email" name="Email" placeholder="Return Email Address" required>
                 <textarea name="Message" placeholder="Details regarding the strategic opportunity..." required></textarea>
-                
-                <!-- Dual Action Buttons -->
-                <div class="form-actions">
-                    <button type="submit" class="btn-primary" style="flex: 1; border:none; cursor:pointer;">Send Message</button>
-                    <a href="mailto:yunasmuh@gmail.com" class="btn-secondary" style="flex: 1;">Email Me Directly</a>
-                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; border:none; cursor:pointer; justify-content: center;">Send Direct Message →</button>
             </form>
         </div>
     </div>
 </section>
 
-<!-- FOOTER SECTION -->
 <footer>
-  <p class="footer-quote">"Listen deeply, clarify relentlessly, execute decisively."</p>
-  <div class="footer-divider"></div>
-  <p class="footer-copy">&copy; <span id="year">2026</span> Muhammad A. Yunas &middot; Head of Product Marketing &amp; GTM Leader</p>
+    <p>&copy; <span id="year">2026</span> <span>Muhammad A. Yunas</span>. All rights reserved. | Physical AI &amp; Industrial GTM Leadership</p>
 </footer>
 
 <script>
@@ -608,7 +503,7 @@
     });
 
     // Scroll reveal observer
-    const revealOptions = { threshold: 0.12, rootMargin: "0px 0px -40px 0px" };
+    const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
     const revealOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -621,19 +516,15 @@
     
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
-        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
-
-    // Mobile Menu Toggle
-    function toggleMenu() {
-        document.getElementById('mobileDrawer').classList.toggle('open');
-    }
 
     // Chart.js Telemetry Initialization
     document.addEventListener("DOMContentLoaded", function() {
         Chart.defaults.color = '#94A3B8';
         Chart.defaults.font.family = "'Inter', sans-serif";
 
+        // Velocity Chart
         const ctxVelocity = document.getElementById('velocityChart');
         if(ctxVelocity) {
             new Chart(ctxVelocity, {
@@ -644,7 +535,7 @@
                         label: 'Improvement (%)',
                         data: [66, 30, 15],
                         backgroundColor: ['#D4AF37', '#E5C158', '#F3E5AB'],
-                        borderRadius: 4
+                        borderRadius: 6
                     }]
                 },
                 options: {
@@ -660,6 +551,7 @@
             });
         }
 
+        // Dominance Chart
         const ctxDominance = document.getElementById('dominanceChart');
         if(ctxDominance) {
             new Chart(ctxDominance, {
