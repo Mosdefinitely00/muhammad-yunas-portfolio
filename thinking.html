@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Muhammad Yunas | Thought Leadership</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NG2H7GWNJN"></script>
+<script>
+  window.dataLayer = window.dataLayer || []; 
+  function gtag(){dataLayer.push(arguments);} 
+  gtag('js', new Date()); 
+  gtag('config', 'G-NG2H7GWNJN');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root { --navy: #0a1628; --navy-mid: #0f2040; --gold: #c9a84c; --gold-light: #e8c97a; --white: #ffffff; --text-muted: #8a99b0; --border: rgba(201,168,76,0.2); --transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--navy-mid); color: var(--white); overflow-x: hidden; padding-top: 70px; }
+  
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 70px; background: rgba(10,22,40,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: var(--transition); }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: var(--transition); }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 0.55rem 1.3rem; border-radius: 4px; font-weight: 700 !important; }
+  
+  section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 150px); }
+  .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; color: var(--white); margin-bottom: 1.5rem; }
+  .section-title span { color: var(--gold); }
+  .divider { width: 60px; height: 3px; background: var(--gold); margin-bottom: 2.5rem; }
+
+  /* CARDS */
+  .tl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.5rem; }
+  .tl-card { background: var(--navy); border: 1px solid var(--border); padding: 2rem; border-radius: 8px; transition: var(--transition); }
+  .tl-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+  .tl-type { font-size: 0.72rem; color: var(--gold); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .tl-card h3 { color: var(--white); font-size: 1.1rem; font-weight: 700; line-height: 1.5; margin-bottom: 0.75rem; }
+  .tl-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.25rem; }
+  .tl-link { color: var(--gold); font-size: 0.84rem; font-weight: 600; text-decoration: none; letter-spacing: 0.04em; }
+  .tl-link:hover { color: var(--gold-light); text-decoration: underline; }
+
+  .current-focus { margin-top: 3rem; background: var(--navy); border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 2.5rem; border-radius: 0 8px 8px 0; }
+  .current-focus h3 { color: var(--gold); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1rem; }
+  .current-focus p { color: #b0bfcf; font-size: 0.95rem; line-height: 1.8; }
+  .current-focus p strong { color: var(--white); }
+
+  footer { background: var(--navy); border-top: 1px solid var(--border); padding: 2.5rem 5%; text-align: center; color: var(--text-muted); font-size: 0.82rem; }
+  .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Muhammad <span>Yunas</span></a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="expertise.html">Expertise</a></li>
+    <li><a href="thinking.html" style="color: var(--gold);">Thinking</a></li>
+    <li><a href="casestudy.html">OT Case Study</a></li>
+    <li><a href="contact.html" class="nav-cta">Let's Talk →</a></li>
+  </ul>
+</nav>
+
+<section id="thinking">
+  <div class="section-label fade-in">Thought Leadership</div>
+  <h2 class="section-title fade-in">Ideas I'm <span>Publishing & Defending.</span></h2>
+  <div class="divider fade-in"></div>
+  <div class="tl-grid">
+    <div class="tl-card fade-in">
+      <div class="tl-type">📄 Article · LinkedIn</div>
+      <h3>Silicon Meets Steel: Why Physical AI Is the Next $500B Category</h3>
+      <p>The convergence of Agentic AI, Industrial IoT, and OT/IT infrastructure is reshaping global manufacturing. The GTM leaders who understand both worlds will define the winners.</p>
+      <a href="contact.html" class="tl-link">Request Full Article →</a>
+    </div>
+    <div class="tl-card fade-in">
+      <div class="tl-type">📋 Board Memo · Strategic</div>
+      <h3>The Industrial Autonomy Imperative</h3>
+      <p>A formal strategic memo outlining market context, competitive landscape, 5 GTM imperatives, and resource implications for Physical AI category leadership in 2026–2027.</p>
+      <a href="contact.html" class="tl-link">Request Document →</a>
+    </div>
+    <div class="tl-card fade-in">
+      <div class="tl-type">📊 Practitioner Guide</div>
+      <h3>Mastering a Product Launch</h3>
+      <p>Contributing Author (PMA, 2023). A detailed look at ICP definition, category narrative architecture, sales motion redesign, and measurable launch execution.</p>
+      <a href="contact.html" class="tl-link">Request Insights →</a>
+    </div>
+  </div>
+  <div class="current-focus fade-in">
+    <h3>📍 What I'm Thinking About Right Now</h3>
+    <p>
+      The market is reaching a point where organizations are overwhelmed with data, disconnected systems, and increasingly complex AI narratives. <strong>My ability to connect those pieces into a clear business story is where I become highly valuable.</strong><br/><br/>
+      This is especially relevant with companies connected to the <strong>NVIDIA ecosystem (Omniverse, edge computing) and the broader Physical AI movement</strong>. The technology is phenomenal, but bridging the gap between brilliant code and the reality of a 40-year-old plant floor requires immense GTM translation.<br/><br/>
+      And finally: <strong>the OT/IT convergence window is closing.</strong> Industrial buyers actively evaluating Physical AI platforms today will make consolidation decisions in the next 18–24 months.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <strong>Muhammad A. Yunas</strong> · Head of Product Marketing & GTM Leader</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
