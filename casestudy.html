@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Muhammad Yunas | OT Case Study</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NG2H7GWNJN"></script>
+<script>
+  window.dataLayer = window.dataLayer || []; 
+  function gtag(){dataLayer.push(arguments);} 
+  gtag('js', new Date()); 
+  gtag('config', 'G-NG2H7GWNJN');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root { --navy: #0a1628; --navy-mid: #0f2040; --gold: #c9a84c; --gold-light: #e8c97a; --white: #ffffff; --text-muted: #8a99b0; --border: rgba(201,168,76,0.2); --transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; padding-top: 70px; }
+  
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 70px; background: rgba(10,22,40,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: var(--transition); }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: var(--transition); }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 0.55rem 1.3rem; border-radius: 4px; font-weight: 700 !important; }
+  
+  section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 150px); }
+  .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; color: var(--white); margin-bottom: 1.5rem; }
+  .section-title span { color: var(--gold); }
+  .divider { width: 60px; height: 3px; background: var(--gold); margin-bottom: 2.5rem; }
+
+  /* CASE STUDY */
+  .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .cs-label { font-size: 0.72rem; color: var(--gold); font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1rem; }
+  .cs-challenge h3, .cs-result h3 { font-size: 1.3rem; color: var(--white); font-weight: 700; margin-bottom: 1rem; }
+  .cs-challenge p, .cs-result p { color: #b0bfcf; font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem; }
+  .cs-steps { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+  .cs-step { background: var(--navy-mid); border: 1px solid var(--border); padding: 1.5rem; border-radius: 6px; display: flex; align-items: flex-start; gap: 1.5rem; }
+  .cs-step-num { color: var(--gold); font-weight: 900; font-size: 1.2rem; flex-shrink: 0; font-family: 'Playfair Display', serif; }
+  .cs-step-text { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+  .cs-step-text strong { color: var(--white); display: block; margin-bottom: 0.2rem; font-size: 0.95rem; }
+  
+  .cs-results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+  .cs-result-card { background: var(--navy-mid); border: 1px solid var(--border); padding: 1.5rem; border-radius: 6px; text-align: center; }
+  .cs-result-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--gold); }
+  .cs-result-label { font-size: 0.76rem; color: var(--text-muted); margin-top: 0.4rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  @media(max-width:900px) { .cs-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+  footer { background: var(--navy); border-top: 1px solid var(--border); padding: 2.5rem 5%; text-align: center; color: var(--text-muted); font-size: 0.82rem; }
+  .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Muhammad <span>Yunas</span></a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="expertise.html">Expertise</a></li>
+    <li><a href="thinking.html">Thinking</a></li>
+    <li><a href="casestudy.html" style="color: var(--gold);">OT Case Study</a></li>
+    <li><a href="contact.html" class="nav-cta">Let's Talk →</a></li>
+  </ul>
+</nav>
+
+<section id="casestudy">
+  <div class="section-label fade-in">GTM Playbook</div>
+  <h2 class="section-title fade-in">The GTM Transformation: <span>Re-architecting the Category Narrative.</span></h2>
+  <div class="divider fade-in"></div>
+  <div class="cs-grid">
+    <div class="cs-challenge fade-in">
+      <div class="cs-label">The Challenge</div>
+      <h3>The Feature Trap & The OT/IT Divide.</h3>
+      <p>A recurring theme across my career is inheriting brilliant technology trapped behind weak positioning. The products are sold on feature comparisons, the sales cycles are agonizingly long, and OT buyers (Plant Managers) and IT buyers (CIOs) veto each other because the vendor fails to speak both languages. My playbook breaks this cycle.</p>
+      <div class="cs-steps">
+        <div class="cs-step">
+          <div class="cs-step-num">01</div>
+          <div class="cs-step-text"><strong>Listen Deeply (Audit)</strong>Narrow the ICP. Identify the specific friction points between the OT Sponsor and the IT Champion. Stop selling to "everyone".</div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">02</div>
+          <div class="cs-step-text"><strong>Clarify Relentlessly (Narrative)</strong>Abandon the "Feature Trap." Translate complex API and compliance capabilities into CFO-aligned business cases.</div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">03</div>
+          <div class="cs-step-text"><strong>Redesign the Motion (Enablement)</strong>Treat sales as the primary customer. Build dynamic battle cards and shift from subjective slide decks to structured POCs.</div>
+        </div>
+      </div>
+    </div>
+    <div class="cs-result fade-in">
+      <div class="cs-label">The Results</div>
+      <h3>Measurable Commercial Velocity.</h3>
+      <p>When you align technical product design directly to the business outcomes buyers care about, the metrics compound. This playbook is how I have historically transformed go-to-market functions into primary revenue drivers.</p>
+      <div class="cs-results-grid">
+        <div class="cs-result-card">
+          <div class="cs-result-num">$150M+</div>
+          <div class="cs-result-label">Total Revenue Influenced</div>
+        </div>
+        <div class="cs-result-card">
+          <div class="cs-result-num">42%</div>
+          <div class="cs-result-label">Win-Rate Improvement</div>
+        </div>
+        <div class="cs-result-card">
+          <div class="cs-result-num">66%</div>
+          <div class="cs-result-label">Sales Cycle Compression</div>
+        </div>
+        <div class="cs-result-card">
+          <div class="cs-result-num">$24M</div>
+          <div class="cs-result-label">Net-New Pipeline Built</div>
+        </div>
+      </div>
+      <p style="margin-top:2rem;font-size:0.9rem;color:var(--text-muted);font-style:italic; border-left: 3px solid var(--gold); padding-left: 1rem;">"I focus on market transformation, customer alignment, and translating complex concepts into business value—while keeping the hunger to build what comes next."</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <strong>Muhammad A. Yunas</strong> · Head of Product Marketing & GTM Leader</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
