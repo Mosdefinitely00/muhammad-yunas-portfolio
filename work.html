@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Muhammad Yunas | Track Record</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NG2H7GWNJN"></script>
+<script>
+  window.dataLayer = window.dataLayer || []; 
+  function gtag(){dataLayer.push(arguments);} 
+  gtag('js', new Date()); 
+  gtag('config', 'G-NG2H7GWNJN');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0a1628; --navy-mid: #0f2040; --gold: #c9a84c; --gold-light: #e8c97a; 
+    --white: #ffffff; --text-muted: #8a99b0; --border: rgba(201,168,76,0.2);
+    --transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--navy-mid); color: var(--white); overflow-x: hidden; padding-top: 70px; }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--navy); } ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+  
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 70px; background: rgba(10,22,40,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: var(--transition); }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: 0.02em; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: var(--transition); }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 0.55rem 1.3rem; border-radius: 4px; font-weight: 700 !important; transition: var(--transition) !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+  
+  /* SECTION */
+  section { padding: 5rem 5%; min-height: calc(100vh - 150px); max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; color: var(--white); margin-bottom: 1.5rem; }
+  .section-title span { color: var(--gold); }
+  .divider { width: 60px; height: 3px; background: var(--gold); margin-bottom: 2.5rem; }
+
+  /* TIMELINE */
+  .work-timeline { position: relative; padding-left: 2rem; }
+  .work-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--gold), transparent); }
+  .work-item { position: relative; margin-bottom: 3.5rem; padding-left: 2rem; }
+  .work-item::before { content: ''; position: absolute; left: -2.45rem; top: 0.5rem; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.2); }
+  .work-period { font-size: 0.75rem; color: var(--gold); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .work-title { font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 0.2rem; }
+  .work-company { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
+  .work-narrative { color: #b0bfcf; font-size: 0.92rem; line-height: 1.8; margin-bottom: 1rem; }
+  .work-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .work-bullets li { display: flex; align-items: flex-start; gap: 0.6rem; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; }
+  .work-bullets li::before { content: '▸'; color: var(--gold); flex-shrink: 0; margin-top: 0.1rem; font-size: 0.75rem; }
+  .work-bullets li strong { color: var(--white); }
+
+  footer { background: var(--navy); border-top: 1px solid var(--border); padding: 2.5rem 5%; text-align: center; color: var(--text-muted); font-size: 0.82rem; }
+  .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Muhammad <span>Yunas</span></a>
+  <ul class="nav-links">
+    <li><a href="work.html" style="color: var(--gold);">Work</a></li>
+    <li><a href="expertise.html">Expertise</a></li>
+    <li><a href="thinking.html">Thinking</a></li>
+    <li><a href="casestudy.html">OT Case Study</a></li>
+    <li><a href="contact.html" class="nav-cta">Let's Talk →</a></li>
+  </ul>
+</nav>
+
+<section id="work">
+  <div class="section-label fade-in">Work & Impact</div>
+  <h2 class="section-title fade-in">Before-and-After. <span>Not Job Descriptions.</span></h2>
+  <div class="divider fade-in"></div>
+  <div class="work-timeline">
+    <div class="work-item fade-in">
+      <div class="work-period">2024 — Present</div>
+      <div class="work-title">Senior Director, Product Marketing – Interim & Fractional</div>
+      <div class="work-company">Independent Consultant · New York, NY</div>
+      <p class="work-narrative">Physical AI and Agentic AI GTM counsel for enterprise B2B organizations commercializing AI systems that sense, reason, and act in the physical world.</p>
+      <ul class="work-bullets">
+        <li>Architecting GTM frameworks for Agentic AI and OT/IT convergence platforms serving as the strategic quarterback between product and sales.</li>
+        <li>Shaping Physical AI narratives through industry panels and executive advisory.</li>
+      </ul>
+    </div>
+    <div class="work-item fade-in">
+      <div class="work-period">2022 — 2024</div>
+      <div class="work-title">Senior Director, Product Marketing</div>
+      <div class="work-company">UST Global · NA & EMEA (Led lean team of 4 PMMs)</div>
+      <p class="work-narrative">Rebuilt the commercial architecture around Physical AI and OT/IT convergence.</p>
+      <ul class="work-bullets">
+        <li>Drove <strong>$9M in new revenue (30% YoY)</strong> and built the largest regional pipeline in company history.</li>
+        <li>Tripled conversion rates and reduced CAC by 15% via ML-driven buyer journey redesign.</li>
+      </ul>
+    </div>
+    <div class="work-item fade-in">
+      <div class="work-period">2021 — 2022</div>
+      <div class="work-title">VP, Product Marketing — Process & Manufacturing</div>
+      <div class="work-company">Uptake Technologies · $50M+ Industrial AI Platform</div>
+      <ul class="work-bullets">
+        <li>Reduced sales cycles by <strong>40%</strong> and increased target account engagement by 35%.</li>
+        <li>Eliminated $2M in annual wasted ad spend through AI-driven industrial segmentation.</li>
+      </ul>
+    </div>
+    <div class="work-item fade-in">
+      <div class="work-period">2016 — 2021</div>
+      <div class="work-title">Senior Director, Product Marketing (Dual Roles)</div>
+      <div class="work-company">Dell Technologies · $500M+ Global Portfolio</div>
+      <ul class="work-bullets">
+        <li>Repositioned technical recovery as "cyber-physical resilience," driving a <strong>42% win-rate improvement</strong>.</li>
+        <li>Generated <strong>$24M in net-new pipeline</strong> through modular messaging.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <strong>Muhammad A. Yunas</strong> · Head of Product Marketing & GTM Leader</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
