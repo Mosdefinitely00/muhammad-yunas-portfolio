@@ -40,7 +40,15 @@
   
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; background: var(--bg-dark); color: var(--white); overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  body { 
+    font-family: 'Inter', sans-serif; 
+    background: var(--bg-dark); 
+    color: var(--white); 
+    overflow-x: hidden; 
+    line-height: 1.6; 
+    -webkit-font-smoothing: antialiased; 
+    text-align: left;
+  }
 
   /* Top Luminous Edge */
   body::before {
@@ -57,10 +65,10 @@
     position: fixed; top: 3px; left: 0; right: 0; z-index: 1000;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 4%; height: 85px;
-    background: rgba(7, 13, 29, 0.92); backdrop-filter: blur(16px);
+    background: rgba(7, 13, 29, 0.95); backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border); transition: var(--transition);
   }
-  nav.scrolled { background: rgba(7, 13, 29, 0.98); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+  nav.scrolled { background: rgba(7, 13, 29, 0.99); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
   
   .nav-left-cluster { display: flex; flex-direction: column; gap: 0.2rem; }
   .nav-logo-name {
@@ -68,22 +76,29 @@
     display: flex; align-items: center; gap: 0.5rem;
   }
   .nav-logo-name span { color: var(--gold); }
-  .nav-sub-links { display: flex; gap: 1.2rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-  .nav-sub-links a { color: var(--gold-light); text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.3rem; }
-  .nav-sub-links a:hover { color: var(--white); text-shadow: 0 0 10px var(--gold); }
+  
+  .nav-sub-links { display: flex; gap: 1rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; flex-wrap: wrap; }
+  .nav-sub-links a { color: var(--gold-light); text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.3rem; background: rgba(212,175,55,0.08); padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid var(--border); }
+  .nav-sub-links a:hover { color: var(--white); background: var(--gold-glow); border-color: var(--gold); }
 
-  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; transition: var(--transition); }
+  .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; transition: var(--transition); }
   .nav-links a:hover { color: var(--gold); }
   
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
   .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: var(--transition); border-radius: 2px; }
 
-  @media(max-width:960px) { .nav-links { display: none; } .hamburger { display: flex; } }
+  @media(max-width:960px) { 
+    .nav-links { display: none; } 
+    .hamburger { display: flex; } 
+    nav { padding: 0 3%; height: auto; padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; }
+    .nav-left-cluster { width: 100%; align-items: center; text-align: center; margin-bottom: 0.5rem; }
+    .nav-sub-links { justify-content: center; }
+  }
 
   /* CORE LAYOUT */
-  section { padding: 6rem 5%; position: relative; }
-  .container { max-width: 1200px; margin: 0 auto; }
+  section { padding: 6rem 5%; position: relative; width: 100%; }
+  .container { max-width: 1200px; margin: 0 auto; width: 100%; }
   .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
   .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.2; color: var(--white); margin-bottom: 1.5rem; }
   .section-title span { color: var(--gold); }
@@ -91,20 +106,25 @@
   
   /* READABLE HIGH-CONTRAST GOLD BUTTONS */
   .btn-primary { 
-    background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #070D1D; font-weight: 700; padding: 0.95rem 2.4rem; border-radius: 6px; text-decoration: none; font-size: 0.95rem; letter-spacing: 0.04em; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.6rem; border: 1px solid var(--gold); cursor: pointer; box-shadow: 0 4px 25px rgba(212, 175, 55, 0.3);
+    background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #070D1D; font-weight: 700; padding: 0.95rem 2.4rem; border-radius: 6px; text-decoration: none; font-size: 0.95rem; letter-spacing: 0.04em; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; border: 1px solid var(--gold); cursor: pointer; box-shadow: 0 4px 25px rgba(212, 175, 55, 0.3);
   }
   .btn-primary:hover { background: var(--white); transform: translateY(-2px); box-shadow: 0 8px 35px rgba(212, 175, 55, 0.5); }
   
   .btn-secondary { 
-    background: rgba(212, 175, 55, 0.08); border: 1.5px solid var(--border); color: var(--white); font-weight: 600; padding: 0.95rem 2.4rem; border-radius: 6px; text-decoration: none; font-size: 0.95rem; letter-spacing: 0.04em; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.6rem; margin-left: 1rem; cursor: pointer; backdrop-filter: blur(8px);
+    background: rgba(212, 175, 55, 0.08); border: 1.5px solid var(--border); color: var(--white); font-weight: 600; padding: 0.95rem 2.4rem; border-radius: 6px; text-decoration: none; font-size: 0.95rem; letter-spacing: 0.04em; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; margin-left: 1rem; cursor: pointer; backdrop-filter: blur(8px);
   }
   .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); background: var(--gold-glow); }
 
-  /* HERO SECTION (PROPER FLOW: PORTRAIT -> STATUS -> HEADLINE -> SUB -> BUTTONS -> METRICS) */
+  @media(max-width: 768px) {
+    .btn-secondary { margin-left: 0; margin-top: 0.8rem; width: 100%; }
+    .btn-primary { width: 100%; }
+  }
+
+  /* HERO SECTION (STRICT TOP-DOWN FLOW & CENTERED MOBILE VIEW) */
   #hero {
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     background: radial-gradient(circle at 50% 15%, rgba(212, 175, 55, 0.12) 0%, transparent 65%), linear-gradient(135deg, var(--bg-dark) 0%, #040812 100%);
-    position: relative; overflow: hidden; padding-top: 120px; text-align: center;
+    position: relative; overflow: hidden; padding-top: 130px; text-align: center; width: 100%;
   }
   .hero-grid-overlay {
     position: absolute; inset: 0; opacity: 0.12;
@@ -112,32 +132,36 @@
     background-size: 50px 50px; pointer-events: none;
   }
   
-  .hero-wrapper { max-width: 1050px; margin: 0 auto; position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; }
+  .hero-wrapper { max-width: 1050px; margin: 0 auto; position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; padding: 0 1rem; }
   
   /* Portrait Frame */
-  .hero-visual { margin-bottom: 2rem; position: relative; }
+  .hero-visual { margin-bottom: 2rem; position: relative; display: flex; justify-content: center; width: 100%; }
   .hero-portrait {
-    width: 220px; height: 220px; border-radius: 50%; object-fit: cover;
+    width: 200px; height: 200px; border-radius: 50%; object-fit: cover; object-position: center top;
     border: 3px solid var(--gold); box-shadow: 0 0 50px rgba(212, 175, 55, 0.35); transition: var(--transition);
   }
   .hero-portrait:hover { transform: scale(1.03); box-shadow: 0 0 70px rgba(212, 175, 55, 0.55); }
 
-  .status-pill { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--gold-glow); border: 1px solid var(--border); color: var(--gold); padding: 0.5rem 1.4rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2rem; backdrop-filter: blur(10px); }
+  .status-pill { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--gold-glow); border: 1px solid var(--border); color: var(--gold); padding: 0.5rem 1.4rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2rem; backdrop-filter: blur(10px); }
   .status-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 12px var(--gold); animation: pulse 2s infinite; }
   @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
 
-  .hero-headline { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5.5vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; color: var(--white); letter-spacing: -0.02em; }
-  .hero-sub { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text-muted); line-height: 1.8; margin-bottom: 2.5rem; max-width: 800px; }
+  .hero-headline { font-family: 'Playfair Display', serif; font-size: clamp(2.3rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; color: var(--white); letter-spacing: -0.02em; }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-muted); line-height: 1.8; margin-bottom: 2.5rem; max-width: 800px; }
   .hero-sub strong { color: var(--white); font-weight: 600; }
   
-  .metric-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 5rem; border-top: 1px solid var(--border); padding-top: 2.5rem; background: rgba(15, 28, 63, 0.4); border-radius: 16px; backdrop-filter: blur(12px); border: 1px solid var(--border); width: 100%; }
+  .metric-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; border-top: 1px solid var(--border); padding-top: 2.5rem; background: rgba(15, 28, 63, 0.4); border-radius: 16px; backdrop-filter: blur(12px); border: 1px solid var(--border); width: 100%; }
   .metric-item { text-align: center; padding: 0 0.5rem; }
   .metric-number { display: block; font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
   .metric-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600; }
 
+  @media(max-width: 768px) {
+    .metric-bar { grid-template-columns: repeat(2, 1fr); gap: 1rem; padding: 1.5rem 1rem; }
+  }
+
   /* MANIFESTO / PHYSICAL AI HIGHLIGHT */
   #manifesto { background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .manifesto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+  .manifesto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; text-align: left; }
   .manifesto-quote { background: var(--bg-dark); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
   .manifesto-quote::before { content: '“'; position: absolute; top: -20px; left: 20px; font-family: 'Playfair Display', serif; font-size: 6rem; color: var(--gold); opacity: 0.2; }
   .manifesto-quote p { font-style: italic; color: var(--white); font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.5rem; }
@@ -145,9 +169,9 @@
 
   /* PILLARS */
   #pillars { background: var(--bg-dark); }
-  .pillars-container { max-width: 1200px; margin: 0 auto; }
-  .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.8rem; }
-  .pillar-card { background: var(--bg-surface); border: 1px solid var(--border); padding: 2.5rem 2.2rem; border-radius: 12px; transition: var(--transition); position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+  .pillars-container { max-width: 1200px; margin: 0 auto; width: 100%; }
+  .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem; }
+  .pillar-card { background: var(--bg-surface); border: 1px solid var(--border); padding: 2.5rem 2.2rem; border-radius: 12px; transition: var(--transition); position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: left; }
   .pillar-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transform: scaleX(0); transform-origin: left; transition: var(--transition); }
   .pillar-card:hover::before { transform: scaleX(1); }
   .pillar-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
@@ -157,15 +181,15 @@
 
   /* TELEMETRY */
   #telemetry { background: var(--bg-surface); }
-  .telemetry-container { max-width: 1200px; margin: 0 auto; }
+  .telemetry-container { max-width: 1200px; margin: 0 auto; width: 100%; text-align: left; }
   .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
-  .chart-box { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+  .chart-box { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.3); text-align: left; }
   .chart-title { font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 1.5rem; text-align: center; font-family: 'Playfair Display', serif; }
   .chart-wrapper { position: relative; height: 320px; width: 100%; }
 
   /* CAREER TIMELINE */
   #experience { background: var(--bg-dark); }
-  .timeline-container { max-width: 950px; margin: 0 auto; }
+  .timeline-container { max-width: 950px; margin: 0 auto; width: 100%; text-align: left; }
   .timeline-item { border-left: 2px solid var(--border); padding-left: 2.8rem; margin-bottom: 4.5rem; position: relative; transition: var(--transition); }
   .timeline-item:hover { border-left-color: var(--gold); }
   .timeline-item::before { content: ''; position: absolute; left: -9px; top: 0; width: 16px; height: 16px; background: var(--bg-dark); border: 3px solid var(--gold); border-radius: 50%; transition: var(--transition); }
@@ -178,15 +202,20 @@
   .timeline-bullets li strong { color: var(--white); font-weight: 600; }
 
   /* RESUME CTA BANNER */
-  .resume-cta-banner { background: linear-gradient(135deg, var(--bg-surface), #040812); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; margin-top: 4rem; box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
+  .resume-cta-banner { background: linear-gradient(135deg, var(--bg-surface), #040812); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; margin-top: 4rem; box-shadow: 0 15px 40px rgba(0,0,0,0.4); text-align: left; }
   .resume-cta-banner h4 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); margin-bottom: 0.3rem; }
   .resume-cta-banner p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
 
-  /* CONTACT SECTION */
-  #contact { background: linear-gradient(to bottom, var(--bg-surface), var(--bg-dark)); }
-  .contact-container { max-width: 1200px; margin: 0 auto; }
-  .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  /* CONTACT SECTION WITH PHOTO INTEGRATION */
+  #contact { background: linear-gradient(to bottom, var(--bg-surface), var(--bg-dark)); text-align: left; }
+  .contact-container { max-width: 1200px; margin: 0 auto; width: 100%; }
+  .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
   .contact-info p { font-size: 1.15rem; margin-bottom: 2rem; color: var(--text-muted); line-height: 1.8; }
+  .contact-photo-container { text-align: center; margin-bottom: 1.5rem; display: flex; justify-content: center; width: 100%; }
+  .contact-portrait {
+    width: 140px; height: 140px; border-radius: 50%; object-fit: cover; object-position: center top;
+    border: 2px solid var(--gold); box-shadow: 0 0 30px rgba(212, 175, 55, 0.25); margin: 0 auto; display: block;
+  }
   .social-links { display: flex; gap: 1.5rem; margin-bottom: 2rem; }
   .social-links a { font-size: 1.8rem; color: var(--text-muted); transition: var(--transition); }
   .social-links a:hover { color: var(--gold); transform: translateY(-3px); }
@@ -197,7 +226,7 @@
   textarea { resize: vertical; min-height: 150px; }
 
   /* FOOTER */
-  footer { background: var(--bg-dark); border-top: 1px solid var(--border); text-align: center; padding: 3rem; font-size: 0.9rem; color: var(--text-muted); }
+  footer { background: var(--bg-dark); border-top: 1px solid var(--border); text-align: center; padding: 3rem; font-size: 0.9rem; color: var(--text-muted); width: 100%; }
   footer span { color: var(--gold); font-weight: 600; }
 
   /* ANIMATIONS */
@@ -205,10 +234,13 @@
   .reveal.active { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 960px) {
-    .contact-wrapper, .chart-grid, .manifesto-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .btn-secondary { margin-left: 0; margin-top: 1rem; display: block; width: 100%; text-align: center; }
+    .contact-wrapper, .chart-grid, .manifesto-grid { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+    .contact-info { text-align: center; }
+    .social-links { justify-content: center; }
+    form { padding: 1.8rem 1.2rem; text-align: left; }
+    .btn-secondary { margin-left: 0; margin-top: 0.8rem; display: block; width: 100%; text-align: center; }
     .btn-primary { display: block; width: 100%; text-align: center; }
-    .metric-bar { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; padding: 2rem 1rem; }
+    .metric-bar { grid-template-columns: repeat(2, 1fr); gap: 1rem; padding: 1.5rem 1rem; }
     .resume-cta-banner { flex-direction: column; text-align: center; }
   }
   @media (max-width: 540px) {
@@ -220,28 +252,32 @@
 
 <!-- TOP NAVIGATION & BRANDING CLUSTER -->
 <nav id="navbar">
-    <div class="nav-left-cluster">
-        <a href="#hero" class="nav-logo-name">
-            Muhammad A. <span>Yunas</span>
-        </a>
-        <div class="nav-sub-links">
-            <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            <a href="Muhammad_Yunas_Resume_2026.pdf" download><i class="fa-solid fa-file-pdf"></i> Download Resume</a>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <div class="nav-left-cluster">
+            <a href="#hero" class="nav-logo-name">
+                Muhammad A. <span>Yunas</span>
+            </a>
+            <!-- Core Navigation Utilities -->
+            <div class="nav-sub-links">
+                <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="Muhammad_Yunas_Resume_2026.pdf" download><i class="fa-solid fa-file-pdf"></i> Download Resume</a>
+                <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact Me</a>
+            </div>
         </div>
-    </div>
-    <ul class="nav-links">
-        <li><a href="#manifesto">Physical AI</a></li>
-        <li><a href="#pillars">Capabilities</a></li>
-        <li><a href="#experience">Track Record</a></li>
-        <li><a href="#telemetry">Telemetry</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
+        <ul class="nav-links">
+            <li><a href="#manifesto">Physical AI</a></li>
+            <li><a href="#pillars">Capabilities</a></li>
+            <li><a href="#experience">Track Record</a></li>
+            <li><a href="#telemetry">Telemetry</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
     </div>
 </nav>
 
-<!-- HERO SECTION (PROPER ORDER: PORTRAIT -> STATUS -> HEADLINE -> SUB -> BUTTONS -> METRICS) -->
+<!-- HERO SECTION -->
 <section id="hero">
     <div class="hero-grid-overlay"></div>
     <div class="hero-wrapper reveal">
@@ -256,9 +292,9 @@
         </div>
         
         <h1 class="hero-headline">The Executive Who Builds Go-to-Market for the Physical AI Era</h1>
-        <p class="hero-sub">Bridging OT complexity and enterprise SaaS scale. <strong>18+ years</strong> translating deep technical innovation, edge intelligence, and NVIDIA-ecosystem architectures into market category leadership.<br><br><em>"Listen deeply. Clarify relentlessly. Execute decisively."</em></p>
+        <p class="hero-sub">Bridging OT complexity and enterprise SaaS scale. <strong>18+ years</strong> translating deep technical innovation, edge intelligence, and NVIDIA-ecosystem architectures into market category leadership[span_10](start_span)[span_10](end_span).<br><br><em>"Listen deeply. Clarify relentlessly. Execute decisively."</em>[span_11](start_span)[span_11](end_span)</p>
         
-        <div style="margin-bottom: 2rem;">
+        <div style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; width: 100%;">
             <a href="#contact" class="btn-primary">Connect with Me →</a>
             <a href="Muhammad_Yunas_Resume_2026.pdf" download class="btn-secondary"><i class="fa-solid fa-download"></i> Download Resume (.PDF)</a>
         </div>
@@ -274,7 +310,7 @@
             </div>
             <div class="metric-item">
                 <span class="metric-number">42%</span>
-                <span class="metric-label">Win-Rate Lift</span>
+                <span class="metric-label">Competitive Win-Rate Lift</span>
             </div>
             <div class="metric-item">
                 <span class="metric-number">38%</span>
@@ -286,24 +322,26 @@
 
 <!-- PHYSICAL AI MANIFESTO SECTION -->
 <section id="manifesto">
-    <div class="manifesto-grid reveal">
-        <div>
-            <span class="section-label">Core Industry Perspective</span>
-            <h2 class="section-title">Silicon Meets Steel: <span>The Industrial Autonomy Imperative.</span></h2>
-            <div class="divider"></div>
-            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                The generative AI hype cycle is maturing, but the true economic engine of the next decade lives at the edge. To generate real, sustainable revenue, AI must leave the browser tab and enter the physical world.
-            </p>
-            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
-                Most tech startups fail in industrial markets because they sell features to buyers who buy uptime. I bridge the operational technology (OT) divide between plant floor reality and CFO-aligned enterprise value.
-            </p>
-        </div>
-        <div>
-            <div class="manifesto-quote">
-                <p>
-                    "You cannot just drop an LLM into a heavy manufacturing plant and expect ROI. The physics of the real world demand high precision, zero latency, and absolute cyber-physical security."
+    <div class="container">
+        <div class="manifesto-grid reveal">
+            <div>
+                <span class="section-label">Core Industry Perspective</span>
+                <h2 class="section-title">Silicon Meets Steel: <span>The Industrial Autonomy Imperative.</span></h2>
+                <div class="divider"></div>
+                <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                    The generative AI hype cycle is maturing, but the true economic engine of the next decade lives at the edge. To generate real, sustainable revenue, AI must leave the browser tab and enter the physical world.
                 </p>
-                <div class="manifesto-author">— From <em>Silicon Meets Steel</em> by Muhammad A. Yunas</div>
+                <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
+                    Most tech startups fail in industrial markets because they sell features to buyers who buy uptime. I bridge the operational technology (OT) divide between plant floor reality and CFO-aligned enterprise value[span_12](start_span)[span_12](end_span).
+                </p>
+            </div>
+            <div>
+                <div class="manifesto-quote">
+                    <p>
+                        "You cannot just drop an LLM into a heavy manufacturing plant and expect ROI. The physics of the real world demand high precision, zero latency, and absolute cyber-physical security."
+                    </p>
+                    <div class="manifesto-author">— From <em>Silicon Meets Steel</em> by Muhammad A. Yunas</div>
+                </div>
             </div>
         </div>
     </div>
@@ -356,7 +394,7 @@
         <span class="section-label">Performance Data</span>
         <h2 class="section-title">Commercial <span>Telemetry &amp; Impact.</span></h2>
         <div class="divider"></div>
-        <p style="color: var(--text-muted); max-width: 800px; margin-bottom: 2rem;">Visualizing direct pipeline influence and deal velocity improvements achieved across enterprise portfolios through CFO-aligned narrative strategies.</p>
+        <p style="color: var(--text-muted); max-width: 800px; margin-bottom: 2rem;">Visualizing direct pipeline influence and deal velocity improvements achieved across enterprise portfolios through CFO-aligned narrative strategies[span_13](start_span)[span_13](end_span).</p>
         
         <div class="chart-grid">
             <div class="chart-box">
@@ -386,7 +424,7 @@
             <div class="timeline-item">
                 <span class="timeline-date">July 2024 – Present</span>
                 <h3 class="timeline-role">Senior Director of Product Marketing – Interim &amp; Fractional</h3>
-                <p class="timeline-company">Independent Executive Advisory | New York, NY</p>
+                <p class="timeline-company">Independent Executive Advisory | Long Island, New York</p>
                 <ul class="timeline-bullets">
                     <li>Retained as Physical AI and Industrial IoT GTM counsel for enterprise B2B organizations commercializing AI systems that sense, operate in, and act on the physical world.</li>
                     <li>Architecting GTM frameworks for AI platforms at the OT/IT convergence layer (edge intelligence, connected asset operations, cyber-physical security).</li>
@@ -463,6 +501,9 @@
         <div class="divider"></div>
         <div class="contact-wrapper">
             <div class="contact-info">
+                <div class="contact-photo-container">
+                    <img src="assets/portrait.png" alt="Muhammad A. Yunas" class="contact-portrait">
+                </div>
                 <p>I'm available for Senior Director, VP GTM, SVP Revenue, and CRO conversations at high-growth Physical AI, industrial autonomy, and Industrial IoT companies. If you're building the industrial AI infrastructure of the next decade — I want to talk.</p>
                 <div class="social-links">
                     <a href="mailto:yunasmuh@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
