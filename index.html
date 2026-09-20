@@ -125,8 +125,8 @@
   .hero-headline { font-family: 'Playfair Display', serif; font-size: clamp(2.3rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; color: var(--white); }
   .hero-sub { font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-muted); line-height: 1.8; margin-bottom: 2.5rem; max-width: 800px; }
   
-  /* Code Area Box Replacement with Label Indicator */
-  .code-area-container { width: 100%; max-width: 750px; margin: 0 auto 2.5rem; text-align: left; }
+  /* Code Area Box Placed Above the Headline */
+  .code-area-container { width: 100%; max-width: 750px; margin: 0 auto 2rem; text-align: left; }
   .headshot-removed-badge {
     display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
     color: var(--gold); background: rgba(212,175,55,0.1); border: 1px solid var(--border); padding: 0.3rem 0.8rem; border-radius: 4px; margin-bottom: 0.8rem;
@@ -147,6 +147,13 @@
   .metric-number { display: block; font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
   .metric-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600; }
 
+  #manifesto { background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .manifesto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; text-align: left; }
+  .manifesto-quote { background: var(--bg-dark); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+  .manifesto-quote::before { content: '“'; position: absolute; top: -20px; left: 20px; font-family: 'Playfair Display', serif; font-size: 6rem; color: var(--gold); opacity: 0.2; }
+  .manifesto-quote p { font-style: italic; color: var(--white); font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.5rem; }
+  .manifesto-author { color: var(--gold); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
   #pillars { background: var(--bg-dark); }
   .pillars-container { max-width: 1200px; margin: 0 auto; width: 100%; }
   .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem; }
@@ -154,6 +161,14 @@
   .pillar-icon { font-size: 2.2rem; color: var(--gold); margin-bottom: 1.5rem; }
   .pillar-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--white); font-weight: 700; }
   .pillar-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+
+  /* TELEMETRY SECTION */
+  #telemetry { background: var(--bg-surface); }
+  .telemetry-container { max-width: 1200px; margin: 0 auto; width: 100%; text-align: left; }
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
+  .chart-box { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.3); text-align: left; }
+  .chart-title { font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 1.5rem; text-align: center; font-family: 'Playfair Display', serif; }
+  .chart-wrapper { position: relative; height: 320px; width: 100%; }
 
   #experience { background: var(--bg-dark); }
   .timeline-container { max-width: 950px; margin: 0 auto; width: 100%; text-align: left; }
@@ -172,7 +187,7 @@
   .education-section h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 1rem; }
   .education-section p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.6rem; }
 
-  /* CONTACT SECTION WITH HEADSHOT & FIXED TAGLINE BUGS */
+  /* CONTACT SECTION WITH HEADSHOT RESTORED NEAR THE BOTTOM */
   #contact { background: linear-gradient(to bottom, var(--bg-surface), var(--bg-dark)); text-align: left; }
   .contact-container { max-width: 1200px; margin: 0 auto; width: 100%; }
   .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
@@ -218,7 +233,9 @@
         <a href="#hero" class="nav-logo">Muhammad A. <span>Yunas</span></a>
         
         <ul class="nav-menu">
+            <li><a href="#manifesto">Physical AI</a></li>
             <li><a href="#pillars">Capabilities</a></li>
+            <li><a href="#telemetry">Telemetry</a></li>
             <li><a href="#experience">Track Record</a></li>
             <li><a href="#contact">Contact Me</a></li>
         </ul>
@@ -235,21 +252,20 @@
 </header>
 
 <div class="mobile-menu-drawer" id="mobileDrawer">
+    <a href="#manifesto" onclick="toggleMobileMenu()">Physical AI</a>
     <a href="#pillars" onclick="toggleMobileMenu()">Capabilities</a>
+    <a href="#telemetry" onclick="toggleMobileMenu()">Telemetry</a>
     <a href="#experience" onclick="toggleMobileMenu()">Track Record</a>
     <a href="#contact" onclick="toggleMobileMenu()">Contact Me</a>
     <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank">LinkedIn Profile</a>
     <a href="Muhammad_Yunas_Resume_2026.pdf" download>Download Resume (.PDF)</a>
 </div>
 
-<!-- HERO SECTION: HEADSHOT REMOVED & REPLACED WITH TECHNICAL CODE BLOCK -->
+<!-- HERO SECTION: CODE AREA BOX PLACED ABOVE THE HEADLINE -->
 <section id="hero">
     <div class="hero-wrapper">
         
-        <h1 class="hero-headline">Ready to detect main area &mdash; Enterprise GTM Leadership</h1>
-        <p class="hero-sub">Bridging OT complexity and enterprise SaaS scale. <strong>18+ years</strong> translating deep technical innovation and edge intelligence into market category leadership.</p>
-        
-        <!-- Technical Code Block Replacing Top Headshot with Label Indicator -->
+        <!-- Technical Code Block Placed Above Headline with Label Indicator -->
         <div class="code-area-container">
             <div class="headshot-removed-badge">Headshot Removed &middot; Technical View</div>
             <div class="code-area-box">
@@ -266,6 +282,9 @@
                 </div>
             </div>
         </div>
+
+        <h1 class="hero-headline">Ready to detect main area &mdash; Enterprise GTM Leadership</h1>
+        <p class="hero-sub">Bridging OT complexity and enterprise SaaS scale. <strong>18+ years</strong> translating deep technical innovation and edge intelligence into market category leadership.</p>
 
         <div style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; width: 100%;">
             <a href="#contact" class="btn-simplicity"><i class="fa-solid fa-envelope"></i> Contact Me</a>
@@ -293,6 +312,34 @@
     </div>
 </section>
 
+<!-- PHYSICAL AI MANIFESTO SECTION -->
+<section id="manifesto">
+    <div class="container">
+        <div class="manifesto-grid">
+            <div>
+                <span class="section-label">Core Industry Perspective</span>
+                <h2 class="section-title">Silicon Meets Steel: <span>The Industrial Autonomy Imperative.</span></h2>
+                <div class="divider"></div>
+                <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                    The generative AI hype cycle is maturing, but the true economic engine of the next decade lives at the edge. To generate real, sustainable revenue, AI must leave the browser tab and enter the physical world.
+                </p>
+                <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
+                    Most tech startups fail in industrial markets because they sell features to buyers who buy uptime. I bridge the operational technology (OT) divide between plant floor reality and CFO-aligned enterprise value.
+                </p>
+            </div>
+            <div>
+                <div class="manifesto-quote">
+                    <p>
+                        "You cannot just drop an LLM into a heavy manufacturing plant and expect ROI. The physics of the real world demand high precision, zero latency, and absolute cyber-physical security."
+                    </p>
+                    <div class="manifesto-author">— From <em>Silicon Meets Steel</em> by Muhammad A. Yunas</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CORE CAPABILITIES / PILLARS -->
 <section id="pillars">
     <div class="pillars-container">
         <span class="section-label">Strategic Range</span>
@@ -318,6 +365,32 @@
     </div>
 </section>
 
+<!-- COMMERCIAL TELEMETRY SECTION (CHART.JS) -->
+<section id="telemetry">
+    <div class="telemetry-container">
+        <span class="section-label">Performance Data</span>
+        <h2 class="section-title">Commercial <span>Telemetry &amp; Impact.</span></h2>
+        <div class="divider"></div>
+        <p style="color: var(--text-muted); max-width: 800px; margin-bottom: 2rem;">Visualizing direct pipeline influence and deal velocity improvements achieved across enterprise portfolios through CFO-aligned narrative strategies.</p>
+        
+        <div class="chart-grid">
+            <div class="chart-box">
+                <h3 class="chart-title">GTM Velocity Accelerators</h3>
+                <div class="chart-wrapper">
+                    <canvas id="velocityChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-box">
+                <h3 class="chart-title">Market Dominance Multipliers</h3>
+                <div class="chart-wrapper">
+                    <canvas id="dominanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CAREER TIMELINE -->
 <section id="experience">
     <div class="timeline-container">
         <span class="section-label">Track Record</span>
@@ -371,7 +444,6 @@
         <div class="divider"></div>
         <div class="contact-wrapper">
             <div class="contact-info">
-                <!-- Headshot Restored Near the Bottom -->
                 <div class="contact-photo-container">
                     <img src="assets/portrait.png" alt="Muhammad A. Yunas" class="contact-portrait">
                 </div>
@@ -392,7 +464,7 @@
     </div>
 </section>
 
-<!-- FOOTER WITH REVAMPED TAGLINE AND NO BUGS -->
+<!-- FOOTER WITH PROPER SIGN-OFF TAGLINE -->
 <footer>
     <div class="footer-tagline-box">
         <p>&ldquo;Listen deeply. Clarify relentlessly. Execute decisively.&rdquo;</p>
@@ -424,6 +496,68 @@
                 }
             }
         });
+    });
+
+    // Chart.js Telemetry Initialization
+    document.addEventListener("DOMContentLoaded", function() {
+        if (typeof Chart !== 'undefined') {
+            Chart.defaults.color = '#94A3B8';
+            Chart.defaults.font.family = "'Inter', sans-serif";
+
+            // Velocity Chart
+            const ctxVelocity = document.getElementById('velocityChart');
+            if(ctxVelocity) {
+                new Chart(ctxVelocity, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Sales Cycle Reduction', 'YoY Revenue Growth', 'CAC Reduction'],
+                        datasets: [{
+                            label: 'Improvement (%)',
+                            data: [66, 30, 15],
+                            backgroundColor: ['#D4AF37', '#E5C158', '#F3E5AB'],
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: { grid: { color: 'rgba(212, 175, 55, 0.1)' }, max: 100 },
+                            y: { grid: { display: false } }
+                        }
+                    }
+                });
+            }
+
+            // Dominance Chart
+            const ctxDominance = document.getElementById('dominanceChart');
+            if(ctxDominance) {
+                new Chart(ctxDominance, {
+                    type: 'polarArea',
+                    data: {
+                        labels: ['Competitive Win-Rate', 'Market Share Captured', 'Team Promotion Rate'],
+                        datasets: [{
+                            data: [42, 38, 80],
+                            backgroundColor: [
+                                'rgba(212, 175, 55, 0.85)',
+                                'rgba(229, 193, 88, 0.65)',
+                                'rgba(243, 229, 171, 0.45)'
+                            ],
+                            borderColor: '#070D1D',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'right' } },
+                        scales: { r: { ticks: { display: false }, grid: { color: 'rgba(212, 175, 55, 0.1)' } } }
+                    }
+                });
+            }
+        }
     });
 </script>
 </body>
