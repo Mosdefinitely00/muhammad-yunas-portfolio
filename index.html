@@ -256,8 +256,8 @@
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; text-align: left; }
   .skill-group h4 { color: var(--gold); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
   .skill-group ul { list-style: none; color: var(--text-muted); font-size: 0.95rem; }
-  .skill-group li { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-  .skill-group li::before { content: '▪'; color: var(--gold); font-size: 0.7rem; }
+  .skill-group li { margin-bottom: 0.7rem; display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.5; }
+  .skill-group li::before { content: '▪'; color: var(--gold); font-size: 0.7rem; margin-top: 0.2rem; flex-shrink: 0; }
 
   /* CONTACT SECTION */
   #contact { background: linear-gradient(to bottom, var(--bg-surface), var(--bg-dark)); text-align: left; }
@@ -617,7 +617,7 @@
             </div>
             <div class="thinking-card" onclick="openThoughtPaper('paper2')">
                 <div>
-                    <span class="thinking-meta">Contributing Author · PMA (2023)</span>
+                    <span class="thinking-meta">Contributing Author · PMA Book (2023)</span>
                     <h4 style="color: var(--white); font-size: 1.2rem; margin-bottom: 0.6rem;">Mastering a Product Launch</h4>
                     <p style="color: var(--text-muted); font-size: 0.92rem;">Practitioner methodology for commercializing complex B2B platforms, coordinating analyst relations, and building sales velocity.</p>
                 </div>
@@ -673,13 +673,11 @@
                 </ul>
             </div>
             <div class="skill-group">
-                <h4>Education &amp; Credentials</h4>
+                <h4>Education</h4>
                 <ul>
-                    <li>M.A. Diplomacy &amp; Public Comms (Seton Hall)</li>
-                    <li>B.A. Int'l Business (Univ. of Rhode Island)</li>
-                    <li>Certified PMM (Product Marketing Alliance)</li>
-                    <li>Ethics in Generative AI (Google)</li>
-                    <li>Cloud AI Pro (Oracle)</li>
+                    <li>Seton Hall University — Master of Arts in Diplomacy and International Relations</li>
+                    <li>Seton Hall University — Master of Arts in Corporate and Public Communications</li>
+                    <li>University of Rhode Island — Bachelor of Arts in International Business and Political Science</li>
                 </ul>
             </div>
         </div>
