@@ -1,23 +1,746 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  
-<!-- GOOGLE ANALYTICS 4 ENGINE -->
-<script async src="https://googletagmanager.com"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-NG2H7GWNJN');
-</script>
-<!-- END GOOGLE ANALYTICS 4 ENGINE -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Case-study cockpit — pick Industry, Constraint, and Outcome to surface a Physical AI / OT-IT GTM playbook from Muhammad A. Yunas."/>
+  <title>Case-Study Cockpit | Muhammad A. Yunas</title>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Physical AI Operations Cockpit | Muhammad A. Yunas</title>
-<meta name="description" content="Interactive Physical AI Operations Cockpit demonstrating how Muhammad A. Yunas translates complex industrial systems into operating models, buyer narratives and commercial propositions.">
-<style>
-:root{--bg:#060a10;--panel:#0d141f;--panel2:#111b29;--line:#26364a;--text:#edf4fb;--muted:#8fa1b5;--gold:#e0bf55;--blue:#62b0ff;--green:#52df9b;--red:#ff7180;--max:1280px}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 500px at 70% -10%,rgba(98,176,255,.14),transparent 65%),radial-gradient(700px 500px at 5% 20%,rgba(224,191,85,.08),transparent 65%),var(--bg);color:var(--text);font:14px/1.5 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{width:min(var(--max),94vw);margin:auto}.top{border-bottom:1px solid var(--line);background:rgba(6,10,16,.88);backdrop-filter:blur(12px);position:sticky;top:0;z-index:10}.topin{min-height:62px;display:flex;justify-content:space-between;align-items:center;gap:16px}.brand{font-weight:800}.brand span{color:var(--gold)}a{color:inherit;text-decoration:none}.back{color:var(--muted);border:1px solid var(--line);padding:8px 12px;border-radius:10px}.hero{padding:42px 0 24px}.eyebrow{display:inline-block;color:#9bd2ff;border:1px solid #315879;background:#0b1a2a;padding:5px 9px;border-radius:999px;font-size:11px;text-transform:uppercase;letter-spacing:1px}.hero h1{font-size:clamp(2rem,5vw,4rem);line-height:1.02;margin:14px 0 8px;letter-spacing:-.04em}.hero p{max-width:850px;color:var(--muted);font-size:1.03rem}.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.panel{background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015));border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.3);padding:18px}.panel h2{margin:0 0 14px;font-size:1rem}.telemetry{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.metric{background:#09111b;border:1px solid #203045;border-radius:12px;padding:13px}.metric b{display:block;font-size:1.35rem;color:var(--blue)}.metric small{color:var(--muted)}.state{display:flex;align-items:center;gap:9px;color:var(--green);font-weight:750}.dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green)}.map{position:relative;height:340px;background:linear-gradient(90deg,rgba(98,176,255,.035) 1px,transparent 1px),linear-gradient(rgba(98,176,255,.035) 1px,transparent 1px);background-size:36px 36px;border:1px solid #1d2c40;border-radius:14px;overflow:hidden}.node{position:absolute;width:150px;padding:11px;text-align:center;border:1px solid #31516d;border-radius:12px;background:#0a1420;box-shadow:0 8px 22px rgba(0,0,0,.25)}.node strong{display:block}.node small{color:var(--muted)}.n1{left:5%;top:39%}.n2{left:33%;top:15%}.n3{left:33%;top:63%}.n4{right:5%;top:39%;border-color:#587145}.line{position:absolute;height:2px;background:linear-gradient(90deg,#31516d,#62b0ff,#587145);transform-origin:left center}.l1{left:18%;top:49%;width:22%;transform:rotate(-18deg)}.l2{left:18%;top:51%;width:22%;transform:rotate(18deg)}.l3{left:46%;top:50%;width:43%}.bars{display:grid;gap:12px}.barrow{display:grid;grid-template-columns:150px 1fr 48px;align-items:center;gap:10px;color:var(--muted)}.bar{height:8px;background:#172333;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--blue));border-radius:inherit}.console{font:12px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;color:#a9c7df;background:#05090e;border:1px solid #1d2c40;border-radius:12px;padding:14px;min-height:170px}.console .ok{color:var(--green)}.console .warn{color:var(--gold)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}.card{background:#0b131e;border:1px solid var(--line);border-radius:14px;padding:16px}.card h3{margin:0 0 6px}.card p{margin:0;color:var(--muted)}footer{padding:34px 0 50px;color:var(--muted)}@media(max-width:900px){.grid{grid-template-columns:1fr}.telemetry{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}.map{height:300px}}@media(max-width:520px){.telemetry{grid-template-columns:1fr 1fr}.node{width:118px;font-size:11px}.barrow{grid-template-columns:100px 1fr 40px}}
-</style>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://muhammad-yunas.com/cockpit.html"/>
+  <meta property="og:title" content="Case-Study Cockpit | Muhammad A. Yunas"/>
+  <meta property="og:description" content="Pick Industry → Constraint → Outcome. Get a matching Physical AI GTM playbook in under 10 seconds."/>
+  <meta property="og:image" content="https://muhammad-yunas.com/assets/og-preview.jpg"/>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NG2H7GWNJN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NG2H7GWNJN');
+  </script>
+
+  <link rel="icon" href="assets/logo.png" type="image/png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --bg-dark: #070D1D;
+      --bg-surface: #0f1c3f;
+      --navy-mid: #0a1628;
+      --gold: #D4AF37;
+      --gold-light: #F3E5AB;
+      --gold-glow: rgba(212, 175, 55, 0.25);
+      --white: #ffffff;
+      --text-muted: #94A3B8;
+      --border: rgba(212, 175, 55, 0.35);
+      --line: rgba(212, 175, 55, 0.18);
+      --panel: #0b1528;
+      --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-top: 83px;
+    }
+
+    body::before {
+      content: ''; position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 2000;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), transparent);
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* HEADER — match index compact right-cluster */
+    header {
+      position: fixed; top: 3px; left: 0; right: 0; z-index: 1000;
+      background: rgba(7, 13, 29, 0.95); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container {
+      max-width: 1200px; margin: 0 auto; padding: 0 5%; height: 80px;
+      display: flex; align-items: center; gap: 1.75rem;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
+      color: var(--white); text-decoration: none; letter-spacing: 0.02em;
+      margin-right: auto; flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-menu {
+      display: flex; align-items: center; gap: 1.75rem; list-style: none; flex-shrink: 1;
+    }
+    .nav-menu a {
+      color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em; transition: var(--transition); white-space: nowrap;
+    }
+    .nav-menu a:hover, .nav-menu a.active { color: var(--gold); }
+    .nav-cta-group { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+    .header-btn {
+      background: rgba(212,175,55,0.08); border: 1px solid var(--border); color: var(--gold-light);
+      padding: 0.4rem 0.9rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: var(--transition);
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .header-btn:hover { background: var(--gold-glow); border-color: var(--gold); color: var(--white); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+    .mobile-menu-drawer {
+      display: none; position: fixed; top: 83px; left: 0; right: 0; background: var(--navy-mid);
+      border-bottom: 1px solid var(--border); padding: 1.5rem 5%; flex-direction: column; gap: 1rem; z-index: 999;
+    }
+    .mobile-menu-drawer.open { display: flex; }
+    .mobile-menu-drawer a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; }
+    .mobile-menu-drawer a:hover { color: var(--gold); }
+
+    @media (max-width: 1024px) {
+      .nav-menu { display: none; }
+      .nav-cta-group { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #070D1D; font-weight: 700;
+      padding: 0.85rem 2rem; border-radius: 4px; text-decoration: none; font-size: 0.9rem;
+      transition: var(--transition); display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.6rem; border: 1px solid var(--gold); cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--white); transform: translateY(-2px); }
+    .btn-simplicity {
+      background: transparent; border: 1px solid var(--border); color: var(--gold-light); font-weight: 600;
+      padding: 0.75rem 1.8rem; border-radius: 4px; text-decoration: none; font-size: 0.9rem;
+      transition: var(--transition); display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;
+    }
+    .btn-simplicity:hover { border-color: var(--gold); color: var(--white); background: rgba(212,175,55,0.08); }
+
+    /* HERO */
+    .cockpit-hero {
+      padding: 3.5rem 5% 2rem;
+      background:
+        radial-gradient(circle at 70% 0%, rgba(212,175,55,0.10) 0%, transparent 55%),
+        radial-gradient(circle at 10% 40%, rgba(98,176,255,0.06) 0%, transparent 50%),
+        linear-gradient(180deg, #040812 0%, var(--bg-dark) 100%);
+      border-bottom: 1px solid var(--line);
+    }
+    .cockpit-hero-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem; display: block;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 700; line-height: 1.15; color: var(--white); margin-bottom: 1rem;
+    }
+    .section-title span { color: var(--gold); }
+    .divider { width: 60px; height: 3px; background: var(--gold); margin-bottom: 1.5rem; }
+    .hero-lead { color: var(--text-muted); font-size: 1.05rem; max-width: 720px; line-height: 1.75; }
+
+    .terminal-chip {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--gold-light);
+      background: #040812; border: 1px solid var(--border); border-radius: 6px;
+      padding: 0.45rem 0.9rem; margin-bottom: 1.25rem;
+    }
+    .terminal-chip .blink {
+      width: 7px; height: 12px; background: var(--gold); display: inline-block;
+      animation: blink 1.1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* SELECTOR */
+    .cockpit-main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .steps-rail {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 2rem;
+    }
+    .step-indicator {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.85rem 1rem; border-radius: 8px;
+      background: var(--panel); border: 1px solid var(--line);
+      color: var(--text-muted); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .step-indicator .num {
+      width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+      border: 1px solid var(--border); font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--gold);
+      flex-shrink: 0;
+    }
+    .step-indicator.done { border-color: var(--gold); color: var(--white); }
+    .step-indicator.done .num { background: var(--gold); color: #070D1D; border-color: var(--gold); }
+    .step-indicator.active { border-color: rgba(212,175,55,0.55); box-shadow: 0 0 0 1px rgba(212,175,55,0.15); }
+
+    .selector-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid var(--border); border-radius: 14px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.35); padding: 1.75rem; margin-bottom: 1.5rem;
+    }
+    .selector-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+      margin-bottom: 1.25rem; flex-wrap: wrap;
+    }
+    .selector-head h2 {
+      font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700;
+    }
+    .selector-head .hint { color: var(--text-muted); font-size: 0.85rem; }
+    .option-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem;
+    }
+    @media (min-width: 900px) {
+      .option-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .option-btn {
+      text-align: left; cursor: pointer; border: 1px solid var(--line);
+      background: var(--navy-mid); color: var(--white); border-radius: 10px;
+      padding: 1.1rem 1rem; transition: var(--transition); font: inherit;
+      display: flex; flex-direction: column; gap: 0.35rem; min-height: 110px;
+    }
+    .option-btn:hover {
+      border-color: var(--gold); background: rgba(212,175,55,0.06);
+      transform: translateY(-2px);
+    }
+    .option-btn.selected {
+      border-color: var(--gold); background: rgba(212,175,55,0.12);
+      box-shadow: 0 0 0 1px rgba(212,175,55,0.25), 0 10px 28px rgba(0,0,0,0.25);
+    }
+    .option-btn .opt-label {
+      font-size: 0.92rem; font-weight: 700; letter-spacing: 0.01em; line-height: 1.3;
+    }
+    .option-btn .opt-sub {
+      font-size: 0.78rem; color: var(--text-muted); line-height: 1.45;
+    }
+    .option-btn.selected .opt-sub { color: var(--gold-light); }
+
+    .selection-summary {
+      display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; min-height: 2rem;
+    }
+    .chip {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(212,175,55,0.08); border: 1px solid var(--border);
+      color: var(--gold-light); font-size: 0.75rem; font-weight: 600;
+      padding: 0.35rem 0.75rem; border-radius: 999px; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .chip span { color: var(--text-muted); font-weight: 500; text-transform: none; letter-spacing: 0; }
+
+    /* RESULT PANEL */
+    .result-panel {
+      display: none;
+      background: #040812;
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--gold);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      animation: reveal 0.45s ease;
+    }
+    .result-panel.visible { display: block; }
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .result-bar {
+      background: #0a1628; padding: 0.85rem 1.25rem; display: flex; align-items: center;
+      border-bottom: 1px solid var(--line); gap: 0.75rem; flex-wrap: wrap;
+    }
+    .result-bar .dots { display: flex; gap: 6px; }
+    .result-bar .dots i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+    .dot-r { background: #ff5f56; } .dot-y { background: #ffbd2e; } .dot-g { background: #27c93f; }
+    .result-bar .path {
+      font-family: 'Fira Code', monospace; font-size: 0.72rem; color: var(--text-muted);
+      margin-left: auto;
+    }
+    .result-body { padding: 1.75rem 1.5rem 1.5rem; }
+    .result-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 1.85rem);
+      font-weight: 700; margin-bottom: 0.5rem; line-height: 1.25;
+    }
+    .result-meta {
+      color: var(--gold); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .brief-grid {
+      display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem;
+    }
+    @media (min-width: 800px) {
+      .brief-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .brief-card {
+      background: var(--navy-mid); border: 1px solid var(--line); border-radius: 10px;
+      padding: 1.25rem; border-left: 3px solid var(--gold);
+    }
+    .brief-card h3 {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.65rem;
+    }
+    .brief-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; }
+    .proof-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.75rem; margin-bottom: 1.5rem;
+    }
+    .proof-metric {
+      text-align: center; background: rgba(212,175,55,0.05); border: 1px solid var(--line);
+      border-radius: 8px; padding: 1rem 0.75rem;
+    }
+    .proof-metric .num {
+      display: block; font-family: 'Playfair Display', serif; font-size: 1.45rem;
+      font-weight: 900; color: var(--gold); line-height: 1.1; margin-bottom: 0.35rem;
+    }
+    .proof-metric .lbl {
+      font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;
+      letter-spacing: 0.06em; font-weight: 600;
+    }
+    .result-cta {
+      display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center;
+      padding-top: 0.5rem; border-top: 1px solid var(--line);
+    }
+    .result-cta .note { color: var(--text-muted); font-size: 0.85rem; margin-left: auto; }
+
+    .placeholder {
+      border: 1px dashed var(--line); border-radius: 14px; padding: 2.5rem 1.5rem;
+      text-align: center; color: var(--text-muted);
+    }
+    .placeholder strong { color: var(--gold-light); display: block; margin-bottom: 0.5rem; font-size: 1rem; }
+
+    footer {
+      border-top: 1px solid var(--line); padding: 2rem 5%; text-align: center;
+      color: var(--text-muted); font-size: 0.82rem;
+    }
+    footer a { color: var(--gold-light); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    @media (max-width: 700px) {
+      .steps-rail { grid-template-columns: 1fr; }
+      .option-grid { grid-template-columns: 1fr; }
+      .result-cta .note { margin-left: 0; width: 100%; }
+    }
+  </style>
 </head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">Muhammad A. <span>Yunas</span></a>
+    <ul class="nav-menu">
+      <li><a href="index.html#manifesto">Manifesto</a></li>
+      <li><a href="index.html#pillars">Expertise</a></li>
+      <li><a href="index.html#work">Work &amp; Impact</a></li>
+      <li><a href="cockpit.html" class="active">Cockpit</a></li>
+      <li><a href="index.html#casestudy">Case Study</a></li>
+      <li><a href="index.html#contact">Contact Me</a></li>
+    </ul>
+    <div class="nav-cta-group">
+      <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" rel="noopener" class="header-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      <a href="Muhammad_Yunas_Resume_2026.pdf" download class="header-btn"><i class="fa-solid fa-file-pdf"></i> Resume</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu-drawer" id="mobileDrawer">
+  <a href="index.html#manifesto" onclick="toggleMobileMenu()">Manifesto</a>
+  <a href="index.html#pillars" onclick="toggleMobileMenu()">Expertise</a>
+  <a href="index.html#work" onclick="toggleMobileMenu()">Work &amp; Impact</a>
+  <a href="cockpit.html" onclick="toggleMobileMenu()">Cockpit</a>
+  <a href="index.html#casestudy" onclick="toggleMobileMenu()">Case Study</a>
+  <a href="index.html#contact" onclick="toggleMobileMenu()">Contact Me</a>
+  <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" rel="noopener">LinkedIn Profile</a>
+  <a href="Muhammad_Yunas_Resume_2026.pdf" download>Download Resume (.PDF)</a>
+</div>
+
+<section class="cockpit-hero">
+  <div class="cockpit-hero-inner">
+    <div class="terminal-chip"><span class="blink"></span> case_study_cockpit // physical_ai_gtm</div>
+    <span class="section-label">Interactive Playbook</span>
+    <h1 class="section-title">Case-Study <span>Cockpit.</span></h1>
+    <div class="divider"></div>
+    <p class="hero-lead">
+      Select Industry → Constraint → Desired outcome. In under ten seconds, surface a matching GTM playbook
+      grounded in Physical AI, OT/IT convergence, and industrial commercialization — the same language used across
+      Schneider Electric, Dell Technologies, Uptake, and UST Global engagements.
+    </p>
+  </div>
+</section>
+
+<main class="cockpit-main">
+  <div class="steps-rail" aria-hidden="true">
+    <div class="step-indicator active" id="ind-1"><span class="num">1</span> Industry</div>
+    <div class="step-indicator" id="ind-2"><span class="num">2</span> Constraint</div>
+    <div class="step-indicator" id="ind-3"><span class="num">3</span> Outcome</div>
+  </div>
+
+  <div class="selection-summary" id="summary" aria-live="polite"></div>
+
+  <div class="selector-panel" id="panel-industry">
+    <div class="selector-head">
+      <h2>1. Industry</h2>
+      <span class="hint">Where the commercial motion must land</span>
+    </div>
+    <div class="option-grid" id="opts-industry" role="listbox" aria-label="Industry"></div>
+  </div>
+
+  <div class="selector-panel" id="panel-constraint" hidden>
+    <div class="selector-head">
+      <h2>2. Constraint</h2>
+      <span class="hint">The friction blocking enterprise yes</span>
+    </div>
+    <div class="option-grid" id="opts-constraint" role="listbox" aria-label="Constraint"></div>
+  </div>
+
+  <div class="selector-panel" id="panel-outcome" hidden>
+    <div class="selector-head">
+      <h2>3. Desired outcome</h2>
+      <span class="hint">The commercial result leadership needs</span>
+    </div>
+    <div class="option-grid" id="opts-outcome" role="listbox" aria-label="Desired outcome"></div>
+  </div>
+
+  <div class="placeholder" id="placeholder">
+    <strong>Awaiting selection</strong>
+    Complete all three steps to reveal a matching playbook brief.
+  </div>
+
+  <article class="result-panel" id="result" aria-live="polite">
+    <div class="result-bar">
+      <div class="dots"><i class="dot-r"></i><i class="dot-y"></i><i class="dot-g"></i></div>
+      <div class="path" id="result-path">playbook.match // ready</div>
+    </div>
+    <div class="result-body">
+      <div class="result-meta" id="result-meta">Matched playbook</div>
+      <h2 class="result-title" id="result-title"></h2>
+      <div class="brief-grid">
+        <div class="brief-card">
+          <h3>Problem</h3>
+          <p id="result-problem"></p>
+        </div>
+        <div class="brief-card">
+          <h3>Approach</h3>
+          <p id="result-approach"></p>
+        </div>
+        <div class="brief-card">
+          <h3>Proof / Outcome</h3>
+          <p id="result-proof"></p>
+        </div>
+      </div>
+      <div class="proof-row" id="result-metrics"></div>
+      <div class="result-cta">
+        <a class="btn-primary" href="index.html#contact">Discuss this playbook →</a>
+        <a class="btn-simplicity" id="result-case-link" href="case-studies.html">View related case study</a>
+        <span class="note">Based in Long Island, NY · Listen. Clarify. Execute.</span>
+      </div>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <p>&copy; 2026 Muhammad A. Yunas — Physical AI &amp; Agentic AI GTM Leader</p>
+  <p style="margin-top:0.5rem;">
+    <a href="index.html">Home</a> ·
+    <a href="case-studies.html">Case Studies</a> ·
+    <a href="mailto:yunasmuh@gmail.com">Book a Call</a>
+  </p>
+</footer>
+
+<script>
+  function toggleMobileMenu() {
+    document.getElementById('mobileDrawer').classList.toggle('open');
+  }
+
+  const INDUSTRIES = [
+    { id: 'discrete', label: 'Discrete Manufacturing', sub: 'Plant-floor OT buyers + enterprise IT' },
+    { id: 'energy', label: 'Energy & Renewables', sub: 'Uptime, APM, and asset risk' },
+    { id: 'cyber', label: 'Cyber-Physical Enterprise', sub: 'Resilience tied to operations' },
+    { id: 'dcim', label: 'Data Centers & Intelligent Ops', sub: 'DCIM → Physical AI category' }
+  ];
+
+  const CONSTRAINTS = [
+    { id: 'otit', label: 'OT/IT language divide', sub: 'Sponsors and champions veto each other' },
+    { id: 'narrative', label: 'Feature trap / no category', sub: 'Capability without buyer narrative' },
+    { id: 'cycle', label: 'Long enterprise cycles', sub: 'Undefined ICP and open-ended trials' },
+    { id: 'enablement', label: 'Weak sales OT fluency', sub: 'Enablement not built for plant economics' }
+  ];
+
+  const OUTCOMES = [
+    { id: 'velocity', label: 'Compress sales cycles', sub: 'Faster decisions, structured POCs' },
+    { id: 'share', label: 'Category & market share', sub: 'Own the narrative before rivals' },
+    { id: 'pipeline', label: 'Pipeline & win-rate lift', sub: 'Qualified demand that compounds' },
+    { id: 'clarity', label: 'CFO-aligned clarity', sub: 'EBITDA and risk, not feature lists' }
+  ];
+
+  /* Curated playbooks keyed by constraint|outcome (industry flavors the problem line). */
+  const PLAYBOOKS = {
+    'otit|velocity': {
+      title: 'OT/IT Convergence Narrative → Cycle Compression',
+      meta: 'Uptake · Predictive APM / Physical Operations Intelligence',
+      caseHref: 'case-studies/ot-it-convergence.html',
+      caseLabel: 'OT/IT Convergence case',
+      problemTpl: 'In {industry}, OT sponsors and IT champions speak past each other — elongating deals while competitors sell feature comparisons.',
+      approach: 'Unify technical and commercial value under an OT/IT convergence narrative. Map every deal to OT Sponsor, IT Champion, and CFO Economic Buyer. Replace open-ended trials with structured, benchmark-tied POCs.',
+      proof: 'Enterprise sales cycles reduced up to 40%; target-account engagement lifted 35%; wasted spend eliminated via precision industrial segmentation.',
+      metrics: [{ n: '40%', l: 'Cycle reduction' }, { n: '35%', l: 'Engagement lift' }, { n: '$2M', l: 'Waste removed' }]
+    },
+    'otit|clarity': {
+      title: 'Translate Plant Economics for the CFO',
+      meta: 'Physical Operations Intelligence narrative',
+      caseHref: 'case-studies/gtm-ot-it.html',
+      caseLabel: 'GTM OT-IT playbook',
+      problemTpl: '{industry} buyers reject platform jargon. Plant managers care about uptime; CFOs care about risk and EBITDA — vendors rarely connect the two.',
+      approach: 'Retire commoditized “IIoT platform” language. Reframe predictive telemetry as quantifiable risk reduction and EBITDA preservation. Arm sales with CFO-aligned business cases.',
+      proof: 'Stronger executive sponsorship, clearer pipeline quality, and shorter decision cycles when narrative is tied to plant economics.',
+      metrics: [{ n: '3', l: 'Buyer roles mapped' }, { n: 'CFO', l: 'Economic buyer' }, { n: 'POC', l: '60-day structure' }]
+    },
+    'otit|pipeline': {
+      title: 'Unified Narrative Across Sales, Product & CS',
+      meta: 'Uptake · Caterpillar / BHE Renewables motion',
+      caseHref: 'case-studies.html',
+      caseLabel: 'Case studies overview',
+      problemTpl: 'In {industry}, product, sales, and delivery run disconnected messaging — pipeline looks large but conversion stalls at OT/IT handoff.',
+      approach: 'One OT/IT convergence narrative across GTM. Role-based messaging, AI-driven segmentation, and precision targeting of asset-intensive accounts.',
+      proof: '40% cycle reduction, 35% engagement lift, 15% marketing ROI lift, and elimination of $2M annual wasted ad spend.',
+      metrics: [{ n: '40%', l: 'Faster cycles' }, { n: '15%', l: 'ROI lift' }, { n: '25%', l: 'Conversion lift' }]
+    },
+    'otit|share': {
+      title: 'Own the OT/IT Convergence Category',
+      meta: 'From $0 to $40M ARR trajectory',
+      caseHref: 'case-studies/ot-it-convergence.html',
+      caseLabel: 'Flagship OT/IT case',
+      problemTpl: '{industry} markets reward the vendor who defines how OT and IT buy together — not the one with the longest feature list.',
+      approach: 'Narrow ICP to accounts with active SCADA/DCS. Build Physical Operations Intelligence as the category frame. Scale enablement so sales becomes the primary customer.',
+      proof: '$40M+ ARR pipeline architecture, 66% sales-cycle drop, 137% quota attainment, 15% CAC reduction.',
+      metrics: [{ n: '$40M+', l: 'ARR pipeline' }, { n: '66%', l: 'Cycle drop' }, { n: '137%', l: 'Quota' }]
+    },
+    'narrative|share': {
+      title: 'DCIM → Physical AI Category Creation',
+      meta: 'Schneider Electric · Intelligent Physical Operations',
+      caseHref: 'case-studies.html',
+      caseLabel: 'Schneider case study',
+      problemTpl: 'Early {industry} markets with fragmented buyer understanding and no established category language leave brilliant capability stranded.',
+      approach: 'Define and commercialize the category — DCIM as the infrastructure layer of Physical AI. Analyst relationships, standardized messaging, and 12+ coordinated GTM motions.',
+      proof: '$32M revenue growth, 45% first-year adoption, $120M TAM expansion, Tier-1 category leadership; 12% → 38% market share in 18 months.',
+      metrics: [{ n: '$32M', l: 'Revenue growth' }, { n: '38%', l: 'Market share' }, { n: '12+', l: 'GTM launches' }]
+    },
+    'narrative|clarity': {
+      title: 'Exit the Feature Trap',
+      meta: 'Listen · Clarify · Redesign the motion',
+      caseHref: 'casestudy.html',
+      caseLabel: 'GTM transformation playbook',
+      problemTpl: 'In {industry}, products are sold on feature comparisons. Sales cycles stretch while OT and IT veto each other because no one speaks both languages.',
+      approach: 'Audit ICP friction. Abandon feature-led decks. Translate API and compliance depth into CFO-aligned cases. Shift from subjective slides to structured POCs and battle cards.',
+      proof: 'Measurable commercial velocity when narrative, enablement, and motion are redesigned as one system — not a messaging refresh.',
+      metrics: [{ n: '01', l: 'Listen / audit' }, { n: '02', l: 'Clarify narrative' }, { n: '03', l: 'Redesign motion' }]
+    },
+    'narrative|pipeline': {
+      title: 'Physical Operations Intelligence Repositioning',
+      meta: 'UST Global · Manufacturing & supply chain',
+      caseHref: 'case-studies.html',
+      caseLabel: 'UST case study',
+      problemTpl: '{industry} capabilities span manufacturing, supply chain, and engineering — buyers see disconnected offerings, not a platform.',
+      approach: 'Reposition under a single Physical Operations Intelligence narrative. Redesign buyer journeys, apply ML-driven segmentation, align cross-functional GTM.',
+      proof: '$9M new revenue (30% YoY), 75% engagement lift, 15% CAC reduction, 34% incremental revenue from a $10M untapped opportunity.',
+      metrics: [{ n: '$9M', l: 'New revenue' }, { n: '75%', l: 'Engagement' }, { n: '15%', l: 'CAC down' }]
+    },
+    'narrative|velocity': {
+      title: 'Category Narrative That Shortens the Path to Yes',
+      meta: 'Category creation + structured motion',
+      caseHref: 'casestudy.html',
+      caseLabel: 'OT case study',
+      problemTpl: 'Without category language in {industry}, every deal re-educates the market from scratch — velocity dies in discovery.',
+      approach: 'Establish the category frame first, then wire enablement and POCs to that frame so every conversation starts mid-funnel, not at zero.',
+      proof: 'Category leadership motions at Schneider and narrative unification at Uptake/UST compressed education time and lifted conversion.',
+      metrics: [{ n: 'TAM', l: 'Expanded' }, { n: 'ICP', l: 'Narrowed' }, { n: 'POC', l: 'Structured' }]
+    },
+    'cycle|velocity': {
+      title: 'Structured 60-Day POC Architecture',
+      meta: 'Sales motion redesign for industrial accounts',
+      caseHref: 'case-studies/ot-it-convergence.html',
+      caseLabel: 'Execution architecture',
+      problemTpl: 'Open-ended tech trials in {industry} burn calendar and credibility. Quota attainment stalls when ICP is undefined.',
+      approach: 'Narrow ICP (e.g., discrete manufacturing / upstream energy with SCADA/DCS). Tie POCs to safety and downtime benchmarks. Treat sales as the primary customer.',
+      proof: 'Sales-cycle reductions up to 66% in partner and enterprise motions; quota attainment above 100% when motion is structured.',
+      metrics: [{ n: '60d', l: 'POC window' }, { n: '66%', l: 'Cycle cut' }, { n: '137%', l: 'Quota' }]
+    },
+    'cycle|pipeline': {
+      title: 'Pipeline Quality Over Pipeline Volume',
+      meta: 'Dell & Uptake commercial systems',
+      caseHref: 'case-studies.html',
+      caseLabel: 'Case studies',
+      problemTpl: '{industry} pipeline fills with curiosity deals that never clear OT/IT dual approval — inflating forecast, starving close.',
+      approach: 'Precision targeting, competitive plays, and outcome-based messaging. Align ABM and enablement to accounts that can buy cyber-physical value.',
+      proof: '$24M net-new pipeline at Dell; 42% win-rate lift; partner cycles cut 66% across 200+ channel partners.',
+      metrics: [{ n: '$24M', l: 'Net-new pipeline' }, { n: '42%', l: 'Win-rate lift' }, { n: '66%', l: 'Partner cycles' }]
+    },
+    'cycle|share': {
+      title: 'Scale from Zero to Category Share',
+      meta: 'Schneider Electric · IIoT platform launch',
+      caseHref: 'case-studies.html',
+      caseLabel: 'Schneider impact',
+      problemTpl: 'Entering {industry} early means long cycles and skeptical buyers — unless GTM invents the category and the motion together.',
+      approach: 'Pioneer the enterprise SaaS playbook for physical infrastructure. Launch cadence, analyst narrative, and account expansion from wallet share up.',
+      proof: 'Zero to $75M+ cumulative revenue in 18 months; market share from 12% to 38%; deal sizes +35%.',
+      metrics: [{ n: '$75M+', l: 'Revenue' }, { n: '18mo', l: 'To scale' }, { n: '38%', l: 'Share' }]
+    },
+    'cycle|clarity': {
+      title: 'ICP Redefinition Before More Spend',
+      meta: 'Stop boiling the ocean',
+      caseHref: 'case-studies/ot-it-convergence.html',
+      caseLabel: 'ICP playbook',
+      problemTpl: 'Long cycles in {industry} often mean the ICP is everyone — which means the narrative is no one.',
+      approach: 'Focus on accounts with active industrial control footprints and clear economic buyers. Map stakeholders before messaging. Only then scale spend.',
+      proof: 'Clearer sponsorship, lower CAC, and higher conversion when ICP and narrative are sequenced correctly.',
+      metrics: [{ n: 'ICP', l: 'Redefined' }, { n: '15%', l: 'CAC down' }, { n: '3', l: 'Stakeholder map' }]
+    },
+    'enablement|velocity': {
+      title: 'Sales as the Primary Customer',
+      meta: 'Enablement that speaks plant floor and boardroom',
+      caseHref: 'casestudy.html',
+      caseLabel: 'Enablement playbook',
+      problemTpl: 'In {industry}, technical sellers lack OT fluency — so every deal becomes a custom education project.',
+      approach: 'Modular competitive playbooks, dynamic battle cards, and structured POCs. Arm enterprise sales and engineering to shorten complex accounts by design.',
+      proof: 'Deal cycles shortened by up to 66% in complex accounts when enablement is treated as a product, not a slide deck.',
+      metrics: [{ n: '66%', l: 'Faster deals' }, { n: 'Playbooks', l: 'Modular' }, { n: 'Sales', l: 'Primary buyer' }]
+    },
+    'enablement|pipeline': {
+      title: 'Cyber-Physical Resilience Enablement',
+      meta: 'Dell Technologies · $500M+ portfolio',
+      caseHref: 'case-studies.html',
+      caseLabel: 'Dell case study',
+      problemTpl: 'Security portfolios in asset-intensive {industry} accounts are sold as data protection — disconnected from uptime and operations.',
+      approach: 'Reframe as cyber-physical resilience. Outcome-based messaging, competitive plays, AI-powered onboarding for partners and sellers.',
+      proof: '42% win-rate lift, 37% market share growth, +25 NPS, 5,000+ users onboarded annually, $24M net-new pipeline.',
+      metrics: [{ n: '42%', l: 'Win-rate' }, { n: '37%', l: 'Share growth' }, { n: '+25', l: 'NPS' }]
+    },
+    'enablement|share': {
+      title: 'Partner & Channel Velocity at Scale',
+      meta: '200+ partners · NA & EMEA',
+      caseHref: 'case-studies.html',
+      caseLabel: 'Channel impact',
+      problemTpl: 'Channel partners in {industry} cannot sell what they cannot explain — OT fluency gaps cap share.',
+      approach: 'Partner enablement systems, co-sell motions, and resilience narrative that travels across regions without reinventing the pitch.',
+      proof: 'Partner sales cycles reduced 66%; market share expansion and historic NPS highs for the division.',
+      metrics: [{ n: '200+', l: 'Partners' }, { n: '66%', l: 'Cycle cut' }, { n: '37%', l: 'Share up' }]
+    },
+    'enablement|clarity': {
+      title: 'Agentic AI GTM Readiness',
+      meta: 'Independent advisory · Physical & Agentic AI',
+      caseHref: 'case-studies.html',
+      caseLabel: 'Advisory outcomes',
+      problemTpl: 'Leadership teams commercializing AI for {industry} hire SaaS GTM talent who do not understand OT environments — clarity collapses.',
+      approach: 'Executive counsel spanning edge intelligence, predictive operations, and cyber-physical security. Mentor GTM staff; structure adoption paths.',
+      proof: '80% director-level promotion rate across mentored GTM professionals; accelerated clarity and adoption readiness.',
+      metrics: [{ n: '80%', l: 'Promotion rate' }, { n: '18yr', l: 'OT/IT depth' }, { n: 'VP+', l: 'Counsel' }]
+    }
+  };
+
+  const INDUSTRY_PHRASE = {
+    discrete: 'discrete manufacturing',
+    energy: 'energy and renewables',
+    cyber: 'cyber-physical and asset-intensive enterprises',
+    dcim: 'data centers and intelligent physical operations'
+  };
+
+  const state = { industry: null, constraint: null, outcome: null };
+
+  function renderOptions(containerId, items, key) {
+    const el = document.getElementById(containerId);
+    el.innerHTML = items.map(item => `
+      <button type="button" class="option-btn" role="option" data-key="${key}" data-id="${item.id}" aria-selected="false">
+        <span class="opt-label">${item.label}</span>
+        <span class="opt-sub">${item.sub}</span>
+      </button>
+    `).join('');
+    el.querySelectorAll('.option-btn').forEach(btn => {
+      btn.addEventListener('click', () => select(key, btn.dataset.id, btn));
+    });
+  }
+
+  function select(key, id, btn) {
+    state[key] = id;
+    const panel = btn.closest('.option-grid');
+    panel.querySelectorAll('.option-btn').forEach(b => {
+      b.classList.toggle('selected', b === btn);
+      b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+    });
+
+    if (key === 'industry') {
+      document.getElementById('panel-constraint').hidden = false;
+      document.getElementById('ind-1').classList.add('done');
+      document.getElementById('ind-2').classList.add('active');
+    }
+    if (key === 'constraint') {
+      document.getElementById('panel-outcome').hidden = false;
+      document.getElementById('ind-2').classList.add('done');
+      document.getElementById('ind-3').classList.add('active');
+    }
+    if (key === 'outcome') {
+      document.getElementById('ind-3').classList.add('done');
+    }
+
+    updateSummary();
+    maybeReveal();
+  }
+
+  function labelFor(list, id) {
+    const found = list.find(x => x.id === id);
+    return found ? found.label : '';
+  }
+
+  function updateSummary() {
+    const parts = [];
+    if (state.industry) parts.push(`<span class="chip">Industry <span>${labelFor(INDUSTRIES, state.industry)}</span></span>`);
+    if (state.constraint) parts.push(`<span class="chip">Constraint <span>${labelFor(CONSTRAINTS, state.constraint)}</span></span>`);
+    if (state.outcome) parts.push(`<span class="chip">Outcome <span>${labelFor(OUTCOMES, state.outcome)}</span></span>`);
+    document.getElementById('summary').innerHTML = parts.join('');
+  }
+
+  function resolvePlaybook() {
+    const key = state.constraint + '|' + state.outcome;
+    return PLAYBOOKS[key] || PLAYBOOKS['narrative|clarity'];
+  }
+
+  function maybeReveal() {
+    if (!state.industry || !state.constraint || !state.outcome) return;
+
+    const pb = resolvePlaybook();
+    const industryPhrase = INDUSTRY_PHRASE[state.industry] || 'industrial markets';
+
+    document.getElementById('placeholder').style.display = 'none';
+    const result = document.getElementById('result');
+    result.classList.remove('visible');
+    void result.offsetWidth;
+    result.classList.add('visible');
+
+    document.getElementById('result-meta').textContent = pb.meta;
+    document.getElementById('result-title').textContent = pb.title;
+    document.getElementById('result-problem').textContent = pb.problemTpl.replace('{industry}', industryPhrase);
+    document.getElementById('result-approach').textContent = pb.approach;
+    document.getElementById('result-proof').textContent = pb.proof;
+    document.getElementById('result-path').textContent =
+      `match // ${state.industry} → ${state.constraint} → ${state.outcome}`;
+
+    document.getElementById('result-metrics').innerHTML = pb.metrics.map(m => `
+      <div class="proof-metric"><span class="num">${m.n}</span><span class="lbl">${m.l}</span></div>
+    `).join('');
+
+    const link = document.getElementById('result-case-link');
+    link.href = pb.caseHref;
+    link.textContent = pb.caseLabel;
+
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  renderOptions('opts-industry', INDUSTRIES, 'industry');
+  renderOptions('opts-constraint', CONSTRAINTS, 'constraint');
+  renderOptions('opts-outcome', OUTCOMES, 'outcome');
+</script>
+</body>
+</html>
