@@ -93,23 +93,27 @@
   }
   .nav-container {
     max-width: 1200px; margin: 0 auto; padding: 0 5%; height: 80px;
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; align-items: center; gap: 1.75rem;
   }
   .nav-logo {
     font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: 0.02em;
+    margin-right: auto; flex-shrink: 0;
   }
   .nav-logo span { color: var(--gold); }
 
   .nav-menu {
-    display: flex; align-items: center; gap: 2rem; list-style: none;
+    display: flex; align-items: center; gap: 1.75rem; list-style: none;
+    flex-shrink: 1;
   }
   .nav-menu a {
     color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; transition: var(--transition);
+    white-space: nowrap;
   }
   .nav-menu a:hover { color: var(--gold); }
 
   .nav-cta-group {
-    display: flex; align-items: center; gap: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+    flex-shrink: 0;
   }
   .header-btn {
     background: rgba(212,175,55,0.08); border: 1px solid var(--border); color: var(--gold-light); 
@@ -132,7 +136,7 @@
   @media(max-width: 1024px) {
     .nav-menu { display: none; }
     .nav-cta-group { display: none; }
-    .hamburger { display: flex; }
+    .hamburger { display: flex; margin-left: 0; }
   }
 
   section { padding: 6rem 5%; position: relative; width: 100%; }
@@ -326,6 +330,7 @@
             <li><a href="#pillars">Expertise</a></li>
             <li><a href="#work">Work &amp; Impact</a></li>
             <li><a href="#casestudy">Case Study</a></li>
+            <li><a href="cockpit.html">Cockpit</a></li>
             <li><a href="#skills">Competencies</a></li>
             <li><a href="#contact">Contact Me</a></li>
         </ul>
@@ -346,6 +351,7 @@
     <a href="#pillars" onclick="toggleMobileMenu()">Expertise</a>
     <a href="#work" onclick="toggleMobileMenu()">Work &amp; Impact</a>
     <a href="#casestudy" onclick="toggleMobileMenu()">Case Study</a>
+    <a href="cockpit.html" onclick="toggleMobileMenu()">Cockpit</a>
     <a href="#skills" onclick="toggleMobileMenu()">Competencies</a>
     <a href="#contact" onclick="toggleMobileMenu()">Contact Me</a>
     <a href="https://linkedin.com/in/muhammad-yunas" target="_blank">LinkedIn Profile</a>
@@ -384,6 +390,7 @@
 
         <div style="margin-bottom: 2.5rem; display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; width: 100%;">
             <a href="#work" class="btn-primary">View Track Record ↓</a>
+            <a href="cockpit.html" class="btn-simplicity"><i class="fa-solid fa-sliders"></i> Case-Study Cockpit</a>
             <a href="Muhammad_Yunas_Resume_2026.pdf" download class="btn-simplicity"><i class="fa-solid fa-file-pdf"></i> Download Resume (.PDF)</a>
         </div>
 

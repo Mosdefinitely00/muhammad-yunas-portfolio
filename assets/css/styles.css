@@ -30,7 +30,8 @@ body::before {
 /* ── NAV ── */
 nav {
   position: fixed; top: 4px; left: 0; right: 0; z-index: 1000;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center; justify-content: flex-start;
+  gap: 1.75rem;
   padding: 0 5%; height: 90px;
   background: rgba(10,22,40,0.95);
   backdrop-filter: blur(16px);
@@ -40,7 +41,7 @@ nav {
 nav.scrolled { background: rgba(10,22,40,0.99); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
 
 /* Top-Left Cluster */
-.nav-left-cluster { display: flex; flex-direction: column; gap: 0.2rem; }
+.nav-left-cluster { display: flex; flex-direction: column; gap: 0.2rem; margin-right: auto; flex-shrink: 0; }
 .nav-logo-name {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
@@ -55,11 +56,11 @@ nav.scrolled { background: rgba(10,22,40,0.99); box-shadow: 0 10px 30px rgba(0,0
 .nav-utilities a i { color: var(--gold); }
 .nav-utilities a:hover { color: var(--white); text-shadow: 0 0 10px var(--gold); }
 
-.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; margin-left: auto; padding-right: 1rem;}
-.nav-links a { color: var(--white); text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; transition: var(--transition); }
+.nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; margin-left: auto; padding-right: 0; flex-shrink: 1; }
+.nav-links a { color: var(--white); text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; transition: var(--transition); white-space: nowrap; }
 .nav-links a:hover { color: var(--gold); }
 
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; flex-shrink: 0; }
 .hamburger span { display: block; width: 25px; height: 2px; background: var(--white); transition: var(--transition); border-radius: 2px; }
 
 .mobile-menu {
@@ -71,7 +72,18 @@ nav.scrolled { background: rgba(10,22,40,0.99); box-shadow: 0 10px 30px rgba(0,0
 .mobile-menu a { display: block; color: var(--white); text-decoration: none; padding: 1rem 0; font-size: 1.1rem; font-weight: 600; border-bottom: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.05em; }
 .mobile-menu a:last-child { border-bottom: none; color: var(--gold); font-weight: 800; }
 
-@media(max-width:1200px) { .nav-links { display: none; } .hamburger { display: flex; } .nav-logo-name { font-size: 1.6rem; } }
+/* Flat header nav (about/experience/etc.): logo/first link left, remaining links as a tight right cluster — no space-between stretch */
+nav.nav > a:first-child { margin-right: auto; }
+nav.nav > a { color: var(--white); text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; transition: var(--transition); }
+nav.nav > a:hover, nav.nav > a.active { color: var(--gold); }
+
+@media(max-width:1200px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-logo-name { font-size: 1.6rem; }
+  nav.nav { flex-wrap: wrap; height: auto; min-height: 70px; padding-top: 1rem; padding-bottom: 1rem; gap: 1rem; }
+  nav.nav > a:not(:first-child):not(.cta-call):not(.cta-linkedin):not(.btn-toggle) { display: none; }
+}
 
 /* ── SECTIONS ── */
 section { padding: 7rem 5%; position: relative; }
@@ -319,25 +331,3 @@ footer strong { color: var(--gold); }
 .fade-in-delay-3 { transition-delay: 0.3s; }
 .fade-in-delay-4 { transition-delay: 0.4s; }
 
-/* --- BULLETPROOF DESKTOP HAMBURGER OVERRIDE --- */
-/* 1. Hides every element in the navbar EXCEPT the logo cluster and hamburger */
-nav > *:not(.nav-left-cluster):not(.hamburger) {
-  display: none !important;
-}
-
-/* 2. Hides the email/calendar utility links under the logo to match the mobile aesthetic */
-.nav-utilities {
-  display: none !important;
-}
-
-/* 3. Forces the hamburger to render on all screen sizes */
-.hamburger {
-  display: flex !important;
-}
-
-/* 4. Locks the layout structure: Logo on the left, Hamburger on the right */
-nav {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-}
