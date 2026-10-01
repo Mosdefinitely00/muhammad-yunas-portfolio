@@ -318,3 +318,12 @@ footer strong { color: var(--gold); }
 .fade-in-delay-2 { transition-delay: 0.2s; }
 .fade-in-delay-3 { transition-delay: 0.3s; }
 .fade-in-delay-4 { transition-delay: 0.4s; }
+
+/* Force Hamburger Menu on All Screen Sizes */
+.nav-links { 
+  display: none !important; 
+}
+
+.hamburger { 
+  display: flex !important; 
+}
