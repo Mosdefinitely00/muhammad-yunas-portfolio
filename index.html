@@ -28,7 +28,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Verified CSS Path -->
+  <!-- CRITICAL FIX: Corrected directory path to assets/css/styles.css -->
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -383,9 +383,8 @@
     <p>&copy; 2026 Muhammad A. Yunas. All Rights Reserved. &bull; <strong>Listen deeply. Clarify relentlessly. Execute decisively.</strong></p>
   </footer>
 
-  <!-- CRITICAL FIX: Menu & Animation Scripts -->
+  <!-- Simple Mobile Menu Toggle Script -->
   <script>
-    // 1. Mobile Hamburger Menu Toggle
     const hamburger = document.getElementById('hamburger-toggle');
     const mobileMenu = document.getElementById('mobile-menu-drawer');
 
@@ -393,30 +392,11 @@
       mobileMenu.classList.toggle('open');
     });
 
+    // Close mobile menu on link click
     document.querySelectorAll('.mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.remove('open');
       });
-    });
-
-    // 2. Intersection Observer (This removes the dark screen and fades in text)
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    const appearOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible'); // Adds opacity: 1 to make elements visible
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-
-    fadeElements.forEach(element => {
-      appearOnScroll.observe(element);
     });
   </script>
 </body>
