@@ -319,28 +319,25 @@ footer strong { color: var(--gold); }
 .fade-in-delay-3 { transition-delay: 0.3s; }
 .fade-in-delay-4 { transition-delay: 0.4s; }
 
-/* --- FULL DESKTOP HAMBURGER OVERRIDE --- */
-/* Hide all inline navigation elements regardless of screen size */
-.nav-links,
-.nav-utilities,
-.header-actions {
+/* --- BULLETPROOF DESKTOP HAMBURGER OVERRIDE --- */
+/* 1. Hides every element in the navbar EXCEPT the logo cluster and hamburger */
+nav > *:not(.nav-left-cluster):not(.hamburger) {
   display: none !important;
 }
 
-/* Force the hamburger icon to remain visible on all screen sizes */
+/* 2. Hides the email/calendar utility links under the logo to match the mobile aesthetic */
+.nav-utilities {
+  display: none !important;
+}
+
+/* 3. Forces the hamburger to render on all screen sizes */
 .hamburger {
   display: flex !important;
 }
 
-/* Ensure the header container perfectly justifies space between the logo and hamburger */
+/* 4. Locks the layout structure: Logo on the left, Hamburger on the right */
 nav {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-}
-
-/* Ensure the logo cluster remains compact */
-.nav-left-cluster {
-  display: flex !important;
-  flex-direction: column !important;
 }
