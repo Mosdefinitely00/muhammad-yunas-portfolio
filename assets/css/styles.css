@@ -71,7 +71,7 @@ nav.scrolled { background: rgba(10,22,40,0.99); box-shadow: 0 10px 30px rgba(0,0
 .mobile-menu a { display: block; color: var(--white); text-decoration: none; padding: 1rem 0; font-size: 1.1rem; font-weight: 600; border-bottom: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.05em; }
 .mobile-menu a:last-child { border-bottom: none; color: var(--gold); font-weight: 800; }
 
-@media(max-width:1024px) { .nav-links { display: none; } .hamburger { display: flex; } .nav-logo-name { font-size: 1.6rem; } }
+@media(max-width:1200px) { .nav-links { display: none; } .hamburger { display: flex; } .nav-logo-name { font-size: 1.6rem; } }
 
 /* ── SECTIONS ── */
 section { padding: 7rem 5%; position: relative; }
