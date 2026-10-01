@@ -319,11 +319,28 @@ footer strong { color: var(--gold); }
 .fade-in-delay-3 { transition-delay: 0.3s; }
 .fade-in-delay-4 { transition-delay: 0.4s; }
 
-/* Force Hamburger Menu on All Screen Sizes */
-.nav-links { 
-  display: none !important; 
+/* --- FULL DESKTOP HAMBURGER OVERRIDE --- */
+/* Hide all inline navigation elements regardless of screen size */
+.nav-links,
+.nav-utilities,
+.header-actions {
+  display: none !important;
 }
 
-.hamburger { 
-  display: flex !important; 
+/* Force the hamburger icon to remain visible on all screen sizes */
+.hamburger {
+  display: flex !important;
+}
+
+/* Ensure the header container perfectly justifies space between the logo and hamburger */
+nav {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+/* Ensure the logo cluster remains compact */
+.nav-left-cluster {
+  display: flex !important;
+  flex-direction: column !important;
 }
