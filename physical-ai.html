@@ -4,289 +4,218 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Physical AI: The IT/OT Kinetic Coaster | Muhammad A. Yunas</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #070D1D;
+      --bg-dark: #0a0d12;
       --ot-amber: #ff9f1c;
       --it-cyan: #00f5d4;
       --cfo-green: #2ec4b6;
-      --gold: #D4AF37;
-      --glass-panel: rgba(16, 22, 34, 0.82);
+      --glass-panel: rgba(16, 22, 34, 0.75);
     }
+
     body, html {
       margin: 0; padding: 0; width: 100%; height: 100%;
       overflow: hidden; font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg-dark); color: #fff;
+      background-color: var(--bg-dark); color: #fff;
     }
-    #webgl-container { position: absolute; inset: 0; z-index: 1; }
+
+    #webgl-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+
     .hud-overlay {
-      position: absolute; z-index: 10; pointer-events: none; inset: 0;
-      display: flex; flex-direction: column; justify-content: space-between;
-      padding: clamp(16px, 3vw, 30px); box-sizing: border-box;
+      position: absolute; z-index: 10; pointer-events: none; width: 100%; height: 100%;
+      display: flex; flex-direction: column; justify-content: space-between; padding: 30px; box-sizing: border-box;
     }
+
     .interactive-element { pointer-events: auto; }
+
     .hud-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .brand-title { font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #8a99ad; }
+    .brand-title { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #8a99ad; }
     .brand-title span { color: var(--it-cyan); }
     .brand-title a { color: inherit; text-decoration: none; }
+
     .persona-toggle {
       display: flex; background: var(--glass-panel); border: 1px solid rgba(255,255,255,0.1);
       border-radius: 30px; padding: 4px; backdrop-filter: blur(10px);
     }
     .persona-btn {
-      background: transparent; border: none; color: #8a99ad; padding: 8px 14px;
-      font-size: 0.8rem; font-weight: 600; cursor: pointer; border-radius: 20px; transition: all 0.3s;
+      background: transparent; border: none; color: #8a99ad; padding: 8px 18px;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 20px; transition: all 0.3s;
     }
     .persona-btn.active { background: var(--it-cyan); color: #000; box-shadow: 0 0 15px rgba(0,245,212,0.4); }
-    .persona-btn[data-p="OT"].active { background: var(--ot-amber); }
-    .persona-btn[data-p="CFO"].active { background: var(--cfo-green); color: #000; }
-    .telemetry {
-      align-self: flex-start; margin-top: 12px; background: var(--glass-panel);
-      border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 16px;
-      backdrop-filter: blur(10px); min-width: 200px; pointer-events: none;
-    }
-    .telemetry .label { font-size: 0.7rem; color: #8a99ad; letter-spacing: 1px; text-transform: uppercase; }
-    .telemetry .value { font-size: 1.6rem; font-weight: 700; color: var(--gold); margin-top: 4px; }
-    .telemetry .sub { font-size: 0.75rem; color: #a0aec0; margin-top: 2px; }
+    .persona-btn[data-p="OT"].active { background: var(--ot-amber); color: #000; box-shadow: 0 0 15px rgba(255,159,28,0.4); }
+    .persona-btn[data-p="CFO"].active { background: var(--cfo-green); color: #000; box-shadow: 0 0 15px rgba(46,196,182,0.4); }
+
     .pillar-engine {
-      display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
-      background: var(--glass-panel); padding: 14px 24px; border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
-      align-self: center; margin-bottom: 8px;
+      display: flex; justify-content: center; gap: 20px; background: var(--glass-panel);
+      padding: 15px 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px); align-self: center; margin-bottom: 20px; flex-wrap: wrap;
     }
-    .pillar-step { display: flex; align-items: center; gap: 8px; opacity: 0.35; transition: opacity 0.3s; font-size: 0.85rem; }
-    .pillar-step.active { opacity: 1; }
+    .pillar-step { display: flex; align-items: center; gap: 10px; opacity: 0.4; transition: opacity 0.3s; }
+    .pillar-step.active { opacity: 1.0; }
     .pillar-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--it-cyan); box-shadow: 0 0 8px var(--it-cyan); }
+
     .anomaly-card {
-      position: absolute; right: clamp(12px, 4vw, 40px); top: 32%; width: min(320px, 90vw);
-      background: var(--glass-panel); border-left: 4px solid var(--ot-amber); padding: 20px;
-      border-radius: 12px; backdrop-filter: blur(12px);
-      transform: translateX(120%); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: absolute; right: 40px; top: 35%; width: 320px; max-width: calc(100vw - 48px);
+      background: var(--glass-panel);
+      border-left: 4px solid var(--ot-amber); padding: 20px; border-radius: 12px;
+      backdrop-filter: blur(12px); transform: translateX(400px); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .anomaly-card.visible { transform: translateX(0); }
-    .anomaly-card h4 { margin: 0 0 8px; color: var(--ot-amber); }
-    .anomaly-card p { font-size: 0.85rem; color: #a0aec0; margin: 0 0 15px; }
-    .anomaly-card button {
-      width: 100%; background: var(--it-cyan); border: none; padding: 10px; font-weight: 700;
-      cursor: pointer; border-radius: 6px; color: #000;
-    }
-    .hint {
-      text-align: center; font-size: 0.75rem; color: #5a6a80; margin-bottom: 4px;
-      pointer-events: none;
-    }
+
     @media (max-width: 640px) {
-      .persona-btn { padding: 6px 10px; font-size: 0.7rem; }
-      .pillar-engine { gap: 10px; padding: 10px 14px; font-size: 0.75rem; }
-      .anomaly-card { top: auto; bottom: 110px; right: 12px; left: 12px; width: auto; }
+      .hud-overlay { padding: 16px; }
+      .anomaly-card { right: 16px; left: 16px; width: auto; top: auto; bottom: 120px; transform: translateY(120%); }
+      .anomaly-card.visible { transform: translateY(0); }
+      .persona-btn { padding: 6px 12px; font-size: 0.75rem; }
     }
   </style>
 </head>
 <body>
+
   <div id="webgl-container"></div>
+
   <div class="hud-overlay">
-    <div>
-      <div class="hud-header">
-        <div class="brand-title"><a href="index.html">Physical AI</a> <span>/ IT-OT Convergence</span></div>
-        <div class="persona-toggle interactive-element" role="group" aria-label="Persona view">
-          <button class="persona-btn" data-p="OT" type="button">OT Ops</button>
-          <button class="persona-btn active" data-p="IT" type="button">IT Arch</button>
-          <button class="persona-btn" data-p="CFO" type="button">CFO EBITDA</button>
-        </div>
-      </div>
-      <div class="telemetry" id="telemetry">
-        <div class="label">Live executive telemetry</div>
-        <div class="value" id="tele-value">$52.4M</div>
-        <div class="sub" id="tele-sub">Pipeline influence · IT lens</div>
+    <div class="hud-header">
+      <div class="brand-title"><a href="index.html">Physical AI</a> <span>/ IT-OT Convergence</span></div>
+      <div class="persona-toggle interactive-element">
+        <button class="persona-btn active" data-p="OT" type="button" onclick="switchPersona('OT', this)">OT Ops</button>
+        <button class="persona-btn" data-p="IT" type="button" onclick="switchPersona('IT', this)">IT Arch</button>
+        <button class="persona-btn" data-p="CFO" type="button" onclick="switchPersona('CFO', this)">CFO EBITDA</button>
       </div>
     </div>
 
-    <div class="anomaly-card interactive-element" id="anomaly-card" aria-live="polite">
-      <h4>THERMAL ANOMALY DETECTED</h4>
-      <p>Robotic Arm #04 Joint Temp Exceeds Threshold (+14°C)</p>
-      <button type="button" id="bypass-btn">ENGAGE PHYSICAL AI BYPASS</button>
+    <div class="anomaly-card interactive-element" id="anomaly-card">
+      <h4 style="margin: 0 0 8px 0; color: var(--ot-amber);">THERMAL ANOMALY DETECTED</h4>
+      <p style="font-size: 0.85rem; color: #a0aec0; margin-bottom: 15px;">Robotic Arm #04 Joint Temp Exceeds Threshold (+14°C)</p>
+      <button style="width: 100%; background: var(--it-cyan); border: none; padding: 10px; font-weight: bold; cursor: pointer; border-radius: 6px;" onclick="executeBypass()">ENGAGE PHYSICAL AI BYPASS</button>
     </div>
 
-    <div>
-      <div class="hint">Scroll or drag · marble rides the mag-lev rail · Scan → Act → Learn</div>
-      <div class="pillar-engine interactive-element">
-        <div class="pillar-step active" id="step-scan"><div class="pillar-dot"></div><span>1. SCAN</span></div>
-        <div class="pillar-step" id="step-act"><div class="pillar-dot" style="background:var(--ot-amber);box-shadow:0 0 8px var(--ot-amber)"></div><span>2. ACT</span></div>
-        <div class="pillar-step" id="step-learn"><div class="pillar-dot" style="background:var(--cfo-green);box-shadow:0 0 8px var(--cfo-green)"></div><span>3. LEARN</span></div>
+    <div class="pillar-engine">
+      <div class="pillar-step active" id="step-scan">
+        <div class="pillar-dot"></div>
+        <span>1. SCAN (Ingest)</span>
+      </div>
+      <div class="pillar-step" id="step-act">
+        <div class="pillar-dot" style="background: var(--ot-amber); box-shadow: 0 0 8px var(--ot-amber);"></div>
+        <span>2. ACT (Execute)</span>
+      </div>
+      <div class="pillar-step" id="step-learn">
+        <div class="pillar-dot" style="background: var(--cfo-green); box-shadow: 0 0 8px var(--cfo-green);"></div>
+        <span>3. LEARN (Optimize)</span>
       </div>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
   <script>
-    (function () {
-      const PERSONA = {
-        OT:  { value: '14°C', sub: 'Joint thermal delta · OT lens', accent: 0xff9f1c, btn: 'OT' },
-        IT:  { value: '$52.4M', sub: 'Pipeline influence · IT lens', accent: 0x00f5d4, btn: 'IT' },
-        CFO: { value: '18%', sub: 'EBITDA lift modeled · CFO lens', accent: 0x2ec4b6, btn: 'CFO' }
-      };
-      let persona = 'IT';
-      let stage = 0; // 0 scan, 1 act, 2 learn
-      let progress = 0;
-      let bypassArmed = false;
+    const container = document.getElementById('webgl-container');
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x0a0d12, 0.03);
 
-      const container = document.getElementById('webgl-container');
-      const scene = new THREE.Scene();
-      scene.fog = new THREE.FogExp2(0x070D1D, 0.028);
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 5, 15);
 
-      const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setClearColor(0x070D1D);
-      container.appendChild(renderer.domElement);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x0a0d12);
+    container.appendChild(renderer.domElement);
 
-      scene.add(new THREE.AmbientLight(0x1a202c, 2.2));
-      const keyLight = new THREE.PointLight(0x00f5d4, 2.5, 60);
-      keyLight.position.set(0, 12, 4);
-      scene.add(keyLight);
-      const fill = new THREE.PointLight(0xff9f1c, 1.2, 40);
-      fill.position.set(-8, 4, -6);
-      scene.add(fill);
+    const ambientLight = new THREE.AmbientLight(0x1a202c, 2);
+    scene.add(ambientLight);
 
-      const curve = new THREE.CatmullRomCurve3([
-        new THREE.Vector3(-12, 1, 8),
-        new THREE.Vector3(-6, 4, -2),
-        new THREE.Vector3(0, 1.5, -10),
-        new THREE.Vector3(5, 6, -4),
-        new THREE.Vector3(10, 2, 6),
-        new THREE.Vector3(4, 0.5, 10),
-        new THREE.Vector3(-4, 3, 6)
-      ], true);
+    const pointLight = new THREE.PointLight(0x00f5d4, 3, 50);
+    pointLight.position.set(0, 10, 0);
+    scene.add(pointLight);
 
-      const tubeGeo = new THREE.TubeGeometry(curve, 200, 0.18, 12, true);
-      const tubeMat = new THREE.MeshStandardMaterial({
-        color: 0x1e293b, metalness: 0.85, roughness: 0.25, transparent: true, opacity: 0.9
-      });
-      scene.add(new THREE.Mesh(tubeGeo, tubeMat));
+    const curve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(-10, 0, 10),
+      new THREE.Vector3(-5, 3, -5),
+      new THREE.Vector3(0, 0, -10),
+      new THREE.Vector3(5, 5, -5),
+      new THREE.Vector3(10, 0, 10)
+    ], true);
 
-      const wire = new THREE.Mesh(
-        new THREE.TubeGeometry(curve, 120, 0.22, 8, true),
-        new THREE.MeshBasicMaterial({ color: 0x334155, wireframe: true, transparent: true, opacity: 0.35 })
-      );
-      scene.add(wire);
+    const tubeGeometry = new THREE.TubeGeometry(curve, 100, 0.2, 8, true);
+    const tubeMaterial = new THREE.MeshBasicMaterial({ color: 0x1e293b, wireframe: true });
+    const track = new THREE.Mesh(tubeGeometry, tubeMaterial);
+    scene.add(track);
 
-      // Support pylons
-      for (let i = 0; i < 8; i++) {
-        const t = i / 8;
-        const p = curve.getPointAt(t);
-        const geo = new THREE.CylinderGeometry(0.08, 0.15, Math.max(0.5, p.y + 2), 6);
-        const mesh = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.6, roughness: 0.4 }));
-        mesh.position.set(p.x, (p.y - 2) / 2, p.z);
-        scene.add(mesh);
-      }
+    const marbleGeo = new THREE.SphereGeometry(0.5, 32, 32);
+    const marbleMat = new THREE.MeshStandardMaterial({
+      color: 0x00f5d4, emissive: 0x00f5d4, emissiveIntensity: 0.5, roughness: 0.1
+    });
+    const marble = new THREE.Mesh(marbleGeo, marbleMat);
+    scene.add(marble);
 
-      const marble = new THREE.Mesh(
-        new THREE.SphereGeometry(0.45, 32, 32),
-        new THREE.MeshStandardMaterial({
-          color: 0x00f5d4, emissive: 0x00f5d4, emissiveIntensity: 0.55,
-          metalness: 0.3, roughness: 0.2
-        })
-      );
-      scene.add(marble);
+    const PERSONA_COLORS = { OT: 0xff9f1c, IT: 0x00f5d4, CFO: 0x2ec4b6 };
+    let bypassLatched = false;
+    let progress = 0;
 
-      const glow = new THREE.PointLight(0x00f5d4, 2, 8);
-      marble.add(glow);
+    function setPillars(stage) {
+      document.getElementById('step-scan').classList.toggle('active', stage >= 0);
+      document.getElementById('step-act').classList.toggle('active', stage >= 1);
+      document.getElementById('step-learn').classList.toggle('active', stage >= 2);
+    }
 
-      // Ground plane grid hint
-      const grid = new THREE.GridHelper(40, 40, 0x1e293b, 0x111827);
-      grid.position.y = -2;
-      scene.add(grid);
+    function animate() {
+      requestAnimationFrame(animate);
 
-      function setPersona(p) {
-        persona = p;
-        const cfg = PERSONA[p];
-        document.getElementById('tele-value').textContent = cfg.value;
-        document.getElementById('tele-sub').textContent = cfg.sub;
-        document.querySelectorAll('.persona-btn').forEach(b => {
-          b.classList.toggle('active', b.dataset.p === p);
-        });
-        marble.material.color.setHex(cfg.accent);
-        marble.material.emissive.setHex(cfg.accent);
-        glow.color.setHex(cfg.accent);
-        keyLight.color.setHex(cfg.accent);
-      }
+      progress += 0.002;
+      if (progress > 1) progress = 0;
 
-      document.querySelectorAll('.persona-btn').forEach(btn => {
-        btn.addEventListener('click', () => setPersona(btn.dataset.p));
-      });
+      const point = curve.getPoint(progress);
+      marble.position.copy(point);
 
-      function setStage(s) {
-        stage = s;
-        ['scan', 'act', 'learn'].forEach((id, i) => {
-          document.getElementById('step-' + id).classList.toggle('active', i <= s);
-        });
-        const card = document.getElementById('anomaly-card');
-        if (s === 1 && !bypassArmed) card.classList.add('visible');
-        else if (s !== 1) card.classList.remove('visible');
-      }
+      const tangent = curve.getTangent(progress).normalize();
+      const camTarget = point.clone().add(tangent.clone().multiplyScalar(-8)).add(new THREE.Vector3(0, 4, 0));
+      camera.position.lerp(camTarget, 0.05);
+      camera.lookAt(point.clone().add(tangent.clone().multiplyScalar(3)));
 
-      document.getElementById('bypass-btn').addEventListener('click', () => {
-        bypassArmed = true;
-        document.getElementById('anomaly-card').classList.remove('visible');
-        gsap.to(marble.scale, { x: 1.35, y: 1.35, z: 1.35, duration: 0.25, yoyo: true, repeat: 1 });
-        setStage(2);
-        const cfg = PERSONA[persona];
-        document.getElementById('tele-value').textContent =
-          persona === 'CFO' ? '22%' : persona === 'OT' ? 'OK' : '$58.1M';
-        document.getElementById('tele-sub').textContent = 'Bypass engaged · Learn loop active';
-      });
-
-      // Progress via wheel / touch / auto
-      let auto = true;
-      window.addEventListener('wheel', (e) => {
-        auto = false;
-        progress = (progress + e.deltaY * 0.00015 + 1) % 1;
-      }, { passive: true });
-
-      let touchY = null;
-      window.addEventListener('touchstart', (e) => { touchY = e.touches[0].clientY; auto = false; }, { passive: true });
-      window.addEventListener('touchmove', (e) => {
-        if (touchY == null) return;
-        const dy = touchY - e.touches[0].clientY;
-        progress = (progress + dy * 0.001 + 1) % 1;
-        touchY = e.touches[0].clientY;
-      }, { passive: true });
-
-      window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-
-      function animate() {
-        requestAnimationFrame(animate);
-        if (auto) progress = (progress + 0.0008) % 1;
-
-        const pos = curve.getPointAt(progress);
-        const tangent = curve.getTangentAt(progress).normalize();
-        marble.position.copy(pos);
-
-        const camPos = pos.clone().add(new THREE.Vector3(0, 3.2, 0)).add(tangent.clone().multiplyScalar(-7));
-        camera.position.lerp(camPos, 0.08);
-        const look = pos.clone().add(tangent.clone().multiplyScalar(4));
-        camera.lookAt(look);
-
-        // Stage from progress
-        if (!bypassArmed) {
-          if (progress < 0.33) setStage(0);
-          else if (progress < 0.66) setStage(1);
-          else setStage(2);
+      if (!bypassLatched) {
+        if (progress > 0.3 && progress < 0.6) {
+          document.getElementById('anomaly-card').classList.add('visible');
+          setPillars(1);
+        } else if (progress >= 0.6) {
+          document.getElementById('anomaly-card').classList.remove('visible');
+          setPillars(2);
+        } else {
+          document.getElementById('anomaly-card').classList.remove('visible');
+          setPillars(0);
         }
-
-        renderer.render(scene, camera);
       }
 
-      setPersona('IT');
-      animate();
-    })();
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    function switchPersona(persona, el) {
+      document.querySelectorAll('.persona-btn').forEach(b => b.classList.remove('active'));
+      (el || event.target).classList.add('active');
+      const hex = PERSONA_COLORS[persona] || PERSONA_COLORS.IT;
+      marbleMat.color.setHex(hex);
+      marbleMat.emissive.setHex(hex);
+      pointLight.color.setHex(hex);
+    }
+
+    function executeBypass() {
+      bypassLatched = true;
+      document.getElementById('anomaly-card').classList.remove('visible');
+      setPillars(2);
+      if (window.gsap) {
+        gsap.fromTo(marble.scale, { x: 1, y: 1, z: 1 }, { x: 1.4, y: 1.4, z: 1.4, duration: 0.2, yoyo: true, repeat: 1 });
+      }
+      alert('Physical AI Reroute Engaged: Zero-Downtime Parameter Recalibrated.');
+    }
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
   </script>
 </body>
 </html>
