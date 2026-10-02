@@ -226,6 +226,18 @@
     }
     .option-btn.selected .opt-sub { color: var(--gold-light); }
 
+    .panel-cta {
+      margin-top: 1.15rem; padding-top: 1rem; border-top: 1px solid var(--line);
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;
+    }
+    .panel-cta p { color: var(--text-muted); font-size: 0.82rem; margin: 0; max-width: 48ch; line-height: 1.5; }
+    .panel-cta a {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--gold-light); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em;
+      text-transform: uppercase; text-decoration: none; white-space: nowrap;
+    }
+    .panel-cta a:hover { color: var(--gold); }
+
     .selection-summary {
       display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; min-height: 2rem;
     }
@@ -392,23 +404,86 @@
       <h2>1. Industry</h2>
       <span class="hint">Where the commercial motion must land</span>
     </div>
-    <div class="option-grid" id="opts-industry" role="listbox" aria-label="Industry"></div>
+    <div class="option-grid" id="opts-industry" role="listbox" aria-label="Industry">
+      <button type="button" class="option-btn" role="option" data-key="industry" data-id="discrete" aria-selected="false">
+        <span class="opt-label">Discrete Manufacturing</span>
+        <span class="opt-sub">Plant-floor OT buyers + enterprise IT — SCADA/DCS ICP, uptime economics, dual-approval deals.</span>
+      </button>
+      <button type="button" class="option-btn" role="option" data-key="industry" data-id="energy" aria-selected="false">
+        <span class="opt-label">Energy &amp; Renewables</span>
+        <span class="opt-sub">Uptime, APM, and asset risk for generation and renewables fleets that buy on EBITDA and safety.</span>
+      </button>
+      <button type="button" class="option-btn" role="option" data-key="industry" data-id="cyber" aria-selected="false">
+        <span class="opt-label">Cyber-Physical Enterprise</span>
+        <span class="opt-sub">Resilience tied to operations — security sold as plant uptime and board-level governance, not data backup.</span>
+      </button>
+      <button type="button" class="option-btn" role="option" data-key="industry" data-id="dcim" aria-selected="false">
+        <span class="opt-label">Data Centers &amp; Intelligent Ops</span>
+        <span class="opt-sub">DCIM → Physical AI category — infrastructure intelligence that creates market language before rivals.</span>
+      </button>
+    </div>
+    <div class="panel-cta">
+      <p>Asset-intensive domains where Physical AI and OT/IT convergence create durable commercial advantage.</p>
+      <a href="#panel-constraint">Next: choose Constraint →</a>
+    </div>
   </div>
 
-  <div class="selector-panel" id="panel-constraint" hidden>
+  <div class="selector-panel" id="panel-constraint">
     <div class="selector-head">
       <h2>2. Constraint</h2>
       <span class="hint">The friction blocking enterprise yes</span>
     </div>
-    <div class="option-grid" id="opts-constraint" role="listbox" aria-label="Constraint"></div>
+    <div class="option-grid" id="opts-constraint" role="listbox" aria-label="Constraint">
+      <button type="button" class="option-btn" role="option" data-key="constraint" data-id="otit" aria-selected="false">
+        <span class="opt-label">OT/IT language divide</span>
+        <span class="opt-sub">Sponsors and champions veto each other while competitors sell feature comparisons.</span>
+      </button>
+      <button type="button" class="option-btn" role="option" data-key="constraint" data-id="narrative" aria-selected="false">
+        <span class="opt-label">Feature trap / no category</span>
+        <span class="opt-sub">Brilliant capability without buyer narrative — every deal re-educates from zero.</span>
+      </button>
+      <button type="button" class="option-btn" role="option" data-key="constraint" data-id="cycle" aria-selected="false">
+        <span class="opt-label">Long enterprise cycles</span>
+        <span class="opt-sub">Undefined ICP and open-ended trials that burn calendar and credibility.</span>
+      </button>
+      <button type="button" class="option-btn" role="option" data-key="constraint" data-id="enablement" aria-selected="false">
+        <span class="opt-label">Weak sales OT fluency</span>
+        <span class="opt-sub">Enablement not built for plant economics — every deal becomes a custom education project.</span>
+      </button>
+    </div>
+    <div class="panel-cta">
+      <p>Name the veto — OT/IT divide, feature trap, long cycles, or enablement gaps — then match a motion that removes it.</p>
+      <a href="#panel-outcome">Next: choose Outcome →</a>
+    </div>
   </div>
 
-  <div class="selector-panel" id="panel-outcome" hidden>
+  <div class="selector-panel" id="panel-outcome">
     <div class="selector-head">
       <h2>3. Desired outcome</h2>
       <span class="hint">The commercial result leadership needs</span>
     </div>
-    <div class="option-grid" id="opts-outcome" role="listbox" aria-label="Desired outcome"></div>
+    <div class="option-grid" id="opts-outcome" role="listbox" aria-label="Desired outcome">
+      <button type="button" class="option-btn" role="option" data-key="outcome" data-id="velocity" aria-selected="false">
+        <span class="opt-label">Compress sales cycles</span>
+        <span class="opt-sub">Faster decisions via structured, benchmark-tied POCs and dual-buyer maps.</span>
+      </button>
+      <button type="button" class="option-btn" role="option" data-key="outcome" data-id="share" aria-selected="false">
+        <span class="opt-label">Category &amp; market share</span>
+        <span class="opt-sub">Own the narrative before rivals — category creation that compounds wallet share.</span>
+      </button>
+      <button type="button" class="option-btn" role="option" data-key="outcome" data-id="pipeline" aria-selected="false">
+        <span class="opt-label">Pipeline &amp; win-rate lift</span>
+        <span class="opt-sub">Qualified demand that clears OT/IT dual approval and compounds forecast quality.</span>
+      </button>
+      <button type="button" class="option-btn" role="option" data-key="outcome" data-id="clarity" aria-selected="false">
+        <span class="opt-label">CFO-aligned clarity</span>
+        <span class="opt-sub">EBITDA and risk language — not feature lists — that unlocks executive sponsorship.</span>
+      </button>
+    </div>
+    <div class="panel-cta">
+      <p>Complete all three selections to reveal a proof-backed playbook brief with metrics and a case-study link.</p>
+      <a href="index.html#contact">Book a 90-second conversation →</a>
+    </div>
   </div>
 
   <div class="placeholder" id="placeholder">
@@ -463,24 +538,24 @@
   }
 
   const INDUSTRIES = [
-    { id: 'discrete', label: 'Discrete Manufacturing', sub: 'Plant-floor OT buyers + enterprise IT' },
-    { id: 'energy', label: 'Energy & Renewables', sub: 'Uptime, APM, and asset risk' },
-    { id: 'cyber', label: 'Cyber-Physical Enterprise', sub: 'Resilience tied to operations' },
-    { id: 'dcim', label: 'Data Centers & Intelligent Ops', sub: 'DCIM → Physical AI category' }
+    { id: 'discrete', label: 'Discrete Manufacturing', sub: 'Plant-floor OT buyers + enterprise IT — SCADA/DCS ICP, uptime economics, dual-approval deals.' },
+    { id: 'energy', label: 'Energy & Renewables', sub: 'Uptime, APM, and asset risk for generation and renewables fleets that buy on EBITDA and safety.' },
+    { id: 'cyber', label: 'Cyber-Physical Enterprise', sub: 'Resilience tied to operations — security sold as plant uptime and board-level governance, not data backup.' },
+    { id: 'dcim', label: 'Data Centers & Intelligent Ops', sub: 'DCIM → Physical AI category — infrastructure intelligence that creates market language before rivals.' }
   ];
 
   const CONSTRAINTS = [
-    { id: 'otit', label: 'OT/IT language divide', sub: 'Sponsors and champions veto each other' },
-    { id: 'narrative', label: 'Feature trap / no category', sub: 'Capability without buyer narrative' },
-    { id: 'cycle', label: 'Long enterprise cycles', sub: 'Undefined ICP and open-ended trials' },
-    { id: 'enablement', label: 'Weak sales OT fluency', sub: 'Enablement not built for plant economics' }
+    { id: 'otit', label: 'OT/IT language divide', sub: 'Sponsors and champions veto each other while competitors sell feature comparisons.' },
+    { id: 'narrative', label: 'Feature trap / no category', sub: 'Brilliant capability without buyer narrative — every deal re-educates from zero.' },
+    { id: 'cycle', label: 'Long enterprise cycles', sub: 'Undefined ICP and open-ended trials that burn calendar and credibility.' },
+    { id: 'enablement', label: 'Weak sales OT fluency', sub: 'Enablement not built for plant economics — every deal becomes a custom education project.' }
   ];
 
   const OUTCOMES = [
-    { id: 'velocity', label: 'Compress sales cycles', sub: 'Faster decisions, structured POCs' },
-    { id: 'share', label: 'Category & market share', sub: 'Own the narrative before rivals' },
-    { id: 'pipeline', label: 'Pipeline & win-rate lift', sub: 'Qualified demand that compounds' },
-    { id: 'clarity', label: 'CFO-aligned clarity', sub: 'EBITDA and risk, not feature lists' }
+    { id: 'velocity', label: 'Compress sales cycles', sub: 'Faster decisions via structured, benchmark-tied POCs and dual-buyer maps.' },
+    { id: 'share', label: 'Category & market share', sub: 'Own the narrative before rivals — category creation that compounds wallet share.' },
+    { id: 'pipeline', label: 'Pipeline & win-rate lift', sub: 'Qualified demand that clears OT/IT dual approval and compounds forecast quality.' },
+    { id: 'clarity', label: 'CFO-aligned clarity', sub: 'EBITDA and risk language — not feature lists — that unlocks executive sponsorship.' }
   ];
 
   /* Curated playbooks keyed by constraint|outcome (industry flavors the problem line). */
@@ -678,12 +753,10 @@
     });
 
     if (key === 'industry') {
-      document.getElementById('panel-constraint').hidden = false;
       document.getElementById('ind-1').classList.add('done');
       document.getElementById('ind-2').classList.add('active');
     }
     if (key === 'constraint') {
-      document.getElementById('panel-outcome').hidden = false;
       document.getElementById('ind-2').classList.add('done');
       document.getElementById('ind-3').classList.add('active');
     }
