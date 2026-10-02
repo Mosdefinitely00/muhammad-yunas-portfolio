@@ -5,6 +5,7 @@
   var status = document.getElementById('stackStatus');
   var mobile = window.matchMedia('(max-width: 720px)').matches;
   var labels = ['Digital Twin', 'Physical AI', 'Edge inference', 'Autonomy orchestration'];
+  canvas.classList.add('canvas-fade');
   function paint(t) {
     var w = canvas.width, h = canvas.height;
     ctx.clearRect(0, 0, w, h);
@@ -21,7 +22,13 @@
     }
     if (status) status.textContent = t > 0.92 ? 'Industrial Autonomy Infrastructure — Online' : 'Bringing layers online…';
   }
-  var line = new AnimationTimeline.Timeline({ duration: 7000, easing: AnimationTimeline.easeOut, sequence: labels, onFrame: paint });
-  AnimationTimeline.onceInView(canvas, function () { line.play(); });
+  var line = new AnimationTimeline.Timeline({
+    duration: mobile ? 6400 : 7800,
+    delay: 160,
+    easing: AnimationTimeline.easeSoft,
+    sequence: labels,
+    onFrame: paint
+  });
+  AnimationTimeline.onceInView(canvas, function () { line.play(); }, mobile ? 0.2 : 0.3);
   canvas.addEventListener('click', function () { line.replay(); });
 })();
