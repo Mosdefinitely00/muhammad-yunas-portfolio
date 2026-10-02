@@ -6,17 +6,20 @@
   <title>Physical AI: The IT/OT Kinetic Coaster | Muhammad A. Yunas</title>
   <style>
     :root {
-      --bg-dark: #0a0d12;
-      --ot-amber: #ff9f1c;
-      --it-cyan: #00f5d4;
-      --cfo-green: #2ec4b6;
-      --glass-panel: rgba(16, 22, 34, 0.75);
+      --bg-dark: #070b12;
+      --ot-amber: #ffb347;
+      --it-cyan: #5cffea;
+      --cfo-green: #3de0c8;
+      --text-bright: #f4f7fb;
+      --text-muted: #c5d0e0;
+      --glass-panel: rgba(8, 14, 26, 0.92);
+      --glass-border: rgba(255,255,255,0.22);
     }
 
     body, html {
       margin: 0; padding: 0; width: 100%; height: 100%;
       overflow: hidden; font-family: 'Inter', system-ui, sans-serif;
-      background-color: var(--bg-dark); color: #fff;
+      background-color: var(--bg-dark); color: var(--text-bright);
     }
 
     #webgl-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
@@ -29,37 +32,44 @@
     .interactive-element { pointer-events: auto; }
 
     .hud-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .brand-title { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #8a99ad; }
+    .brand-title { font-size: 1.15rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
     .brand-title span { color: var(--it-cyan); }
     .brand-title a { color: inherit; text-decoration: none; }
 
     .persona-toggle {
-      display: flex; background: var(--glass-panel); border: 1px solid rgba(255,255,255,0.1);
+      display: flex; background: var(--glass-panel); border: 1px solid var(--glass-border);
       border-radius: 30px; padding: 4px; backdrop-filter: blur(10px);
     }
     .persona-btn {
-      background: transparent; border: none; color: #8a99ad; padding: 8px 18px;
+      background: transparent; border: none; color: var(--text-muted); padding: 8px 18px;
       font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 20px; transition: all 0.3s;
     }
-    .persona-btn.active { background: var(--it-cyan); color: #000; box-shadow: 0 0 15px rgba(0,245,212,0.4); }
+    .persona-btn.active { background: var(--it-cyan); color: #041018; box-shadow: 0 0 18px rgba(92,255,234,0.55); }
     .persona-btn[data-p="OT"].active { background: var(--ot-amber); color: #000; box-shadow: 0 0 15px rgba(255,159,28,0.4); }
     .persona-btn[data-p="CFO"].active { background: var(--cfo-green); color: #000; box-shadow: 0 0 15px rgba(46,196,182,0.4); }
 
     .pillar-engine {
       display: flex; justify-content: center; gap: 20px; background: var(--glass-panel);
-      padding: 15px 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);
+      padding: 16px 28px; border-radius: 16px; border: 1px solid var(--glass-border);
       backdrop-filter: blur(10px); align-self: center; margin-bottom: 20px; flex-wrap: wrap;
     }
-    .pillar-step { display: flex; align-items: center; gap: 10px; opacity: 0.4; transition: opacity 0.3s; }
+    .pillar-step { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; opacity: 0.55; transition: opacity 0.3s; max-width: 220px; color: var(--text-muted); }
+    .pillar-step .row { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text-bright); }
+    .pillar-step .desc { font-size: 0.75rem; line-height: 1.35; color: var(--text-muted); padding-left: 20px; }
     .pillar-step.active { opacity: 1.0; }
     .pillar-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--it-cyan); box-shadow: 0 0 8px var(--it-cyan); }
 
     .anomaly-card {
-      position: absolute; right: 40px; top: 35%; width: 320px; max-width: calc(100vw - 48px);
+      position: absolute; right: 40px; top: 28%; width: 360px; max-width: calc(100vw - 48px);
       background: var(--glass-panel);
-      border-left: 4px solid var(--ot-amber); padding: 20px; border-radius: 12px;
-      backdrop-filter: blur(12px); transform: translateX(400px); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid var(--glass-border);
+      border-left: 4px solid var(--ot-amber); padding: 22px; border-radius: 12px;
+      backdrop-filter: blur(14px); transform: translateX(420px); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      color: var(--text-bright);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45);
     }
+    .anomaly-card p { color: var(--text-muted) !important; line-height: 1.55; }
+    .anomaly-card button { color: #041018 !important; font-size: 0.9rem; letter-spacing: 0.02em; }
     .anomaly-card.visible { transform: translateX(0); }
 
     @media (max-width: 640px) {
@@ -85,23 +95,24 @@
     </div>
 
     <div class="anomaly-card interactive-element" id="anomaly-card">
-      <h4 style="margin: 0 0 8px 0; color: var(--ot-amber);">THERMAL ANOMALY DETECTED</h4>
-      <p style="font-size: 0.85rem; color: #a0aec0; margin-bottom: 15px;">Robotic Arm #04 Joint Temp Exceeds Threshold (+14°C)</p>
-      <button style="width: 100%; background: var(--it-cyan); border: none; padding: 10px; font-weight: bold; cursor: pointer; border-radius: 6px;" onclick="executeBypass()">ENGAGE PHYSICAL AI BYPASS</button>
+      <h4 style="margin: 0 0 10px 0; color: var(--ot-amber); letter-spacing: 0.04em;">THERMAL ANOMALY DETECTED</h4>
+      <p style="font-size: 0.9rem; margin-bottom: 10px;">Robotic Arm #04 joint temperature is +14°C over the safe operating band. OT sees a line-stop risk; IT sees a telemetry spike without a closed-loop response.</p>
+      <p style="font-size: 0.85rem; margin-bottom: 16px;">Physical AI can recalibrate torque and duty cycle in place — zero unplanned downtime, evidence retained for the CFO narrative.</p>
+      <button style="width: 100%; background: var(--it-cyan); border: none; padding: 12px; font-weight: bold; cursor: pointer; border-radius: 6px;" onclick="executeBypass()">ENGAGE PHYSICAL AI BYPASS</button>
     </div>
 
     <div class="pillar-engine">
       <div class="pillar-step active" id="step-scan">
-        <div class="pillar-dot"></div>
-        <span>1. SCAN (Ingest)</span>
+        <div class="row"><div class="pillar-dot"></div><span>1. SCAN — Ingest</span></div>
+        <div class="desc">Unify OT signals and IT context into one trusted picture of the line.</div>
       </div>
       <div class="pillar-step" id="step-act">
-        <div class="pillar-dot" style="background: var(--ot-amber); box-shadow: 0 0 8px var(--ot-amber);"></div>
-        <span>2. ACT (Execute)</span>
+        <div class="row"><div class="pillar-dot" style="background: var(--ot-amber); box-shadow: 0 0 8px var(--ot-amber);"></div><span>2. ACT — Execute</span></div>
+        <div class="desc">Close the loop on anomalies with a governed Physical AI bypass.</div>
       </div>
       <div class="pillar-step" id="step-learn">
-        <div class="pillar-dot" style="background: var(--cfo-green); box-shadow: 0 0 8px var(--cfo-green);"></div>
-        <span>3. LEARN (Optimize)</span>
+        <div class="row"><div class="pillar-dot" style="background: var(--cfo-green); box-shadow: 0 0 8px var(--cfo-green);"></div><span>3. LEARN — Optimize</span></div>
+        <div class="desc">Feed outcomes back so the next cycle is faster and cheaper.</div>
       </div>
     </div>
   </div>
@@ -115,7 +126,7 @@
   <script>
     const container = document.getElementById('webgl-container');
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x0a0d12, 0.03);
+    scene.fog = new THREE.FogExp2(0x070b12, 0.022);
 
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 5, 15);
@@ -123,7 +134,7 @@
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x0a0d12);
+    renderer.setClearColor(0x070b12);
     container.appendChild(renderer.domElement);
 
     const ambientLight = new THREE.AmbientLight(0x1a202c, 2);
@@ -142,7 +153,7 @@
     ], true);
 
     const tubeGeometry = new THREE.TubeGeometry(curve, 100, 0.2, 8, true);
-    const tubeMaterial = new THREE.MeshBasicMaterial({ color: 0x1e293b, wireframe: true });
+    const tubeMaterial = new THREE.MeshBasicMaterial({ color: 0x94a3b8, wireframe: true });
     const track = new THREE.Mesh(tubeGeometry, tubeMaterial);
     scene.add(track);
 
