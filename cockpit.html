@@ -74,11 +74,17 @@
       display: flex; align-items: center; gap: 1.75rem;
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
-      color: var(--white); text-decoration: none; letter-spacing: 0.02em;
-      margin-right: auto; flex-shrink: 0;
+      font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.2vw, 1.65rem); font-weight: 700;
+      color: var(--white); text-decoration: none; letter-spacing: 0.055em;
+      margin-right: auto; flex-shrink: 0; position: relative; padding-bottom: 0.35rem; line-height: 1.12;
     }
-    .nav-logo span { color: var(--gold); }
+    .nav-logo span { color: var(--gold); font-weight: 900; letter-spacing: 0.08em; }
+    .nav-logo::after {
+      content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1.5px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    a { color: var(--gold-light); }
+    a:visited { color: var(--gold-light); }
     .nav-menu {
       display: flex; align-items: center; gap: 1.75rem; list-style: none; flex-shrink: 1;
     }

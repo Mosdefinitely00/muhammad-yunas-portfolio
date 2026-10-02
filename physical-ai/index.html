@@ -3,83 +3,176 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Physical AI digital twin — OT/IT convergence narrative by Muhammad A. Yunas. Fixed-camera calm view.">
   <title>Physical AI Digital Twin | Muhammad A. Yunas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #e8eef6;
-      --panel: #ffffff;
-      --ink: #0f172a;
-      --muted: #475569;
-      --ot: #c2410c;
-      --it: #0369a1;
-      --ai: #047857;
-      --line: #cbd5e1;
+      --bg: #070D1D;
+      --panel: rgba(15, 28, 63, 0.92);
+      --panel-solid: #0f1c3f;
+      --ink: #ffffff;
+      --muted: #94A3B8;
+      --gold: #D4AF37;
+      --gold-light: #F3E5AB;
+      --gold-glow: rgba(212, 175, 55, 0.25);
+      --border: rgba(212, 175, 55, 0.35);
+      --ot: #e07a3a;
+      --it: #4ba3c7;
+      --ai: #D4AF37;
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; height: 100%; overflow: hidden; font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--ink); }
+    html, body {
+      margin: 0; height: 100%; overflow: hidden;
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg); color: var(--ink);
+    }
+    a { color: var(--gold-light); text-decoration: none; }
+    a:visited { color: var(--gold-light); }
+    a:hover { color: var(--gold); }
+
     #webgl-container { position: absolute; inset: 0; z-index: 1; }
-    .hud { position: absolute; inset: 0; z-index: 10; pointer-events: none; display: grid; grid-template-rows: auto 1fr auto; padding: 16px; gap: 12px; }
+
+    .hud {
+      position: absolute; inset: 0; z-index: 10; pointer-events: none;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 14px 16px 16px;
+      gap: 10px;
+    }
     .interactive { pointer-events: auto; }
-    .banner {
-      justify-self: start; background: var(--panel); border-radius: 12px; padding: 12px 16px;
-      box-shadow: 0 4px 20px rgba(15,23,42,0.08); border: 1px solid var(--line); max-width: 520px;
+
+    /* Slim top brand — not a left-heavy content panel */
+    .topbar {
+      justify-self: stretch;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      max-width: 920px; width: 100%; margin: 0 auto;
+      background: rgba(7, 13, 29, 0.78);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      backdrop-filter: blur(10px);
     }
-    .banner h1 { margin: 0 0 4px; font-size: 1rem; }
-    .banner h1 a { color: inherit; text-decoration: none; }
-    .banner p { margin: 0; font-size: 0.88rem; color: var(--muted); line-height: 1.4; }
+    .topbar .wordmark {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700; letter-spacing: 0.05em; color: var(--ink);
+      position: relative; padding-bottom: 3px;
+    }
+    .topbar .wordmark span { color: var(--gold); font-weight: 900; }
+    .topbar .wordmark::after {
+      content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .topbar .crumb { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+    .topbar .crumb a { color: var(--gold-light); font-weight: 700; }
+    .topbar .hint { font-size: 0.72rem; color: var(--muted); max-width: 280px; text-align: right; line-height: 1.35; }
+    @media (max-width: 700px) {
+      .topbar .hint { display: none; }
+      .topbar { flex-wrap: wrap; }
+    }
+
+    /* Primary narrative — centered under the bridge */
+    .stage {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 0;
+    }
     .focus {
-      justify-self: center; align-self: end; width: min(640px, 100%); background: var(--panel);
-      border-radius: 16px; padding: 16px 18px; box-shadow: 0 8px 28px rgba(15,23,42,0.12);
-      border: 1px solid var(--line);
+      width: min(560px, 94vw);
+      background: var(--panel);
+      border-radius: 14px;
+      padding: 18px 20px 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px var(--border);
+      border-top: 2px solid var(--gold);
+      backdrop-filter: blur(12px);
+      text-align: center;
     }
-    .focus .step { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ai); margin-bottom: 4px; }
-    .focus h2 { margin: 0 0 6px; font-size: 1.2rem; }
-    .focus p { margin: 0 0 12px; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
-    .focus .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .focus .step {
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .focus h2 {
+      margin: 0 0 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+      font-weight: 700; color: var(--ink); line-height: 1.25;
+    }
+    .focus p {
+      margin: 0 0 14px; color: var(--muted); font-size: 0.92rem; line-height: 1.55;
+    }
+    .focus p strong { color: var(--gold-light); font-weight: 600; }
+    .focus .actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
     .focus button {
-      border: none; border-radius: 10px; padding: 11px 14px; font-weight: 700; cursor: pointer; font-size: 0.88rem;
+      border: none; border-radius: 8px; padding: 11px 16px; font-weight: 700; cursor: pointer; font-size: 0.86rem;
+      font-family: inherit; transition: background .2s, color .2s, border-color .2s;
     }
-    .focus .primary { background: var(--ai); color: #fff; }
-    .focus .ghost { background: #f1f5f9; color: var(--ink); }
+    .focus .primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #070D1D;
+    }
+    .focus .primary:hover { filter: brightness(1.06); }
+    .focus .ghost {
+      background: transparent; color: var(--gold-light);
+      border: 1px solid var(--border);
+    }
+    .focus .ghost:hover { border-color: var(--gold); color: var(--ink); background: var(--gold-glow); }
+
+    /* Steps / story rail — bottom, full readable */
+    .bottom {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      justify-self: center; width: min(720px, 100%);
+    }
     .rail {
       display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;
-      background: rgba(255,255,255,0.92); border-radius: 999px; padding: 8px; border: 1px solid var(--line);
-      justify-self: center; max-width: 100%;
+      background: rgba(7, 13, 29, 0.88);
+      border-radius: 999px; padding: 8px 10px;
+      border: 1px solid var(--border);
+      width: 100%;
     }
     .rail button {
-      border: 2px solid transparent; background: #f8fafc; border-radius: 999px; padding: 8px 12px;
-      cursor: pointer; font-size: 0.78rem; font-weight: 700; color: var(--muted);
+      border: 1.5px solid transparent; background: rgba(15, 28, 63, 0.9);
+      border-radius: 999px; padding: 8px 11px;
+      cursor: pointer; font-size: 0.72rem; font-weight: 700; color: var(--muted);
+      font-family: inherit; transition: border-color .2s, color .2s, background .2s;
+      min-width: 2rem;
     }
-    .rail button.active { color: var(--ink); border-color: var(--ai); background: #ecfdf5; }
-    .rail button:nth-child(1).active { border-color: var(--ot); background: #fff7ed; }
-    .rail button:nth-child(4).active { border-color: var(--it); background: #f0f9ff; }
-    .eye-guide {
-      position: absolute; left: 18%; top: 42%; z-index: 9; pointer-events: none;
-      font-size: 0.75rem; font-weight: 800; color: var(--ot); background: rgba(255,255,255,0.9);
-      padding: 6px 10px; border-radius: 8px; border: 1px solid #fdba74; opacity: 0; transition: opacity .4s;
+    .rail button:hover { color: var(--gold-light); border-color: var(--border); }
+    .rail button.active {
+      color: #070D1D; border-color: var(--gold);
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
     }
-    .eye-guide.show { opacity: 1; }
+    .rail-caption {
+      font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); font-weight: 700; text-align: center;
+    }
   </style>
 </head>
 <body>
   <div id="webgl-container"></div>
-  <div class="eye-guide show" id="eye-guide">START HERE → follow the green path</div>
   <div class="hud">
-    <div class="banner interactive">
-      <h1><a href="../index.html">Physical AI</a> · Digital twin of IT/OT convergence</h1>
-      <p>Fixed view on purpose — no spinning camera. Read the bottom card; use the steps to move the decision packet along the bridge.</p>
+    <div class="topbar interactive">
+      <div>
+        <a href="../index.html" class="wordmark">Muhammad A. <span>Yunas</span></a>
+        <div class="crumb"><a href="../index.html">Home</a> · Physical AI twin</div>
+      </div>
+      <p class="hint">Fixed view on purpose — no spinning camera. Read the center card; steps live below.</p>
     </div>
-    <div></div>
-    <div style="display:flex;flex-direction:column;gap:10px;align-items:center;">
+
+    <div class="stage">
       <div class="focus interactive" id="focus">
-        <div class="step" id="step-label">Step 1 of 5 · OT plant</div>
-        <h2 id="title">Where am I looking?</h2>
-        <p id="body">Look at the <strong>bottom card first</strong>. The scene above is a calm digital twin: orange plant on the left, blue IT on the right, green bridge in the middle. The gold packet is one decision moving across — you move it with the buttons, not with your stomach.</p>
+        <div class="step" id="step-label">Step 1 of 5 · Overview</div>
+        <h2 id="title">Physical AI at the center</h2>
+        <p id="body">Your eye starts <strong>here</strong> — under the bridge. Orange plant (OT) sits left; blue systems (IT) sit right. The gold path is one governed decision moving across. Use Next or the bottom steps; the camera stays still.</p>
         <div class="actions">
           <button type="button" class="primary" id="next">Next step →</button>
           <button type="button" class="ghost" id="replay">Back to start</button>
         </div>
       </div>
+    </div>
+
+    <div class="bottom">
+      <div class="rail-caption">Story rail · follow OT → bridge → IT</div>
       <div class="rail interactive" id="rail"></div>
     </div>
   </div>
@@ -88,18 +181,42 @@
   <script>
   (function () {
     const STEPS = [
-      { t: 0.05, label: 'Step 1 of 5 · OT plant', title: 'Left side: the physical world', body: 'Orange blocks = plant floor (robots, heat, downtime). This is OT. You start here because value and risk are born in the physical world — not in a slide deck.' },
-      { t: 0.32, label: 'Step 2 of 5 · The fracture', title: 'Middle-left: where silos hurt', body: 'Same incident, two languages. OT sees Arm #04 overheating; IT sees a telemetry blip. Pause here — this is why deals and lines stall.' },
-      { t: 0.5, label: 'Step 3 of 5 · Physical AI bridge', title: 'Center: the green bridge', body: 'Physical AI is the governed path between worlds — recalibrate in place, keep evidence, no unplanned downtime. Click Next to carry the decision across.' },
-      { t: 0.75, label: 'Step 4 of 5 · IT stack', title: 'Right side: the digital world', body: 'Blue blocks = systems of record and architecture. The decision lands in IT — not as shadow ops, but as something the stack can trust.' },
-      { t: 0.95, label: 'Step 5 of 5 · Convergence', title: 'One twin, one narrative', body: 'You never had to chase the camera. OT → bridge → IT is the story: a digital twin of convergence a CFO, an architect, and a plant lead can all follow.' }
+      {
+        t: 0.5,
+        label: 'Step 1 of 5 · Center bridge',
+        title: 'Start in the middle: Physical AI',
+        body: 'Look at this card first — it sits under the bridge on purpose. Physical AI is the governed path between plant and stack. Orange OT is left; blue IT is right. You never need to chase the camera.'
+      },
+      {
+        t: 0.08,
+        label: 'Step 2 of 5 · OT plant',
+        title: 'Left: the physical world',
+        body: 'Orange blocks = plant floor (robots, heat, downtime). Value and risk are born here. Glance left, then return to center — the packet will travel the gold bridge when you continue.'
+      },
+      {
+        t: 0.32,
+        label: 'Step 3 of 5 · The fracture',
+        title: 'Where silos stall decisions',
+        body: 'Same incident, two languages. OT sees Arm #04 overheating; IT sees a telemetry blip. That fracture is why deals and lines stall — Physical AI closes it with evidence, not slideware.'
+      },
+      {
+        t: 0.72,
+        label: 'Step 4 of 5 · IT stack',
+        title: 'Right: the digital world',
+        body: 'Blue blocks = systems of record and architecture. The decision lands in IT as something the stack can trust — not shadow ops. Glance right, then keep the bridge as your anchor.'
+      },
+      {
+        t: 0.95,
+        label: 'Step 5 of 5 · Convergence',
+        title: 'One twin, one narrative',
+        body: 'OT → bridge → IT without dizziness. A digital twin of convergence a CFO, an architect, and a plant lead can all follow — calm camera, clear center, steps only at the bottom.'
+      }
     ];
 
     const container = document.getElementById('webgl-container');
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xe8eef6);
-    // Almost no fog — reduces depth swimming
-    scene.fog = new THREE.Fog(0xe8eef6, 40, 90);
+    scene.background = new THREE.Color(0x070D1D);
+    scene.fog = new THREE.Fog(0x070D1D, 45, 95);
 
     const camera = new THREE.PerspectiveCamera(40, innerWidth / innerHeight, 0.1, 200);
     // Fixed isometric-ish overlook — NEVER follows the packet
@@ -111,40 +228,42 @@
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 1.05));
-    const sun = new THREE.DirectionalLight(0xffffff, 0.55);
+    scene.add(new THREE.AmbientLight(0xb8c4d8, 0.85));
+    const sun = new THREE.DirectionalLight(0xfff2d6, 0.65);
     sun.position.set(5, 30, 10);
     scene.add(sun);
+    const fill = new THREE.DirectionalLight(0x4ba3c7, 0.25);
+    fill.position.set(-8, 12, -5);
+    scene.add(fill);
 
     const ground = new THREE.Mesh(
       new THREE.PlaneGeometry(70, 40),
-      new THREE.MeshStandardMaterial({ color: 0xd9e4f2, roughness: 1 })
+      new THREE.MeshStandardMaterial({ color: 0x0a1628, roughness: 0.95, metalness: 0.05 })
     );
     ground.rotation.x = -Math.PI / 2;
     scene.add(ground);
 
-    // Soft zone plates
     function plate(x, color) {
       const m = new THREE.Mesh(
         new THREE.BoxGeometry(16, 0.06, 18),
-        new THREE.MeshStandardMaterial({ color, transparent: true, opacity: 0.2 })
+        new THREE.MeshStandardMaterial({ color, transparent: true, opacity: 0.18 })
       );
       m.position.set(x, 0.03, 0);
       scene.add(m);
     }
     plate(-12, 0xea580c);
-    plate(0, 0x059669);
+    plate(0, 0xD4AF37);
     plate(12, 0x0284c7);
 
     function box(x, y, z, w, h, d, color) {
       const m = new THREE.Mesh(
         new THREE.BoxGeometry(w, h, d),
-        new THREE.MeshStandardMaterial({ color, roughness: 0.6, metalness: 0.1 })
+        new THREE.MeshStandardMaterial({ color, roughness: 0.55, metalness: 0.2 })
       );
       m.position.set(x, y, z);
       scene.add(m);
     }
-    // OT plant (left) — quieter geometry
+    // OT plant (left)
     box(-13, 1.1, -2, 3, 2.2, 3, 0xea580c);
     box(-10.5, 0.7, 2.5, 2, 1.4, 2, 0xf97316);
     box(-14.5, 1.5, 2, 1.2, 3, 1.2, 0xc2410c);
@@ -153,7 +272,6 @@
     box(14.5, 2, 2.5, 2.2, 4, 2.2, 0x0369a1);
     box(11, 0.9, 3, 1.8, 1.8, 1.8, 0x38bdf8);
 
-    // Twin wire overlay (subtle digital twin cue)
     const wireCurve = new THREE.CatmullRomCurve3([
       new THREE.Vector3(-15, 1.1, 1.5),
       new THREE.Vector3(-8, 2.0, -0.5),
@@ -164,13 +282,12 @@
       new THREE.Vector3(15, 1.3, -1)
     ], false);
     scene.add(new THREE.Mesh(
-      new THREE.TubeGeometry(wireCurve, 120, 0.12, 10, false),
-      new THREE.MeshStandardMaterial({ color: 0x047857, metalness: 0.3, roughness: 0.4 })
+      new THREE.TubeGeometry(wireCurve, 120, 0.14, 10, false),
+      new THREE.MeshStandardMaterial({ color: 0xD4AF37, metalness: 0.45, roughness: 0.35, emissive: 0x8a6d1a, emissiveIntensity: 0.25 })
     ));
-    // Ghost twin wireframe slightly offset
     const ghost = new THREE.Mesh(
-      new THREE.TubeGeometry(wireCurve, 80, 0.18, 6, false),
-      new THREE.MeshBasicMaterial({ color: 0x94a3b8, wireframe: true, transparent: true, opacity: 0.35 })
+      new THREE.TubeGeometry(wireCurve, 80, 0.2, 6, false),
+      new THREE.MeshBasicMaterial({ color: 0xF3E5AB, wireframe: true, transparent: true, opacity: 0.22 })
     );
     ghost.position.y = 0.15;
     scene.add(ghost);
@@ -179,10 +296,13 @@
       const c = document.createElement('canvas');
       c.width = 640; c.height = 128;
       const ctx = c.getContext('2d');
-      ctx.fillStyle = 'rgba(255,255,255,0.95)';
+      ctx.fillStyle = 'rgba(7,13,29,0.92)';
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 4;
       ctx.fillRect(20, 28, 600, 72);
+      ctx.strokeRect(20, 28, 600, 72);
       ctx.fillStyle = color;
-      ctx.font = 'bold 40px system-ui,sans-serif';
+      ctx.font = 'bold 40px Inter, system-ui, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText(text, 320, 78);
       const spr = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), depthTest: false }));
@@ -190,13 +310,13 @@
       spr.scale.set(7, 1.4, 1);
       scene.add(spr);
     }
-    label('1  OT PLANT', '#c2410c', -12, 4.2, 0);
-    label('BRIDGE  PHYSICAL AI', '#047857', 0, 4.6, 0);
-    label('IT STACK  2', '#0369a1', 12, 5.0, 0);
+    label('1  OT PLANT', '#e07a3a', -12, 4.2, 0);
+    label('BRIDGE  PHYSICAL AI', '#D4AF37', 0, 4.6, 0);
+    label('IT STACK  2', '#4ba3c7', 12, 5.0, 0);
 
     const packet = new THREE.Mesh(
       new THREE.SphereGeometry(0.38, 24, 24),
-      new THREE.MeshStandardMaterial({ color: 0xf59e0b, emissive: 0xb45309, emissiveIntensity: 0.35 })
+      new THREE.MeshStandardMaterial({ color: 0xD4AF37, emissive: 0x8a6d1a, emissiveIntensity: 0.45 })
     );
     scene.add(packet);
 
@@ -205,10 +325,11 @@
     let target = STEPS[0].t;
 
     const rail = document.getElementById('rail');
+    const SHORT = ['Center', 'OT', 'Silos', 'IT', 'Twin'];
     STEPS.forEach((s, i) => {
       const b = document.createElement('button');
       b.type = 'button';
-      b.textContent = (i + 1) + '';
+      b.textContent = (i + 1) + ' · ' + SHORT[i];
       b.title = s.label;
       b.addEventListener('click', () => go(i));
       rail.appendChild(b);
@@ -220,7 +341,6 @@
       document.getElementById('title').textContent = s.title;
       document.getElementById('body').textContent = s.body;
       [...rail.children].forEach((b, i) => b.classList.toggle('active', i === idx));
-      document.getElementById('eye-guide').classList.toggle('show', idx === 0);
       target = s.t;
     }
 
@@ -236,7 +356,6 @@
       camera.aspect = innerWidth / innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(innerWidth, innerHeight);
-      // Keep fixed look
       camera.position.set(0, 22, 28);
       camera.lookAt(0, 0, 0);
     });
@@ -245,11 +364,10 @@
 
     function animate() {
       requestAnimationFrame(animate);
-      // Ease packet only — camera stays put (anti-dizziness)
       progress += (target - progress) * 0.06;
       packet.position.copy(wireCurve.getPoint(progress));
       if (progress < 0.35) packet.material.color.setHex(0xea580c);
-      else if (progress < 0.65) packet.material.color.setHex(0x059669);
+      else if (progress < 0.65) packet.material.color.setHex(0xD4AF37);
       else packet.material.color.setHex(0x0284c7);
       renderer.render(scene, camera);
     }
