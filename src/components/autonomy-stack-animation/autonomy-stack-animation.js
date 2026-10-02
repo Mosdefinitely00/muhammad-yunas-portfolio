@@ -22,6 +22,8 @@ class AutonomyStackAnimation extends HTMLElement {
         this.appendChild(el);
       });
     }
+    const root = this;
+    queueMicrotask(() => { if (window.AnimationTimeline) window.AnimationTimeline.bindStack(root); });
   }
 }
 customElements.define('autonomy-stack-animation', AutonomyStackAnimation);
