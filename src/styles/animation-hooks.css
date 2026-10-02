@@ -1,6 +1,6 @@
 /* Placeholder hooks. Classes exist. Nothing plays. */
 .anim-hook { --anim-duration: 1200ms; --anim-ease: ease; --anim-delay: 0ms; }
-.anim-paused, .anim-hook { animation: none !important; }
+.anim-paused { animation: none; }
 .autonomy-layer {
   border-top: 1px solid rgba(26, 124, 255, 0.45);
   color: #C8CCD4;
@@ -32,7 +32,8 @@ thumbnail-card.hook-fade {
 thumbnail-card.hook-elevate:hover { transform: translateY(-2px); }
 thumbnail-card.hook-glow:hover { box-shadow: 0 0 0 1px rgba(212, 168, 87, 0.45); }
 thumbnail-card.hook-fade { opacity: 1; }
-thumbnail-card.hook-fade[data-inview="false"] { opacity: 1; }
+thumbnail-card.hook-fade[data-inview="false"] { opacity: 0; }
+thumbnail-card.hook-fade[data-inview="true"] { opacity: 1; }
 
 .hero-anim.anim-hook { animation: none; }
 
@@ -86,3 +87,5 @@ whats-new-banner, .whats-new {
   padding: 12px 16px;
   border-radius: 4px;
 }
+
+.autonomy-layer.is-on { color:#fff; border-top-color:#D4A857; }
