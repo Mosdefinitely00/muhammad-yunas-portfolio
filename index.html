@@ -92,27 +92,31 @@
     border-bottom: 1px solid var(--border); transition: var(--transition);
   }
   .nav-container {
-    max-width: 1200px; margin: 0 auto; padding: 0 5%; height: 80px;
-    display: flex; align-items: center; gap: 1.75rem;
+    max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; height: 80px;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   }
   .nav-logo {
     font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: 0.02em;
-    margin-right: auto; flex-shrink: 0;
+    flex-shrink: 0;
   }
   .nav-logo span { color: var(--gold); }
 
+  /* Logo left · one tight cluster on the right (never stretched across the bar) */
+  .nav-end {
+    display: flex; align-items: center; gap: 1.25rem; margin-left: auto; flex-shrink: 1; min-width: 0;
+  }
   .nav-menu {
-    display: flex; align-items: center; gap: 1.75rem; list-style: none;
-    flex-shrink: 1;
+    display: flex; align-items: center; gap: 1.1rem; list-style: none;
+    flex-shrink: 1; margin: 0; padding: 0;
   }
   .nav-menu a {
-    color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; transition: var(--transition);
+    color: var(--text-muted); text-decoration: none; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; transition: var(--transition);
     white-space: nowrap;
   }
   .nav-menu a:hover { color: var(--gold); }
 
   .nav-cta-group {
-    display: flex; align-items: center; gap: 0.75rem;
+    display: flex; align-items: center; gap: 0.6rem;
     flex-shrink: 0;
   }
   .header-btn {
@@ -133,10 +137,11 @@
   .mobile-menu-drawer a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; }
   .mobile-menu-drawer a:hover { color: var(--gold); }
 
-  @media(max-width: 1024px) {
+  @media(max-width: 1100px) {
     .nav-menu { display: none; }
     .nav-cta-group { display: none; }
-    .hamburger { display: flex; margin-left: 0; }
+    .hamburger { display: flex; }
+    .nav-end { margin-left: auto; }
   }
 
   section { padding: 6rem 5%; position: relative; width: 100%; }
@@ -324,27 +329,26 @@
 <header>
     <div class="nav-container">
         <a href="#hero" class="nav-logo">Muhammad A. <span>Yunas</span></a>
-        
-        <ul class="nav-menu">
-            <li><a href="#manifesto">Manifesto</a></li>
-            <li><a href="#pillars">Expertise</a></li>
-            <li><a href="#work">Work &amp; Impact</a></li>
-            <li><a href="#casestudy">Case Study</a></li>
-            <li><a href="cockpit.html">Cockpit</a>
-        <a href="physical-ai/">Physical AI</a>
-          <a href="physical-ai/">Physical AI</a></li>
-            <li><a href="#skills">Competencies</a></li>
-            <li><a href="#contact">Contact Me</a></li>
-        </ul>
 
-        <div class="nav-cta-group">
-            <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" class="header-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            <a href="Muhammad_Yunas_Resume_2026.pdf" download class="header-btn"><i class="fa-solid fa-file-pdf"></i> Download Resume</a>
+        <div class="nav-end">
+            <ul class="nav-menu">
+                <li><a href="#manifesto">Manifesto</a></li>
+                <li><a href="#pillars">Expertise</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="cockpit.html">Cockpit</a></li>
+                <li><a href="physical-ai/">Physical AI</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-cta-group">
+                <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" class="header-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="Muhammad_Yunas_Resume_2026.pdf" download class="header-btn"><i class="fa-solid fa-file-pdf"></i> Resume</a>
+            </div>
+
+            <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-
-        <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
-            <span></span><span></span><span></span>
-        </button>
     </div>
 </header>
 
@@ -354,10 +358,11 @@
     <a href="#work" onclick="toggleMobileMenu()">Work &amp; Impact</a>
     <a href="#casestudy" onclick="toggleMobileMenu()">Case Study</a>
     <a href="cockpit.html" onclick="toggleMobileMenu()">Cockpit</a>
+    <a href="physical-ai/" onclick="toggleMobileMenu()">Physical AI</a>
     <a href="#skills" onclick="toggleMobileMenu()">Competencies</a>
     <a href="#contact" onclick="toggleMobileMenu()">Contact Me</a>
     <a href="https://linkedin.com/in/muhammad-yunas" target="_blank">LinkedIn Profile</a>
-    <a href="Muhammad_Yunas_Resume_2026.pdf" download>Download Resume (.PDF)</a>
+    <a href="Muhammad_Yunas_Resume_2026.pdf" download>Download Resume</a>
 </div>
 
 <!-- HERO SECTION -->
