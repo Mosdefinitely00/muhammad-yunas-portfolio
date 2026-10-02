@@ -1,83 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Case Study: Winning the OT/IT Convergence Market">
-    <title>Case Study: OT/IT Convergence | Muhammad A. Yunas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <style>
-        .reading-container { max-width: 900px; margin: 8rem auto 4rem; padding: 3rem; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: var(--radius); }
-        .cs-header { text-align: center; margin-bottom: 3rem; }
-        .cs-header h1 { font-family: var(--font-heading); color: var(--text-main); font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; line-height: 1.2; }
-        .cs-header .badge { display: inline-block; padding: 0.3rem 1rem; background: var(--gold-main); color: var(--bg-dark); font-weight: 700; text-transform: uppercase; border-radius: 4px; font-size: 0.8rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
-        .cs-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-bottom: 3rem; }
-        .cs-section h2 { color: var(--gold-main); font-size: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
-        .cs-section p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; font-size: 1.05rem; }
-        .cs-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; background: var(--bg-panel); padding: 2rem; border-radius: var(--radius); border: 1px solid var(--border-color); }
-        .metric-box { text-align: center; }
-        .metric-box span.num { display: block; font-family: var(--font-heading); font-size: 2rem; color: var(--gold-main); font-weight: 700; }
-        .metric-box span.lbl { font-size: 0.8rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Case Study: Winning the OT/IT Convergence Market — Muhammad A. Yunas">
+  <title>Case Study: OT/IT Convergence | Muhammad A. Yunas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #f4f1ea;
+      --muted: #b7b2a6;
+      --gold: #c9a227;
+      --gold-soft: rgba(201, 162, 39, 0.18);
+      --rule: rgba(244, 241, 234, 0.16);
+      --paper: #0c1220;
+      --panel: #111a2b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse at top, rgba(201,162,39,0.08), transparent 42%),
+        var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--gold); }
+
+    /* Executive letterhead masthead */
+    .letterhead {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 1.75rem 1.5rem 1.25rem;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .brand .name {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+    .brand .name span { color: var(--gold); }
+    .brand .back {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .brand .back:hover { color: var(--gold); }
+    .hire {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--gold);
+      color: #0c1220 !important;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.65rem 1rem;
+      border-radius: 2px;
+    }
+    .hire:hover { filter: brightness(1.05); color: #0c1220 !important; }
+
+    article {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2.75rem 1.5rem 4.5rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.9rem, 4vw, 2.65rem);
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+      max-width: 18ch;
+    }
+    .deck {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 58ch;
+      margin-bottom: 2rem;
+    }
+
+    /* Quiet visual: thin gold rule + metric strip — letterhead, not loud graphics */
+    .rule {
+      width: 64px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 2.25rem;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 2.75rem;
+      padding: 1.15rem 1rem;
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--gold);
+    }
+    .metric { text-align: left; padding: 0.35rem 0.5rem; }
+    .metric strong {
+      display: block;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.55rem;
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+    .metric span {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    section { margin-bottom: 2.35rem; }
+    section h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.35rem;
+      color: var(--ink);
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    section p {
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin-bottom: 0.95rem;
+    }
+    section p strong { color: var(--ink); font-weight: 600; }
+
+    .footer-note {
+      margin-top: 3rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 720px) {
+      .metrics { grid-template-columns: 1fr 1fr; }
+      h1 { max-width: none; }
+      .letterhead { align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="../index.html" class="nav-logo">
-                <span class="logo-name">Muhammad A. Yunas</span>
-                <span class="logo-title">← Back to Portfolio</span>
-            </a>
-            <div class="nav-ctas">
-                <a href="../index.html#contact" class="btn-primary">Email to hire me</a>
-            </div>
-        </div>
-    </nav>
-    <main class="container">
-        <article class="reading-container">
-            <div class="cs-header">
-                <span class="badge">Flagship Execution</span>
-                <h1>From $0 to $40M ARR: Winning the OT/IT Convergence Market</h1>
-            </div>
-            
-            <div class="cs-grid">
-                <div class="cs-section">
-                    <h2>The Challenge</h2>
-                    <p>I inherited an unstructured go-to-market motion for a highly capable Physical AI and Industrial IoT platform. The engineering depth was phenomenal, but the commercial traction was stagnant. The ICP was completely undefined, sales teams lacked Operational Technology (OT) fluency, and quota attainment hovered below 60%. The core issue: we were selling complex IT software features to OT plant managers who only cared about machine uptime.</p>
-                </div>
+  <header class="letterhead">
+    <div class="brand">
+      <a class="name" href="../index.html">Muhammad A. <span>Yunas</span></a>
+      <a class="back" href="../index.html">← Back to portfolio</a>
+    </div>
+    <a class="hire" href="../index.html#contact">Email to hire me</a>
+  </header>
 
-                <div class="cs-section">
-                    <h2>The Execution Architecture</h2>
-                    <p><strong>1. ICP Redefinition:</strong> We stopped trying to boil the ocean. I narrowed our focus exclusively to discrete manufacturing and upstream energy accounts with 500+ employees and active SCADA/DCS deployments. We mapped every deal to three precise stakeholders: the OT Sponsor, the IT Champion, and the CFO Economic Buyer.</p>
-                    <p><strong>2. Narrative Overhaul:</strong> I eliminated "IIoT platform" from our lexicon—it was too commoditized. We shifted the category narrative to "Physical Operations Intelligence," focusing entirely on translating predictive telemetry into quantifiable risk reduction and EBITDA preservation.</p>
-                    <p><strong>3. Sales Motion Redesign:</strong> Replaced open-ended tech trials with highly structured, 60-day Proof of Concept (POC) architectures tied directly to critical industrial safety and downtime benchmarks.</p>
-                </div>
+  <article>
+    <div class="eyebrow">Flagship execution · Case brief</div>
+    <h1>From $0 to $40M ARR: Winning the OT/IT Convergence Market</h1>
+    <p class="deck">A commercial rebuild for a Physical AI / Industrial IoT platform — from undefined ICP and sub-60% quota to a CFO-aligned motion that scaled pipeline in 30 months.</p>
+    <div class="rule" aria-hidden="true"></div>
 
-                <div class="cs-section">
-                    <h2>Verified Outcomes</h2>
-                    <p>By treating the sales force as our primary customer and aligning the technical narrative directly to CFO priorities, the commercial engine scaled rapidly, securing market dominance within 30 months.</p>
-                </div>
-            </div>
+    <div class="metrics" aria-label="Verified outcomes">
+      <div class="metric"><strong>$40M+</strong><span>ARR pipeline</span></div>
+      <div class="metric"><strong>66%</strong><span>Cycle reduction</span></div>
+      <div class="metric"><strong>137%</strong><span>Quota attainment</span></div>
+      <div class="metric"><strong>15%</strong><span>CAC reduction</span></div>
+    </div>
 
-            <div class="cs-metrics">
-                <div class="metric-box">
-                    <span class="num">$40M+</span>
-                    <span class="lbl">ARR Pipeline Built</span>
-                </div>
-                <div class="metric-box">
-                    <span class="num">66%</span>
-                    <span class="lbl">Sales Cycle Drop</span>
-                </div>
-                <div class="metric-box">
-                    <span class="num">137%</span>
-                    <span class="lbl">Quota Attainment</span>
-                </div>
-                <div class="metric-box">
-                    <span class="num">15%</span>
-                    <span class="lbl">CAC Reduction</span>
-                </div>
-            </div>
-        </article>
-    </main>
+    <section>
+      <h2>The Challenge</h2>
+      <p>I inherited an unstructured go-to-market motion for a highly capable Physical AI and Industrial IoT platform. The engineering depth was phenomenal, but commercial traction was stagnant. The ICP was undefined, sales lacked Operational Technology (OT) fluency, and quota attainment hovered below 60%.</p>
+      <p>The core issue: we were selling complex IT software features to OT plant managers who cared about machine uptime, risk, and EBITDA — not feature lists.</p>
+    </section>
+
+    <section>
+      <h2>The Execution Architecture</h2>
+      <p><strong>1. ICP redefinition.</strong> We stopped boiling the ocean. Focus narrowed to discrete manufacturing and upstream energy accounts with 500+ employees and active SCADA/DCS deployments — mapping every deal to OT Sponsor, IT Champion, and CFO Economic Buyer.</p>
+      <p><strong>2. Narrative overhaul.</strong> “IIoT platform” left the lexicon. The category became “Physical Operations Intelligence,” translating predictive telemetry into risk reduction and EBITDA preservation.</p>
+      <p><strong>3. Sales motion redesign.</strong> Open-ended tech trials were replaced with structured 60-day POC architectures tied to industrial safety and downtime benchmarks.</p>
+    </section>
+
+    <section>
+      <h2>Verified Outcomes</h2>
+      <p>By treating the sales force as a primary customer and aligning the technical narrative to CFO priorities, the commercial engine scaled — securing durable market position within 30 months.</p>
+    </section>
+
+    <p class="footer-note">Muhammad A. Yunas · Executive GTM · Physical AI / OT–IT convergence</p>
+  </article>
 </body>
 </html>
