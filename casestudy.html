@@ -18,13 +18,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-  :root { --navy: #0a1628; --navy-mid: #0f2040; --gold: #c9a84c; --gold-light: #e8c97a; --white: #ffffff; --text-muted: #8a99b0; --border: rgba(201,168,76,0.2); --transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+  :root { --navy: #0a1628; --navy-mid: #0f2040; --gold: #D4AF37; --gold-light: #F3E5AB; --white: #ffffff; --text-muted: #8a99b0; --border: rgba(212,175,55,0.35); --transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; padding-top: 70px; }
   
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: flex-start; gap: 1.75rem; padding: 0 5%; height: 70px; background: rgba(10,22,40,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: var(--transition); }
-  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: 0.02em; margin-right: auto; flex-shrink: 0; }
-  .nav-logo span { color: var(--gold); }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: clamp(1.35rem, 2.2vw, 1.6rem); font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: 0.055em; margin-right: auto; flex-shrink: 0; position: relative; padding-bottom: 0.35rem; line-height: 1.12; }
+  .nav-logo span { color: var(--gold); font-weight: 900; letter-spacing: 0.08em; }
+  .nav-logo::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1.5px; background: linear-gradient(90deg, var(--gold), transparent); }
+  a { color: var(--gold-light); } a:visited { color: var(--gold-light); }
   .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; flex-shrink: 1; }
   .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: var(--transition); }
   .nav-links a:hover { color: var(--gold); }
