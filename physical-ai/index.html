@@ -3,375 +3,815 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Physical AI digital twin — OT/IT convergence narrative by Muhammad A. Yunas. Fixed-camera calm view.">
-  <title>Physical AI Digital Twin | Muhammad A. Yunas</title>
+  <meta name="description" content="Physical AI Convergence Briefing — OT meets IT. An executive demo of governed decision packets across the plant floor and the enterprise stack. Muhammad A. Yunas.">
+  <title>Physical AI Convergence Briefing | Muhammad A. Yunas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #070D1D;
-      --panel: rgba(15, 28, 63, 0.92);
+      --navy: #0a1628;
+      --panel: rgba(15, 28, 63, 0.94);
       --panel-solid: #0f1c3f;
       --ink: #ffffff;
       --muted: #94A3B8;
       --gold: #D4AF37;
       --gold-light: #F3E5AB;
-      --gold-glow: rgba(212, 175, 55, 0.25);
+      --gold-glow: rgba(212, 175, 55, 0.22);
       --border: rgba(212, 175, 55, 0.35);
       --ot: #e07a3a;
+      --ot-deep: #c2410c;
       --it: #4ba3c7;
-      --ai: #D4AF37;
+      --it-deep: #0369a1;
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      margin: 0; height: 100%; overflow: hidden;
+      width: 100%;
+      max-width: 100vw;
+      height: 100%;
+      height: 100dvh;
+      max-height: 100dvh;
+      overflow: hidden;
       font-family: Inter, system-ui, sans-serif;
-      background: var(--bg); color: var(--ink);
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
     }
     a { color: var(--gold-light); text-decoration: none; }
     a:visited { color: var(--gold-light); }
     a:hover { color: var(--gold); }
 
-    #webgl-container { position: absolute; inset: 0; z-index: 1; }
-
-    .hud {
-      position: absolute; inset: 0; z-index: 10; pointer-events: none;
+    .shell {
       display: grid;
-      grid-template-rows: auto 1fr auto;
-      padding: 14px 16px 16px;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      width: 100%;
+      height: 100%;
+      max-height: 100dvh;
+      padding: 10px 12px 10px;
       gap: 10px;
+      overflow: hidden;
     }
-    .interactive { pointer-events: auto; }
 
-    /* Slim top brand — not a left-heavy content panel */
-    .topbar {
-      justify-self: stretch;
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      max-width: 920px; width: 100%; margin: 0 auto;
-      background: rgba(7, 13, 29, 0.78);
+    /* ── Hero / letterhead strip ── */
+    .hero {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      background: rgba(7, 13, 29, 0.88);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 10px 14px;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      min-width: 0;
     }
-    .topbar .wordmark {
+    .hero-brand { min-width: 0; flex: 1; }
+    .wordmark {
       font-family: 'Playfair Display', serif;
-      font-size: 1.05rem; font-weight: 700; letter-spacing: 0.05em; color: var(--ink);
-      position: relative; padding-bottom: 3px;
+      font-size: clamp(0.88rem, 2vw, 1.02rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      display: inline-block;
+      position: relative;
+      padding-bottom: 2px;
+      white-space: nowrap;
     }
-    .topbar .wordmark span { color: var(--gold); font-weight: 900; }
-    .topbar .wordmark::after {
-      content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px;
+    .wordmark span { color: var(--gold); font-weight: 900; }
+    .wordmark::after {
+      content: '';
+      position: absolute; left: 0; bottom: 0; width: 100%; height: 1px;
       background: linear-gradient(90deg, var(--gold), transparent);
     }
-    .topbar .crumb { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
-    .topbar .crumb a { color: var(--gold-light); font-weight: 700; }
-    .topbar .hint { font-size: 0.72rem; color: var(--muted); max-width: 280px; text-align: right; line-height: 1.35; }
-    @media (max-width: 700px) {
-      .topbar .hint { display: none; }
-      .topbar { flex-wrap: wrap; }
-    }
-
-    /* Primary narrative — centered under the bridge */
-    .stage {
-      display: flex; align-items: center; justify-content: center;
-      min-height: 0;
-    }
-    .focus {
-      width: min(560px, 94vw);
-      background: var(--panel);
-      border-radius: 14px;
-      padding: 18px 20px 16px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px var(--border);
-      border-top: 2px solid var(--gold);
-      backdrop-filter: blur(12px);
-      text-align: center;
-    }
-    .focus .step {
-      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 6px;
-    }
-    .focus h2 {
-      margin: 0 0 8px;
+    .hero-title {
+      margin-top: 4px;
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.15rem, 2.5vw, 1.45rem);
-      font-weight: 700; color: var(--ink); line-height: 1.25;
+      font-size: clamp(1rem, 2.6vw, 1.35rem);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
     }
-    .focus p {
-      margin: 0 0 14px; color: var(--muted); font-size: 0.92rem; line-height: 1.55;
+    .hero-thesis {
+      margin-top: 3px;
+      font-size: clamp(0.72rem, 1.6vw, 0.84rem);
+      color: var(--muted);
+      line-height: 1.4;
+      max-width: 52ch;
     }
-    .focus p strong { color: var(--gold-light); font-weight: 600; }
-    .focus .actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-    .focus button {
-      border: none; border-radius: 8px; padding: 11px 16px; font-weight: 700; cursor: pointer; font-size: 0.86rem;
-      font-family: inherit; transition: background .2s, color .2s, border-color .2s;
+    .hero-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+      align-items: center;
     }
-    .focus .primary {
+    .btn {
+      border: none;
+      border-radius: 8px;
+      padding: 9px 14px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: filter .2s, background .2s, border-color .2s, color .2s;
+      white-space: nowrap;
+    }
+    .btn-primary {
       background: linear-gradient(135deg, var(--gold), var(--gold-light));
       color: #070D1D;
     }
-    .focus .primary:hover { filter: brightness(1.06); }
-    .focus .ghost {
-      background: transparent; color: var(--gold-light);
+    .btn-primary:hover { filter: brightness(1.06); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--gold-light);
       border: 1px solid var(--border);
     }
-    .focus .ghost:hover { border-color: var(--gold); color: var(--ink); background: var(--gold-glow); }
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--ink);
+      background: var(--gold-glow);
+    }
+    .crumb {
+      font-size: 0.68rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .crumb a { font-weight: 700; }
 
-    /* Steps / story rail — bottom, full readable */
-    .bottom {
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      justify-self: center; width: min(720px, 100%);
+    /* ── Main stage ── */
+    .main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 12px;
+      min-height: 0;
+      min-width: 0;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .scene-wrap {
+      position: relative;
+      min-height: 0;
+      min-width: 0;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(ellipse at 20% 40%, rgba(224, 122, 58, 0.12), transparent 50%),
+        radial-gradient(ellipse at 80% 40%, rgba(75, 163, 199, 0.12), transparent 50%),
+        radial-gradient(ellipse at 50% 30%, rgba(212, 175, 55, 0.08), transparent 45%),
+        var(--navy);
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+    #stage {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .zone-labels {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 10px 12px;
+      align-content: start;
+    }
+    .zone-label {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 4px 6px;
+    }
+    .zone-label.ot { color: var(--ot); }
+    .zone-label.bridge { color: var(--gold); }
+    .zone-label.it { color: var(--it); }
+
+    .focus {
+      min-height: 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      background: var(--panel);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--gold);
+      padding: 16px 18px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+      backdrop-filter: blur(12px);
+      overflow: auto;
+    }
+    .focus .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .focus h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .focus .body {
+      color: var(--muted);
+      font-size: clamp(0.84rem, 1.7vw, 0.95rem);
+      line-height: 1.55;
+      flex: 1;
+      margin-bottom: 14px;
+    }
+    .focus .body strong { color: var(--gold-light); font-weight: 600; }
+    .metric {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: rgba(7, 13, 29, 0.55);
+      border: 1px solid var(--border);
+      margin-bottom: 14px;
+    }
+    .metric .val {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .metric .cap {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .focus-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    /* ── Step rail ── */
+    .rail-wrap {
+      flex-shrink: 0;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      min-width: 0;
+    }
+    .rail-caption {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 6px;
     }
     .rail {
-      display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
       background: rgba(7, 13, 29, 0.88);
-      border-radius: 999px; padding: 8px 10px;
       border: 1px solid var(--border);
-      width: 100%;
+      border-radius: 999px;
+      padding: 6px 8px;
     }
+    .rail::-webkit-scrollbar { display: none; }
     .rail button {
-      border: 1.5px solid transparent; background: rgba(15, 28, 63, 0.9);
-      border-radius: 999px; padding: 8px 11px;
-      cursor: pointer; font-size: 0.72rem; font-weight: 700; color: var(--muted);
-      font-family: inherit; transition: border-color .2s, color .2s, background .2s;
-      min-width: 2rem;
+      border: 1.5px solid transparent;
+      background: rgba(15, 28, 63, 0.95);
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--muted);
+      font-family: inherit;
+      white-space: nowrap;
+      flex: 0 0 auto;
+      transition: border-color .2s, color .2s, background .2s;
     }
     .rail button:hover { color: var(--gold-light); border-color: var(--border); }
     .rail button.active {
-      color: #070D1D; border-color: var(--gold);
+      color: #070D1D;
+      border-color: var(--gold);
       background: linear-gradient(135deg, var(--gold), var(--gold-light));
     }
-    .rail-caption {
-      font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--muted); font-weight: 700; text-align: center;
+    .rail button.done:not(.active) {
+      color: var(--gold-light);
+      border-color: rgba(212, 175, 55, 0.45);
+    }
+
+    /* Intro overlay (before Start) */
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background:
+        radial-gradient(ellipse at 30% 40%, rgba(224, 122, 58, 0.15), transparent 45%),
+        radial-gradient(ellipse at 70% 40%, rgba(75, 163, 199, 0.15), transparent 45%),
+        rgba(7, 13, 29, 0.94);
+      backdrop-filter: blur(8px);
+      transition: opacity .4s ease, visibility .4s;
+    }
+    .intro.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .intro-card {
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--gold);
+      border-radius: 16px;
+      padding: 28px 24px 24px;
+      background: var(--panel);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .intro-card .kicker {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .intro-card h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .intro-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+    .intro-card .actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Mobile: stack card under scene */
+    @media (max-width: 780px) {
+      .shell { padding: 8px 8px 8px; gap: 8px; }
+      .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 12px;
+      }
+      .hero-actions { width: 100%; }
+      .hero-actions .btn { flex: 1; text-align: center; }
+      .main {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(160px, 42%) minmax(0, 1fr);
+      }
+      .focus { padding: 12px 14px; }
+      .metric { padding: 10px 12px; margin-bottom: 10px; }
+      .rail-caption { display: none; }
+    }
+    @media (max-height: 700px) {
+      .hero-thesis { display: none; }
+      .focus .body { font-size: 0.82rem; }
+      .zone-labels { display: none; }
+    }
+    @media (max-height: 560px) {
+      .hero .crumb { display: none; }
+      .metric .cap { display: none; }
+      .focus h2 { font-size: 1.05rem; margin-bottom: 6px; }
+      .focus .body {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 8px;
+      }
+    }
+    @media (max-width: 420px) {
+      .rail button { padding: 7px 10px; font-size: 0.66rem; }
+      .btn { padding: 8px 12px; font-size: 0.78rem; }
     }
   </style>
 </head>
 <body>
-  <div id="webgl-container"></div>
-  <div class="hud">
-    <div class="topbar interactive">
-      <div>
-        <a href="../index.html" class="wordmark">Muhammad A. <span>Yunas</span></a>
-        <div class="crumb"><a href="../index.html">Home</a> · Physical AI twin</div>
+  <!-- Full-screen intro -->
+  <div class="intro" id="intro" role="dialog" aria-labelledby="intro-title">
+    <div class="intro-card">
+      <div class="kicker">Executive briefing</div>
+      <h1 id="intro-title">Physical AI: OT meets IT</h1>
+      <p>One governed decision packet crosses the plant floor into the enterprise stack — evidence first, architecture second. Five clicks. No spinning camera.</p>
+      <div class="actions">
+        <button type="button" class="btn btn-primary" id="intro-start">Start briefing</button>
+        <button type="button" class="btn btn-ghost" id="intro-skip">Skip to stage</button>
       </div>
-      <p class="hint">Fixed view on purpose — no spinning camera. Read the center card; steps live below.</p>
-    </div>
-
-    <div class="stage">
-      <div class="focus interactive" id="focus">
-        <div class="step" id="step-label">Step 1 of 5 · Overview</div>
-        <h2 id="title">Physical AI at the center</h2>
-        <p id="body">Your eye starts <strong>here</strong> — under the bridge. Orange plant (OT) sits left; blue systems (IT) sit right. The gold path is one governed decision moving across. Use Next or the bottom steps; the camera stays still.</p>
-        <div class="actions">
-          <button type="button" class="primary" id="next">Next step →</button>
-          <button type="button" class="ghost" id="replay">Back to start</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="bottom">
-      <div class="rail-caption">Story rail · follow OT → bridge → IT</div>
-      <div class="rail interactive" id="rail"></div>
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <div class="shell">
+    <header class="hero">
+      <div class="hero-brand">
+        <a href="../index.html" class="wordmark">Muhammad A. <span>Yunas</span></a>
+        <div class="crumb"><a href="../index.html">Home</a> · Physical AI Convergence</div>
+        <h1 class="hero-title">Physical AI: OT meets IT</h1>
+        <p class="hero-thesis">Governed evidence from the plant floor becomes a decision the enterprise stack can trust.</p>
+      </div>
+      <div class="hero-actions">
+        <button type="button" class="btn btn-ghost" id="hero-skip" title="Jump to final step">Skip</button>
+        <button type="button" class="btn btn-primary" id="hero-start">Start</button>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="scene-wrap" aria-hidden="true">
+        <div class="zone-labels">
+          <div class="zone-label ot">OT Plant</div>
+          <div class="zone-label bridge">Governed Bridge</div>
+          <div class="zone-label it">IT Stack</div>
+        </div>
+        <canvas id="stage" width="900" height="520"></canvas>
+      </div>
+
+      <article class="focus" id="focus" aria-live="polite">
+        <div class="eyebrow" id="step-label">Step 1 of 5 · Fracture</div>
+        <h2 id="title">Two worlds, one incident</h2>
+        <p class="body" id="body">Loading…</p>
+        <div class="metric">
+          <div class="val" id="metric-val">—</div>
+          <div class="cap" id="metric-cap">Metric</div>
+        </div>
+        <div class="focus-actions">
+          <button type="button" class="btn btn-primary" id="next">Next →</button>
+          <button type="button" class="btn btn-ghost" id="restart">Restart</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="rail-wrap">
+      <div class="rail-caption">Decision path · click a step · packet moves on command</div>
+      <div class="rail" id="rail" role="tablist" aria-label="Briefing steps"></div>
+    </div>
+  </div>
+
   <script>
   (function () {
     const STEPS = [
       {
-        t: 0.5,
-        label: 'Step 1 of 5 · Center bridge',
-        title: 'Start in the middle: Physical AI',
-        body: 'Look at this card first — it sits under the bridge on purpose. Physical AI is the governed path between plant and stack. Orange OT is left; blue IT is right. You never need to chase the camera.'
+        short: 'Fracture',
+        label: 'Step 1 of 5 · Fracture',
+        title: 'Two worlds, one incident',
+        body: 'Arm #04 overheats on the line. OT sees thermal risk and downtime. IT sees a telemetry blip in a dashboard. <strong>Same event, two languages</strong> — that fracture is why deals stall and lines wait.',
+        metricVal: '2×',
+        metricCap: 'Languages for one plant event — until Physical AI governs the packet',
+        packetT: 0.08,
+        glow: 'ot'
       },
       {
-        t: 0.08,
-        label: 'Step 2 of 5 · OT plant',
-        title: 'Left: the physical world',
-        body: 'Orange blocks = plant floor (robots, heat, downtime). Value and risk are born here. Glance left, then return to center — the packet will travel the gold bridge when you continue.'
+        short: 'OT Evidence',
+        label: 'Step 2 of 5 · OT Evidence',
+        title: 'Value and risk are born on the floor',
+        body: 'Warm zone: robots, heat, cycle time, safety interlocks. The gold packet leaves OT carrying <strong>plant-floor evidence</strong> — not a slide deck. Buyers who skip this step sell SaaS into a wall.',
+        metricVal: '18 yrs',
+        metricCap: 'Commercializing OT/IT convergence before the category had a name',
+        packetT: 0.28,
+        glow: 'ot'
       },
       {
-        t: 0.32,
-        label: 'Step 3 of 5 · The fracture',
-        title: 'Where silos stall decisions',
-        body: 'Same incident, two languages. OT sees Arm #04 overheating; IT sees a telemetry blip. That fracture is why deals and lines stall — Physical AI closes it with evidence, not slideware.'
+        short: 'Bridge',
+        label: 'Step 3 of 5 · Governed Bridge',
+        title: 'Physical AI is the governed path',
+        body: 'Center bridge: policy, identity, and evidence travel together. Physical AI is not a free-orbit coaster — it is a <strong>decision packet</strong> that both plant leads and architects can follow without dizziness.',
+        metricVal: '1',
+        metricCap: 'Governed narrative CFOs, architects, and plant leads share',
+        packetT: 0.5,
+        glow: 'bridge'
       },
       {
-        t: 0.72,
-        label: 'Step 4 of 5 · IT stack',
-        title: 'Right: the digital world',
-        body: 'Blue blocks = systems of record and architecture. The decision lands in IT as something the stack can trust — not shadow ops. Glance right, then keep the bridge as your anchor.'
+        short: 'IT Trust',
+        label: 'Step 4 of 5 · IT Trust',
+        title: 'The stack only acts on what it trusts',
+        body: 'Cool zone: systems of record, identity, and architecture. The packet lands as something IT can govern — <strong>not shadow ops</strong>. Procurement opens when evidence is already CFO-shaped.',
+        metricVal: '60-day',
+        metricCap: 'POC architecture that aligns plant proof with enterprise buying',
+        packetT: 0.72,
+        glow: 'it'
       },
       {
-        t: 0.95,
+        short: 'Convergence',
         label: 'Step 5 of 5 · Convergence',
-        title: 'One twin, one narrative',
-        body: 'OT → bridge → IT without dizziness. A digital twin of convergence a CFO, an architect, and a plant lead can all follow — calm camera, clear center, steps only at the bottom.'
+        title: 'One twin. One commercial engine.',
+        body: 'OT → bridge → IT without a spinning camera. Category language, ICP, and POC design compound into a motion industrial buyers can say yes to — <strong>before the vocabulary exists</strong>.',
+        metricVal: '$500B+',
+        metricCap: 'Industrial Physical AI category — winners speak both OT and IT',
+        packetT: 0.92,
+        glow: 'bridge'
       }
     ];
 
-    const container = document.getElementById('webgl-container');
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x070D1D);
-    scene.fog = new THREE.Fog(0x070D1D, 45, 95);
-
-    const camera = new THREE.PerspectiveCamera(40, innerWidth / innerHeight, 0.1, 200);
-    // Fixed isometric-ish overlook — NEVER follows the packet
-    camera.position.set(0, 22, 28);
-    camera.lookAt(0, 0, 0);
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(innerWidth, innerHeight);
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-    container.appendChild(renderer.domElement);
-
-    scene.add(new THREE.AmbientLight(0xb8c4d8, 0.85));
-    const sun = new THREE.DirectionalLight(0xfff2d6, 0.65);
-    sun.position.set(5, 30, 10);
-    scene.add(sun);
-    const fill = new THREE.DirectionalLight(0x4ba3c7, 0.25);
-    fill.position.set(-8, 12, -5);
-    scene.add(fill);
-
-    const ground = new THREE.Mesh(
-      new THREE.PlaneGeometry(70, 40),
-      new THREE.MeshStandardMaterial({ color: 0x0a1628, roughness: 0.95, metalness: 0.05 })
-    );
-    ground.rotation.x = -Math.PI / 2;
-    scene.add(ground);
-
-    function plate(x, color) {
-      const m = new THREE.Mesh(
-        new THREE.BoxGeometry(16, 0.06, 18),
-        new THREE.MeshStandardMaterial({ color, transparent: true, opacity: 0.18 })
-      );
-      m.position.set(x, 0.03, 0);
-      scene.add(m);
-    }
-    plate(-12, 0xea580c);
-    plate(0, 0xD4AF37);
-    plate(12, 0x0284c7);
-
-    function box(x, y, z, w, h, d, color) {
-      const m = new THREE.Mesh(
-        new THREE.BoxGeometry(w, h, d),
-        new THREE.MeshStandardMaterial({ color, roughness: 0.55, metalness: 0.2 })
-      );
-      m.position.set(x, y, z);
-      scene.add(m);
-    }
-    // OT plant (left)
-    box(-13, 1.1, -2, 3, 2.2, 3, 0xea580c);
-    box(-10.5, 0.7, 2.5, 2, 1.4, 2, 0xf97316);
-    box(-14.5, 1.5, 2, 1.2, 3, 1.2, 0xc2410c);
-    // IT (right)
-    box(12.5, 1.3, -2, 3.5, 2.6, 2, 0x0284c7);
-    box(14.5, 2, 2.5, 2.2, 4, 2.2, 0x0369a1);
-    box(11, 0.9, 3, 1.8, 1.8, 1.8, 0x38bdf8);
-
-    const wireCurve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-15, 1.1, 1.5),
-      new THREE.Vector3(-8, 2.0, -0.5),
-      new THREE.Vector3(-2, 2.6, 0.8),
-      new THREE.Vector3(0, 2.8, 0),
-      new THREE.Vector3(2, 2.6, -0.6),
-      new THREE.Vector3(8, 2.0, 0.5),
-      new THREE.Vector3(15, 1.3, -1)
-    ], false);
-    scene.add(new THREE.Mesh(
-      new THREE.TubeGeometry(wireCurve, 120, 0.14, 10, false),
-      new THREE.MeshStandardMaterial({ color: 0xD4AF37, metalness: 0.45, roughness: 0.35, emissive: 0x8a6d1a, emissiveIntensity: 0.25 })
-    ));
-    const ghost = new THREE.Mesh(
-      new THREE.TubeGeometry(wireCurve, 80, 0.2, 6, false),
-      new THREE.MeshBasicMaterial({ color: 0xF3E5AB, wireframe: true, transparent: true, opacity: 0.22 })
-    );
-    ghost.position.y = 0.15;
-    scene.add(ghost);
-
-    function label(text, color, x, y, z) {
-      const c = document.createElement('canvas');
-      c.width = 640; c.height = 128;
-      const ctx = c.getContext('2d');
-      ctx.fillStyle = 'rgba(7,13,29,0.92)';
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 4;
-      ctx.fillRect(20, 28, 600, 72);
-      ctx.strokeRect(20, 28, 600, 72);
-      ctx.fillStyle = color;
-      ctx.font = 'bold 40px Inter, system-ui, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText(text, 320, 78);
-      const spr = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), depthTest: false }));
-      spr.position.set(x, y, z);
-      spr.scale.set(7, 1.4, 1);
-      scene.add(spr);
-    }
-    label('1  OT PLANT', '#e07a3a', -12, 4.2, 0);
-    label('BRIDGE  PHYSICAL AI', '#D4AF37', 0, 4.6, 0);
-    label('IT STACK  2', '#4ba3c7', 12, 5.0, 0);
-
-    const packet = new THREE.Mesh(
-      new THREE.SphereGeometry(0.38, 24, 24),
-      new THREE.MeshStandardMaterial({ color: 0xD4AF37, emissive: 0x8a6d1a, emissiveIntensity: 0.45 })
-    );
-    scene.add(packet);
-
+    const SHORT = STEPS.map(s => s.short);
     let idx = 0;
-    let progress = STEPS[0].t;
-    let target = STEPS[0].t;
+    let packetT = STEPS[0].packetT;
+    let targetT = STEPS[0].packetT;
+    let started = false;
 
+    const intro = document.getElementById('intro');
     const rail = document.getElementById('rail');
-    const SHORT = ['Center', 'OT', 'Silos', 'IT', 'Twin'];
+    const canvas = document.getElementById('stage');
+    const ctx = canvas.getContext('2d');
+    const sceneWrap = canvas.parentElement;
+
     STEPS.forEach((s, i) => {
       const b = document.createElement('button');
       b.type = 'button';
+      b.setAttribute('role', 'tab');
       b.textContent = (i + 1) + ' · ' + SHORT[i];
       b.title = s.label;
-      b.addEventListener('click', () => go(i));
+      b.addEventListener('click', () => go(i, true));
       rail.appendChild(b);
     });
 
-    function paint() {
+    function paintHud() {
       const s = STEPS[idx];
       document.getElementById('step-label').textContent = s.label;
       document.getElementById('title').textContent = s.title;
-      document.getElementById('body').textContent = s.body;
-      [...rail.children].forEach((b, i) => b.classList.toggle('active', i === idx));
-      target = s.t;
+      document.getElementById('body').innerHTML = s.body;
+      document.getElementById('metric-val').textContent = s.metricVal;
+      document.getElementById('metric-cap').textContent = s.metricCap;
+      const nextBtn = document.getElementById('next');
+      nextBtn.textContent = idx >= STEPS.length - 1 ? 'Restart →' : 'Next →';
+      [...rail.children].forEach((b, i) => {
+        b.classList.toggle('active', i === idx);
+        b.classList.toggle('done', i < idx);
+        b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      });
     }
 
-    function go(i) {
-      idx = (i + STEPS.length) % STEPS.length;
-      paint();
+    function go(i, fromUser) {
+      idx = ((i % STEPS.length) + STEPS.length) % STEPS.length;
+      targetT = STEPS[idx].packetT;
+      paintHud();
+      if (fromUser) dismissIntro();
     }
 
-    document.getElementById('next').addEventListener('click', () => go(idx + 1));
-    document.getElementById('replay').addEventListener('click', () => go(0));
+    function next() {
+      if (idx >= STEPS.length - 1) {
+        go(0, true);
+      } else {
+        go(idx + 1, true);
+      }
+    }
 
-    window.addEventListener('resize', () => {
-      camera.aspect = innerWidth / innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(innerWidth, innerHeight);
-      camera.position.set(0, 22, 28);
-      camera.lookAt(0, 0, 0);
-    });
+    function dismissIntro() {
+      if (started) return;
+      started = true;
+      intro.classList.add('hidden');
+    }
 
-    paint();
+    function begin(atEnd) {
+      dismissIntro();
+      if (atEnd) go(STEPS.length - 1, false);
+      else go(0, false);
+    }
+
+    document.getElementById('intro-start').addEventListener('click', () => begin(false));
+    document.getElementById('intro-skip').addEventListener('click', () => begin(true));
+    document.getElementById('hero-start').addEventListener('click', () => begin(false));
+    document.getElementById('hero-skip').addEventListener('click', () => begin(true));
+    document.getElementById('next').addEventListener('click', next);
+    document.getElementById('restart').addEventListener('click', () => go(0, true));
+
+    /* ── Canvas scene: fixed overhead 2.5D ── */
+    function resizeCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const w = Math.max(1, sceneWrap.clientWidth);
+      const h = Math.max(1, sceneWrap.clientHeight);
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function pathPoints(w, h) {
+      const y = h * 0.52;
+      const pad = w * 0.08;
+      return [
+        { x: pad, y: y + 18 },
+        { x: w * 0.22, y: y - 8 },
+        { x: w * 0.38, y: y - 28 },
+        { x: w * 0.5, y: y - 36 },
+        { x: w * 0.62, y: y - 28 },
+        { x: w * 0.78, y: y - 6 },
+        { x: w - pad, y: y + 14 }
+      ];
+    }
+
+    function pointOnPath(pts, t) {
+      t = Math.max(0, Math.min(1, t));
+      const segs = pts.length - 1;
+      const f = t * segs;
+      const i = Math.min(Math.floor(f), segs - 1);
+      const u = f - i;
+      const a = pts[i], b = pts[i + 1];
+      return {
+        x: a.x + (b.x - a.x) * u,
+        y: a.y + (b.y - a.y) * u
+      };
+    }
+
+    function roundRect(x, y, w, h, r) {
+      const rr = Math.min(r, w / 2, h / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + rr, y);
+      ctx.arcTo(x + w, y, x + w, y + h, rr);
+      ctx.arcTo(x + w, y + h, x, y + h, rr);
+      ctx.arcTo(x, y + h, x, y, rr);
+      ctx.arcTo(x, y, x + w, y, rr);
+      ctx.closePath();
+    }
+
+    function drawBuilding(x, y, w, h, color, accent) {
+      ctx.fillStyle = color;
+      roundRect(x, y - h, w, h, 4);
+      ctx.fill();
+      ctx.fillStyle = accent;
+      const floors = Math.max(2, Math.floor(h / 18));
+      for (let i = 0; i < floors; i++) {
+        const fy = y - h + 8 + i * (h / floors);
+        ctx.globalAlpha = 0.35;
+        ctx.fillRect(x + 6, fy, w - 12, 3);
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    function drawScene() {
+      const w = sceneWrap.clientWidth;
+      const h = sceneWrap.clientHeight;
+      if (w < 2 || h < 2) return;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Floor plates
+      const plateY = h * 0.62;
+      const plateH = h * 0.28;
+      const thirds = [0, w / 3, (2 * w) / 3, w];
+
+      // OT plate
+      ctx.fillStyle = 'rgba(224, 122, 58, 0.14)';
+      roundRect(12, plateY, w / 3 - 18, plateH, 10);
+      ctx.fill();
+      // Bridge plate
+      ctx.fillStyle = 'rgba(212, 175, 55, 0.12)';
+      roundRect(w / 3 + 4, plateY - 8, w / 3 - 8, plateH + 8, 10);
+      ctx.fill();
+      // IT plate
+      ctx.fillStyle = 'rgba(75, 163, 199, 0.14)';
+      roundRect((2 * w) / 3 + 6, plateY, w / 3 - 18, plateH, 10);
+      ctx.fill();
+
+      // OT machines (warm)
+      const otBase = plateY + 8;
+      drawBuilding(w * 0.08, otBase + plateH * 0.55, w * 0.1, h * 0.22, '#c2410c', '#fdba74');
+      drawBuilding(w * 0.2, otBase + plateH * 0.45, w * 0.08, h * 0.16, '#ea580c', '#fed7aa');
+      // robot arm hint
+      ctx.strokeStyle = '#e07a3a';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(w * 0.14, otBase + plateH * 0.2);
+      ctx.quadraticCurveTo(w * 0.18, otBase - h * 0.05, w * 0.22, otBase + plateH * 0.15);
+      ctx.stroke();
+      ctx.fillStyle = '#f97316';
+      ctx.beginPath();
+      ctx.arc(w * 0.22, otBase + plateH * 0.15, 5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Bridge pillars / arch
+      const bx = w * 0.5;
+      const by = plateY + 4;
+      ctx.strokeStyle = 'rgba(212, 175, 55, 0.55)';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(w * 0.38, by + plateH * 0.5);
+      ctx.quadraticCurveTo(bx, by - h * 0.08, w * 0.62, by + plateH * 0.5);
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(212, 175, 55, 0.25)';
+      roundRect(bx - 18, by + plateH * 0.15, 36, plateH * 0.4, 6);
+      ctx.fill();
+      ctx.fillStyle = '#D4AF37';
+      ctx.font = 'bold 11px Inter, system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('AI', bx, by + plateH * 0.4);
+
+      // IT towers (cool)
+      const itBase = plateY + 8;
+      drawBuilding(w * 0.72, itBase + plateH * 0.5, w * 0.09, h * 0.2, '#0369a1', '#7dd3fc');
+      drawBuilding(w * 0.83, itBase + plateH * 0.58, w * 0.07, h * 0.28, '#0284c7', '#bae6fd');
+      drawBuilding(w * 0.68, itBase + plateH * 0.4, w * 0.06, h * 0.14, '#38bdf8', '#e0f2fe');
+
+      // Gold path
+      const pts = pathPoints(w, h);
+      ctx.strokeStyle = 'rgba(243, 229, 171, 0.25)';
+      ctx.lineWidth = 10;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+      ctx.stroke();
+
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 3;
+      ctx.shadowColor = 'rgba(212, 175, 55, 0.55)';
+      ctx.shadowBlur = 12;
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Progress glow along path up to packet
+      const glow = STEPS[idx].glow;
+      const zoneAlpha = 0.18;
+      if (glow === 'ot') {
+        ctx.fillStyle = 'rgba(224, 122, 58, ' + zoneAlpha + ')';
+        roundRect(8, 8, w / 3 - 10, h - 16, 12);
+        ctx.fill();
+      } else if (glow === 'it') {
+        ctx.fillStyle = 'rgba(75, 163, 199, ' + zoneAlpha + ')';
+        roundRect((2 * w) / 3 + 2, 8, w / 3 - 10, h - 16, 12);
+        ctx.fill();
+      } else {
+        ctx.fillStyle = 'rgba(212, 175, 55, ' + zoneAlpha + ')';
+        roundRect(w / 3 - 4, 8, w / 3 + 8, h - 16, 12);
+        ctx.fill();
+      }
+
+      // Decision packet
+      const p = pointOnPath(pts, packetT);
+      const pulse = 1 + 0.08 * Math.sin(performance.now() / 280);
+      ctx.shadowColor = 'rgba(212, 175, 55, 0.85)';
+      ctx.shadowBlur = 18;
+      ctx.fillStyle = '#D4AF37';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 9 * pulse, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = '#070D1D';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Packet label
+      ctx.fillStyle = 'rgba(7, 13, 29, 0.85)';
+      roundRect(p.x - 52, p.y - 34, 104, 20, 6);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(212, 175, 55, 0.5)';
+      ctx.lineWidth = 1;
+      roundRect(p.x - 52, p.y - 34, 104, 20, 6);
+      ctx.stroke();
+      ctx.fillStyle = '#F3E5AB';
+      ctx.font = '600 10px Inter, system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Decision packet', p.x, p.y - 20);
+    }
 
     function animate() {
+      packetT += (targetT - packetT) * 0.1;
+      if (Math.abs(targetT - packetT) < 0.001) packetT = targetT;
+      drawScene();
       requestAnimationFrame(animate);
-      progress += (target - progress) * 0.06;
-      packet.position.copy(wireCurve.getPoint(progress));
-      if (progress < 0.35) packet.material.color.setHex(0xea580c);
-      else if (progress < 0.65) packet.material.color.setHex(0xD4AF37);
-      else packet.material.color.setHex(0x0284c7);
-      renderer.render(scene, camera);
     }
-    animate();
+
+    paintHud();
+    resizeCanvas();
+    window.addEventListener('resize', () => { resizeCanvas(); drawScene(); });
+    requestAnimationFrame(animate);
   })();
   </script>
 </body>
