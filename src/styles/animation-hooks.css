@@ -171,3 +171,11 @@ button[onclick="replayStack()"] {
   }
   .autonomy-layer { transition: none; }
 }
+
+.launch-banner-wrap { max-width: 880px; margin: 28px auto 0; padding: 0 1.25rem; }
+.launch-banner p { margin: 6px 0 0; color: #C8CCD4; font-size: 15px; line-height: 1.45; }
+.whats-new a { align-self: center; }
+@media (max-width: 720px) {
+  .launch-banner-wrap { margin-top: 20px; }
+  .whats-new a { align-self: stretch; }
+}
