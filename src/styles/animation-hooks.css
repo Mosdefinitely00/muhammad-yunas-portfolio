@@ -1,0 +1,88 @@
+/* Placeholder hooks. Classes exist. Nothing plays. */
+.anim-hook { --anim-duration: 1200ms; --anim-ease: ease; --anim-delay: 0ms; }
+.anim-paused, .anim-hook { animation: none !important; }
+.autonomy-layer {
+  border-top: 1px solid rgba(26, 124, 255, 0.45);
+  color: #C8CCD4;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 8px;
+}
+.autonomy-stack-animation.is-desktop { aspect-ratio: 16 / 9; }
+.autonomy-stack-animation.is-mobile { aspect-ratio: 4 / 5; max-width: 360px; }
+.autonomy-stack-animation {
+  background: #0A0F1F;
+  border: 1px solid rgba(26, 124, 255, 0.45);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+/* Card hooks — prepared, not sequenced */
+thumbnail-card.hook-elevate,
+thumbnail-card.hook-glow,
+thumbnail-card.hook-fade {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  thumbnail-card.hook-elevate,
+  thumbnail-card.hook-glow,
+  thumbnail-card.hook-fade { transition: none; }
+}
+thumbnail-card.hook-elevate:hover { transform: translateY(-2px); }
+thumbnail-card.hook-glow:hover { box-shadow: 0 0 0 1px rgba(212, 168, 87, 0.45); }
+thumbnail-card.hook-fade { opacity: 1; }
+thumbnail-card.hook-fade[data-inview="false"] { opacity: 1; }
+
+.hero-anim.anim-hook { animation: none; }
+
+whats-new-banner, .whats-new {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #0A0F1F;
+  border: 1px solid rgba(212, 168, 87, 0.45);
+  border-radius: 10px;
+  font-family: Inter, system-ui, sans-serif;
+}
+.whats-new h2 {
+  margin: 0;
+  color: #fff;
+  font-weight: 600;
+  font-size: clamp(20px, 2.4vw, 24px);
+}
+.whats-new a {
+  background: #D4A857;
+  color: #0A0F1F;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  border-radius: 4px;
+}
+
+.start-here {
+  margin-top: 28px;
+  padding: 24px;
+  border-top: 1px solid rgba(212, 168, 87, 0.45);
+  font-family: Inter, system-ui, sans-serif;
+}
+.start-here h2 { margin: 0 0 6px; font-weight: 600; font-size: 24px; color: #fff; }
+.start-here p { margin: 0 0 14px; color: #C8CCD4; font-size: 16px; }
+.start-here a {
+  display: inline-block;
+  background: #1A7CFF;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 12px 16px;
+  border-radius: 4px;
+}
