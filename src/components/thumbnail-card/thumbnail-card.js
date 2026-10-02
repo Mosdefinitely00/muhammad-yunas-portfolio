@@ -66,6 +66,8 @@ const MOTIFS = {
 
 class ThumbnailCard extends HTMLElement {
   connectedCallback() {
+    this.classList.add('hook-elevate', 'hook-glow', 'hook-fade', 'anim-hook', 'anim-paused');
+    this.dataset.inview = 'false';
     const title = this.getAttribute('title') || '';
     const description = this.getAttribute('description') || '';
     const href = this.getAttribute('href') || '#';
