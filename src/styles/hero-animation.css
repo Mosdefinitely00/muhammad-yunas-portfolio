@@ -1,0 +1,15 @@
+hero-animation { display: block; }
+.hero-anim { background: #0A0F1F; border: 1px solid rgba(26,124,255,.45); border-radius: 12px; padding: 16px; }
+.hero-anim-desktop { aspect-ratio: 16 / 9; }
+.hero-anim-mobile { aspect-ratio: 4 / 5; max-width: 360px; }
+.hero-anim .band {
+  border-top: 1px solid rgba(26,124,255,.55);
+  color: #C8CCD4;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 8px;
+}
+.hero-anim .band:last-of-type { border-bottom: 2px solid #D4A857; }
+.hero-anim .lock { color: #fff; font-weight: 600; margin: 12px 8px 0; }
+.hero-anim-mobile .lock { max-width: 16rem; }
