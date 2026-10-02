@@ -3,363 +3,254 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Physical AI: IT/OT Convergence Ride | Muhammad A. Yunas</title>
+  <title>Physical AI Digital Twin | Muhammad A. Yunas</title>
   <style>
     :root {
-      --bg: #142033;
-      --panel: rgba(255,255,255,0.92);
+      --bg: #e8eef6;
+      --panel: #ffffff;
       --ink: #0f172a;
-      --muted: #334155;
-      --ot: #ea580c;
-      --it: #0284c7;
-      --ai: #059669;
-      --gold: #b45309;
+      --muted: #475569;
+      --ot: #c2410c;
+      --it: #0369a1;
+      --ai: #047857;
+      --line: #cbd5e1;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; height: 100%; overflow: hidden; font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--ink); }
-    #webgl-container { position: absolute; inset: 0; z-index: 1; cursor: grab; }
-    #webgl-container.dragging { cursor: grabbing; }
-    .hud { position: absolute; inset: 0; z-index: 10; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; }
+    #webgl-container { position: absolute; inset: 0; z-index: 1; }
+    .hud { position: absolute; inset: 0; z-index: 10; pointer-events: none; display: grid; grid-template-rows: auto 1fr auto; padding: 16px; gap: 12px; }
     .interactive { pointer-events: auto; }
-    .top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
-    .title-card, .story-card, .controls, .stations {
-      background: var(--panel); border-radius: 14px; box-shadow: 0 10px 30px rgba(15,23,42,0.18);
-      border: 1px solid rgba(15,23,42,0.08);
+    .banner {
+      justify-self: start; background: var(--panel); border-radius: 12px; padding: 12px 16px;
+      box-shadow: 0 4px 20px rgba(15,23,42,0.08); border: 1px solid var(--line); max-width: 520px;
     }
-    .title-card { padding: 14px 18px; max-width: 420px; }
-    .title-card h1 { margin: 0 0 6px; font-size: 1.05rem; letter-spacing: 0.04em; text-transform: uppercase; }
-    .title-card p { margin: 0; font-size: 0.9rem; color: var(--muted); line-height: 1.45; }
-    .title-card a { color: var(--it); font-weight: 600; text-decoration: none; }
-    .legend { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
-    .chip { font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; color: #fff; }
-    .chip.ot { background: var(--ot); }
-    .chip.it { background: var(--it); }
-    .chip.ai { background: var(--ai); }
-    .story-card { padding: 16px 18px; width: min(360px, 100%); }
-    .story-card .kicker { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ai); margin-bottom: 6px; }
-    .story-card h2 { margin: 0 0 8px; font-size: 1.15rem; }
-    .story-card p { margin: 0 0 10px; font-size: 0.92rem; color: var(--muted); line-height: 1.55; }
-    .story-card button {
-      width: 100%; border: none; border-radius: 10px; padding: 12px; font-weight: 800; cursor: pointer;
-      background: var(--ai); color: #fff; font-size: 0.9rem;
+    .banner h1 { margin: 0 0 4px; font-size: 1rem; }
+    .banner h1 a { color: inherit; text-decoration: none; }
+    .banner p { margin: 0; font-size: 0.88rem; color: var(--muted); line-height: 1.4; }
+    .focus {
+      justify-self: center; align-self: end; width: min(640px, 100%); background: var(--panel);
+      border-radius: 16px; padding: 16px 18px; box-shadow: 0 8px 28px rgba(15,23,42,0.12);
+      border: 1px solid var(--line);
     }
-    .story-card.hidden { opacity: 0; pointer-events: none; transform: translateX(16px); }
-    .story-card { transition: opacity .25s, transform .25s; }
-    .bottom { display: flex; flex-direction: column; gap: 10px; align-items: center; }
-    .hint { background: rgba(255,255,255,0.88); padding: 8px 14px; border-radius: 999px; font-size: 0.8rem; color: var(--muted); font-weight: 600; }
-    .stations { display: flex; gap: 8px; padding: 8px; flex-wrap: wrap; justify-content: center; }
-    .stations button {
-      border: 2px solid transparent; background: #f8fafc; color: var(--ink); border-radius: 12px;
-      padding: 10px 12px; cursor: pointer; min-width: 140px; text-align: left;
+    .focus .step { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ai); margin-bottom: 4px; }
+    .focus h2 { margin: 0 0 6px; font-size: 1.2rem; }
+    .focus p { margin: 0 0 12px; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+    .focus .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .focus button {
+      border: none; border-radius: 10px; padding: 11px 14px; font-weight: 700; cursor: pointer; font-size: 0.88rem;
     }
-    .stations button strong { display: block; font-size: 0.82rem; }
-    .stations button span { display: block; font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
-    .stations button.active { border-color: var(--ai); background: #ecfdf5; }
-    .stations button[data-side="ot"].active { border-color: var(--ot); background: #fff7ed; }
-    .stations button[data-side="it"].active { border-color: var(--it); background: #f0f9ff; }
-    @media (max-width: 700px) {
-      .story-card { width: 100%; }
-      .stations button { min-width: 110px; }
+    .focus .primary { background: var(--ai); color: #fff; }
+    .focus .ghost { background: #f1f5f9; color: var(--ink); }
+    .rail {
+      display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;
+      background: rgba(255,255,255,0.92); border-radius: 999px; padding: 8px; border: 1px solid var(--line);
+      justify-self: center; max-width: 100%;
     }
+    .rail button {
+      border: 2px solid transparent; background: #f8fafc; border-radius: 999px; padding: 8px 12px;
+      cursor: pointer; font-size: 0.78rem; font-weight: 700; color: var(--muted);
+    }
+    .rail button.active { color: var(--ink); border-color: var(--ai); background: #ecfdf5; }
+    .rail button:nth-child(1).active { border-color: var(--ot); background: #fff7ed; }
+    .rail button:nth-child(4).active { border-color: var(--it); background: #f0f9ff; }
+    .eye-guide {
+      position: absolute; left: 18%; top: 42%; z-index: 9; pointer-events: none;
+      font-size: 0.75rem; font-weight: 800; color: var(--ot); background: rgba(255,255,255,0.9);
+      padding: 6px 10px; border-radius: 8px; border: 1px solid #fdba74; opacity: 0; transition: opacity .4s;
+    }
+    .eye-guide.show { opacity: 1; }
   </style>
 </head>
 <body>
   <div id="webgl-container"></div>
+  <div class="eye-guide show" id="eye-guide">START HERE → follow the green path</div>
   <div class="hud">
-    <div class="top">
-      <div class="title-card interactive">
-        <h1><a href="../index.html">Physical AI</a> · IT/OT Convergence</h1>
-        <p>Two worlds that rarely speak the same language — operations on the plant floor, architecture in the digital stack — joined by a governed decision path.</p>
-        <div class="legend">
-          <span class="chip ot">OT plant</span>
-          <span class="chip ai">Physical AI bridge</span>
-          <span class="chip it">IT systems</span>
+    <div class="banner interactive">
+      <h1><a href="../index.html">Physical AI</a> · Digital twin of IT/OT convergence</h1>
+      <p>Fixed view on purpose — no spinning camera. Read the bottom card; use the steps to move the decision packet along the bridge.</p>
+    </div>
+    <div></div>
+    <div style="display:flex;flex-direction:column;gap:10px;align-items:center;">
+      <div class="focus interactive" id="focus">
+        <div class="step" id="step-label">Step 1 of 5 · OT plant</div>
+        <h2 id="title">Where am I looking?</h2>
+        <p id="body">Look at the <strong>bottom card first</strong>. The scene above is a calm digital twin: orange plant on the left, blue IT on the right, green bridge in the middle. The gold packet is one decision moving across — you move it with the buttons, not with your stomach.</p>
+        <div class="actions">
+          <button type="button" class="primary" id="next">Next step →</button>
+          <button type="button" class="ghost" id="replay">Back to start</button>
         </div>
       </div>
-      <div class="story-card interactive" id="story">
-        <div class="kicker" id="story-kicker">Station 1 · OT world</div>
-        <h2 id="story-title">Start on the plant floor</h2>
-        <p id="story-body">Sensors, robots, and operators generate truth about physical risk — heat, torque, downtime. This side of the world is amber: messy, real-time, expensive when ignored.</p>
-        <button type="button" id="story-cta">Continue along the bridge →</button>
-      </div>
-    </div>
-    <div class="bottom">
-      <div class="hint interactive">Drag to scrub the ride · click a station to jump · watch OT and IT meet in the middle</div>
-      <div class="stations interactive" id="stations">
-        <button type="button" data-side="ot" data-t="0.08" class="active"><strong>1 · OT Plant</strong><span>Physical signals & risk</span></button>
-        <button type="button" data-side="ai" data-t="0.35"><strong>2 · Anomaly</strong><span>Where silos break deals</span></button>
-        <button type="button" data-side="ai" data-t="0.55"><strong>3 · Physical AI</strong><span>Governed bypass / act</span></button>
-        <button type="button" data-side="it" data-t="0.78"><strong>4 · IT Stack</strong><span>Systems of record</span></button>
-        <button type="button" data-side="ai" data-t="0.92"><strong>5 · Convergence</strong><span>One executive narrative</span></button>
-      </div>
+      <div class="rail interactive" id="rail"></div>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script>
   (function () {
-    const STORIES = [
-      { t: 0.08, kicker: 'Station 1 · OT world', title: 'Start on the plant floor', body: 'Sensors, robots, and operators generate truth about physical risk — heat, torque, downtime. Amber is the OT world: messy, real-time, and expensive when ignored.', cta: 'Ride toward the fracture →' },
-      { t: 0.35, kicker: 'Station 2 · The fracture', title: 'OT and IT talk past each other', body: 'A thermal spike on Arm #04 is obvious to operations, but IT only sees another telemetry event. Without a shared language, the deal and the line both stall.', cta: 'Engage the Physical AI bridge →', action: 'bypass' },
-      { t: 0.55, kicker: 'Station 3 · Physical AI', title: 'Close the loop without stopping the line', body: 'Physical AI is the bridge: it recalibrates in place, keeps evidence for audit, and turns an OT incident into an IT-actionable, CFO-legible outcome.', cta: 'Carry the decision into IT →' },
-      { t: 0.78, kicker: 'Station 4 · IT world', title: 'Land in systems of record', body: 'Cyan is the digital estate — data platforms, architecture, and workflow. The bypass is not a shadow IT hack; it writes back into the systems leaders already trust.', cta: 'Finish at convergence →' },
-      { t: 0.92, kicker: 'Station 5 · Convergence', title: 'One narrative for OT, IT, and the CFO', body: 'The marble was never the point — it is a decision packet moving from physical risk to digital governance. That is IT/OT convergence you can sell and operate.', cta: 'Replay the ride' }
+    const STEPS = [
+      { t: 0.05, label: 'Step 1 of 5 · OT plant', title: 'Left side: the physical world', body: 'Orange blocks = plant floor (robots, heat, downtime). This is OT. You start here because value and risk are born in the physical world — not in a slide deck.' },
+      { t: 0.32, label: 'Step 2 of 5 · The fracture', title: 'Middle-left: where silos hurt', body: 'Same incident, two languages. OT sees Arm #04 overheating; IT sees a telemetry blip. Pause here — this is why deals and lines stall.' },
+      { t: 0.5, label: 'Step 3 of 5 · Physical AI bridge', title: 'Center: the green bridge', body: 'Physical AI is the governed path between worlds — recalibrate in place, keep evidence, no unplanned downtime. Click Next to carry the decision across.' },
+      { t: 0.75, label: 'Step 4 of 5 · IT stack', title: 'Right side: the digital world', body: 'Blue blocks = systems of record and architecture. The decision lands in IT — not as shadow ops, but as something the stack can trust.' },
+      { t: 0.95, label: 'Step 5 of 5 · Convergence', title: 'One twin, one narrative', body: 'You never had to chase the camera. OT → bridge → IT is the story: a digital twin of convergence a CFO, an architect, and a plant lead can all follow.' }
     ];
 
     const container = document.getElementById('webgl-container');
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xdbe7f5);
-    scene.fog = new THREE.Fog(0xdbe7f5, 18, 55);
+    scene.background = new THREE.Color(0xe8eef6);
+    // Almost no fog — reduces depth swimming
+    scene.fog = new THREE.Fog(0xe8eef6, 40, 90);
 
-    const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.1, 200);
+    const camera = new THREE.PerspectiveCamera(40, innerWidth / innerHeight, 0.1, 200);
+    // Fixed isometric-ish overlook — NEVER follows the packet
+    camera.position.set(0, 22, 28);
+    camera.lookAt(0, 0, 0);
+
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(innerWidth, innerHeight);
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.95));
-    const sun = new THREE.DirectionalLight(0xffffff, 0.85);
-    sun.position.set(8, 20, 10);
+    scene.add(new THREE.AmbientLight(0xffffff, 1.05));
+    const sun = new THREE.DirectionalLight(0xffffff, 0.55);
+    sun.position.set(5, 30, 10);
     scene.add(sun);
 
-    // Ground
     const ground = new THREE.Mesh(
-      new THREE.PlaneGeometry(80, 50),
-      new THREE.MeshStandardMaterial({ color: 0xc5d4e8, roughness: 1, metalness: 0 })
+      new THREE.PlaneGeometry(70, 40),
+      new THREE.MeshStandardMaterial({ color: 0xd9e4f2, roughness: 1 })
     );
     ground.rotation.x = -Math.PI / 2;
-    ground.position.y = -0.05;
     scene.add(ground);
 
-    // OT zone (left) / IT zone (right)
-    function zone(x, color, label) {
-      const mat = new THREE.MeshStandardMaterial({ color, transparent: true, opacity: 0.22 });
-      const slab = new THREE.Mesh(new THREE.BoxGeometry(18, 0.08, 22), mat);
-      slab.position.set(x, 0.02, 0);
-      scene.add(slab);
+    // Soft zone plates
+    function plate(x, color) {
+      const m = new THREE.Mesh(
+        new THREE.BoxGeometry(16, 0.06, 18),
+        new THREE.MeshStandardMaterial({ color, transparent: true, opacity: 0.2 })
+      );
+      m.position.set(x, 0.03, 0);
+      scene.add(m);
     }
-    zone(-12, 0xea580c);
-    zone(12, 0x0284c7);
-    // Center AI strip
-    const mid = new THREE.Mesh(
-      new THREE.BoxGeometry(8, 0.09, 22),
-      new THREE.MeshStandardMaterial({ color: 0x059669, transparent: true, opacity: 0.18 })
-    );
-    mid.position.set(0, 0.03, 0);
-    scene.add(mid);
+    plate(-12, 0xea580c);
+    plate(0, 0x059669);
+    plate(12, 0x0284c7);
 
-    // Simple OT "plant" blocks
     function box(x, y, z, w, h, d, color) {
       const m = new THREE.Mesh(
         new THREE.BoxGeometry(w, h, d),
-        new THREE.MeshStandardMaterial({ color, roughness: 0.55, metalness: 0.15 })
+        new THREE.MeshStandardMaterial({ color, roughness: 0.6, metalness: 0.1 })
       );
       m.position.set(x, y, z);
       scene.add(m);
-      return m;
     }
-    box(-14, 1.2, -3, 3.2, 2.4, 3.2, 0xf97316);
-    box(-11, 0.8, 3, 2.2, 1.6, 2.2, 0xfb923c);
-    box(-16, 1.6, 2, 1.4, 3.2, 1.4, 0xc2410c);
-    // Robot arm hint
-    box(-13, 2.6, -3, 0.35, 2.2, 0.35, 0x9a3412);
-    box(-12.2, 3.5, -3, 2.2, 0.3, 0.3, 0x9a3412);
+    // OT plant (left) — quieter geometry
+    box(-13, 1.1, -2, 3, 2.2, 3, 0xea580c);
+    box(-10.5, 0.7, 2.5, 2, 1.4, 2, 0xf97316);
+    box(-14.5, 1.5, 2, 1.2, 3, 1.2, 0xc2410c);
+    // IT (right)
+    box(12.5, 1.3, -2, 3.5, 2.6, 2, 0x0284c7);
+    box(14.5, 2, 2.5, 2.2, 4, 2.2, 0x0369a1);
+    box(11, 0.9, 3, 1.8, 1.8, 1.8, 0x38bdf8);
 
-    // IT "rack / cloud" blocks
-    box(13, 1.4, -2, 4, 2.8, 2.2, 0x0ea5e9);
-    box(15, 2.2, 3, 2.4, 4.4, 2.4, 0x0369a1);
-    box(11, 1.0, 4, 2.0, 2.0, 2.0, 0x38bdf8);
-    for (let i = 0; i < 5; i++) box(12.2, 0.4 + i * 0.45, -2, 3.2, 0.12, 1.6, 0xe0f2fe);
-
-    // Convergence arch in center
-    const arch = new THREE.Mesh(
-      new THREE.TorusGeometry(2.2, 0.12, 12, 48, Math.PI),
-      new THREE.MeshStandardMaterial({ color: 0x059669, emissive: 0x059669, emissiveIntensity: 0.25 })
-    );
-    arch.rotation.z = Math.PI;
-    arch.position.set(0, 0.1, 0);
-    scene.add(arch);
-
-    // Path OT → AI → IT
-    const curve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-16, 1.2, 2),
-      new THREE.Vector3(-10, 2.2, -1),
-      new THREE.Vector3(-4, 3.0, 1),
-      new THREE.Vector3(0, 3.6, 0),
-      new THREE.Vector3(4, 3.0, -1),
-      new THREE.Vector3(10, 2.2, 1),
-      new THREE.Vector3(16, 1.4, -1)
+    // Twin wire overlay (subtle digital twin cue)
+    const wireCurve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(-15, 1.1, 1.5),
+      new THREE.Vector3(-8, 2.0, -0.5),
+      new THREE.Vector3(-2, 2.6, 0.8),
+      new THREE.Vector3(0, 2.8, 0),
+      new THREE.Vector3(2, 2.6, -0.6),
+      new THREE.Vector3(8, 2.0, 0.5),
+      new THREE.Vector3(15, 1.3, -1)
     ], false);
-
-    const tube = new THREE.Mesh(
-      new THREE.TubeGeometry(curve, 180, 0.16, 12, false),
-      new THREE.MeshStandardMaterial({ color: 0x0f766e, metalness: 0.4, roughness: 0.35, emissive: 0x064e3b, emissiveIntensity: 0.15 })
+    scene.add(new THREE.Mesh(
+      new THREE.TubeGeometry(wireCurve, 120, 0.12, 10, false),
+      new THREE.MeshStandardMaterial({ color: 0x047857, metalness: 0.3, roughness: 0.4 })
+    ));
+    // Ghost twin wireframe slightly offset
+    const ghost = new THREE.Mesh(
+      new THREE.TubeGeometry(wireCurve, 80, 0.18, 6, false),
+      new THREE.MeshBasicMaterial({ color: 0x94a3b8, wireframe: true, transparent: true, opacity: 0.35 })
     );
-    scene.add(tube);
+    ghost.position.y = 0.15;
+    scene.add(ghost);
 
-    // Station markers
-    const stationTs = [0.08, 0.35, 0.55, 0.78, 0.92];
-    const stationColors = [0xea580c, 0xf59e0b, 0x059669, 0x0284c7, 0x059669];
-    stationTs.forEach((tt, i) => {
-      const p = curve.getPoint(tt);
-      const s = new THREE.Mesh(
-        new THREE.SphereGeometry(0.28, 20, 20),
-        new THREE.MeshStandardMaterial({ color: stationColors[i], emissive: stationColors[i], emissiveIntensity: 0.35 })
-      );
-      s.position.copy(p);
-      scene.add(s);
-    });
+    function label(text, color, x, y, z) {
+      const c = document.createElement('canvas');
+      c.width = 640; c.height = 128;
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = 'rgba(255,255,255,0.95)';
+      ctx.fillRect(20, 28, 600, 72);
+      ctx.fillStyle = color;
+      ctx.font = 'bold 40px system-ui,sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(text, 320, 78);
+      const spr = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), depthTest: false }));
+      spr.position.set(x, y, z);
+      spr.scale.set(7, 1.4, 1);
+      scene.add(spr);
+    }
+    label('1  OT PLANT', '#c2410c', -12, 4.2, 0);
+    label('BRIDGE  PHYSICAL AI', '#047857', 0, 4.6, 0);
+    label('IT STACK  2', '#0369a1', 12, 5.0, 0);
 
-    // Decision packet (marble) — labeled via HUD, brighter
     const packet = new THREE.Mesh(
-      new THREE.SphereGeometry(0.42, 32, 32),
-      new THREE.MeshStandardMaterial({ color: 0xfbbf24, emissive: 0xf59e0b, emissiveIntensity: 0.55, metalness: 0.2, roughness: 0.25 })
+      new THREE.SphereGeometry(0.38, 24, 24),
+      new THREE.MeshStandardMaterial({ color: 0xf59e0b, emissive: 0xb45309, emissiveIntensity: 0.35 })
     );
     scene.add(packet);
-    const packetLight = new THREE.PointLight(0xfbbf24, 1.2, 10);
-    packet.add(packetLight);
 
-    // HTML labels in world via CSS2D would need extra lib — use sprites with canvas text
-    function makeLabel(text, color) {
-      const c = document.createElement('canvas');
-      c.width = 512; c.height = 128;
-      const ctx = c.getContext('2d');
-      ctx.fillStyle = 'rgba(255,255,255,0.92)';
-      ctx.roundRect(8, 24, 496, 80, 18); ctx.fill();
-      ctx.fillStyle = color;
-      ctx.font = 'bold 42px Inter, system-ui, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText(text, 256, 78);
-      const tex = new THREE.CanvasTexture(c);
-      const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false });
-      const spr = new THREE.Sprite(mat);
-      spr.scale.set(6, 1.5, 1);
-      return spr;
-    }
-    if (!CanvasRenderingContext2D.prototype.roundRect) {
-      CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
-        this.beginPath();
-        this.moveTo(x + r, y);
-        this.arcTo(x + w, y, x + w, y + h, r);
-        this.arcTo(x + w, y + h, x, y + h, r);
-        this.arcTo(x, y + h, x, y, r);
-        this.arcTo(x, y, x + w, y, r);
-        this.closePath();
-      };
-    }
-    const otLabel = makeLabel('OT · PLANT FLOOR', '#c2410c');
-    otLabel.position.set(-13, 4.2, 0);
-    scene.add(otLabel);
-    const itLabel = makeLabel('IT · DIGITAL STACK', '#0369a1');
-    itLabel.position.set(13, 4.8, 0);
-    scene.add(itLabel);
-    const aiLabel = makeLabel('PHYSICAL AI BRIDGE', '#047857');
-    aiLabel.position.set(0, 5.2, 0);
-    scene.add(aiLabel);
+    let idx = 0;
+    let progress = STEPS[0].t;
+    let target = STEPS[0].t;
 
-    let progress = 0.08;
-    let target = 0.08;
-    let auto = false;
-    let bypassDone = false;
-    let stationIdx = 0;
-
-    const story = document.getElementById('story');
-    const storyKicker = document.getElementById('story-kicker');
-    const storyTitle = document.getElementById('story-title');
-    const storyBody = document.getElementById('story-body');
-    const storyCta = document.getElementById('story-cta');
-    const stationBtns = [...document.querySelectorAll('#stations button')];
-
-    function nearestStory(p) {
-      let best = 0, dist = 1;
-      STORIES.forEach((s, i) => {
-        const d = Math.abs(s.t - p);
-        if (d < dist) { dist = d; best = i; }
-      });
-      return best;
-    }
-
-    function setStory(i) {
-      stationIdx = i;
-      const s = STORIES[i];
-      storyKicker.textContent = s.kicker;
-      storyTitle.textContent = s.title;
-      storyBody.textContent = s.body;
-      storyCta.textContent = s.cta;
-      stationBtns.forEach((b, j) => b.classList.toggle('active', j === i));
-    }
-
-    function goTo(t, withAuto) {
-      target = Math.max(0, Math.min(1, t));
-      auto = !!withAuto;
-    }
-
-    stationBtns.forEach((btn, i) => {
-      btn.addEventListener('click', () => {
-        goTo(parseFloat(btn.dataset.t), true);
-        setStory(i);
-      });
+    const rail = document.getElementById('rail');
+    STEPS.forEach((s, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = (i + 1) + '';
+      b.title = s.label;
+      b.addEventListener('click', () => go(i));
+      rail.appendChild(b);
     });
 
-    storyCta.addEventListener('click', () => {
-      const s = STORIES[stationIdx];
-      if (s.action === 'bypass' && !bypassDone) {
-        bypassDone = true;
-        if (window.gsap) gsap.fromTo(packet.scale, { x: 1, y: 1, z: 1 }, { x: 1.5, y: 1.5, z: 1.5, duration: 0.2, yoyo: true, repeat: 1 });
-        storyBody.textContent = 'Bypass engaged: torque/duty cycle recalibrated in place. Evidence retained for IT systems and the CFO narrative — zero unplanned downtime.';
-      }
-      const next = stationIdx >= STORIES.length - 1 ? 0 : stationIdx + 1;
-      if (stationIdx >= STORIES.length - 1) bypassDone = false;
-      setStory(next);
-      goTo(STORIES[next].t, true);
-    });
+    function paint() {
+      const s = STEPS[idx];
+      document.getElementById('step-label').textContent = s.label;
+      document.getElementById('title').textContent = s.title;
+      document.getElementById('body').textContent = s.body;
+      [...rail.children].forEach((b, i) => b.classList.toggle('active', i === idx));
+      document.getElementById('eye-guide').classList.toggle('show', idx === 0);
+      target = s.t;
+    }
 
-    // Drag scrub
-    let dragging = false, lastX = 0;
-    container.addEventListener('pointerdown', (e) => {
-      dragging = true; lastX = e.clientX; auto = false;
-      container.classList.add('dragging');
-      container.setPointerCapture(e.pointerId);
-    });
-    container.addEventListener('pointermove', (e) => {
-      if (!dragging) return;
-      const dx = e.clientX - lastX;
-      lastX = e.clientX;
-      progress = Math.max(0, Math.min(1, progress + dx * 0.0015));
-      target = progress;
-      setStory(nearestStory(progress));
-    });
-    container.addEventListener('pointerup', () => { dragging = false; container.classList.remove('dragging'); });
-    container.addEventListener('pointercancel', () => { dragging = false; container.classList.remove('dragging'); });
+    function go(i) {
+      idx = (i + STEPS.length) % STEPS.length;
+      paint();
+    }
+
+    document.getElementById('next').addEventListener('click', () => go(idx + 1));
+    document.getElementById('replay').addEventListener('click', () => go(0));
 
     window.addEventListener('resize', () => {
       camera.aspect = innerWidth / innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(innerWidth, innerHeight);
+      // Keep fixed look
+      camera.position.set(0, 22, 28);
+      camera.lookAt(0, 0, 0);
     });
 
-    setStory(0);
+    paint();
 
     function animate() {
       requestAnimationFrame(animate);
-      if (auto) {
-        progress += (target - progress) * 0.04;
-        if (Math.abs(target - progress) < 0.001) { progress = target; auto = false; }
-      }
-      const p = curve.getPoint(progress);
-      const tangent = curve.getTangent(progress).normalize();
-      packet.position.copy(p);
-
-      // Color shifts OT → AI → IT along the path
-      if (progress < 0.4) packet.material.color.setHex(0xf97316);
-      else if (progress < 0.7) packet.material.color.setHex(0x10b981);
-      else packet.material.color.setHex(0x0ea5e9);
-
-      const camPos = p.clone().add(new THREE.Vector3(0, 4.5, 10)).add(tangent.clone().multiplyScalar(-2));
-      camera.position.lerp(camPos, 0.08);
-      camera.lookAt(p.clone().add(new THREE.Vector3(0, 1.2, 0)));
-
+      // Ease packet only — camera stays put (anti-dizziness)
+      progress += (target - progress) * 0.06;
+      packet.position.copy(wireCurve.getPoint(progress));
+      if (progress < 0.35) packet.material.color.setHex(0xea580c);
+      else if (progress < 0.65) packet.material.color.setHex(0x059669);
+      else packet.material.color.setHex(0x0284c7);
       renderer.render(scene, camera);
     }
     animate();
