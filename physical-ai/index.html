@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physical AI: The IT/OT Kinetic Coaster | Muhammad A. Yunas</title>
+  <style>
+    :root {
+      --bg-dark: #0a0d12;
+      --ot-amber: #ff9f1c;
+      --it-cyan: #00f5d4;
+      --cfo-green: #2ec4b6;
+      --glass-panel: rgba(16, 22, 34, 0.75);
+    }
+
+    body, html {
+      margin: 0; padding: 0; width: 100%; height: 100%;
+      overflow: hidden; font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg-dark); color: #fff;
+    }
+
+    #webgl-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+
+    .hud-overlay {
+      position: absolute; z-index: 10; pointer-events: none; width: 100%; height: 100%;
+      display: flex; flex-direction: column; justify-content: space-between; padding: 30px; box-sizing: border-box;
+    }
+
+    .interactive-element { pointer-events: auto; }
+
+    .hud-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .brand-title { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #8a99ad; }
+    .brand-title span { color: var(--it-cyan); }
+    .brand-title a { color: inherit; text-decoration: none; }
+
+    .persona-toggle {
+      display: flex; background: var(--glass-panel); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 30px; padding: 4px; backdrop-filter: blur(10px);
+    }
+    .persona-btn {
+      background: transparent; border: none; color: #8a99ad; padding: 8px 18px;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 20px; transition: all 0.3s;
+    }
+    .persona-btn.active { background: var(--it-cyan); color: #000; box-shadow: 0 0 15px rgba(0,245,212,0.4); }
+    .persona-btn[data-p="OT"].active { background: var(--ot-amber); color: #000; box-shadow: 0 0 15px rgba(255,159,28,0.4); }
+    .persona-btn[data-p="CFO"].active { background: var(--cfo-green); color: #000; box-shadow: 0 0 15px rgba(46,196,182,0.4); }
+
+    .pillar-engine {
+      display: flex; justify-content: center; gap: 20px; background: var(--glass-panel);
+      padding: 15px 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px); align-self: center; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .pillar-step { display: flex; align-items: center; gap: 10px; opacity: 0.4; transition: opacity 0.3s; }
+    .pillar-step.active { opacity: 1.0; }
+    .pillar-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--it-cyan); box-shadow: 0 0 8px var(--it-cyan); }
+
+    .anomaly-card {
+      position: absolute; right: 40px; top: 35%; width: 320px; max-width: calc(100vw - 48px);
+      background: var(--glass-panel);
+      border-left: 4px solid var(--ot-amber); padding: 20px; border-radius: 12px;
+      backdrop-filter: blur(12px); transform: translateX(400px); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .anomaly-card.visible { transform: translateX(0); }
+
+    @media (max-width: 640px) {
+      .hud-overlay { padding: 16px; }
+      .anomaly-card { right: 16px; left: 16px; width: auto; top: auto; bottom: 120px; transform: translateY(120%); }
+      .anomaly-card.visible { transform: translateY(0); }
+      .persona-btn { padding: 6px 12px; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="webgl-container"></div>
+
+  <div class="hud-overlay">
+    <div class="hud-header">
+      <div class="brand-title"><a href="../index.html">Physical AI</a> <span>/ IT-OT Convergence</span></div>
+      <div class="persona-toggle interactive-element">
+        <button class="persona-btn active" data-p="OT" type="button" onclick="switchPersona('OT', this)">OT Ops</button>
+        <button class="persona-btn" data-p="IT" type="button" onclick="switchPersona('IT', this)">IT Arch</button>
+        <button class="persona-btn" data-p="CFO" type="button" onclick="switchPersona('CFO', this)">CFO EBITDA</button>
+      </div>
+    </div>
+
+    <div class="anomaly-card interactive-element" id="anomaly-card">
+      <h4 style="margin: 0 0 8px 0; color: var(--ot-amber);">THERMAL ANOMALY DETECTED</h4>
+      <p style="font-size: 0.85rem; color: #a0aec0; margin-bottom: 15px;">Robotic Arm #04 Joint Temp Exceeds Threshold (+14°C)</p>
+      <button style="width: 100%; background: var(--it-cyan); border: none; padding: 10px; font-weight: bold; cursor: pointer; border-radius: 6px;" onclick="executeBypass()">ENGAGE PHYSICAL AI BYPASS</button>
+    </div>
+
+    <div class="pillar-engine">
+      <div class="pillar-step active" id="step-scan">
+        <div class="pillar-dot"></div>
+        <span>1. SCAN (Ingest)</span>
+      </div>
+      <div class="pillar-step" id="step-act">
+        <div class="pillar-dot" style="background: var(--ot-amber); box-shadow: 0 0 8px var(--ot-amber);"></div>
+        <span>2. ACT (Execute)</span>
+      </div>
+      <div class="pillar-step" id="step-learn">
+        <div class="pillar-dot" style="background: var(--cfo-green); box-shadow: 0 0 8px var(--cfo-green);"></div>
+        <span>3. LEARN (Optimize)</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+
+
+  <script>
+    const container = document.getElementById('webgl-container');
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x0a0d12, 0.03);
+
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 5, 15);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x0a0d12);
+    container.appendChild(renderer.domElement);
+
+    const ambientLight = new THREE.AmbientLight(0x1a202c, 2);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0x00f5d4, 3, 50);
+    pointLight.position.set(0, 10, 0);
+    scene.add(pointLight);
+
+    const curve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(-10, 0, 10),
+      new THREE.Vector3(-5, 3, -5),
+      new THREE.Vector3(0, 0, -10),
+      new THREE.Vector3(5, 5, -5),
+      new THREE.Vector3(10, 0, 10)
+    ], true);
+
+    const tubeGeometry = new THREE.TubeGeometry(curve, 100, 0.2, 8, true);
+    const tubeMaterial = new THREE.MeshBasicMaterial({ color: 0x1e293b, wireframe: true });
+    const track = new THREE.Mesh(tubeGeometry, tubeMaterial);
+    scene.add(track);
+
+    const marbleGeo = new THREE.SphereGeometry(0.5, 32, 32);
+    const marbleMat = new THREE.MeshStandardMaterial({
+      color: 0x00f5d4, emissive: 0x00f5d4, emissiveIntensity: 0.5, roughness: 0.1
+    });
+    const marble = new THREE.Mesh(marbleGeo, marbleMat);
+    scene.add(marble);
+
+    const PERSONA_COLORS = { OT: 0xff9f1c, IT: 0x00f5d4, CFO: 0x2ec4b6 };
+    let bypassLatched = false;
+    
+    // Step 3 audio: ACT-phase recalibration cue (Web Audio; swap src later for real SFX via Howler)
+    let actAudioCtx = null;
+    let actFxPlayed = false;
+    function playActRecalibrate() {
+      try {
+        actAudioCtx = actAudioCtx || new (window.AudioContext || window.webkitAudioContext)();
+        const o = actAudioCtx.createOscillator();
+        const g = actAudioCtx.createGain();
+        o.type = 'square';
+        o.frequency.setValueAtTime(220, actAudioCtx.currentTime);
+        o.frequency.exponentialRampToValueAtTime(880, actAudioCtx.currentTime + 0.12);
+        o.frequency.exponentialRampToValueAtTime(110, actAudioCtx.currentTime + 0.28);
+        g.gain.setValueAtTime(0.0001, actAudioCtx.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.08, actAudioCtx.currentTime + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, actAudioCtx.currentTime + 0.32);
+        o.connect(g); g.connect(actAudioCtx.destination);
+        o.start(); o.stop(actAudioCtx.currentTime + 0.34);
+        if (typeof Howl !== 'undefined') {
+          // Hook ready for a real mechanical SFX file later:
+          // new Howl({ src: ['/assets/audio/recalibrate.mp3'] }).play();
+        }
+      } catch (e) {}
+    }
+
+    let progress = 0;
+
+    function setPillars(stage) {
+      document.getElementById('step-scan').classList.toggle('active', stage >= 0);
+      document.getElementById('step-act').classList.toggle('active', stage >= 1);
+      document.getElementById('step-learn').classList.toggle('active', stage >= 2);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      progress += 0.002;
+      if (progress > 1) progress = 0;
+
+      const point = curve.getPoint(progress);
+      marble.position.copy(point);
+
+      const tangent = curve.getTangent(progress).normalize();
+      const camTarget = point.clone().add(tangent.clone().multiplyScalar(-8)).add(new THREE.Vector3(0, 4, 0));
+      camera.position.lerp(camTarget, 0.05);
+      camera.lookAt(point.clone().add(tangent.clone().multiplyScalar(3)));
+
+      if (!bypassLatched) {
+        if (progress > 0.3 && progress < 0.6) {
+          document.getElementById('anomaly-card').classList.add('visible');
+          setPillars(1);
+          if (!actFxPlayed) { actFxPlayed = true; playActRecalibrate(); }
+        } else if (progress >= 0.6) {
+          document.getElementById('anomaly-card').classList.remove('visible');
+          setPillars(2);
+          actFxPlayed = false;
+        } else {
+          document.getElementById('anomaly-card').classList.remove('visible');
+          setPillars(0);
+          actFxPlayed = false;
+        }
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    function switchPersona(persona, el) {
+      document.querySelectorAll('.persona-btn').forEach(b => b.classList.remove('active'));
+      (el || event.target).classList.add('active');
+      const hex = PERSONA_COLORS[persona] || PERSONA_COLORS.IT;
+      marbleMat.color.setHex(hex);
+      marbleMat.emissive.setHex(hex);
+      pointLight.color.setHex(hex);
+    }
+
+    function executeBypass() {
+      bypassLatched = true;
+      document.getElementById('anomaly-card').classList.remove('visible');
+      setPillars(2);
+      if (window.gsap) {
+        gsap.fromTo(marble.scale, { x: 1, y: 1, z: 1 }, { x: 1.4, y: 1.4, z: 1.4, duration: 0.2, yoyo: true, repeat: 1 });
+      }
+      playActRecalibrate();
+      alert('Physical AI Reroute Engaged: Zero-Downtime Parameter Recalibrated.');
+    }
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
