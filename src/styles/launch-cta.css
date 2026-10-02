@@ -1,0 +1,19 @@
+.start-here-cta, .work-with-me { max-width: 880px; margin: 28px auto 0; padding: 0 1.25rem; text-align: center; }
+.start-here-cta a, .work-with-me a {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #D4A857; color: #0A0F1F; text-decoration: none; font-weight: 600;
+  letter-spacing: .04em; text-transform: uppercase; font-size: 13px;
+  padding: 12px 16px; border-radius: 4px; font-family: Inter, system-ui, sans-serif;
+}
+.work-with-me { margin: 0 auto 28px; }
+.work-with-me h2 { margin: 0 0 6px; color: #fff; font-size: 24px; font-weight: 600; font-family: Inter, system-ui, sans-serif; }
+.work-with-me p { margin: 0 0 14px; color: #C8CCD4; font-size: 16px; }
+.footer-role { color: #D4A857; font-weight: 600; letter-spacing: .04em; margin: 0 0 1.25rem; font-size: 1rem; }
+.fade-once { animation: reveal-once 720ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (max-width: 720px) {
+  .start-here-cta, .work-with-me { padding: 0 1rem; }
+  .start-here-cta a, .work-with-me a { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-once { animation: none; }
+}
