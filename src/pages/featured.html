@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Featured | Muhammad A. Yunas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../styles/global.css"/>
+  <link rel="stylesheet" href="../styles/typography.css"/>
+  <link rel="stylesheet" href="../styles/thumbnail-card.css"/>
+  <style>
+    body { background:#0A0F1F; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 48px 24px 64px; }
+    .kicker { color:#D4A857; letter-spacing:.14em; text-transform:uppercase; font-size:12px; font-weight:600; }
+    h1 { color:#fff; font-family:Inter,sans-serif; font-weight:600; font-size:clamp(24px,3vw,28px); margin:8px 0 24px; }
+    .featured-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:16px; }
+    @media (max-width: 960px) { .featured-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .wrap { padding:28px 20px 48px; } .featured-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="kicker">Selected work</p>
+    <h1>Featured</h1>
+    <div class="featured-grid" id="featured"></div>
+  </main>
+  <script src="../components/thumbnail-card/thumbnail-card.js"></script>
+  <script>
+    const items = [
+      ["Website","The live portfolio. Outcomes first.","../../index.html","brief"],
+      ["Physical AI GTM Playbook","$0 to $40M. One OT/IT motion.","../../case-studies/ot-it-convergence.html","convergence"],
+      ["Industrial Autonomy GTM Framework","Four layers. One system.","../../physical-ai/","framework"],
+      ["Silicon Meets Steel","The category manifesto.","../../thought-leadership/","steel"],
+      ["Physical AI Cockpit","Industry, constraint, outcome.","../../cockpit.html","cockpit"],
+      ["DCIM Case Study","Infrastructure intelligence before the category had a name.","../../case-studies.html","convergence"],
+      ["Agentic AI Commercialization","Partner and seller motion.","../../case-studies.html","agentic"],
+      ["Mastering a Product Launch","A launch system, not a campaign.","../../case-studies.html","launch"]
+    ];
+    const grid = document.getElementById("featured");
+    items.forEach(([title, description, href, motif]) => {
+      const el = document.createElement("thumbnail-card");
+      el.setAttribute("title", title);
+      el.setAttribute("description", description);
+      el.setAttribute("href", href);
+      el.setAttribute("motif", motif);
+      el.setAttribute("cta", "Open");
+      el.setAttribute("ghost", "");
+      grid.appendChild(el);
+    });
+  </script>
+</body>
+</html>
