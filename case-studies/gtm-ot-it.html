@@ -1,36 +1,149 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GTM OT-IT Convergence | Muhammad Yunas</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GTM OT-IT Convergence Playbook — translating plant economics for the CFO. Muhammad A. Yunas.">
+  <title>GTM OT-IT Convergence Playbook | Muhammad A. Yunas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    .case-page { max-width: 820px; margin: 0 auto; padding: 7rem 5% 4rem; }
-    .case-page .lead { color: var(--text-muted); font-size: 1.1rem; margin: 1rem 0 1.5rem; }
-    .case-page ul { color: var(--text-muted); padding-left: 1.2rem; }
-    .case-page li { margin-bottom: 0.75rem; }
-    .case-page h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); margin: 1rem 0; }
-    .case-page .back { color: var(--gold-light); font-weight: 700; font-size: 0.9rem; }
+    :root {
+      --ink: #f4f1ea;
+      --muted: #b7b2a6;
+      --gold: #D4AF37;
+      --gold-soft: rgba(212, 175, 55, 0.18);
+      --rule: rgba(244, 241, 234, 0.16);
+      --paper: #0c1220;
+      --panel: #111a2b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse at top, rgba(212,175,55,0.08), transparent 42%),
+        var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--gold); }
+
+    .letterhead {
+      max-width: 820px; margin: 0 auto; padding: 1.75rem 1.5rem 1.25rem;
+      border-bottom: 1px solid var(--rule);
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .brand { display: flex; flex-direction: column; gap: 0.35rem; }
+    .brand .name {
+      font-family: "Playfair Display", Georgia, serif; font-size: 1.15rem; font-weight: 700; color: var(--ink);
+    }
+    .brand .name span { color: var(--gold); }
+    .brand .back {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+    }
+    .brand .back:hover { color: var(--gold); }
+    .hire {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: var(--gold); color: #0c1220 !important;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 0.65rem 1rem; border-radius: 2px;
+    }
+    .hire:hover { filter: brightness(1.05); color: #0c1220 !important; }
+
+    article { max-width: 820px; margin: 0 auto; padding: 2.75rem 1.5rem 4.5rem; }
+    .eyebrow {
+      display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.9rem, 4vw, 2.65rem); font-weight: 700; line-height: 1.18;
+      color: var(--ink); margin-bottom: 1.25rem; max-width: 20ch;
+    }
+    .deck { font-size: 1.05rem; color: var(--muted); max-width: 58ch; margin-bottom: 2rem; }
+    .rule { width: 64px; height: 2px; background: var(--gold); margin-bottom: 2.25rem; }
+    .metrics {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;
+      margin-bottom: 2.5rem; padding: 1.15rem; background: var(--panel);
+      border: 1px solid var(--rule); border-radius: 8px;
+    }
+    .metric { text-align: center; }
+    .metric strong {
+      display: block; font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.45rem; color: var(--gold); font-weight: 700;
+    }
+    .metric span { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    section { margin-bottom: 2rem; }
+    section h2 {
+      font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem;
+      color: var(--ink); margin-bottom: 0.75rem;
+    }
+    section p { color: var(--muted); margin-bottom: 0.85rem; }
+    section p strong { color: var(--ink); }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.25rem; }
+    .cta-row a {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.82rem; font-weight: 700; padding: 0.7rem 1.1rem; border-radius: 2px;
+    }
+    .cta-primary { background: var(--gold); color: #0c1220 !important; }
+    .cta-ghost { border: 1px solid var(--rule); color: var(--ink) !important; }
+    .cta-ghost:hover { border-color: var(--gold); color: var(--gold) !important; }
+    .footer-note { margin-top: 2.5rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 1.25rem; }
+    @media (max-width: 720px) {
+      .metrics { grid-template-columns: 1fr 1fr; }
+      h1 { max-width: none; }
+    }
   </style>
 </head>
 <body>
-  <main class="case-page">
-    <article>
-      <p><a class="back" href="../index.html">← Back to portfolio</a></p>
-      <h1>OT-IT Convergence GTM Playbook</h1>
-      <p class="lead">Positioning strategy that translated technical complexity into executive urgency.</p>
-      <ul>
-        <li><strong>Challenge:</strong> Disconnected messaging across product, sales, and delivery teams.</li>
-        <li><strong>Approach:</strong> Reframed value around industrial autonomy outcomes and plant economics.</li>
-        <li><strong>Execution:</strong> Built an integrated GTM narrative, enablement framework, and launch motion.</li>
-        <li><strong>Result:</strong> Stronger pipeline quality, shorter decision cycles, and clearer executive sponsorship.</li>
-      </ul>
-    </article>
-  </main>
-  <script src="../assets/js/main.js"></script>
+  <header class="letterhead">
+    <div class="brand">
+      <a class="name" href="../index.html">Muhammad A. <span>Yunas</span></a>
+      <a class="back" href="../case-studies.html">← All case studies</a>
+    </div>
+    <a class="hire" href="../index.html#contact">Email to hire me</a>
+  </header>
+
+  <article>
+    <div class="eyebrow">GTM playbook · OT-IT convergence</div>
+    <h1>Translate Plant Economics for the CFO</h1>
+    <p class="deck">A positioning and enablement playbook that retires “IIoT platform” jargon and reframes predictive telemetry as risk reduction and EBITDA preservation — so OT sponsors and IT champions stop vetoing each other.</p>
+    <div class="rule" aria-hidden="true"></div>
+
+    <div class="metrics" aria-label="Playbook outcomes">
+      <div class="metric"><strong>3</strong><span>Buyer roles mapped</span></div>
+      <div class="metric"><strong>CFO</strong><span>Economic buyer</span></div>
+      <div class="metric"><strong>60d</strong><span>POC structure</span></div>
+      <div class="metric"><strong>Clarity</strong><span>Pipeline quality</span></div>
+    </div>
+
+    <section>
+      <h2>The Challenge</h2>
+      <p>Industrial buyers reject platform jargon. Plant managers care about uptime and safety; CFOs care about risk and EBITDA. Product, sales, and delivery often run disconnected messaging — so pipeline looks large while conversion stalls at the OT/IT handoff.</p>
+      <p>Without a shared category language, every deal re-educates the market from scratch. Velocity dies in discovery.</p>
+    </section>
+
+    <section>
+      <h2>The Approach</h2>
+      <p><strong>1. Retire commoditized language.</strong> Replace “IIoT platform” with Physical Operations Intelligence — a frame that ties telemetry to plant economics.</p>
+      <p><strong>2. Map the buying committee.</strong> Every account gets an OT Sponsor, IT Champion, and CFO Economic Buyer. Messaging and enablement are role-based, not one-deck-fits-all.</p>
+      <p><strong>3. Structure the motion.</strong> Open-ended trials become 60-day POCs tied to downtime and safety benchmarks. Sales is treated as the primary customer of the narrative.</p>
+    </section>
+
+    <section>
+      <h2>Verified Outcomes</h2>
+      <p>Stronger executive sponsorship, clearer pipeline quality, and shorter decision cycles when the narrative is tied to plant economics — the same motion that supported 40% cycle compression and precision industrial segmentation in related OT/IT engagements.</p>
+    </section>
+
+    <div class="cta-row">
+      <a class="cta-primary" href="../index.html#contact">Discuss this playbook →</a>
+      <a class="cta-ghost" href="ot-it-convergence.html">Read flagship OT/IT case</a>
+      <a class="cta-ghost" href="../cockpit.html">Run the Case-Study Cockpit</a>
+    </div>
+
+    <p class="footer-note">Muhammad A. Yunas · Executive GTM · Physical AI / OT–IT convergence</p>
+  </article>
 </body>
 </html>

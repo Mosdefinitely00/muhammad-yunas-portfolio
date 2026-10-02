@@ -360,12 +360,22 @@
   #verticals { background: var(--bg-surface); }
   .verticals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
   .vertical-card { 
-    background: var(--bg-dark); border: 1px solid var(--border); padding: 1.8rem 1rem; border-radius: 8px; text-align: center; 
-    transition: var(--transition); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem;
+    background: var(--bg-dark); border: 1px solid var(--border); padding: 1.6rem 1.25rem 1.4rem; border-radius: 8px; text-align: left; 
+    transition: var(--transition); display: flex; flex-direction: column; align-items: flex-start; gap: 0.65rem;
   }
   .vertical-card:hover { border-color: var(--gold); transform: translateY(-3px); background: #060c1b; }
-  .vertical-card i { font-size: 1.8rem; color: var(--gold); }
-  .vertical-card h4 { color: var(--white); font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em; }
+  .vertical-card i { font-size: 1.55rem; color: var(--gold); }
+  .vertical-card h4 { color: var(--white); font-size: 0.98rem; font-weight: 700; letter-spacing: 0.02em; margin: 0; }
+  .vertical-card p { color: var(--text-muted); font-size: 0.86rem; line-height: 1.55; margin: 0; flex: 1; }
+  .vertical-card .vert-cta { color: var(--gold-light); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; margin-top: 0.35rem; display: inline-flex; align-items: center; gap: 0.35rem; }
+  .vertical-card .vert-cta:hover { color: var(--gold); }
+  .verticals-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .cs-cta-row { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 2rem; }
+  .cs-cta-row a { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 700; text-decoration: none; padding: 0.75rem 1.25rem; border-radius: 4px; transition: var(--transition); }
+  .cs-cta-row .cs-cta-primary { background: var(--gold); color: var(--bg-dark) !important; }
+  .cs-cta-row .cs-cta-primary:hover { filter: brightness(1.06); }
+  .cs-cta-row .cs-cta-ghost { border: 1px solid var(--border); color: var(--gold-light) !important; }
+  .cs-cta-row .cs-cta-ghost:hover { border-color: var(--gold); color: var(--gold) !important; }
 
   /* WORK & IMPACT */
   #work { background: var(--bg-dark); }
@@ -707,12 +717,42 @@
         <h2 class="section-title">Proven Domain Execution <span>Across Asset-Intensive Markets.</span></h2>
         <div class="divider"></div>
         <div class="verticals-grid">
-            <div class="vertical-card"><i class="fa-solid fa-industry"></i><h4>Discrete Manufacturing</h4></div>
-            <div class="vertical-card"><i class="fa-solid fa-bolt"></i><h4>Energy &amp; Renewables</h4></div>
-            <div class="vertical-card"><i class="fa-solid fa-oil-well"></i><h4>Oil &amp; Gas (Upstream/Downstream)</h4></div>
-            <div class="vertical-card"><i class="fa-solid fa-car-side"></i><h4>Automotive Tier 1</h4></div>
-            <div class="vertical-card"><i class="fa-solid fa-microchip"></i><h4>Smart Factory &amp; Automation</h4></div>
-            <div class="vertical-card"><i class="fa-solid fa-truck-ramp-box"></i><h4>Supply Chain &amp; Logistics</h4></div>
+            <div class="vertical-card">
+                <i class="fa-solid fa-industry"></i>
+                <h4>Discrete Manufacturing</h4>
+                <p>OT/IT narratives for plant managers and CIOs — SCADA/DCS accounts, predictive uptime, and CFO-aligned EBITDA cases.</p>
+                <a class="vert-cta" href="cockpit.html">Open industry playbook <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="vertical-card">
+                <i class="fa-solid fa-bolt"></i>
+                <h4>Energy &amp; Renewables</h4>
+                <p>Asset performance and risk reduction for generation and renewables fleets — APM motions that clear OT sponsor and IT governance.</p>
+                <a class="vert-cta" href="cockpit.html">Open industry playbook <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="vertical-card">
+                <i class="fa-solid fa-oil-well"></i>
+                <h4>Oil &amp; Gas (Upstream/Downstream)</h4>
+                <p>Cyber-physical resilience and operations intelligence for upstream assets and downstream reliability programs.</p>
+                <a class="vert-cta" href="case-studies.html">View related cases <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="vertical-card">
+                <i class="fa-solid fa-car-side"></i>
+                <h4>Automotive Tier 1</h4>
+                <p>Smart-factory GTM for Tier-1 suppliers — compressing enterprise cycles with structured POCs and dual OT/IT buyer maps.</p>
+                <a class="vert-cta" href="cockpit.html">Open industry playbook <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="vertical-card">
+                <i class="fa-solid fa-microchip"></i>
+                <h4>Smart Factory &amp; Automation</h4>
+                <p>Physical AI category language for automation platforms that sense, reason, and act on the plant floor — not feature lists.</p>
+                <a class="vert-cta" href="physical-ai/">Explore Physical AI twin <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="vertical-card">
+                <i class="fa-solid fa-truck-ramp-box"></i>
+                <h4>Supply Chain &amp; Logistics</h4>
+                <p>Physical Operations Intelligence across manufacturing and logistics — unified narrative where buyers once saw disconnected services.</p>
+                <a class="vert-cta" href="case-studies.html">View related cases <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
         </div>
     </div>
 </section>
@@ -810,6 +850,11 @@
                     </ul>
                 </div>
             </div>
+        </div>
+        <div class="cs-cta-row">
+            <a class="cs-cta-primary" href="case-studies/ot-it-convergence.html">Read full OT/IT case study <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="cs-cta-ghost" href="cockpit.html">Run the Case-Study Cockpit</a>
+            <a class="cs-cta-ghost" href="case-studies.html">Browse all case studies</a>
         </div>
     </div>
 </section>

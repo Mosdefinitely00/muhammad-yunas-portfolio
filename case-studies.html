@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <title>Case Studies — Muhammad Yunas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Executive GTM case studies: Physical AI, OT/IT convergence, cyber-physical resilience, and industrial commercialization — Muhammad A. Yunas.">
 
   <link rel="icon" href="assets/logo.png" type="image/png">
 
-  <meta property="og:title" content="Muhammad Yunas — Executive GTM Leader">
-  <meta property="og:description" content="Physical AI & Agentic AI GTM Portfolio">
+  <meta property="og:title" content="Muhammad Yunas — Case Studies">
+  <meta property="og:description" content="Physical AI &amp; Agentic AI GTM case studies across Schneider Electric, Dell Technologies, Uptake, and UST Global.">
   <meta property="og:image" content="assets/og-preview.png">
-  <meta property="og:url" content="https://muhammad-yunas.com">
+  <meta property="og:url" content="https://muhammad-yunas.com/case-studies.html">
   <meta property="og:type" content="website">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NG2H7GWNJN"></script>
@@ -21,7 +22,59 @@
     gtag('config', 'G-NG2H7GWNJN');
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    :root {
+      --navy: #070D1D;
+      --panel: #0f1c3f;
+      --gold: #D4AF37;
+      --gold-light: #F3E5AB;
+      --muted: #94A3B8;
+      --border: rgba(212,175,55,0.35);
+    }
+    body { background: var(--navy); color: #fff; font-family: Inter, system-ui, sans-serif; }
+    .cs-hero { max-width: 1100px; margin: 0 auto; padding: 6.5rem 5% 2rem; }
+    .cs-hero .eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .cs-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); margin: 0.75rem 0 1rem; line-height: 1.15; }
+    .cs-hero h1 span { color: var(--gold); }
+    .cs-hero .lead { color: var(--muted); font-size: 1.05rem; max-width: 62ch; line-height: 1.7; margin-bottom: 1.5rem; }
+    .cs-hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .cs-hero-ctas a {
+      display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 700;
+      text-decoration: none; padding: 0.7rem 1.15rem; border-radius: 4px;
+    }
+    .btn-gold { background: var(--gold); color: var(--navy) !important; }
+    .btn-ghost { border: 1px solid var(--border); color: var(--gold-light) !important; }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold) !important; }
+
+    .case-grid {
+      max-width: 1100px; margin: 0 auto; padding: 1rem 5% 4rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.35rem;
+    }
+    .case-card {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+      display: flex; flex-direction: column; transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .case-card:hover { transform: translateY(-3px); border-color: var(--gold); }
+    .case-card img { width: 100%; height: 160px; object-fit: cover; display: block; background: #0a1628; }
+    .case-card .body { padding: 1.35rem 1.35rem 1.5rem; display: flex; flex-direction: column; gap: 0.65rem; flex: 1; }
+    .case-card .meta { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .case-card h2 { font-family: 'Playfair Display', serif; font-size: 1.25rem; line-height: 1.3; margin: 0; color: #fff; }
+    .case-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.6; margin: 0; flex: 1; }
+    .case-card .impact { font-size: 0.85rem; color: var(--gold-light); font-weight: 600; }
+    .case-card .cta {
+      margin-top: 0.5rem; color: var(--gold-light); font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.35rem;
+    }
+    .case-card .cta:hover { color: var(--gold); }
+
+    .site-footer { text-align: center; padding: 2.5rem 5%; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.88rem; }
+    .site-footer a { color: var(--gold-light); }
+  </style>
 </head>
 <body>
   <header class="site-header fade-in">
@@ -32,7 +85,6 @@
       <a href="frameworks.html">Frameworks</a>
       <a href="case-studies.html" class="active">Case Studies</a>
       <a href="contact.html">Contact</a>
-
       <a href="mailto:yunasmuh@gmail.com" class="cta-call">Book a Call</a>
       <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank" class="cta-linkedin">LinkedIn</a>
       <button id="darkModeToggle" class="btn-toggle">Dark Mode</button>
@@ -40,51 +92,70 @@
   </header>
 
   <main>
-    <section class="page case-studies fade-in">
-      <h1>Case Studies</h1>
+    <section class="cs-hero fade-in">
+      <p class="eyebrow">Enterprise GTM Proof</p>
+      <h1>Case Studies Across <span>Physical AI Domains.</span></h1>
+      <p class="lead">Real commercial rebuilds — category creation, OT/IT convergence, cyber-physical resilience, and Physical Operations Intelligence — with documented pipeline, share, and cycle outcomes.</p>
+      <div class="cs-hero-ctas">
+        <a class="btn-gold" href="cockpit.html">Open Case-Study Cockpit →</a>
+        <a class="btn-ghost" href="index.html#contact">Discuss a motion</a>
+      </div>
+    </section>
 
-      <article class="case">
-        <h2>DCIM → Physical AI Category Creation (Schneider Electric)</h2>
-        <p><strong>Context:</strong> Early DCIM market with fragmented buyer understanding and unclear category language.</p>
-        <p><strong>Problem:</strong> Complex infrastructure capabilities with no established narrative for enterprise buyers.</p>
-        <p><strong>GTM Architecture:</strong> Defined and commercialized the DCIM category, positioning it as the infrastructure layer of Physical AI.</p>
-        <p><strong>Execution:</strong> Built analyst relationships, standardized messaging, and launched 12+ GTM motions.</p>
-        <p><strong>Impact:</strong> $32M revenue growth, 45% first-year adoption, $120M TAM expansion, Tier-1 category leadership.</p>
+    <section class="case-grid" aria-label="Case study cards">
+      <article class="case-card" id="schneider">
+        <img src="assets/case-schneider-thumb.jpg" alt="Schneider Electric DCIM and Physical AI case study">
+        <div class="body">
+          <span class="meta">Industry · Data Centers &amp; Intelligent Ops</span>
+          <h2>DCIM → Physical AI Category Creation</h2>
+          <p>Early DCIM market with fragmented buyer understanding. Defined and commercialized the category as the infrastructure layer of Physical AI — analyst relationships, standardized messaging, and 12+ coordinated GTM launches.</p>
+          <p class="impact">$32M revenue growth · 12% → 38% share · $120M TAM expansion</p>
+          <a class="cta" href="casestudy.html">Read GTM transformation playbook →</a>
+        </div>
       </article>
 
-      <article class="case">
-        <h2>Cyber-Physical Resilience GTM (Dell Technologies)</h2>
-        <p><strong>Context:</strong> Cybersecurity portfolio perceived as purely data protection, disconnected from operations.</p>
-        <p><strong>Problem:</strong> Buyers struggled to connect security investments to uptime and resilience outcomes.</p>
-        <p><strong>GTM Architecture:</strong> Reframed data protection as cyber-physical resilience for asset-intensive enterprises.</p>
-        <p><strong>Execution:</strong> Built outcome-based messaging, competitive plays, and AI-powered onboarding programs.</p>
-        <p><strong>Impact:</strong> 42% win-rate lift, 37% market share growth, +25 NPS points, 5,000+ users onboarded annually.</p>
+      <article class="case-card" id="dell">
+        <img src="assets/case-dell-thumb.jpg" alt="Dell Technologies cyber-physical resilience case study">
+        <div class="body">
+          <span class="meta">Domain · Cyber-Physical Enterprise</span>
+          <h2>Cyber-Physical Resilience GTM</h2>
+          <p>Security portfolio perceived as pure data protection. Reframed around physical operational uptime for asset-intensive enterprises — outcome messaging, competitive plays, and AI-powered partner onboarding.</p>
+          <p class="impact">42% win-rate lift · 37% share growth · $24M net-new pipeline</p>
+          <a class="cta" href="cockpit.html">Match this constraint in the Cockpit →</a>
+        </div>
       </article>
 
-      <article class="case">
-        <h2>Physical Operations Intelligence (UST Global)</h2>
-        <p><strong>Context:</strong> Capabilities spread across manufacturing, supply chain, and engineering services without a unified narrative.</p>
-        <p><strong>Problem:</strong> Buyers saw disconnected offerings instead of a cohesive Physical Operations Intelligence platform.</p>
-        <p><strong>GTM Architecture:</strong> Repositioned capabilities under a single Physical Operations Intelligence narrative.</p>
-        <p><strong>Execution:</strong> Redesigned buyer journeys, applied ML-driven segmentation, and aligned cross-functional GTM.</p>
-        <p><strong>Impact:</strong> $9M new revenue, 30% YoY growth, 75% engagement lift, 15% CAC reduction, 34% incremental revenue.</p>
+      <article class="case-card" id="uptake">
+        <img src="assets/case-uptake-thumb.jpg" alt="Uptake OT/IT convergence case study">
+        <div class="body">
+          <span class="meta">Industry · Discrete Manufacturing &amp; Energy</span>
+          <h2>OT/IT Convergence Narrative</h2>
+          <p>Predictive APM trapped behind feature language. Unified OT Sponsor, IT Champion, and CFO Economic Buyer under one Physical Operations Intelligence narrative with structured POCs.</p>
+          <p class="impact">40% cycle cut · 35% engagement lift · $2M waste removed</p>
+          <a class="cta" href="case-studies/ot-it-convergence.html">Read full OT/IT case →</a>
+        </div>
       </article>
 
-      <article class="case">
-        <h2>OT/IT Convergence Narrative (Uptake)</h2>
-        <p><strong>Context:</strong> Predictive maintenance and asset performance management across OT-heavy industries.</p>
-        <p><strong>Problem:</strong> OT and IT buyers spoke different languages, slowing adoption and elongating sales cycles.</p>
-        <p><strong>GTM Architecture:</strong> Built an OT/IT convergence narrative that unified technical and commercial value.</p>
-        <p><strong>Execution:</strong> Created role-based messaging, precision targeting, and AI-driven segmentation.</p>
-        <p><strong>Impact:</strong> 40% sales cycle reduction, 35% target account engagement lift, $2M wasted spend eliminated, 15% ROI lift.</p>
+      <article class="case-card" id="ust">
+        <img src="assets/case-consulting-thumb.jpg" alt="UST Global Physical Operations Intelligence case study">
+        <div class="body">
+          <span class="meta">Domain · Smart Factory &amp; Supply Chain</span>
+          <h2>Physical Operations Intelligence</h2>
+          <p>Capabilities spread across manufacturing, supply chain, and engineering with no platform story. Repositioned under one narrative; redesigned buyer journeys with ML-driven segmentation.</p>
+          <p class="impact">$9M new revenue · 75% engagement · 15% CAC reduction</p>
+          <a class="cta" href="case-studies/gtm-ot-it.html">Read GTM OT-IT playbook →</a>
+        </div>
       </article>
 
-      <article class="case">
-        <h2>Agentic AI GTM Advisory (Independent)</h2>ĺ:</strong> Advised leadership teams, mentored GTM staff, and structured adoption paths.</p>
-        <p><strong>Impact:</strong> 80% promotion rate across mentored GTM professionals; accelerated clarity and adoption readiness.</p>
+      <article class="case-card" id="advisory">
+        <div class="body" style="padding-top:1.6rem;">
+          <span class="meta">Advisory · Physical &amp; Agentic AI</span>
+          <h2>Agentic AI GTM Advisory</h2>
+          <p>Independent counsel for leadership teams commercializing AI in physical environments. Structured adoption paths, edge intelligence narratives, and mentoring that treats sales as a primary customer.</p>
+          <p class="impact">80% director-level promotion rate across mentored GTM professionals</p>
+          <a class="cta" href="index.html#contact">Start an advisory conversation →</a>
+        </div>
       </article>
-
-      <p class="case-location">Based in Long Island, New York</p>
     </section>
   </main>
 
@@ -97,8 +168,6 @@
       <a href="https://www.linkedin.com/in/muhammad-yunas" target="_blank">LinkedIn Profile</a>
     </p>
   </footer>
-
-  <a href="Muhammad_Yunas_Resume_Executive.pdf" class="resume-float">Download Resume</a>
 
   <script src="assets/js/main.js"></script>
 </body>
