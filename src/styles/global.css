@@ -1,0 +1,4 @@
+:root{--navy:#0A0F1F;--blue:#1A7CFF;--graphite:#2E2E2E;--white:#FFFFFF;--gold:#D4A857;--silver:#C8CCD4;--ink:#E8E6E1;--muted:#9AA3B2;--line:rgba(200,204,212,.22);--space-section:28px;}
+*,*::before,*::after{box-sizing:border-box;}
+body{margin:0;background:var(--navy);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.55;}
+a,a:visited{color:var(--gold);}

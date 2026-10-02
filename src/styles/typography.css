@@ -1,0 +1,1 @@
+h1,.h1{font-weight:600;font-size:clamp(32px,4vw,40px);letter-spacing:-.02em;line-height:1.15;margin:0 0 12px;}h2,.h2{font-weight:600;font-size:clamp(24px,3vw,28px);margin:0 0 10px;}p{font-weight:400;font-size:16px;}.accent{font-weight:500;color:var(--gold);}.lede{color:var(--muted);max-width:42rem;}
