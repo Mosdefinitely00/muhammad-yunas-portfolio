@@ -81,9 +81,17 @@
     background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), transparent);
   }
 
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg-dark); }
-  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+  /* Quiet scrollbar — bright gold thumb read as a “CTA strip” on the right edge */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.22);
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(212, 175, 55, 0.45); background-clip: padding-box; }
+  * { scrollbar-width: thin; scrollbar-color: rgba(212, 175, 55, 0.28) transparent; }
 
   /* HEADER */
   header {
@@ -142,9 +150,20 @@
 
   @media(max-width: 1200px) {
     .nav-menu { display: none !important; }
-    .nav-cta-group { display: none !important; visibility: hidden; width: 0; height: 0; overflow: hidden; padding: 0; margin: 0; border: 0; }
+    .nav-cta-group,
+    .nav-cta-group .header-btn {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: 0 !important;
+    }
     .hamburger { display: flex; }
-    .nav-end { margin-left: auto; gap: 0; }
+    .nav-end { margin-left: auto; gap: 0; max-width: none; }
   }
 
   section { padding: 6rem 5%; position: relative; width: 100%; }
