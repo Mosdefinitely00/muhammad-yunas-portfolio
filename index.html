@@ -182,7 +182,7 @@
   .mobile-menu-drawer a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; }
   .mobile-menu-drawer a:hover { color: var(--gold); }
 
-  @media(max-width: 1200px) {
+  @media(max-width: 1700px) {
     .nav-logo { font-size: 1.45rem; letter-spacing: 0.05em; }
     .nav-menu { display: none !important; }
     .nav-cta-group,
@@ -477,6 +477,7 @@
   }
 </style>
 <link rel="stylesheet" href="src/styles/animation-hooks.css"/>
+<link rel="stylesheet" href="src/styles/launch-cta.css"/>
 </head>
 <body>
 
@@ -493,6 +494,11 @@
                 <li><a href="#work">Work</a></li>
                 <li><a href="cockpit.html">Cockpit</a></li>
                 <li><a href="physical-ai/">Autonomy</a></li>
+                <li><a href="physical-ai/">Start Here</a></li>
+                <li><a href="src/pages/category-leadership.html">Category Leadership</a></li>
+                <li><a href="src/pages/founder-advisory.html">Founder Advisory</a></li>
+                <li><a href="src/pages/physical-ai-glossary.html">Glossary</a></li>
+                <li><a href="src/pages/gtm-for-autonomy.html">GTM for Autonomy</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
 
@@ -516,6 +522,11 @@
     <a href="#casestudy" onclick="toggleMobileMenu()">Case Study</a>
     <a href="cockpit.html" onclick="toggleMobileMenu()">Cockpit</a>
     <a href="physical-ai/" onclick="toggleMobileMenu()">Autonomy Stack</a>
+    <a href="physical-ai/" onclick="toggleMobileMenu()">Start Here</a>
+    <a href="src/pages/category-leadership.html" onclick="toggleMobileMenu()">Category Leadership</a>
+    <a href="src/pages/founder-advisory.html" onclick="toggleMobileMenu()">Founder Advisory</a>
+    <a href="src/pages/physical-ai-glossary.html" onclick="toggleMobileMenu()">Glossary</a>
+    <a href="src/pages/gtm-for-autonomy.html" onclick="toggleMobileMenu()">GTM for Autonomy</a>
     <a href="#skills" onclick="toggleMobileMenu()">Competencies</a>
     <a href="#contact" onclick="toggleMobileMenu()">Contact Me</a>
     <a href="https://linkedin.com/in/muhammad-yunas" target="_blank">LinkedIn Profile</a>
@@ -590,6 +601,7 @@
     </div>
 </section>
 
+<start-here-cta></start-here-cta>
 <div class="launch-banner-wrap"><div class="whats-new launch-banner"><div><h2>New: The Industrial Autonomy GTM Library</h2><p>Eight Executive Briefs on How Industrial Autonomy Gets Bought</p></div><a href="src/pages/gtm-library.html">Explore the Library</a></div></div>
 <div class="whats-new-wrap" style="max-width:880px;padding:0 1.25rem;"><div class="whats-new"><h2>New: The Industrial Autonomy GTM Library</h2><a href="src/pages/gtm-library.html">Explore the Library</a></div></div>
 <!-- INDUSTRIAL AUTONOMY STACK -->
@@ -992,6 +1004,8 @@
 
 <!-- FOOTER -->
 <footer>
+    <p class="footer-role">Physical AI &amp; Industrial Autonomy GTM Leadership</p>
+    <work-with-me-cta href="contact.html"></work-with-me-cta>
     <div class="footer-tagline-box">
         <p>&ldquo;Listen deeply. Clarify relentlessly. Execute decisively.&rdquo;</p>
     </div>
@@ -1074,6 +1088,8 @@
         document.getElementById('thoughtModal').classList.remove('active');
     }
 </script>
+<script src="src/components/start-here-cta/start-here-cta.js"></script>
+<script src="src/components/work-with-me-cta/work-with-me-cta.js"></script>
 <script src="src/animation/timeline.js"></script>
 <script src="src/animation/canvas-sequence.js"></script>
 </body>
