@@ -3,262 +3,367 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Physical AI: The IT/OT Kinetic Coaster | Muhammad A. Yunas</title>
+  <title>Physical AI: IT/OT Convergence Ride | Muhammad A. Yunas</title>
   <style>
     :root {
-      --bg-dark: #070b12;
-      --ot-amber: #ffb347;
-      --it-cyan: #5cffea;
-      --cfo-green: #3de0c8;
-      --text-bright: #f4f7fb;
-      --text-muted: #c5d0e0;
-      --glass-panel: rgba(8, 14, 26, 0.92);
-      --glass-border: rgba(255,255,255,0.22);
+      --bg: #142033;
+      --panel: rgba(255,255,255,0.92);
+      --ink: #0f172a;
+      --muted: #334155;
+      --ot: #ea580c;
+      --it: #0284c7;
+      --ai: #059669;
+      --gold: #b45309;
     }
-
-    body, html {
-      margin: 0; padding: 0; width: 100%; height: 100%;
-      overflow: hidden; font-family: 'Inter', system-ui, sans-serif;
-      background-color: var(--bg-dark); color: var(--text-bright);
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; overflow: hidden; font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--ink); }
+    #webgl-container { position: absolute; inset: 0; z-index: 1; cursor: grab; }
+    #webgl-container.dragging { cursor: grabbing; }
+    .hud { position: absolute; inset: 0; z-index: 10; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; }
+    .interactive { pointer-events: auto; }
+    .top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+    .title-card, .story-card, .controls, .stations {
+      background: var(--panel); border-radius: 14px; box-shadow: 0 10px 30px rgba(15,23,42,0.18);
+      border: 1px solid rgba(15,23,42,0.08);
     }
-
-    #webgl-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-
-    .hud-overlay {
-      position: absolute; z-index: 10; pointer-events: none; width: 100%; height: 100%;
-      display: flex; flex-direction: column; justify-content: space-between; padding: 30px; box-sizing: border-box;
+    .title-card { padding: 14px 18px; max-width: 420px; }
+    .title-card h1 { margin: 0 0 6px; font-size: 1.05rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .title-card p { margin: 0; font-size: 0.9rem; color: var(--muted); line-height: 1.45; }
+    .title-card a { color: var(--it); font-weight: 600; text-decoration: none; }
+    .legend { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+    .chip { font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; color: #fff; }
+    .chip.ot { background: var(--ot); }
+    .chip.it { background: var(--it); }
+    .chip.ai { background: var(--ai); }
+    .story-card { padding: 16px 18px; width: min(360px, 100%); }
+    .story-card .kicker { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ai); margin-bottom: 6px; }
+    .story-card h2 { margin: 0 0 8px; font-size: 1.15rem; }
+    .story-card p { margin: 0 0 10px; font-size: 0.92rem; color: var(--muted); line-height: 1.55; }
+    .story-card button {
+      width: 100%; border: none; border-radius: 10px; padding: 12px; font-weight: 800; cursor: pointer;
+      background: var(--ai); color: #fff; font-size: 0.9rem;
     }
-
-    .interactive-element { pointer-events: auto; }
-
-    .hud-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .brand-title { font-size: 1.15rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
-    .brand-title span { color: var(--it-cyan); }
-    .brand-title a { color: inherit; text-decoration: none; }
-
-    .persona-toggle {
-      display: flex; background: var(--glass-panel); border: 1px solid var(--glass-border);
-      border-radius: 30px; padding: 4px; backdrop-filter: blur(10px);
+    .story-card.hidden { opacity: 0; pointer-events: none; transform: translateX(16px); }
+    .story-card { transition: opacity .25s, transform .25s; }
+    .bottom { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+    .hint { background: rgba(255,255,255,0.88); padding: 8px 14px; border-radius: 999px; font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+    .stations { display: flex; gap: 8px; padding: 8px; flex-wrap: wrap; justify-content: center; }
+    .stations button {
+      border: 2px solid transparent; background: #f8fafc; color: var(--ink); border-radius: 12px;
+      padding: 10px 12px; cursor: pointer; min-width: 140px; text-align: left;
     }
-    .persona-btn {
-      background: transparent; border: none; color: var(--text-muted); padding: 8px 18px;
-      font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 20px; transition: all 0.3s;
-    }
-    .persona-btn.active { background: var(--it-cyan); color: #041018; box-shadow: 0 0 18px rgba(92,255,234,0.55); }
-    .persona-btn[data-p="OT"].active { background: var(--ot-amber); color: #000; box-shadow: 0 0 15px rgba(255,159,28,0.4); }
-    .persona-btn[data-p="CFO"].active { background: var(--cfo-green); color: #000; box-shadow: 0 0 15px rgba(46,196,182,0.4); }
-
-    .pillar-engine {
-      display: flex; justify-content: center; gap: 20px; background: var(--glass-panel);
-      padding: 16px 28px; border-radius: 16px; border: 1px solid var(--glass-border);
-      backdrop-filter: blur(10px); align-self: center; margin-bottom: 20px; flex-wrap: wrap;
-    }
-    .pillar-step { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; opacity: 0.55; transition: opacity 0.3s; max-width: 220px; color: var(--text-muted); }
-    .pillar-step .row { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text-bright); }
-    .pillar-step .desc { font-size: 0.75rem; line-height: 1.35; color: var(--text-muted); padding-left: 20px; }
-    .pillar-step.active { opacity: 1.0; }
-    .pillar-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--it-cyan); box-shadow: 0 0 8px var(--it-cyan); }
-
-    .anomaly-card {
-      position: absolute; right: 40px; top: 28%; width: 360px; max-width: calc(100vw - 48px);
-      background: var(--glass-panel);
-      border: 1px solid var(--glass-border);
-      border-left: 4px solid var(--ot-amber); padding: 22px; border-radius: 12px;
-      backdrop-filter: blur(14px); transform: translateX(420px); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      color: var(--text-bright);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.45);
-    }
-    .anomaly-card p { color: var(--text-muted) !important; line-height: 1.55; }
-    .anomaly-card button { color: #041018 !important; font-size: 0.9rem; letter-spacing: 0.02em; }
-    .anomaly-card.visible { transform: translateX(0); }
-
-    @media (max-width: 640px) {
-      .hud-overlay { padding: 16px; }
-      .anomaly-card { right: 16px; left: 16px; width: auto; top: auto; bottom: 120px; transform: translateY(120%); }
-      .anomaly-card.visible { transform: translateY(0); }
-      .persona-btn { padding: 6px 12px; font-size: 0.75rem; }
+    .stations button strong { display: block; font-size: 0.82rem; }
+    .stations button span { display: block; font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+    .stations button.active { border-color: var(--ai); background: #ecfdf5; }
+    .stations button[data-side="ot"].active { border-color: var(--ot); background: #fff7ed; }
+    .stations button[data-side="it"].active { border-color: var(--it); background: #f0f9ff; }
+    @media (max-width: 700px) {
+      .story-card { width: 100%; }
+      .stations button { min-width: 110px; }
     }
   </style>
 </head>
 <body>
-
   <div id="webgl-container"></div>
-
-  <div class="hud-overlay">
-    <div class="hud-header">
-      <div class="brand-title"><a href="../index.html">Physical AI</a> <span>/ IT-OT Convergence</span></div>
-      <div class="persona-toggle interactive-element">
-        <button class="persona-btn active" data-p="OT" type="button" onclick="switchPersona('OT', this)">OT Ops</button>
-        <button class="persona-btn" data-p="IT" type="button" onclick="switchPersona('IT', this)">IT Arch</button>
-        <button class="persona-btn" data-p="CFO" type="button" onclick="switchPersona('CFO', this)">CFO EBITDA</button>
+  <div class="hud">
+    <div class="top">
+      <div class="title-card interactive">
+        <h1><a href="../index.html">Physical AI</a> · IT/OT Convergence</h1>
+        <p>Two worlds that rarely speak the same language — operations on the plant floor, architecture in the digital stack — joined by a governed decision path.</p>
+        <div class="legend">
+          <span class="chip ot">OT plant</span>
+          <span class="chip ai">Physical AI bridge</span>
+          <span class="chip it">IT systems</span>
+        </div>
+      </div>
+      <div class="story-card interactive" id="story">
+        <div class="kicker" id="story-kicker">Station 1 · OT world</div>
+        <h2 id="story-title">Start on the plant floor</h2>
+        <p id="story-body">Sensors, robots, and operators generate truth about physical risk — heat, torque, downtime. This side of the world is amber: messy, real-time, expensive when ignored.</p>
+        <button type="button" id="story-cta">Continue along the bridge →</button>
       </div>
     </div>
-
-    <div class="anomaly-card interactive-element" id="anomaly-card">
-      <h4 style="margin: 0 0 10px 0; color: var(--ot-amber); letter-spacing: 0.04em;">THERMAL ANOMALY DETECTED</h4>
-      <p style="font-size: 0.9rem; margin-bottom: 10px;">Robotic Arm #04 joint temperature is +14°C over the safe operating band. OT sees a line-stop risk; IT sees a telemetry spike without a closed-loop response.</p>
-      <p style="font-size: 0.85rem; margin-bottom: 16px;">Physical AI can recalibrate torque and duty cycle in place — zero unplanned downtime, evidence retained for the CFO narrative.</p>
-      <button style="width: 100%; background: var(--it-cyan); border: none; padding: 12px; font-weight: bold; cursor: pointer; border-radius: 6px;" onclick="executeBypass()">ENGAGE PHYSICAL AI BYPASS</button>
-    </div>
-
-    <div class="pillar-engine">
-      <div class="pillar-step active" id="step-scan">
-        <div class="row"><div class="pillar-dot"></div><span>1. SCAN — Ingest</span></div>
-        <div class="desc">Unify OT signals and IT context into one trusted picture of the line.</div>
-      </div>
-      <div class="pillar-step" id="step-act">
-        <div class="row"><div class="pillar-dot" style="background: var(--ot-amber); box-shadow: 0 0 8px var(--ot-amber);"></div><span>2. ACT — Execute</span></div>
-        <div class="desc">Close the loop on anomalies with a governed Physical AI bypass.</div>
-      </div>
-      <div class="pillar-step" id="step-learn">
-        <div class="row"><div class="pillar-dot" style="background: var(--cfo-green); box-shadow: 0 0 8px var(--cfo-green);"></div><span>3. LEARN — Optimize</span></div>
-        <div class="desc">Feed outcomes back so the next cycle is faster and cheaper.</div>
+    <div class="bottom">
+      <div class="hint interactive">Drag to scrub the ride · click a station to jump · watch OT and IT meet in the middle</div>
+      <div class="stations interactive" id="stations">
+        <button type="button" data-side="ot" data-t="0.08" class="active"><strong>1 · OT Plant</strong><span>Physical signals & risk</span></button>
+        <button type="button" data-side="ai" data-t="0.35"><strong>2 · Anomaly</strong><span>Where silos break deals</span></button>
+        <button type="button" data-side="ai" data-t="0.55"><strong>3 · Physical AI</strong><span>Governed bypass / act</span></button>
+        <button type="button" data-side="it" data-t="0.78"><strong>4 · IT Stack</strong><span>Systems of record</span></button>
+        <button type="button" data-side="ai" data-t="0.92"><strong>5 · Convergence</strong><span>One executive narrative</span></button>
       </div>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
-
-
   <script>
+  (function () {
+    const STORIES = [
+      { t: 0.08, kicker: 'Station 1 · OT world', title: 'Start on the plant floor', body: 'Sensors, robots, and operators generate truth about physical risk — heat, torque, downtime. Amber is the OT world: messy, real-time, and expensive when ignored.', cta: 'Ride toward the fracture →' },
+      { t: 0.35, kicker: 'Station 2 · The fracture', title: 'OT and IT talk past each other', body: 'A thermal spike on Arm #04 is obvious to operations, but IT only sees another telemetry event. Without a shared language, the deal and the line both stall.', cta: 'Engage the Physical AI bridge →', action: 'bypass' },
+      { t: 0.55, kicker: 'Station 3 · Physical AI', title: 'Close the loop without stopping the line', body: 'Physical AI is the bridge: it recalibrates in place, keeps evidence for audit, and turns an OT incident into an IT-actionable, CFO-legible outcome.', cta: 'Carry the decision into IT →' },
+      { t: 0.78, kicker: 'Station 4 · IT world', title: 'Land in systems of record', body: 'Cyan is the digital estate — data platforms, architecture, and workflow. The bypass is not a shadow IT hack; it writes back into the systems leaders already trust.', cta: 'Finish at convergence →' },
+      { t: 0.92, kicker: 'Station 5 · Convergence', title: 'One narrative for OT, IT, and the CFO', body: 'The marble was never the point — it is a decision packet moving from physical risk to digital governance. That is IT/OT convergence you can sell and operate.', cta: 'Replay the ride' }
+    ];
+
     const container = document.getElementById('webgl-container');
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x070b12, 0.022);
+    scene.background = new THREE.Color(0xdbe7f5);
+    scene.fog = new THREE.Fog(0xdbe7f5, 18, 55);
 
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 5, 15);
-
+    const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.1, 200);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x070b12);
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    const ambientLight = new THREE.AmbientLight(0x1a202c, 2);
-    scene.add(ambientLight);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.95));
+    const sun = new THREE.DirectionalLight(0xffffff, 0.85);
+    sun.position.set(8, 20, 10);
+    scene.add(sun);
 
-    const pointLight = new THREE.PointLight(0x00f5d4, 3, 50);
-    pointLight.position.set(0, 10, 0);
-    scene.add(pointLight);
+    // Ground
+    const ground = new THREE.Mesh(
+      new THREE.PlaneGeometry(80, 50),
+      new THREE.MeshStandardMaterial({ color: 0xc5d4e8, roughness: 1, metalness: 0 })
+    );
+    ground.rotation.x = -Math.PI / 2;
+    ground.position.y = -0.05;
+    scene.add(ground);
 
+    // OT zone (left) / IT zone (right)
+    function zone(x, color, label) {
+      const mat = new THREE.MeshStandardMaterial({ color, transparent: true, opacity: 0.22 });
+      const slab = new THREE.Mesh(new THREE.BoxGeometry(18, 0.08, 22), mat);
+      slab.position.set(x, 0.02, 0);
+      scene.add(slab);
+    }
+    zone(-12, 0xea580c);
+    zone(12, 0x0284c7);
+    // Center AI strip
+    const mid = new THREE.Mesh(
+      new THREE.BoxGeometry(8, 0.09, 22),
+      new THREE.MeshStandardMaterial({ color: 0x059669, transparent: true, opacity: 0.18 })
+    );
+    mid.position.set(0, 0.03, 0);
+    scene.add(mid);
+
+    // Simple OT "plant" blocks
+    function box(x, y, z, w, h, d, color) {
+      const m = new THREE.Mesh(
+        new THREE.BoxGeometry(w, h, d),
+        new THREE.MeshStandardMaterial({ color, roughness: 0.55, metalness: 0.15 })
+      );
+      m.position.set(x, y, z);
+      scene.add(m);
+      return m;
+    }
+    box(-14, 1.2, -3, 3.2, 2.4, 3.2, 0xf97316);
+    box(-11, 0.8, 3, 2.2, 1.6, 2.2, 0xfb923c);
+    box(-16, 1.6, 2, 1.4, 3.2, 1.4, 0xc2410c);
+    // Robot arm hint
+    box(-13, 2.6, -3, 0.35, 2.2, 0.35, 0x9a3412);
+    box(-12.2, 3.5, -3, 2.2, 0.3, 0.3, 0x9a3412);
+
+    // IT "rack / cloud" blocks
+    box(13, 1.4, -2, 4, 2.8, 2.2, 0x0ea5e9);
+    box(15, 2.2, 3, 2.4, 4.4, 2.4, 0x0369a1);
+    box(11, 1.0, 4, 2.0, 2.0, 2.0, 0x38bdf8);
+    for (let i = 0; i < 5; i++) box(12.2, 0.4 + i * 0.45, -2, 3.2, 0.12, 1.6, 0xe0f2fe);
+
+    // Convergence arch in center
+    const arch = new THREE.Mesh(
+      new THREE.TorusGeometry(2.2, 0.12, 12, 48, Math.PI),
+      new THREE.MeshStandardMaterial({ color: 0x059669, emissive: 0x059669, emissiveIntensity: 0.25 })
+    );
+    arch.rotation.z = Math.PI;
+    arch.position.set(0, 0.1, 0);
+    scene.add(arch);
+
+    // Path OT → AI → IT
     const curve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(-10, 0, 10),
-      new THREE.Vector3(-5, 3, -5),
-      new THREE.Vector3(0, 0, -10),
-      new THREE.Vector3(5, 5, -5),
-      new THREE.Vector3(10, 0, 10)
-    ], true);
+      new THREE.Vector3(-16, 1.2, 2),
+      new THREE.Vector3(-10, 2.2, -1),
+      new THREE.Vector3(-4, 3.0, 1),
+      new THREE.Vector3(0, 3.6, 0),
+      new THREE.Vector3(4, 3.0, -1),
+      new THREE.Vector3(10, 2.2, 1),
+      new THREE.Vector3(16, 1.4, -1)
+    ], false);
 
-    const tubeGeometry = new THREE.TubeGeometry(curve, 100, 0.2, 8, true);
-    const tubeMaterial = new THREE.MeshBasicMaterial({ color: 0x94a3b8, wireframe: true });
-    const track = new THREE.Mesh(tubeGeometry, tubeMaterial);
-    scene.add(track);
+    const tube = new THREE.Mesh(
+      new THREE.TubeGeometry(curve, 180, 0.16, 12, false),
+      new THREE.MeshStandardMaterial({ color: 0x0f766e, metalness: 0.4, roughness: 0.35, emissive: 0x064e3b, emissiveIntensity: 0.15 })
+    );
+    scene.add(tube);
 
-    const marbleGeo = new THREE.SphereGeometry(0.5, 32, 32);
-    const marbleMat = new THREE.MeshStandardMaterial({
-      color: 0x00f5d4, emissive: 0x00f5d4, emissiveIntensity: 0.5, roughness: 0.1
+    // Station markers
+    const stationTs = [0.08, 0.35, 0.55, 0.78, 0.92];
+    const stationColors = [0xea580c, 0xf59e0b, 0x059669, 0x0284c7, 0x059669];
+    stationTs.forEach((tt, i) => {
+      const p = curve.getPoint(tt);
+      const s = new THREE.Mesh(
+        new THREE.SphereGeometry(0.28, 20, 20),
+        new THREE.MeshStandardMaterial({ color: stationColors[i], emissive: stationColors[i], emissiveIntensity: 0.35 })
+      );
+      s.position.copy(p);
+      scene.add(s);
     });
-    const marble = new THREE.Mesh(marbleGeo, marbleMat);
-    scene.add(marble);
 
-    const PERSONA_COLORS = { OT: 0xff9f1c, IT: 0x00f5d4, CFO: 0x2ec4b6 };
-    let bypassLatched = false;
-    
-    // Step 3 audio: ACT-phase recalibration cue (Web Audio; swap src later for real SFX via Howler)
-    let actAudioCtx = null;
-    let actFxPlayed = false;
-    function playActRecalibrate() {
-      try {
-        actAudioCtx = actAudioCtx || new (window.AudioContext || window.webkitAudioContext)();
-        const o = actAudioCtx.createOscillator();
-        const g = actAudioCtx.createGain();
-        o.type = 'square';
-        o.frequency.setValueAtTime(220, actAudioCtx.currentTime);
-        o.frequency.exponentialRampToValueAtTime(880, actAudioCtx.currentTime + 0.12);
-        o.frequency.exponentialRampToValueAtTime(110, actAudioCtx.currentTime + 0.28);
-        g.gain.setValueAtTime(0.0001, actAudioCtx.currentTime);
-        g.gain.exponentialRampToValueAtTime(0.08, actAudioCtx.currentTime + 0.02);
-        g.gain.exponentialRampToValueAtTime(0.0001, actAudioCtx.currentTime + 0.32);
-        o.connect(g); g.connect(actAudioCtx.destination);
-        o.start(); o.stop(actAudioCtx.currentTime + 0.34);
-        if (typeof Howl !== 'undefined') {
-          // Hook ready for a real mechanical SFX file later:
-          // new Howl({ src: ['/assets/audio/recalibrate.mp3'] }).play();
-        }
-      } catch (e) {}
+    // Decision packet (marble) — labeled via HUD, brighter
+    const packet = new THREE.Mesh(
+      new THREE.SphereGeometry(0.42, 32, 32),
+      new THREE.MeshStandardMaterial({ color: 0xfbbf24, emissive: 0xf59e0b, emissiveIntensity: 0.55, metalness: 0.2, roughness: 0.25 })
+    );
+    scene.add(packet);
+    const packetLight = new THREE.PointLight(0xfbbf24, 1.2, 10);
+    packet.add(packetLight);
+
+    // HTML labels in world via CSS2D would need extra lib — use sprites with canvas text
+    function makeLabel(text, color) {
+      const c = document.createElement('canvas');
+      c.width = 512; c.height = 128;
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = 'rgba(255,255,255,0.92)';
+      ctx.roundRect(8, 24, 496, 80, 18); ctx.fill();
+      ctx.fillStyle = color;
+      ctx.font = 'bold 42px Inter, system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(text, 256, 78);
+      const tex = new THREE.CanvasTexture(c);
+      const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false });
+      const spr = new THREE.Sprite(mat);
+      spr.scale.set(6, 1.5, 1);
+      return spr;
+    }
+    if (!CanvasRenderingContext2D.prototype.roundRect) {
+      CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+        this.beginPath();
+        this.moveTo(x + r, y);
+        this.arcTo(x + w, y, x + w, y + h, r);
+        this.arcTo(x + w, y + h, x, y + h, r);
+        this.arcTo(x, y + h, x, y, r);
+        this.arcTo(x, y, x + w, y, r);
+        this.closePath();
+      };
+    }
+    const otLabel = makeLabel('OT · PLANT FLOOR', '#c2410c');
+    otLabel.position.set(-13, 4.2, 0);
+    scene.add(otLabel);
+    const itLabel = makeLabel('IT · DIGITAL STACK', '#0369a1');
+    itLabel.position.set(13, 4.8, 0);
+    scene.add(itLabel);
+    const aiLabel = makeLabel('PHYSICAL AI BRIDGE', '#047857');
+    aiLabel.position.set(0, 5.2, 0);
+    scene.add(aiLabel);
+
+    let progress = 0.08;
+    let target = 0.08;
+    let auto = false;
+    let bypassDone = false;
+    let stationIdx = 0;
+
+    const story = document.getElementById('story');
+    const storyKicker = document.getElementById('story-kicker');
+    const storyTitle = document.getElementById('story-title');
+    const storyBody = document.getElementById('story-body');
+    const storyCta = document.getElementById('story-cta');
+    const stationBtns = [...document.querySelectorAll('#stations button')];
+
+    function nearestStory(p) {
+      let best = 0, dist = 1;
+      STORIES.forEach((s, i) => {
+        const d = Math.abs(s.t - p);
+        if (d < dist) { dist = d; best = i; }
+      });
+      return best;
     }
 
-    let progress = 0;
-
-    function setPillars(stage) {
-      document.getElementById('step-scan').classList.toggle('active', stage >= 0);
-      document.getElementById('step-act').classList.toggle('active', stage >= 1);
-      document.getElementById('step-learn').classList.toggle('active', stage >= 2);
+    function setStory(i) {
+      stationIdx = i;
+      const s = STORIES[i];
+      storyKicker.textContent = s.kicker;
+      storyTitle.textContent = s.title;
+      storyBody.textContent = s.body;
+      storyCta.textContent = s.cta;
+      stationBtns.forEach((b, j) => b.classList.toggle('active', j === i));
     }
+
+    function goTo(t, withAuto) {
+      target = Math.max(0, Math.min(1, t));
+      auto = !!withAuto;
+    }
+
+    stationBtns.forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        goTo(parseFloat(btn.dataset.t), true);
+        setStory(i);
+      });
+    });
+
+    storyCta.addEventListener('click', () => {
+      const s = STORIES[stationIdx];
+      if (s.action === 'bypass' && !bypassDone) {
+        bypassDone = true;
+        if (window.gsap) gsap.fromTo(packet.scale, { x: 1, y: 1, z: 1 }, { x: 1.5, y: 1.5, z: 1.5, duration: 0.2, yoyo: true, repeat: 1 });
+        storyBody.textContent = 'Bypass engaged: torque/duty cycle recalibrated in place. Evidence retained for IT systems and the CFO narrative — zero unplanned downtime.';
+      }
+      const next = stationIdx >= STORIES.length - 1 ? 0 : stationIdx + 1;
+      if (stationIdx >= STORIES.length - 1) bypassDone = false;
+      setStory(next);
+      goTo(STORIES[next].t, true);
+    });
+
+    // Drag scrub
+    let dragging = false, lastX = 0;
+    container.addEventListener('pointerdown', (e) => {
+      dragging = true; lastX = e.clientX; auto = false;
+      container.classList.add('dragging');
+      container.setPointerCapture(e.pointerId);
+    });
+    container.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - lastX;
+      lastX = e.clientX;
+      progress = Math.max(0, Math.min(1, progress + dx * 0.0015));
+      target = progress;
+      setStory(nearestStory(progress));
+    });
+    container.addEventListener('pointerup', () => { dragging = false; container.classList.remove('dragging'); });
+    container.addEventListener('pointercancel', () => { dragging = false; container.classList.remove('dragging'); });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
+
+    setStory(0);
 
     function animate() {
       requestAnimationFrame(animate);
-
-      progress += 0.002;
-      if (progress > 1) progress = 0;
-
-      const point = curve.getPoint(progress);
-      marble.position.copy(point);
-
-      const tangent = curve.getTangent(progress).normalize();
-      const camTarget = point.clone().add(tangent.clone().multiplyScalar(-8)).add(new THREE.Vector3(0, 4, 0));
-      camera.position.lerp(camTarget, 0.05);
-      camera.lookAt(point.clone().add(tangent.clone().multiplyScalar(3)));
-
-      if (!bypassLatched) {
-        if (progress > 0.3 && progress < 0.6) {
-          document.getElementById('anomaly-card').classList.add('visible');
-          setPillars(1);
-          if (!actFxPlayed) { actFxPlayed = true; playActRecalibrate(); }
-        } else if (progress >= 0.6) {
-          document.getElementById('anomaly-card').classList.remove('visible');
-          setPillars(2);
-          actFxPlayed = false;
-        } else {
-          document.getElementById('anomaly-card').classList.remove('visible');
-          setPillars(0);
-          actFxPlayed = false;
-        }
+      if (auto) {
+        progress += (target - progress) * 0.04;
+        if (Math.abs(target - progress) < 0.001) { progress = target; auto = false; }
       }
+      const p = curve.getPoint(progress);
+      const tangent = curve.getTangent(progress).normalize();
+      packet.position.copy(p);
+
+      // Color shifts OT → AI → IT along the path
+      if (progress < 0.4) packet.material.color.setHex(0xf97316);
+      else if (progress < 0.7) packet.material.color.setHex(0x10b981);
+      else packet.material.color.setHex(0x0ea5e9);
+
+      const camPos = p.clone().add(new THREE.Vector3(0, 4.5, 10)).add(tangent.clone().multiplyScalar(-2));
+      camera.position.lerp(camPos, 0.08);
+      camera.lookAt(p.clone().add(new THREE.Vector3(0, 1.2, 0)));
 
       renderer.render(scene, camera);
     }
-
     animate();
-
-    function switchPersona(persona, el) {
-      document.querySelectorAll('.persona-btn').forEach(b => b.classList.remove('active'));
-      (el || event.target).classList.add('active');
-      const hex = PERSONA_COLORS[persona] || PERSONA_COLORS.IT;
-      marbleMat.color.setHex(hex);
-      marbleMat.emissive.setHex(hex);
-      pointLight.color.setHex(hex);
-    }
-
-    function executeBypass() {
-      bypassLatched = true;
-      document.getElementById('anomaly-card').classList.remove('visible');
-      setPillars(2);
-      if (window.gsap) {
-        gsap.fromTo(marble.scale, { x: 1, y: 1, z: 1 }, { x: 1.4, y: 1.4, z: 1.4, duration: 0.2, yoyo: true, repeat: 1 });
-      }
-      playActRecalibrate();
-      alert('Physical AI Reroute Engaged: Zero-Downtime Parameter Recalibrated.');
-    }
-
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
+  })();
   </script>
 </body>
 </html>
