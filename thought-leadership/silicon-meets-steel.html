@@ -25,18 +25,45 @@
         .article-body h2 { font-family: var(--font-heading); color: var(--gold-main); margin: 2.5rem 0 1rem; font-size: 1.8rem; }
         .article-body p { margin-bottom: 1.5rem; color: var(--text-muted); line-height: 1.9; font-size: 1.1rem; }
         .article-body blockquote { border-left: 4px solid var(--gold-main); padding-left: 1.5rem; margin: 2rem 0; font-family: var(--font-heading); font-size: 1.5rem; color: var(--text-main); font-style: italic; line-height: 1.6; }
+    
+        nav.story-nav { height: auto; min-height: 72px; flex-wrap: wrap; align-items: center; padding: 0.75rem 1.25rem; gap: 0.55rem 1rem; overflow: visible; }
+        nav.story-nav .nav-logo { margin-right: auto; text-decoration: none; }
+        nav.story-nav .story-links { display: flex; flex-wrap: wrap; gap: 0.4rem 0.8rem; align-items: center; margin-left: auto; }
+        nav.story-nav .story-links > a, nav.story-nav summary { color: #c5d0e0; text-decoration: none; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+        nav.story-nav .nav-btn { border: 1px solid rgba(212,175,55,0.55); padding: 0.28rem 0.55rem; border-radius: 4px; color: #e8c97a; }
+        nav.story-nav details { position: relative; }
+        nav.story-nav summary { cursor: pointer; list-style: none; }
+        nav.story-nav summary::-webkit-details-marker { display: none; }
+        nav.story-nav .more-panel { display: none; position: absolute; right: 0; top: calc(100% + 8px); min-width: 220px; background: #0a1628; border: 1px solid rgba(212,175,55,0.35); border-radius: 6px; padding: 0.4rem 0.8rem; z-index: 1002; }
+        nav.story-nav details[open] .more-panel { display: block; }
+        nav.story-nav .more-panel a { display: block; padding: 0.45rem 0; text-transform: none; letter-spacing: 0; font-size: 0.85rem; font-weight: 600; color: #e8c97a; text-decoration: none; }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="../index.html" class="nav-logo">
-                <span class="logo-name">Muhammad A. Yunas</span>
-                <span class="logo-title">← Back to Portfolio</span>
-            </a>
-            <div class="nav-ctas">
-                <a href="../index.html#contact" class="btn-primary">Email to hire me</a>
-            </div>
+    <nav class="navbar story-nav" aria-label="Primary">
+        <a href="../index.html" class="nav-logo"><span class="logo-name">Muhammad A. Yunas</span></a>
+        <div class="story-links">
+            <a href="../src/pages/start-here.html">Start Here</a>
+            <a href="../physical-ai/">Autonomy Stack</a>
+            <a href="../index.html#results">Results</a>
+            <a href="../index.html#pillars">Expertise</a>
+            <a href="../src/pages/work-with-me.html">Work With Me</a>
+            <a href="../index.html#manifesto">Manifesto</a>
+            <a href="../index.html#contact">Contact</a>
+            <a class="nav-btn" href="../Muhammad_Yunas_Resume_Category_Leadership.pdf" download>Resume</a>
+            <a class="nav-btn" href="https://linkedin.com/in/muhammad-yunas" target="_blank" rel="noopener">LinkedIn</a>
+            <details>
+                <summary>More</summary>
+                <div class="more-panel">
+                    <a href="../cockpit.html">Physical AI Cockpit</a>
+                    <a href="../src/pages/category-leadership.html">Category Leadership</a>
+                    <a href="../src/pages/founder-advisory.html">Founder Advisory</a>
+                    <a href="../src/pages/physical-ai-glossary.html">Glossary</a>
+                    <a href="../src/pages/gtm-for-autonomy.html">GTM for Autonomy</a>
+                    <a href="../case-studies.html">Case Studies</a>
+                    <a href="../frameworks.html">Frameworks</a>
+                </div>
+            </details>
         </div>
     </nav>
     <main class="container">

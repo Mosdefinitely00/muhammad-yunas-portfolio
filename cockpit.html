@@ -69,14 +69,17 @@
       background: rgba(7, 13, 29, 0.95); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
+    header { overflow: visible; }
     .nav-container {
-      max-width: 1200px; margin: 0 auto; padding: 0 5%; height: 80px;
-      display: flex; align-items: center; gap: 1.75rem;
+      max-width: none; margin: 0 auto; padding: 0 1rem; height: 72px;
+      display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+      overflow: visible;
     }
+    .nav-end { display: flex; align-items: center; gap: 0.55rem; margin-left: auto; flex: 0 0 auto; }
     .nav-logo {
-      font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.2vw, 1.65rem); font-weight: 700;
-      color: var(--white); text-decoration: none; letter-spacing: 0.055em;
-      margin-right: auto; flex-shrink: 0; position: relative; padding-bottom: 0.35rem; line-height: 1.12;
+      font-family: 'Playfair Display', serif; font-size: clamp(1.25rem, 1.6vw, 1.5rem); font-weight: 700;
+      color: var(--white); text-decoration: none; letter-spacing: 0.045em;
+      flex-shrink: 0; position: relative; padding-bottom: 0.35rem; line-height: 1.12; white-space: nowrap;
     }
     .nav-logo span { color: var(--gold); font-weight: 900; letter-spacing: 0.08em; }
     .nav-logo::after {
@@ -86,34 +89,43 @@
     a { color: var(--gold-light); }
     a:visited { color: var(--gold-light); }
     .nav-menu {
-      display: flex; align-items: center; gap: 1.75rem; list-style: none; flex-shrink: 1;
+      display: flex; align-items: center; gap: 0.55rem; list-style: none; flex: 0 0 auto; margin: 0; padding: 0;
     }
-    .nav-menu a {
-      color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.06em; transition: var(--transition); white-space: nowrap;
+    .nav-menu a, .nav-more-btn {
+      color: var(--text-muted); text-decoration: none; font-size: 0.68rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.025em; transition: var(--transition); white-space: nowrap;
     }
-    .nav-menu a:hover, .nav-menu a.active { color: var(--gold); }
+    .nav-menu a:hover, .nav-menu a.active, .nav-more-btn:hover, .nav-more.open .nav-more-btn { color: var(--gold); }
+    .nav-more { position: relative; }
+    .nav-more-btn { background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 0.3rem; }
+    .nav-more-btn i { font-size: 0.6rem; }
+    .nav-more-panel { display: none; position: absolute; top: calc(100% + 16px); right: 0; min-width: 230px; background: rgba(7,13,29,0.98); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0; box-shadow: 0 16px 40px rgba(0,0,0,0.45); z-index: 1002; }
+    .nav-more.open .nav-more-panel { display: block; }
+    .nav-more-panel a { display: block; padding: 0.6rem 0.9rem; font-size: 0.72rem; letter-spacing: 0.03em; }
+    .nav-more-panel a:hover { background: rgba(212,175,55,0.08); }
     .nav-cta-group { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
     .header-btn {
       background: rgba(212,175,55,0.08); border: 1px solid var(--border); color: var(--gold-light);
-      padding: 0.4rem 0.9rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: var(--transition);
-      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.32rem 0.55rem; border-radius: 4px; font-size: 0.66rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; transition: var(--transition);
+      display: inline-flex; align-items: center; gap: 0.3rem; white-space: nowrap;
     }
     .header-btn:hover { background: var(--gold-glow); border-color: var(--gold); color: var(--white); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
     .mobile-menu-drawer {
       display: none; position: fixed; top: 83px; left: 0; right: 0; background: var(--navy-mid);
-      border-bottom: 1px solid var(--border); padding: 1.5rem 5%; flex-direction: column; gap: 1rem; z-index: 999;
+      border-bottom: 1px solid var(--border); padding: 0.75rem 5% 1.25rem; flex-direction: column; gap: 0.15rem; z-index: 999;
+      max-height: calc(100vh - 90px); overflow-y: auto; overscroll-behavior: contain;
     }
+    .mobile-menu-drawer a { padding: 0.55rem 0; }
     .mobile-menu-drawer.open { display: flex; }
     .mobile-menu-drawer a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; }
     .mobile-menu-drawer a:hover { color: var(--gold); }
 
-    @media (max-width: 1024px) {
-      .nav-menu { display: none; }
-      .nav-cta-group { display: none; }
+    @media (max-width: 1180px) {
+      .nav-menu { display: none !important; }
+      .nav-cta-group { display: none !important; }
       .hamburger { display: flex; }
     }
 
@@ -347,33 +359,56 @@
 <header>
   <div class="nav-container">
     <a href="index.html" class="nav-logo">Muhammad A. <span>Yunas</span></a>
-    <ul class="nav-menu">
-      <li><a href="index.html#manifesto">Manifesto</a></li>
-      <li><a href="index.html#pillars">Expertise</a></li>
-      <li><a href="index.html#work">Work &amp; Impact</a></li>
-      <li><a href="cockpit.html" class="active">Cockpit</a></li>
-      <li><a href="index.html#casestudy">Case Study</a></li>
-      <li><a href="index.html#contact">Contact Me</a></li>
-    </ul>
-    <div class="nav-cta-group">
-      <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" rel="noopener" class="header-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-      <a href="Muhammad_Yunas_Resume_2026.pdf" download class="header-btn"><i class="fa-solid fa-file-pdf"></i> Resume</a>
+    <div class="nav-end">
+      <ul class="nav-menu">
+        <li><a href="src/pages/start-here.html">Start Here</a></li>
+        <li><a href="physical-ai/">Autonomy Stack</a></li>
+        <li><a href="index.html#results">Results</a></li>
+        <li><a href="index.html#pillars">Expertise</a></li>
+        <li><a href="src/pages/work-with-me.html">Work With Me</a></li>
+        <li><a href="index.html#manifesto">Manifesto</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li class="nav-more" id="navMore">
+          <button type="button" class="nav-more-btn" id="navMoreBtn" aria-expanded="false" aria-controls="navMorePanel">More <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="nav-more-panel" id="navMorePanel">
+            <a href="cockpit.html">Physical AI Cockpit</a>
+            <a href="src/pages/category-leadership.html">Category Leadership</a>
+            <a href="src/pages/founder-advisory.html">Founder Advisory</a>
+            <a href="src/pages/physical-ai-glossary.html">Glossary</a>
+            <a href="src/pages/gtm-for-autonomy.html">GTM for Autonomy</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="frameworks.html">Frameworks</a>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-cta-group">
+        <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" rel="noopener" class="header-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="Muhammad_Yunas_Resume_Category_Leadership.pdf" download class="header-btn"><i class="fa-solid fa-file-pdf"></i> Resume</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </header>
 
 <div class="mobile-menu-drawer" id="mobileDrawer">
-  <a href="index.html#manifesto" onclick="toggleMobileMenu()">Manifesto</a>
+  <a href="src/pages/start-here.html" onclick="toggleMobileMenu()">Start Here</a>
+  <a href="physical-ai/" onclick="toggleMobileMenu()">Autonomy Stack</a>
+  <a href="index.html#results" onclick="toggleMobileMenu()">Results</a>
   <a href="index.html#pillars" onclick="toggleMobileMenu()">Expertise</a>
-  <a href="index.html#work" onclick="toggleMobileMenu()">Work &amp; Impact</a>
-  <a href="cockpit.html" onclick="toggleMobileMenu()">Cockpit</a>
-  <a href="index.html#casestudy" onclick="toggleMobileMenu()">Case Study</a>
-  <a href="index.html#contact" onclick="toggleMobileMenu()">Contact Me</a>
-  <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" rel="noopener">LinkedIn Profile</a>
-  <a href="Muhammad_Yunas_Resume_2026.pdf" download>Download Resume (.PDF)</a>
+  <a href="src/pages/work-with-me.html" onclick="toggleMobileMenu()">Work With Me</a>
+  <a href="index.html#manifesto" onclick="toggleMobileMenu()">Manifesto</a>
+  <a href="index.html#contact" onclick="toggleMobileMenu()">Contact</a>
+  <a href="cockpit.html" onclick="toggleMobileMenu()">Physical AI Cockpit</a>
+  <a href="src/pages/category-leadership.html" onclick="toggleMobileMenu()">Category Leadership</a>
+  <a href="src/pages/founder-advisory.html" onclick="toggleMobileMenu()">Founder Advisory</a>
+  <a href="src/pages/physical-ai-glossary.html" onclick="toggleMobileMenu()">Glossary</a>
+  <a href="src/pages/gtm-for-autonomy.html" onclick="toggleMobileMenu()">GTM for Autonomy</a>
+  <a href="case-studies.html" onclick="toggleMobileMenu()">Case Studies</a>
+  <a href="frameworks.html" onclick="toggleMobileMenu()">Frameworks</a>
+  <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="Muhammad_Yunas_Resume_Category_Leadership.pdf" download>Download Resume</a>
 </div>
 
 <section class="cockpit-hero">
@@ -534,7 +569,44 @@
 
 <script>
   function toggleMobileMenu() {
-    document.getElementById('mobileDrawer').classList.toggle('open');
+    const drawer = document.getElementById('mobileDrawer');
+    const open = drawer.classList.toggle('open');
+    const btn = document.getElementById('hamburgerBtn');
+    if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileDrawer').classList.remove('open');
+    const btn = document.getElementById('hamburgerBtn');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+  }
+  const navMore = document.getElementById('navMore');
+  const navMoreBtn = document.getElementById('navMoreBtn');
+  if (navMore && navMoreBtn) {
+    navMoreBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const open = navMore.classList.toggle('open');
+      navMoreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (!navMore.contains(e.target)) {
+        navMore.classList.remove('open');
+        navMoreBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        navMore.classList.remove('open');
+        navMoreBtn.setAttribute('aria-expanded', 'false');
+        closeMobileMenu();
+      }
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1180) closeMobileMenu();
+      else {
+        navMore.classList.remove('open');
+        navMoreBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
   const INDUSTRIES = [
