@@ -101,12 +101,11 @@
     position: fixed; top: 3px; left: 0; right: 0; z-index: 1000;
     background: rgba(7, 13, 29, 0.95); backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border); transition: var(--transition);
-    overflow-x: clip;
   }
   .nav-container {
-    max-width: 1280px; margin: 0 auto; padding: 0 1.25rem; height: 72px;
-    display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
-    overflow: hidden;
+    max-width: none; margin: 0 auto; padding: 0 1.5rem; height: 72px;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    overflow: visible;
   }
   /* Executive letterhead wordmark — refined weight, gold surname, thin gold rule */
   .nav-logo {
@@ -150,15 +149,29 @@
     display: flex; align-items: center; gap: 0.85rem; margin-left: auto; flex: 0 1 auto; min-width: 0;
   }
   .nav-menu {
-    display: flex; align-items: center; flex-wrap: nowrap; gap: 0.85rem; list-style: none;
-    flex: 0 0 auto; margin: 0; padding: 0;
+    display: flex; align-items: center; flex-wrap: nowrap; gap: 1.05rem; list-style: none;
+    flex: 0 1 auto; margin: 0; padding: 0; min-width: 0;
   }
   .nav-menu li { flex: 0 0 auto; }
-  .nav-menu a {
-    color: var(--text-muted); text-decoration: none; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; transition: var(--transition);
+  .nav-menu a, .nav-more-btn {
+    color: var(--text-muted); text-decoration: none; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; transition: var(--transition);
     white-space: nowrap;
   }
-  .nav-menu a:hover { color: var(--gold); }
+  .nav-menu a:hover, .nav-more-btn:hover, .nav-more.open .nav-more-btn { color: var(--gold); }
+  .nav-more { position: relative; }
+  .nav-more-btn {
+    background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit;
+    display: inline-flex; align-items: center; gap: 0.35rem;
+  }
+  .nav-more-btn i { font-size: 0.65rem; }
+  .nav-more-panel {
+    display: none; position: absolute; top: calc(100% + 18px); right: 0; min-width: 240px;
+    background: rgba(7, 13, 29, 0.98); border: 1px solid var(--border); border-radius: 6px;
+    padding: 0.45rem 0; box-shadow: 0 16px 40px rgba(0,0,0,0.45); z-index: 1002;
+  }
+  .nav-more.open .nav-more-panel { display: block; }
+  .nav-more-panel a { display: block; padding: 0.65rem 1rem; font-size: 0.78rem; }
+  .nav-more-panel a:hover { background: rgba(212,175,55,0.08); }
 
   .nav-cta-group {
     display: flex; align-items: center; gap: 0.5rem;
@@ -176,13 +189,15 @@
 
   .mobile-menu-drawer {
     display: none; position: fixed; top: 83px; left: 0; right: 0; background: var(--navy-mid);
-    border-bottom: 1px solid var(--border); padding: 1.5rem 5%; flex-direction: column; gap: 1rem; z-index: 999;
+    border-bottom: 1px solid var(--border); padding: 0.75rem 5% 1.25rem; flex-direction: column; gap: 0.15rem; z-index: 999;
+    max-height: calc(100vh - 90px); overflow-y: auto; overscroll-behavior: contain;
   }
+  .mobile-menu-drawer a { padding: 0.55rem 0; }
   .mobile-menu-drawer.open { display: flex; }
   .mobile-menu-drawer a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; }
   .mobile-menu-drawer a:hover { color: var(--gold); }
 
-  @media(max-width: 1700px) {
+  @media(max-width: 1180px) {
     .nav-logo { font-size: 1.45rem; letter-spacing: 0.05em; }
     .nav-menu { display: none !important; }
     .nav-cta-group,
@@ -492,14 +507,19 @@
                 <li><a href="#results">Results</a></li>
                 <li><a href="#pillars">Expertise</a></li>
                 <li><a href="#work">Work</a></li>
-                <li><a href="cockpit.html">Cockpit</a></li>
                 <li><a href="physical-ai/">Autonomy</a></li>
-                <li><a href="src/pages/start-here.html">Start Here</a></li>
-                <li><a href="src/pages/category-leadership.html">Category Leadership</a></li>
-                <li><a href="src/pages/founder-advisory.html">Founder Advisory</a></li>
-                <li><a href="src/pages/physical-ai-glossary.html">Glossary</a></li>
-                <li><a href="src/pages/gtm-for-autonomy.html">GTM for Autonomy</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li class="nav-more" id="navMore">
+                    <button type="button" class="nav-more-btn" id="navMoreBtn" aria-expanded="false" aria-controls="navMorePanel">More <i class="fa-solid fa-chevron-down"></i></button>
+                    <div class="nav-more-panel" id="navMorePanel">
+                        <a href="cockpit.html">Cockpit</a>
+                        <a href="src/pages/start-here.html">Start Here</a>
+                        <a href="src/pages/category-leadership.html">Category Leadership</a>
+                        <a href="src/pages/founder-advisory.html">Founder Advisory</a>
+                        <a href="src/pages/physical-ai-glossary.html">Glossary</a>
+                        <a href="src/pages/gtm-for-autonomy.html">GTM for Autonomy</a>
+                    </div>
+                </li>
             </ul>
 
             <div class="nav-cta-group">
@@ -507,7 +527,7 @@
                 <a href="Muhammad_Yunas_Resume_Category_Leadership.pdf" download class="header-btn"><i class="fa-solid fa-file-pdf"></i> Resume</a>
             </div>
 
-            <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+            <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileDrawer">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -1030,8 +1050,40 @@
     // Mobile Menu Toggle Function
     function toggleMobileMenu() {
         const drawer = document.getElementById('mobileDrawer');
-        drawer.classList.toggle('open');
+        const open = drawer.classList.toggle('open');
+        document.getElementById('hamburgerBtn').setAttribute('aria-expanded', open ? 'true' : 'false');
     }
+    function closeMobileMenu() {
+        document.getElementById('mobileDrawer').classList.remove('open');
+        document.getElementById('hamburgerBtn').setAttribute('aria-expanded', 'false');
+    }
+    const navMore = document.getElementById('navMore');
+    const navMoreBtn = document.getElementById('navMoreBtn');
+    navMoreBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const open = navMore.classList.toggle('open');
+        navMoreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+        if (!navMore.contains(e.target)) {
+            navMore.classList.remove('open');
+            navMoreBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            navMore.classList.remove('open');
+            navMoreBtn.setAttribute('aria-expanded', 'false');
+            closeMobileMenu();
+        }
+    });
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 1180) closeMobileMenu();
+        else {
+            navMore.classList.remove('open');
+            navMoreBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
 
     // Smooth Scrolling for Anchors
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
