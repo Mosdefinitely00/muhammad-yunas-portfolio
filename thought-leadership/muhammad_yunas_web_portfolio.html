@@ -53,11 +53,17 @@
     margin-right: auto; flex-shrink: 0;
   }
   .nav-logo span { color: var(--gold); }
-  .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; flex-shrink: 1; }
+  .nav-links { display: flex; align-items: center; gap: 0.7rem; list-style: none; flex: 0 0 auto; margin-left: auto; }
+  .nav-more { position: relative; }
+  .nav-more-btn { background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit; color: var(--text-muted); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; }
+  .nav-more:hover .nav-more-btn { color: var(--gold); }
+  .nav-more-panel { display: none; position: absolute; top: calc(100% + 12px); right: 0; min-width: 220px; background: #0a1628; border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0; z-index: 1002; }
+  .nav-more:hover .nav-more-panel, .nav-more:focus-within .nav-more-panel { display: block; }
+  .nav-more-panel a { display: block; padding: 0.5rem 0.9rem; text-transform: none; letter-spacing: 0; font-size: 0.85rem; }
   .nav-links a {
     color: var(--text-muted); text-decoration: none;
-    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em;
-    text-transform: uppercase; transition: var(--transition);
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em;
+    text-transform: uppercase; transition: var(--transition); white-space: nowrap;
   }
   .nav-links a:hover { color: var(--gold); }
   .nav-cta {
@@ -72,12 +78,13 @@
   .mobile-menu {
     display: none; position: fixed; top: 70px; left: 0; right: 0;
     background: rgba(10,22,40,0.98); backdrop-filter: blur(12px);
-    padding: 2rem 5%; z-index: 999; border-bottom: 1px solid var(--border);
+    padding: 0.75rem 5% 1.25rem; z-index: 999; border-bottom: 1px solid var(--border);
+    max-height: calc(100vh - 90px); overflow-y: auto; overscroll-behavior: contain;
   }
   .mobile-menu.open { display: block; }
   .mobile-menu a { display: block; color: var(--white); text-decoration: none; padding: 0.9rem 0; font-size: 1rem; font-weight: 500; border-bottom: 1px solid var(--border); }
   .mobile-menu a:last-child { border-bottom: none; color: var(--gold); font-weight: 700; }
-  @media(max-width:768px) { .nav-links { display: none; } .hamburger { display: flex; } }
+  @media(max-width:1180px) { .nav-links { display: none; } .hamburger { display: flex; } }
 
   /* ── SECTIONS ── */
   section { padding: 7rem 5%; }
@@ -351,27 +358,51 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#hero" class="nav-logo">Muhammad <span>Yunas</span></a>
+  <a href="../index.html" class="nav-logo">Muhammad <span>Yunas</span></a>
   <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#expertise">Expertise</a></li>
-    <li><a href="#thinking">Thinking</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact" class="nav-cta">Let's Talk →</a></li>
+    <li><a href="../src/pages/start-here.html">Start Here</a></li>
+    <li><a href="../physical-ai/">Autonomy Stack</a></li>
+    <li><a href="../index.html#results">Results</a></li>
+    <li><a href="../index.html#pillars">Expertise</a></li>
+    <li><a href="../src/pages/work-with-me.html">Work With Me</a></li>
+    <li><a href="../index.html#manifesto">Manifesto</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+    <li class="nav-more"><button type="button" class="nav-more-btn">More ▾</button>
+      <div class="nav-more-panel">
+        <a href="../cockpit.html">Physical AI Cockpit</a>
+        <a href="../src/pages/category-leadership.html">Category Leadership</a>
+        <a href="../src/pages/founder-advisory.html">Founder Advisory</a>
+        <a href="../src/pages/physical-ai-glossary.html">Glossary</a>
+        <a href="../src/pages/gtm-for-autonomy.html">GTM for Autonomy</a>
+        <a href="../case-studies.html">Case Studies</a>
+        <a href="../frameworks.html">Frameworks</a>
+      </div>
+    </li>
+    <li><a href="https://linkedin.com/in/muhammad-yunas" target="_blank" rel="noopener" class="nav-cta">LinkedIn</a></li>
+    <li><a href="../Muhammad_Yunas_Resume_Category_Leadership.pdf" download class="nav-cta">Resume</a></li>
   </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()" role="button" aria-label="Toggle Menu">
     <span></span><span></span><span></span>
   </div>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#work" onclick="toggleMenu()">Work</a>
-  <a href="#expertise" onclick="toggleMenu()">Expertise</a>
-  <a href="#thinking" onclick="toggleMenu()">Thinking</a>
-  <a href="#skills" onclick="toggleMenu()">Skills</a>
-  <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="#contact" onclick="toggleMenu()">Let's Talk →</a>
+  <a href="../src/pages/start-here.html" onclick="toggleMenu()">Start Here</a>
+  <a href="../physical-ai/" onclick="toggleMenu()">Autonomy Stack</a>
+  <a href="../index.html#results" onclick="toggleMenu()">Results</a>
+  <a href="../index.html#pillars" onclick="toggleMenu()">Expertise</a>
+  <a href="../src/pages/work-with-me.html" onclick="toggleMenu()">Work With Me</a>
+  <a href="../index.html#manifesto" onclick="toggleMenu()">Manifesto</a>
+  <a href="../index.html#contact" onclick="toggleMenu()">Contact</a>
+  <a href="../cockpit.html" onclick="toggleMenu()">Physical AI Cockpit</a>
+  <a href="../src/pages/category-leadership.html" onclick="toggleMenu()">Category Leadership</a>
+  <a href="../src/pages/founder-advisory.html" onclick="toggleMenu()">Founder Advisory</a>
+  <a href="../src/pages/physical-ai-glossary.html" onclick="toggleMenu()">Glossary</a>
+  <a href="../src/pages/gtm-for-autonomy.html" onclick="toggleMenu()">GTM for Autonomy</a>
+  <a href="../case-studies.html" onclick="toggleMenu()">Case Studies</a>
+  <a href="../frameworks.html" onclick="toggleMenu()">Frameworks</a>
+  <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="../Muhammad_Yunas_Resume_Category_Leadership.pdf" download>Download Resume</a>
 </div>
 
 <!-- HERO -->

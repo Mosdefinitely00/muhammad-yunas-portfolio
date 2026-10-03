@@ -101,6 +101,7 @@
     position: fixed; top: 3px; left: 0; right: 0; z-index: 1000;
     background: rgba(7, 13, 29, 0.95); backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border); transition: var(--transition);
+    overflow: visible;
   }
   .nav-container {
     max-width: none; margin: 0 auto; padding: 0 1.5rem; height: 72px;
@@ -146,15 +147,15 @@
 
   /* Logo left · one compact right cluster — never grows to fill the bar */
   .nav-end {
-    display: flex; align-items: center; gap: 0.85rem; margin-left: auto; flex: 0 1 auto; min-width: 0;
+    display: flex; align-items: center; gap: 0.7rem; margin-left: auto; flex: 0 0 auto; min-width: max-content;
   }
   .nav-menu {
-    display: flex; align-items: center; flex-wrap: nowrap; gap: 1.05rem; list-style: none;
-    flex: 0 1 auto; margin: 0; padding: 0; min-width: 0;
+    display: flex; align-items: center; flex-wrap: nowrap; gap: 0.72rem; list-style: none;
+    flex: 0 0 auto; margin: 0; padding: 0;
   }
   .nav-menu li { flex: 0 0 auto; }
   .nav-menu a, .nav-more-btn {
-    color: var(--text-muted); text-decoration: none; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; transition: var(--transition);
+    color: var(--text-muted); text-decoration: none; font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; transition: var(--transition);
     white-space: nowrap;
   }
   .nav-menu a:hover, .nav-more-btn:hover, .nav-more.open .nav-more-btn { color: var(--gold); }
@@ -179,8 +180,9 @@
   }
   .header-btn {
     background: rgba(212,175,55,0.08); border: 1px solid var(--border); color: var(--gold-light); 
-    padding: 0.4rem 0.9rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; 
-    letter-spacing: 0.05em; text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.38rem 0.72rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; 
+    letter-spacing: 0.04em; text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.35rem;
+    white-space: nowrap; flex: 0 0 auto;
   }
   .header-btn:hover { background: var(--gold-glow); border-color: var(--gold); color: var(--white); }
 
@@ -196,6 +198,15 @@
   .mobile-menu-drawer.open { display: flex; }
   .mobile-menu-drawer a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; }
   .mobile-menu-drawer a:hover { color: var(--gold); }
+
+  @media (max-width: 1500px) {
+    .nav-logo { font-size: 1.38rem; letter-spacing: 0.04em; }
+    .nav-container { padding: 0 0.85rem; gap: 0.55rem; }
+    .nav-menu { gap: 0.48rem; }
+    .nav-menu a, .nav-more-btn { font-size: 0.68rem; letter-spacing: 0.025em; }
+    .nav-end { gap: 0.45rem; }
+    .header-btn { padding: 0.32rem 0.55rem; font-size: 0.66rem; }
+  }
 
   @media(max-width: 1180px) {
     .nav-logo { font-size: 1.45rem; letter-spacing: 0.05em; }
@@ -490,6 +501,11 @@
   @media (max-width: 560px) {
     .results-grid { grid-template-columns: 1fr; }
   }
+
+  .footer-nav { display: flex; flex-direction: column; gap: 0.7rem; align-items: center; margin: 0 auto 1.6rem; max-width: 980px; }
+  .footer-nav-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 0.95rem; }
+  .footer-nav a { color: var(--gold-light); text-decoration: none; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  .footer-nav a:hover { color: var(--white); }
 </style>
 <link rel="stylesheet" href="src/styles/animation-hooks.css"/>
 <link rel="stylesheet" href="src/styles/launch-cta.css"/>
@@ -503,21 +519,23 @@
 
         <div class="nav-end">
             <ul class="nav-menu">
-                <li><a href="#manifesto">Manifesto</a></li>
+                <li><a href="src/pages/start-here.html">Start Here</a></li>
+                <li><a href="physical-ai/">Autonomy Stack</a></li>
                 <li><a href="#results">Results</a></li>
                 <li><a href="#pillars">Expertise</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="physical-ai/">Autonomy</a></li>
+                <li><a href="src/pages/work-with-me.html">Work With Me</a></li>
+                <li><a href="#manifesto">Manifesto</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="nav-more" id="navMore">
                     <button type="button" class="nav-more-btn" id="navMoreBtn" aria-expanded="false" aria-controls="navMorePanel">More <i class="fa-solid fa-chevron-down"></i></button>
                     <div class="nav-more-panel" id="navMorePanel">
-                        <a href="cockpit.html">Cockpit</a>
-                        <a href="src/pages/start-here.html">Start Here</a>
+                        <a href="cockpit.html">Physical AI Cockpit</a>
                         <a href="src/pages/category-leadership.html">Category Leadership</a>
                         <a href="src/pages/founder-advisory.html">Founder Advisory</a>
                         <a href="src/pages/physical-ai-glossary.html">Glossary</a>
                         <a href="src/pages/gtm-for-autonomy.html">GTM for Autonomy</a>
+                        <a href="case-studies.html">Case Studies</a>
+                        <a href="frameworks.html">Frameworks</a>
                     </div>
                 </li>
             </ul>
@@ -535,21 +553,21 @@
 </header>
 
 <div class="mobile-menu-drawer" id="mobileDrawer">
-    <a href="#manifesto" onclick="toggleMobileMenu()">Manifesto</a>
+    <a href="src/pages/start-here.html" onclick="toggleMobileMenu()">Start Here</a>
+    <a href="physical-ai/" onclick="toggleMobileMenu()">Autonomy Stack</a>
     <a href="#results" onclick="toggleMobileMenu()">Results</a>
     <a href="#pillars" onclick="toggleMobileMenu()">Expertise</a>
-    <a href="#work" onclick="toggleMobileMenu()">Work &amp; Impact</a>
-    <a href="#casestudy" onclick="toggleMobileMenu()">Case Study</a>
-    <a href="cockpit.html" onclick="toggleMobileMenu()">Cockpit</a>
-    <a href="physical-ai/" onclick="toggleMobileMenu()">Autonomy Stack</a>
-    <a href="src/pages/start-here.html" onclick="toggleMobileMenu()">Start Here</a>
+    <a href="src/pages/work-with-me.html" onclick="toggleMobileMenu()">Work With Me</a>
+    <a href="#manifesto" onclick="toggleMobileMenu()">Manifesto</a>
+    <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+    <a href="cockpit.html" onclick="toggleMobileMenu()">Physical AI Cockpit</a>
     <a href="src/pages/category-leadership.html" onclick="toggleMobileMenu()">Category Leadership</a>
     <a href="src/pages/founder-advisory.html" onclick="toggleMobileMenu()">Founder Advisory</a>
     <a href="src/pages/physical-ai-glossary.html" onclick="toggleMobileMenu()">Glossary</a>
     <a href="src/pages/gtm-for-autonomy.html" onclick="toggleMobileMenu()">GTM for Autonomy</a>
-    <a href="#skills" onclick="toggleMobileMenu()">Competencies</a>
-    <a href="#contact" onclick="toggleMobileMenu()">Contact Me</a>
-    <a href="https://linkedin.com/in/muhammad-yunas" target="_blank">LinkedIn Profile</a>
+    <a href="case-studies.html" onclick="toggleMobileMenu()">Case Studies</a>
+    <a href="frameworks.html" onclick="toggleMobileMenu()">Frameworks</a>
+    <a href="https://linkedin.com/in/muhammad-yunas" target="_blank" rel="noopener">LinkedIn</a>
     <a href="Muhammad_Yunas_Resume_Category_Leadership.pdf" download>Download Resume</a>
 </div>
 
@@ -1029,6 +1047,26 @@
     <div class="footer-tagline-box">
         <p>&ldquo;Listen deeply. Clarify relentlessly. Execute decisively.&rdquo;</p>
     </div>
+    <nav class="footer-nav" aria-label="Footer">
+        <div class="footer-nav-row">
+            <a href="src/pages/start-here.html">Start Here</a>
+            <a href="physical-ai/">Autonomy Stack</a>
+            <a href="#results">Results</a>
+            <a href="#pillars">Expertise</a>
+            <a href="src/pages/work-with-me.html">Work With Me</a>
+            <a href="#manifesto">Manifesto</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-nav-row">
+            <a href="cockpit.html">Physical AI Cockpit</a>
+            <a href="src/pages/category-leadership.html">Category Leadership</a>
+            <a href="src/pages/founder-advisory.html">Founder Advisory</a>
+            <a href="src/pages/physical-ai-glossary.html">Glossary</a>
+            <a href="src/pages/gtm-for-autonomy.html">GTM for Autonomy</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="frameworks.html">Frameworks</a>
+        </div>
+    </nav>
     <p>&copy; <span id="year">2026</span> <span>Muhammad A. Yunas</span>. All rights reserved. | Physical AI &amp; Agentic AI GTM Leader</p>
 </footer>
 

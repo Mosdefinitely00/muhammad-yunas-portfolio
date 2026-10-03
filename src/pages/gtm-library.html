@@ -20,6 +20,13 @@
       .grid { grid-template-columns: 1fr; gap: 16px; }
       .cta-row a { width: 100%; justify-content: center; }
     }
+  
+    nav.crumbs details.crumb-more { position: relative; }
+    nav.crumbs summary { cursor: pointer; color: #D4A857; }
+    nav.crumbs details.crumb-more a { display: block; padding: 4px 0; }
+    nav.crumbs .crumb-btn { border: 1px solid rgba(212,168,87,.55); padding: 2px 8px; border-radius: 4px; }
+    nav.crumbs { display:flex; flex-wrap:wrap; gap:10px 14px; margin-top:12px; }
+    nav.crumbs a { color:#D4A857; font-size:13px; }
   </style>
 </head>
 <body>
@@ -47,10 +54,21 @@
     <footer class="site-footer">
       <strong>Muhammad A. Yunas</strong>
       <p>Physical AI &amp; Industrial Autonomy GTM</p>
-      <nav>
-        <a href="../../index.html">Home</a>
-        <a href="../../case-studies.html">Cases</a>
-        <a href="../../contact.html">Contact</a>
+      <nav class="crumbs" aria-label="Footer">
+        <a href="start-here.html">Start Here</a>
+        <a href="../../physical-ai/">Autonomy Stack</a>
+        <a href="../../index.html#results">Results</a>
+        <a href="../../index.html#pillars">Expertise</a>
+        <a href="work-with-me.html">Work With Me</a>
+        <a href="../../index.html#manifesto">Manifesto</a>
+        <a href="../../index.html#contact">Contact</a>
+        <a href="../../cockpit.html">Physical AI Cockpit</a>
+        <a href="category-leadership.html">Category Leadership</a>
+        <a href="founder-advisory.html">Founder Advisory</a>
+        <a href="physical-ai-glossary.html">Glossary</a>
+        <a href="gtm-for-autonomy.html">GTM for Autonomy</a>
+        <a href="../../case-studies.html">Case Studies</a>
+        <a href="../../frameworks.html">Frameworks</a>
       </nav>
     </footer>
   </main>
