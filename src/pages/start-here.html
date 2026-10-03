@@ -29,6 +29,20 @@
     .cta-row { margin-top: 28px; }
     nav.crumbs { display:flex; flex-wrap:wrap; gap:14px; margin-bottom: 28px; font-size: 13px; }
     nav.crumbs a { color:#D4A857; }
+
+    .audit-block { margin: 0 0 22px; }
+    .audit-block .category-narrative, .audit-note { color: #C8CCD4; overflow-wrap: anywhere; }
+    .audit-block h2 { margin-top: 22px; }
+    .next-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 16px 0; }
+    .next-card { display: block; min-width: 0; border: 1px solid rgba(212,168,87,.45); border-radius: 10px; padding: 14px 14px; color: #fff; text-decoration: none; font-weight: 600; background: #0A0F1F; }
+    .next-card:visited { color: #fff; }
+    .next-card:hover { border-color: #D4A857; }
+    @media (max-width: 640px) {
+      .next-row { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .next-card { transition: none; }
+    }
   
     nav.crumbs details.crumb-more { position: relative; }
     nav.crumbs summary { cursor: pointer; color: #D4A857; }
@@ -59,6 +73,22 @@
         <a href="../../frameworks.html">Frameworks</a>
       </details>
     </nav>
+<section class="audit-block" aria-label="Start here">
+<p class="lede">Start Here → Learn the Industrial Autonomy Stack, the Physical AI Cockpit, and the GTM Architecture — Sense → Reason → Act.</p>
+<div class="next-row">
+  <a class="next-card" href="../../physical-ai/">Autonomy Stack</a>
+  <a class="next-card" href="work-with-me.html">Work With Me</a>
+  <a class="next-card" href="../../resume.html">Resume</a>
+  <a class="next-card" href="gtm-library.html">GTM Library</a>
+</div>
+<h2>What you’ll learn</h2>
+<p class="audit-note">How AI interprets physical signals, how autonomy scales across facilities, and how enterprises adopt Physical AI.</p>
+<h2>Why this matters</h2>
+<p class="audit-note">The Industrial Autonomy Stack is the operating model for AI systems that sense, reason, and act in the physical world — one governed loop, outcomes first.</p>
+<h2>Where to go next</h2>
+<p class="audit-note">Open the Autonomy Stack, then Work With Me, the resume, or the GTM Library.</p>
+<p class="category-narrative">Physical AI is the discipline of commercializing AI systems that sense, reason, and act in the physical world. Industrial Autonomy is the operating model that enables these systems to scale across manufacturing, energy, logistics, and critical infrastructure. The Industrial Autonomy Stack defines how these systems are built. The Physical AI Cockpit defines how they are operated. The GTM Architecture — Sense → Reason → Act defines how they are adopted.</p>
+</section>
     <p class="accent">Physical AI · Industrial Autonomy</p>
 <h1>Start Here — The Industrial Autonomy Stack</h1>
 <p class="lede">If you’re new to Physical AI or Industrial Autonomy, start with the Industrial Autonomy Stack — the operating model for AI systems that sense, reason, and act in the physical world.</p>
