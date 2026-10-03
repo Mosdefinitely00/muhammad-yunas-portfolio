@@ -29,6 +29,23 @@
     .cta-row { margin-top: 28px; }
     nav.crumbs { display:flex; flex-wrap:wrap; gap:14px; margin-bottom: 28px; font-size: 13px; }
     nav.crumbs a { color:#D4A857; }
+
+    .audit-block { margin: 0 0 8px; }
+    .audit-block .category-narrative { color: #C8CCD4; margin: 16px 0 0; overflow-wrap: anywhere; }
+    .preview-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 16px 0; }
+    .preview-card { display: block; min-width: 0; border: 1px solid rgba(212,168,87,.45); border-radius: 10px; padding: 14px 14px; color: #fff; text-decoration: none; font-weight: 600; background: #0A0F1F; }
+    .preview-card:visited { color: #fff; }
+    .preview-card:hover { border-color: #D4A857; }
+    .audit-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 18px; }
+    .audit-ctas .cta { max-width: 100%; }
+    .who-line { color: #C8CCD4; margin: 0 0 8px; }
+    @media (max-width: 720px) {
+      .preview-row { grid-template-columns: 1fr; }
+      .audit-ctas .cta { width: 100%; justify-content: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .preview-card, .audit-ctas .cta { transition: none; }
+    }
   
     nav.crumbs details.crumb-more { position: relative; }
     nav.crumbs summary { cursor: pointer; color: #D4A857; }
@@ -61,6 +78,20 @@
     </nav>
     <p class="accent">Physical AI · Industrial Autonomy</p>
 <h1>Work With Me — Physical AI &amp; Industrial Autonomy GTM Leadership</h1>
+<section class="audit-block" aria-label="How I help">
+<p class="lede">I help enterprise AI teams commercialize systems that sense, reason, and act — through GTM architecture, narrative creation, adoption strategy, and executive alignment.</p>
+<div class="preview-row">
+  <a class="preview-card" href="../../resume.html#impact-highlights">Impact Highlights</a>
+  <a class="preview-card" href="../../frameworks.html">Frameworks</a>
+  <a class="preview-card" href="../../physical-ai/">Autonomy Stack</a>
+</div>
+<div class="audit-ctas">
+  <a class="cta cta-primary" href="../../contact.html">Book a Call</a>
+  <a class="cta cta-secondary" href="start-here.html">Start Here</a>
+</div>
+<p class="who-line">Who I work with: enterprise B2B, industrial AI, and OT/IT.</p>
+<p class="category-narrative">Physical AI is the discipline of commercializing AI systems that sense, reason, and act in the physical world. Industrial Autonomy is the operating model that enables these systems to scale across manufacturing, energy, logistics, and critical infrastructure. The Industrial Autonomy Stack defines how these systems are built. The Physical AI Cockpit defines how they are operated. The GTM Architecture — Sense → Reason → Act defines how they are adopted.</p>
+</section>
 <p class="lede">I help enterprise AI teams, founders, and industrial operators commercialize systems that sense, reason, and act in the physical world. My advisory focuses on GTM architecture, category creation, and adoption‑driven commercialization for Physical AI, Agentic AI, Digital Twins, and Industrial Autonomy.</p>
 <h2>Advisory Areas</h2>
 <ul>

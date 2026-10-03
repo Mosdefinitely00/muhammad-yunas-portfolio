@@ -502,6 +502,103 @@
     .results-grid { grid-template-columns: 1fr; }
   }
 
+
+  /* Elevator + category narrative (audit). Static only. */
+  #elevator {
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 4.25rem 5% 3.25rem;
+    text-align: left;
+  }
+  .elevator-inner { max-width: 1200px; margin: 0 auto; width: 100%; min-width: 0; }
+  .elevator-eyebrow {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin: 0 0 0.85rem;
+  }
+  .elevator-line {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+    color: var(--white);
+    line-height: 1.35;
+    margin: 0 0 1.6rem;
+    max-width: 46rem;
+  }
+  .elevator-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    width: 100%;
+  }
+  a.elevator-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: rgba(15, 28, 63, 0.55);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem 1.15rem;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    min-width: 0;
+    max-width: 100%;
+  }
+  a.elevator-card:visited { color: var(--white); }
+  a.elevator-card:hover { border-color: var(--gold); color: var(--white); }
+  .elevator-metrics {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.4rem 0.65rem;
+    width: 100%;
+  }
+  .elevator-metrics li {
+    font-weight: 600;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    color: var(--gold-light);
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+  a.elevator-primary.btn-primary {
+    width: 100%;
+    min-height: 100%;
+    align-self: stretch;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  #category-narrative {
+    background: var(--navy-mid);
+    border-bottom: 1px solid var(--border);
+    padding: 2.25rem 5% 2.75rem;
+    text-align: left;
+  }
+  .category-narrative {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--text-muted);
+    font-size: 1.02rem;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 800px) {
+    .elevator-cards { grid-template-columns: 1fr; }
+    .elevator-metrics { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 420px) {
+    .elevator-metrics { grid-template-columns: 1fr; }
+    #elevator, #category-narrative { padding-left: 1.1rem; padding-right: 1.1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    a.elevator-card, a.elevator-primary { transition: none; }
+  }
+
   .footer-nav { display: flex; flex-direction: column; gap: 0.7rem; align-items: center; margin: 0 auto 1.6rem; max-width: 980px; }
   .footer-nav-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 0.95rem; }
   .footer-nav a { color: var(--gold-light); text-decoration: none; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
@@ -637,6 +734,36 @@
             </div>
         </div>
     </div>
+</section>
+
+<!-- ELEVATOR BAND -->
+<section id="elevator" aria-label="Elevator">
+  <div class="elevator-inner">
+    <p class="elevator-eyebrow">Physical AI &amp; Industrial Autonomy GTM Leadership</p>
+    <p class="elevator-line">I help enterprise organizations commercialize AI systems that sense, reason, and act in the physical world.</p>
+    <div class="elevator-cards">
+      <a class="elevator-card" href="physical-ai/">Autonomy Stack</a>
+      <a class="elevator-card" href="resume.html#impact-highlights">
+        <span>Impact Highlights</span>
+        <ul class="elevator-metrics">
+          <li>$150M+ revenue influence</li>
+          <li>42% win-rate lift</li>
+          <li>38% market share growth</li>
+          <li>3–5× ACV expansion</li>
+          <li>40% sales cycle reduction</li>
+          <li>95%+ retention</li>
+          <li>$700M+ portfolio GTM ownership</li>
+          <li>$24M net-new pipeline generated</li>
+          <li>80% director-level promotion rate among mentored PMMs</li>
+        </ul>
+      </a>
+      <a class="elevator-card" href="src/pages/work-with-me.html">Work With Me</a>
+      <a class="btn-primary elevator-primary" href="src/pages/start-here.html">Start Here</a>
+    </div>
+  </div>
+</section>
+<section id="category-narrative" aria-label="Category narrative">
+  <p class="category-narrative">Physical AI is the discipline of commercializing AI systems that sense, reason, and act in the physical world. Industrial Autonomy is the operating model that enables these systems to scale across manufacturing, energy, logistics, and critical infrastructure. The Industrial Autonomy Stack defines how these systems are built. The Physical AI Cockpit defines how they are operated. The GTM Architecture — Sense → Reason → Act defines how they are adopted.</p>
 </section>
 
 <start-here-cta></start-here-cta>
