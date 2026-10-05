@@ -94,3 +94,27 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
   else build();
 })();
+
+/* Signature tagline just above the footer on every inner page (skipped if the page already has one). */
+(function () {
+  var TAG = 'Listen deeply. Clarify relentlessly. Execute decisively.';
+  var path = location.pathname;
+  if (path === '/' || path === '/index.html' || path === '/src/pages/index.html') return;
+  function add() {
+    if (document.querySelector('.my-tagline, .footer-tagline-box, .credo-tagline-global, .about-tagline')) return;
+    var st = document.createElement('style');
+    st.textContent = '.my-tagline{all:initial;display:block;box-sizing:border-box;width:100%;text-align:center;padding:40px 20px 32px;' +
+      'font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:clamp(17px,2.2vw,22px);line-height:1.5;color:#C9A86A;letter-spacing:.01em}' +
+      '.my-tagline:before{content:"";display:block;width:56px;height:1px;background:#C9A86A;opacity:.6;margin:0 auto 18px}' +
+      '@media print{.my-tagline{display:none!important}}';
+    document.head.appendChild(st);
+    var d = document.createElement('div');
+    d.className = 'my-tagline'; d.setAttribute('role', 'note');
+    d.textContent = '\u201C' + TAG + '\u201D';
+    var footers = document.querySelectorAll('footer');
+    var f = footers.length ? footers[footers.length - 1] : null;
+    if (f && f.parentNode) f.parentNode.insertBefore(d, f);
+    else document.body.appendChild(d);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', add); else add();
+})();
