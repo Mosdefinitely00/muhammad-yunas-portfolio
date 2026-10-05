@@ -1,7 +1,7 @@
 /* Shared print styles for the letter-size resume PDFs.
    Layout follows the "blue resume" (Yunas-Resume-2026): navy section bars,
    blue employer names, a light-blue competency panel, and generous spacing. */
-@page { size: letter; margin: 0.42in 0.6in 0.4in; }
+@page { size: letter; margin: 0.6in 0.6in 0.55in; }
 :root {
   --navy: #0A1A2F;
   --navy-bar: #14284B;
@@ -23,7 +23,7 @@ body {
 a { color: var(--blue); text-decoration: none; }
 
 /* Letterhead */
-.lh h1 { margin: 0; font-size: 27pt; font-weight: 900; letter-spacing: 0.02em; color: var(--navy); line-height: 1.05; text-transform: uppercase; }
+.lh h1 { margin: 0; font-size: 25pt; font-weight: 900; letter-spacing: 0.02em; color: var(--navy); line-height: 1.05; text-transform: uppercase; }
 .lh .title { margin: 5pt 0 0; font-size: 11.5pt; font-weight: 700; color: var(--navy); }
 .lh .title .sep { color: var(--blue-line); padding: 0 5pt; font-weight: 400; }
 .lh .tag { margin: 3pt 0 0; font-size: 9.3pt; color: var(--muted); }
@@ -34,31 +34,34 @@ a { color: var(--blue); text-decoration: none; }
 
 /* Section bars */
 h2 {
-  margin: 10pt 0 5.5pt; padding: 3pt 7pt 2.5pt;
+  margin: 12pt 0 6.5pt; padding: 3pt 7pt 2.5pt;
   background: var(--navy-bar); color: #fff;
   font-size: 9.4pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
   break-after: avoid;
 }
-p { margin: 0 0 4.5pt; font-size: 9.7pt; line-height: 1.35; }
-.lede { font-size: 10pt; }
+p { margin: 0 0 5pt; font-size: 9.5pt; line-height: 1.4; }
+.lede { font-size: 9.8pt; }
 strong { color: var(--navy); }
 
 /* Impact Highlights: metric tiles */
 .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 0; padding: 0; list-style: none; border: 0.8pt solid var(--blue-line); border-radius: 3pt; overflow: hidden; }
-.metrics li { padding: 4pt 9pt 4.5pt; border-right: 0.8pt solid var(--blue-line); border-bottom: 0.8pt solid var(--blue-line); background: #fff; }
+.metrics li { padding: 4.5pt 10pt 5pt; border-right: 0.8pt solid var(--blue-line); border-bottom: 0.8pt solid var(--blue-line); background: #fff; }
 .metrics li:nth-child(3n) { border-right: 0; }
 .metrics li:nth-last-child(-n+3) { border-bottom: 0; }
 .metrics .n { display: block; font-size: 13.5pt; font-weight: 900; color: var(--blue); line-height: 1.05; }
 .metrics .l { display: block; margin-top: 1pt; font-size: 8.6pt; color: var(--ink); line-height: 1.25; }
-.promise { margin: 6pt 0 0; font-size: 9.8pt; font-weight: 700; color: var(--navy); }
+.promise { margin: 8pt 0 0; font-size: 9.8pt; font-weight: 700; color: var(--navy); }
 
 /* Core Competencies panel */
-.comp { display: grid; grid-template-columns: 0.98fr 1.1fr 1.12fr; gap: 4pt 8pt; margin: 0; padding: 7pt 9pt; list-style: none; background: var(--blue-soft); }
-.comp li { font-size: 9pt; white-space: nowrap; line-height: 1.25; padding-left: 10pt; position: relative; }
+.comp { display: grid; grid-template-columns: repeat(3, max-content); justify-content: space-between; gap: 5.5pt 8pt; margin: 0; padding: 8pt 12pt; list-style: none; background: var(--blue-soft); }
+.comp li { font-size: 8.7pt; white-space: nowrap; line-height: 1.25; padding-left: 10pt; position: relative; }
 .comp li::before { content: "\25B8"; position: absolute; left: 0; top: 0; color: var(--blue); font-size: 8.5pt; }
 
 /* Experience */
-.job { margin: 0 0 7pt; break-inside: avoid; }
+.job { margin: 0 0 9pt; }
+.job-head, .job .org, .job .scope { break-after: avoid; }
+ul.b li, .kv { break-inside: avoid; }
+h2 + * { break-before: avoid; }
 .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
 .job-head .role { font-size: 10.4pt; font-weight: 700; color: var(--navy); }
 .job-head .dates { font-size: 9.3pt; font-style: italic; color: var(--muted); white-space: nowrap; }
@@ -66,14 +69,15 @@ strong { color: var(--navy); }
 .job .org .co { color: var(--blue); font-weight: 700; }
 .job .org .loc { color: var(--muted); }
 .job .org .bar { color: var(--blue-line); padding: 0 4pt; }
-.job .scope { margin: 0 0 3pt; font-size: 9.5pt; font-style: italic; color: var(--muted); }
+.job .scope { margin: 0 0 3pt; font-size: 9.3pt; font-style: italic; color: var(--muted); }
 ul.b { margin: 0; padding: 0; list-style: none; }
-ul.b li { position: relative; padding-left: 12pt; margin: 0 0 1.8pt; font-size: 9.6pt; line-height: 1.33; }
+ul.b li { position: relative; padding-left: 12pt; margin: 0 0 2.2pt; font-size: 9.45pt; line-height: 1.4; }
 ul.b li::before { content: "\25B8"; position: absolute; left: 0; top: 0.5pt; color: var(--blue); font-size: 8.5pt; }
-.fw { margin: 4pt 0 0; font-size: 9.4pt; color: var(--ink); }
+.fw { margin: 4pt 0 0; font-size: 9.2pt; color: var(--ink); }
 .fw b { color: var(--navy); }
 
 /* Education / leadership */
-.kv { margin: 0 0 3.5pt; font-size: 9.7pt; line-height: 1.38; }
+.kv { margin: 0 0 4pt; font-size: 9.45pt; line-height: 1.4; }
 .kv b { color: var(--navy); }
 .edu-school { font-weight: 700; color: var(--navy); }
+.fw { break-before: avoid; break-inside: avoid; }
