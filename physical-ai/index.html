@@ -8,4 +8,5 @@ if(t>3.25){x.fillStyle="#1A7CFF";[[220,130],[480,160],[740,130]].forEach(functio
 if(t>4.75){x.strokeStyle="#D4A857";x.beginPath();x.moveTo(80,300);x.lineTo(200,240);x.lineTo(520,220);x.stroke();}
 if(t>6.15){x.strokeStyle="#1A7CFF";for(var a=0;a<6;a++){var ax=160+a*120;x.beginPath();x.arc(ax,340,16,0,6.28);x.stroke();}}
 lock.textContent=phases[t<0.45?0:t<1.85?1:t<3.25?2:t<4.75?3:t<6.15?4:5];if(t<7.2)requestAnimationFrame(draw);window.replayStack=function(){s=0;requestAnimationFrame(draw);};}requestAnimationFrame(draw);
-</script></body></html>
+</script><script src="../assets/js/back-nav.js" defer></script>
+</body></html>
