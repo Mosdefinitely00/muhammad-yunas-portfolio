@@ -101,16 +101,37 @@
   var path = location.pathname;
   if (path === '/' || path === '/index.html' || path === '/src/pages/index.html') return;
   function add() {
-    if (document.querySelector('.my-tagline, .footer-tagline-box, .credo-tagline-global, .about-tagline')) return;
+    if (document.querySelector('.my-tagline-wrap, .footer-tagline-box, .credo-tagline-global, .about-tagline')) return;
     var st = document.createElement('style');
-    st.textContent = '.my-tagline{all:initial;display:block;box-sizing:border-box;width:100%;text-align:center;padding:40px 20px 32px;' +
-      'font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:clamp(17px,2.2vw,22px);line-height:1.5;color:#C9A86A;letter-spacing:.01em}' +
-      '.my-tagline:before{content:"";display:block;width:56px;height:1px;background:#C9A86A;opacity:.6;margin:0 auto 18px}' +
-      '@media print{.my-tagline{display:none!important}}';
+    st.textContent = '.my-tagline-wrap{all:initial;display:block;box-sizing:border-box;width:100%;max-width:1100px;margin:36px auto;padding:0 24px}' +
+      '.my-tagline{display:block;box-sizing:border-box;max-width:65%;margin:0;padding:0;text-align:left;' +
+      'font-family:Inter,"Segoe UI",system-ui,sans-serif;font-weight:500;font-size:clamp(16px,1.6vw,19px);line-height:1.4;letter-spacing:.02em;color:#F5F5F5;' +
+      'opacity:.15;transition:opacity 200ms ease-out}' +
+      '.my-tagline.is-in{opacity:1}' +
+      '.my-tagline span{white-space:nowrap}' +
+      '@media (max-width:700px){.my-tagline{max-width:100%}}' +
+      '@media (prefers-reduced-motion:reduce){.my-tagline{opacity:1;transition:none}}' +
+      '@media print{.my-tagline-wrap{display:none!important}}';
     document.head.appendChild(st);
     var d = document.createElement('div');
-    d.className = 'my-tagline'; d.setAttribute('role', 'note');
-    d.textContent = '\u201C' + TAG + '\u201D';
+    d.className = 'my-tagline-wrap'; d.setAttribute('role', 'presentation');
+    var t = document.createElement('p'); t.className = 'my-tagline';
+    t.innerHTML = '<span>Listen Deeply.</span> <span>Clarify Relentlessly.</span> <span>Execute Decisively.</span>';
+    d.appendChild(t);
+    function align() {
+      var ref = document.querySelector('main h1, article h1, h1') || document.querySelector('main, article');
+      if (!ref) return;
+      var r = ref.getBoundingClientRect(), col = ref.parentElement ? ref.parentElement.getBoundingClientRect() : r;
+      var left = Math.max(16, Math.round(r.left + window.scrollX));
+      var colW = Math.round(Math.min(col.width || r.width, window.innerWidth - left - 16));
+      d.style.cssText = 'max-width:none;margin:36px 0 36px ' + left + 'px;padding:0;width:' + colW + 'px';
+      t.style.maxWidth = window.innerWidth <= 700 ? '100%' : Math.min(colW, Math.max(Math.round(colW * 0.65), 460)) + 'px';
+    }
+    setTimeout(align, 0); window.addEventListener('resize', align);
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { t.classList.add('is-in'); io.disconnect(); } }); }, { threshold: 0.2 });
+      setTimeout(function () { io.observe(t); }, 0);
+    } else { t.classList.add('is-in'); }
     var footers = document.querySelectorAll('footer');
     var f = footers.length ? footers[footers.length - 1] : null;
     if (f && f.parentNode) f.parentNode.insertBefore(d, f);
