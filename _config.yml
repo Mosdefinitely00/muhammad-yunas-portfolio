@@ -1,0 +1,11 @@
+# GitHub Pages (Jekyll) publish filter. Pages HTML has no front matter, so it is copied verbatim.
+# Keep internal source documents and large working files off the public site (audit M9).
+exclude:
+  - docs/
+  - blueprint-tile.jpg
+  - qa-screens/
+  - README.md
+  - LICENSE
+  - src/assets/brand/
+  - "*.md"
+  - "*.docx"
