@@ -1,0 +1,36 @@
+/* Shared site header/footer (matches homepage IA). Scoped with .myc- classes. */
+.myc-header{position:sticky;top:0;left:0;right:0;z-index:1500;box-sizing:border-box;width:100%;background:rgba(10,26,47,.97);border-bottom:1px solid rgba(201,168,106,.25);font-family:Inter,"Segoe UI",system-ui,sans-serif;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.myc-header *{box-sizing:border-box}
+.myc-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:1440px;margin:0 auto;padding:.7rem 1.25rem;min-height:60px}
+.myc-logo{font-family:"Playfair Display",Georgia,serif;font-size:1.35rem;font-weight:700;letter-spacing:.04em;color:#F5F5F5!important;text-decoration:none!important;white-space:nowrap}
+.myc-logo span{color:#D4AF37}
+.myc-menu{display:flex;align-items:center;gap:1rem;margin:0;padding:0;list-style:none}
+.myc-menu>a,.myc-more>button{font:600 .72rem/1.2 Inter,"Segoe UI",system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#C8CCD4;text-decoration:none;background:none;border:0;padding:.35rem 0;cursor:pointer;white-space:nowrap}
+.myc-menu>a:hover,.myc-more>button:hover,.myc-more.open>button,.myc-menu>a[aria-current]{color:#D4AF37}
+.myc-more{position:relative}
+.myc-more-panel{display:none;position:absolute;right:0;top:calc(100% + 10px);min-width:220px;background:#0A1A2F;border:1px solid rgba(212,175,55,.35);border-radius:6px;padding:.35rem 0;z-index:1600}
+.myc-more.open .myc-more-panel{display:block}
+.myc-more-panel a{display:block;padding:.6rem 1rem;font:500 .8rem/1.3 Inter,system-ui,sans-serif;color:#E8C97A;text-decoration:none}
+.myc-more-panel a:hover{background:rgba(212,175,55,.08)}
+.myc-menu .myc-btn{border:1px solid rgba(212,175,55,.55);border-radius:4px;padding:.35rem .65rem;color:#E8C97A}
+.myc-menu .myc-btn:hover{background:rgba(212,175,55,.15);color:#fff}
+.myc-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;padding:8px;background:none;border:0;cursor:pointer}
+.myc-burger span{display:block;width:24px;height:2px;background:#F5F5F5;border-radius:2px}
+@media (max-width:1180px){
+  .myc-burger{display:flex}
+  .myc-menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:#0A1A2F;border-bottom:1px solid rgba(201,168,106,.3);padding:.5rem 1.25rem 1rem;max-height:calc(100vh - 60px);overflow-y:auto}
+  .myc-header.open .myc-menu{display:flex}
+  .myc-menu>a,.myc-more>button{display:block;width:100%;text-align:left;padding:.75rem 0;font-size:.85rem;border-bottom:1px solid rgba(255,255,255,.06)}
+  .myc-more-panel{position:static;min-width:0;border:0;background:none;padding:0 0 0 .75rem}
+  .myc-menu .myc-btn{display:inline-block;width:auto;margin-top:.75rem;margin-right:.5rem}
+}
+@media (max-width:420px){.myc-logo{font-size:1.15rem}}
+footer.myc-footer{display:block;box-sizing:border-box;width:100%;margin:0;background:#0A1A2F;border-top:1px solid rgba(201,168,106,.25);padding:2.5rem 1.25rem;text-align:center;color:#9AA4B2;font:400 .82rem/1.6 Inter,"Segoe UI",system-ui,sans-serif}
+footer.myc-footer p{margin:.4rem 0;color:#9AA4B2}
+footer.myc-footer .myc-role{color:#E8C97A;font-weight:600;letter-spacing:.04em}
+footer.myc-footer .myc-fnav{display:flex;flex-direction:column;gap:.5rem;margin:1rem auto;max-width:1100px}
+footer.myc-footer .myc-frow{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.1rem}
+footer.myc-footer a{color:#C8CCD4;text-decoration:none}
+footer.myc-footer a:hover{color:#D4AF37}
+html,body{max-width:100%}
+body:has(> .myc-header){padding-top:0!important}

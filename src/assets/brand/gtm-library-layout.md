@@ -11,7 +11,7 @@ Single column, max 880px, page padding 48px desktop / 20px mobile. Background na
 3. Framework grid — eight `playbook-card` items. Desktop: 2 columns, 20px gap. Mobile: 1 column, 16px gap. Each card: thumbnail (16:9, descriptions in thumbnail-concepts.md), title, one-sentence summary, gold primary Download. Cards align to a shared baseline. Thumbnails sit above the title, full card width, 12px radius, 1px silver frame.
 4. Download CTAs — a `cta-row` under the grid: primary “Download the suite”, secondary “Open the Autonomy Stack”, ghost “View case studies”. Desktop row, mobile stacked full width.
 5. Executive Briefing CTA — one `case-card` width band. Title: Book a 15-minute briefing. One line of proof. Gold button. Not a second hero.
-6. Footer — `footer` signature: Muhammad A. Yunas, Physical AI & Industrial Autonomy GTM, links Home / Cases / Contact.
+6. Footer — `footer` signature: Muhammad Yunas, Physical AI & Industrial Autonomy GTM, links Home / Cases / Contact.
 
 ## Rules
 Skimmable in under ten seconds: title, eight names, one download. No tables. No multi-column body text. Hover on cards: border shifts to gold, no lift over 2px.

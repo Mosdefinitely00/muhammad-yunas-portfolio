@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>GTM Library | Muhammad A. Yunas</title>
+  <title>GTM Library | Muhammad Yunas</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../styles/global.css"/>
   <link rel="stylesheet" href="../styles/typography.css"/>
@@ -33,8 +33,39 @@
     nav.crumbs { display:flex; flex-wrap:wrap; gap:10px 14px; margin-top:12px; }
     nav.crumbs a { color:#D4A857; font-size:13px; }
   </style>
+<link rel="stylesheet" href="/assets/css/site-chrome.css"/>
 </head>
 <body>
+<div class="myc-header" role="banner">
+  <div class="myc-bar">
+    <a class="myc-logo" href="/">Muhammad <span>Yunas</span></a>
+    <div class="myc-menu" id="mycMenu" role="navigation" aria-label="Primary">
+      <a href="/src/pages/start-here.html">Start Here</a>
+      <a href="/physical-ai/">Autonomy Stack</a>
+      <a href="/#results">Results</a>
+      <a href="/#pillars">Expertise</a>
+      <a href="/src/pages/work-with-me.html">Work With Me</a>
+      <a href="/#manifesto">Manifesto</a>
+      <a href="/#contact">Contact</a>
+      <div class="myc-more">
+        <button type="button" aria-expanded="false" aria-controls="mycMorePanel">More &#9662;</button>
+        <div class="myc-more-panel" id="mycMorePanel">
+          <a href="/cockpit.html">Physical AI Cockpit</a>
+          <a href="/src/pages/category-leadership.html">Category Leadership</a>
+          <a href="/src/pages/founder-advisory.html">Founder Advisory</a>
+          <a href="/src/pages/physical-ai-glossary.html">Glossary</a>
+          <a href="/src/pages/gtm-for-autonomy.html">GTM for Autonomy</a>
+          <a href="/case-studies.html">Case Studies</a>
+          <a href="/frameworks.html">Frameworks</a>
+        </div>
+      </div>
+      <a class="myc-btn" href="https://linkedin.com/in/muhammad-yunas" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="myc-btn" href="/Muhammad_Yunas_Resume_Category_Leadership.pdf" download>Resume</a>
+    </div>
+    <button type="button" class="myc-burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mycMenu"><span></span><span></span><span></span></button>
+  </div>
+</div>
+
   <main class="page">
     <section class="library-intro" aria-label="The GTM Library">
       <h2>The GTM Library</h2>
@@ -65,27 +96,7 @@
       <p class="lede">$40M+ ARR motion. One conversation on whether the category fits.</p>
       <a class="cta cta-primary" href="../../contact.html">Book the briefing</a>
     </section>
-    <footer class="site-footer">
-      <strong>Muhammad A. Yunas</strong>
-      <p>Physical AI &amp; Industrial Autonomy GTM</p>
-      <nav class="crumbs" aria-label="Footer">
-        <a href="start-here.html">Start Here</a>
-        <a href="../../physical-ai/">Autonomy Stack</a>
-        <a href="../../index.html#results">Results</a>
-        <a href="../../index.html#pillars">Expertise</a>
-        <a href="work-with-me.html">Work With Me</a>
-        <a href="../../index.html#manifesto">Manifesto</a>
-        <a href="../../index.html#contact">Contact</a>
-        <a href="../../cockpit.html">Physical AI Cockpit</a>
-        <a href="category-leadership.html">Category Leadership</a>
-        <a href="founder-advisory.html">Founder Advisory</a>
-        <a href="physical-ai-glossary.html">Glossary</a>
-        <a href="gtm-for-autonomy.html">GTM for Autonomy</a>
-        <a href="../../case-studies.html">Case Studies</a>
-        <a href="../../frameworks.html">Frameworks</a>
-      </nav>
-    </footer>
-  </main>
+    </main>
   <script src="../animation/timeline.js"></script>
   <script src="../components/thumbnail-card/thumbnail-card.js"></script>
   <script>
@@ -111,5 +122,14 @@
     });
   </script>
 <script src="../../assets/js/back-nav.js" defer></script>
+<footer class="myc-footer">
+  <p class="myc-role">Physical AI &amp; Industrial Autonomy GTM Leadership</p>
+  <div class="myc-fnav" role="navigation" aria-label="Footer">
+    <div class="myc-frow"><a href="/src/pages/start-here.html">Start Here</a><a href="/physical-ai/">Autonomy Stack</a><a href="/#results">Results</a><a href="/#pillars">Expertise</a><a href="/src/pages/work-with-me.html">Work With Me</a><a href="/#manifesto">Manifesto</a><a href="/#contact">Contact</a></div>
+    <div class="myc-frow"><a href="/cockpit.html">Physical AI Cockpit</a><a href="/src/pages/category-leadership.html">Category Leadership</a><a href="/src/pages/founder-advisory.html">Founder Advisory</a><a href="/src/pages/physical-ai-glossary.html">Glossary</a><a href="/src/pages/gtm-for-autonomy.html">GTM for Autonomy</a><a href="/case-studies.html">Case Studies</a><a href="/frameworks.html">Frameworks</a></div>
+  </div>
+  <p>&copy; <span class="myc-year">2026</span> Muhammad Yunas. All rights reserved. | Physical AI &amp; Agentic AI GTM Leader</p>
+</footer>
+<script src="/assets/js/site-chrome.js" defer></script>
 </body>
 </html>

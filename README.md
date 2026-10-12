@@ -55,7 +55,7 @@ muhammad-yunas-portfolio/
         headshot.png
         portrait.png
         logo.png
-        og-preview.png
+        og-preview-1536.jpg
         case-consulting-thumb.jpg
         case-dell-thumb.jpg
         case-schneider-thumb.jpg
