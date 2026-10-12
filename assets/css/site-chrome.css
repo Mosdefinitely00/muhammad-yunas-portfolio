@@ -34,3 +34,38 @@ footer.myc-footer a{color:#C8CCD4;text-decoration:none}
 footer.myc-footer a:hover{color:#D4AF37}
 html,body{max-width:100%}
 body:has(> .myc-header){padding-top:0!important}
+
+/* Closing CTA banner (injected by site-chrome.js before the global footer) */
+.myc-cta{display:block;box-sizing:border-box;width:100%;margin:3rem 0 0;padding:3.5rem 1.25rem;background:#0F1E36;border-top:1px solid rgba(226,182,89,.25);text-align:center;font-family:Inter,"Segoe UI",system-ui,sans-serif}
+.myc-cta *{box-sizing:border-box}
+.myc-cta-inner{max-width:820px;margin:0 auto}
+.myc-cta h2{margin:0 0 1rem;font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:clamp(1.6rem,3.4vw,2.35rem);line-height:1.25;color:#F5F5F5;letter-spacing:0;text-transform:none}
+.myc-cta p{margin:0 auto 2rem;max-width:640px;font:400 1.02rem/1.65 Inter,"Segoe UI",system-ui,sans-serif;color:#C8CCD4}
+.myc-cta-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.9rem}
+.myc-cta a.myc-cta-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.8rem 1.6rem;border-radius:6px;font:700 .92rem/1.2 Inter,"Segoe UI",system-ui,sans-serif;letter-spacing:.02em;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.myc-cta a.myc-cta-primary{background:#E2B659;color:#0A1A2F;border:2px solid #E2B659}
+.myc-cta a.myc-cta-primary:hover,.myc-cta a.myc-cta-primary:focus-visible{background:#F0CB78;border-color:#F0CB78}
+.myc-cta a.myc-cta-outline{background:transparent;color:#E2B659;border:2px solid #E2B659}
+.myc-cta a.myc-cta-outline:hover,.myc-cta a.myc-cta-outline:focus-visible{background:rgba(226,182,89,.12);color:#F5F5F5}
+@media (max-width:520px){.myc-cta a.myc-cta-btn{width:100%}}
+@media print{.myc-cta{display:none!important}}
+
+/* Touch targets ≥44px on mobile */
+.myc-burger{width:44px;height:44px}
+@media (max-width:1180px){
+  .myc-menu>a,.myc-more>button,.myc-more-panel a{display:flex;align-items:center;min-height:44px}
+  .myc-menu .myc-btn{display:inline-flex;align-items:center;min-height:44px}
+}
+@media (max-width:768px){
+  footer.myc-footer .myc-frow{gap:0 .9rem}
+  footer.myc-footer .myc-frow a{display:inline-flex;align-items:center;min-height:44px;padding:0 .2rem}
+}
+.myc-card-title{font-size:1.17em;font-weight:700;margin:1em 0}
+/* Touch targets for page-specific mobile navs (home, cockpit, resume, story pages) */
+@media (max-width:1180px){
+  button.hamburger{min-width:44px;min-height:44px;align-items:center;justify-content:center}
+  .mobile-menu-drawer a,.nav-more-panel a{display:flex;align-items:center;min-height:44px}
+}
+@media (max-width:768px){
+  nav.story-nav .story-links a,nav.story-nav summary,nav.story-nav .more-panel a,nav.story-nav .nav-logo,header.site-nav .brand,header.site-nav nav a{display:inline-flex;align-items:center;min-height:44px}
+}

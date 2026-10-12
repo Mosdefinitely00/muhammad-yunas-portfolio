@@ -44,6 +44,7 @@
     '.my-backnav li+li:before{content:"\\203A";margin-right:6px;color:#C9A86A}' +
     '.my-backnav ol a{color:#C8CCD4;text-decoration:none}.my-backnav ol a:hover{color:#C9A86A;text-decoration:underline}' +
     '.my-backnav [aria-current]{color:#fff}' +
+    '@media (max-width:768px){.my-backnav a.my-back{min-height:44px;padding:0 16px}.my-backnav ol{align-items:center}.my-backnav ol a{display:inline-flex;align-items:center;min-height:44px}}' +
     '@media print{.my-backnav{display:none!important}}';
 
   function build() {
