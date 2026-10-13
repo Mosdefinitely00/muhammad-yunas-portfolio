@@ -18,15 +18,15 @@ My GTM Library includes eight executive briefs on how industrial autonomy actual
 
 Impact Highlights
 
-- $150M+ revenue influence
-- 42% competitive win‑rate lift
-- 38% market share growth
-- 3–5× ACV expansion
-- 40% sales cycle reduction
-- 95%+ retention
+- Enterprise revenue influence across industrial portfolios
+- Higher competitive win rates
+- New entrant to category leader
+- Expanded ACV in strategic accounts
+- Faster executive alignment and sales cycles
+- Durable customer retention
 - $700M+ portfolio GTM ownership
-- $24M net‑new pipeline generated
-- 80% director‑level promotion rate among mentored PMMs
+- Net‑new enterprise pipeline
+- Developed PMMs into director‑level leaders
 
 I build category language before the market has it. I align product, sales, engineering, and executive leadership. I help teams commercialize what they build.
 
@@ -71,7 +71,7 @@ I serve as the strategic quarterback between product, engineering, and enterpris
 
 Impact:
 
-- 80% director‑level promotion rate across mentored PMMs
+- Developed PMMs into director‑level leaders
 - Category narratives adopted across enterprise AI clients
 - Frameworks used in executive briefings and industry panels
 

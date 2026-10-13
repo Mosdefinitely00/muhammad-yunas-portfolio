@@ -10,7 +10,7 @@ Thumbnail 16:9 on top. Title, Inter Semibold 18px white. Description, 14–15px 
 
 ## Items
 1. Website — live portfolio. CTA to home.
-2. Physical AI GTM Playbook — $0 to $40M motion. CTA to the OT/IT case.
+2. Physical AI GTM Playbook — scaled an emerging category into a strategic revenue motion. CTA to the OT/IT case.
 3. Industrial Autonomy GTM Framework — four layers. CTA to /physical-ai/.
 4. Silicon Meets Steel — manifesto. CTA to the essay.
 5. Physical AI Cockpit — industry, constraint, outcome. CTA to cockpit.
